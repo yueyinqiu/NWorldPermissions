@@ -1,0 +1,105 @@
+messages:
+  introduce: |
+    Hello, {senderName}! 'NWorldPermissions' is a excellent plugin.
+    Run the command '/nworldpermissions help' to for help if you have the permission.
+  # This will be displayed when you use the command '/worldpermissions'.
+  # {senderName} : Name of the command sender.
+
+  teleport-to-controlled-world:
+    stopped: |
+      {playerName}, a strange power have stopped your teleporting!
+    # When trying teleporting to a controlled world without the permission, one will receive this message.
+    # {playerName} : Name of the player.
+
+    teleported: |
+      You've felt a strange power when teleporting, but it doesn't work for you, {playerName}.
+    # When teleporting to a controlled world with the permission (or is an operator), one will receive this message and be successfully teleported.
+    # {playerName} : Name of the player.
+
+  tphere:
+    is-not-player-calling: |
+      Oh, {senderName}, where are you?
+    # When the '/nworldpermissions tphere <world_name>' isn't called by a player, the sender will receive this message.
+    # {senderName} : Name of the command sender.
+    no-such-world: |
+      Oh, {senderName}! I can't understand which world '{worldName}' is.
+    # When using '/nworldpermissions tphere <world_name>', and there is no such world, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {worldName} : Name of the world.
+    fail-to-teleport-someone: |
+      Oh, {senderName}, {playerName} can't be teleported here!
+    # When using '/nworldpermissions tphere <world_name>', but some of the players can't be teleported, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {playerName}: Name of the aimed player.
+    # {worldName} : Name of the world.
+    before-tp: |
+      Oh, {playerName}! A strange power've covered you and is trying to teleport you!
+    # When being teleported because of the command '/nworldpermissions tphere <world_name>' running, one will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {playerName} : Name of the aimed player.
+    # {worldName} : Name of the world.
+
+  setofflinehere:
+    is-not-player-calling: |
+      Oh, {senderName}, where are you?
+    # When the '/nworldpermissions setofflinehere <world_name>' isn't called by a player, the sender will receive this message.
+    # {senderName} : Name of the command sender.
+    no-such-world: |
+      Oh, {senderName}! I can't understand which world '{worldName}' is.
+    # When using '/nworldpermissions setofflinehere <world_name>', and there is no such world, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {worldName} : Name of the world.
+    not-enabled: |
+      Oh, {senderName}! You haven't enabled offline controller. And now it seems to late.
+    # When using '/nworldpermissions setofflinehere <world_name>', but some of the players can't be teleported, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+
+  reload:
+    reloaded: |
+      {senderName}, the plugin 'NWorldPermissions' has been reloaded.
+    # When the plugin is reloaded, the sender will receive this message.
+    # {senderName} : Name of the command sender.
+
+  see-help: |
+    Oh, {senderName}! I can't understand the command.
+    Use '/nworldpermissions help' to get the help.
+  # When a commanded was used in a wrong way, the sender will receive this message.
+  # {senderName} : Name of the command sender.
+  # {label} : What has the sender typed.
+
+  help:
+    - |
+      ====
+      Well, {senderName}. Here's the help, but the first page.
+      Use '/nworldpermissions help <page_index>' to get more, and there are totally 6 pages including this one.
+    - |
+      ====
+      Well, {senderName}. The second page.
+      You should write the file 'config.yml' to make some worlds controlled,
+      then restart your server or run the command '/nworldpermissions reload'.
+    - |
+      ====
+      Well, {senderName}. The third page.
+      Now the players will find that they can't get into the worlds, but the players have been in the worlds will still there.
+      You can use the command '/nworldpermissions tphere <world_name>' to teleport all the online players who are in the specific world to you.
+    #  You can also use the command '/nworldpermissions setlocationhere <worldname>' to make the offline players here.
+    - |
+      ====
+      Well, {senderName}. The fourth page.
+      Now all the players are completely isolated from the controlled worlds.
+      You can give some of them the permission 'nworldpermissions.forfreeto.<world_name>' to allow them enter the specific world.
+    - |
+      ====
+      Ok, {senderName}. The fifth page.
+      I think you've found the point. The offline players will still in those worlds.
+      You should set 'enable-offline-controller' to true. And now the players will be tracked.
+      When a player leave the server, here will be a record, you can use command '/nworldpermissions setofflinehere <world_name>' to change the record to where you are standing,
+      then the players will be teleported here next time.
+      But it needs the player join and leave the server when 'enable-offline-controller' is true.
+    - |
+      ====
+      Congratulations, {senderName}!
+      You've successfully made the full use of the plugin.
+      There aren't anything more to tell you except that you can just use 'wp', 'wdpr', 'worldpermissions' to run all the commands.
+  # This will be displayed when you use the command '/worldpermissions help'. Adding and removing pages is accepted.
+  # {senderName} : Name of the command sender.

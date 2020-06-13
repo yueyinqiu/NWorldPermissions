@@ -1,0 +1,104 @@
+messages:
+  introduce: |
+    你好, {senderName}！ NWorldPermissions 这插件贼棒！
+    如果你有权限，可以使用 /nworldpermissions help 获取帮助。
+  # This will be displayed when you use the command '/worldpermissions'.
+  # {senderName} : Name of the command sender.
+
+  teleport-to-controlled-world:
+    stopped: |
+      {playerName}，一股怪异的力量阻止了你的传送！
+    # When trying teleporting to a controlled world without the permission, one will receive this message.
+    # {playerName} : Name of the player.
+
+    teleported: |
+      {playerName}，在传送时，你感受到了一股怪异的力量，但它对你没什么效果。
+    # When teleporting to a controlled world with the permission (or is an operator), one will receive this message and be successfully teleported.
+    # {playerName} : Name of the player.
+
+  tphere:
+    is-not-player-calling: |
+      {senderName}？你在哪啊？
+    # When the '/nworldpermissions tphere <world_name>' isn't called by a player, the sender will receive this message.
+    # {senderName} : Name of the command sender.
+    no-such-world: |
+      {senderName}！我找不到你说的{worldName}。
+    # When using '/nworldpermissions tphere <world_name>', but some of the players can't be teleported, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {worldName} : Name of the world.
+    fail-to-teleport-someone: |
+      {senderName}！{playerName}的传送失败了。
+    # When using '/nworldpermissions tphere <world_name>', but some of the players can't be teleported, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {playerName}: Name of the aimed player.
+    # {worldName} : Name of the world.
+    before-tp: |
+      {playerName}！一股怪异的力量笼罩了你并且正试图传送走你。
+    # When being teleported because of the command '/nworldpermissions tphere <world_name>' running, one will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {playerName} : Name of the aimed player.
+    # {worldName} : Name of the world.
+
+  setofflinehere:
+    is-not-player-calling: |
+      {senderName}？你在哪啊？
+    # When the '/nworldpermissions setofflinehere <world_name>' isn't called by a player, the sender will receive this message.
+    # {senderName} : Name of the command sender.
+    no-such-world: |
+      {senderName}！我找不到你说的{worldName}。
+    # When using '/nworldpermissions setofflinehere <world_name>', and there is no such world, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {worldName} : Name of the world.
+    not-enabled: |
+      {playerName}！你之前没有打开离线玩家管理，这项指令无法使用，现在改……也来不及。
+    # When using '/nworldpermissions setofflinehere <world_name>', but some of the players can't be teleported, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+
+  reload:
+    reloaded: |
+      报告{senderName}！ NWorldPermissions 已重新加载。
+    # When the plugin is reloaded, the sender will receive this message.
+    # {senderName} : Name of the command sender.
+
+  see-help: |
+    {senderName}？你说啥呢？
+    不知道怎么和我交流？试试 /nworldpermissions help 。
+  # When a commanded was used in a wrong way, the sender will receive this message.
+  # {senderName} : Name of the command sender.
+  # {label} : What has the sender typed.
+
+  help:
+    - |
+      ====
+      你好吖，{senderName}！这是帮助的第一页（共六页）。
+      可以使用 /nworldpermissions help <页号> 来获得更多帮助。
+    - |
+      ====
+      终于等到你了，{senderName}。这是帮助的第二页（共六页）。
+      你需要自行写入 config.yml 来将部分世界设置为受控世界，然后重启服务器或者使用指令 /nworldpermissions reload 来重新加载。
+    - |
+      ====
+      这是帮助的第三页（共六页）。
+      现在玩家应该无法进入这个世界了，但本来在里面的玩家仍然在其中。
+      你可以使用 /nworldpermissions tphere <世界名> 将该世界的玩家都传送到你这。
+    - |
+      ====
+      这是帮助的第四页（共六页）。
+      现在所有玩家都无法进入这个世界了吧！
+      要让他们能够进入，可以给予 nworldpermissions.forfreeto.<世界名> 权限。
+    - |
+      ====
+      这是帮助的第五页（共六页）。
+      我想你找到关键点了——离线玩家仍旧保持在原世界。
+      你需要设置 enable-offline-controller 为 true 。
+      如此，当玩家离开服务器时，会被记录。
+      随后你可以使用 /nworldpermissions setofflinehere <世界名> 来改变这一记录到你的位置。
+      在下次玩家进入时，会被传送到这一记录点，从而使其离开该世界。
+      但这需要这一玩家在 enable-offline-controller 为 true 时离开过游戏，否则找不到这一记录。
+    - |
+      ====
+      恭喜你，{senderName}！
+      你成功使用了这个插件的所有功能。
+      剩下要告诉你的就是，你可以直接使用 wp 、 wdpr 或 worldpermissions ，而不用打全 nworldpermissions 。
+  # This will be displayed when you use the command '/worldpermissions help'. Adding and removing pages is accepted.
+  # {senderName} : Name of the command sender.

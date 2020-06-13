@@ -1,0 +1,8 @@
+name: NWorldPermissions
+main: top.nololiyt.worldpermissions.RootPlugin
+version: 3.0.0
+author: yueyinqiu5990
+commands:
+  nworldpermissions:
+    description: "All commands for the plugin 'NWorldPermissions'."
+    aliases: [wp,wdpr,worldpermissions]
