@@ -113,6 +113,8 @@ public class RootCommandExecutor implements CommandExecutor
         File dir = new File(
                 rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
         dir.mkdirs();
+    
+        int count = 0;
         for (File file : dir.listFiles())
         {
             YamlConfiguration configuration =
@@ -123,6 +125,7 @@ public class RootCommandExecutor implements CommandExecutor
                 try
                 {
                     configuration.save(file);
+                    count++;
                 }
                 catch (IOException ex)
                 {
@@ -130,7 +133,12 @@ public class RootCommandExecutor implements CommandExecutor
                 }
             }
         }
-    
+        StringPair[] cPairs = new StringPair[]{
+                StringPair.teleportedCount(String.valueOf(count)),
+                StringPair.senderName(commandSender.getName())
+        };
+        commandSender.sendMessage(rootPlugin.getLanguageManager().getMessage(
+                "setofflinehere.completed", cPairs));
         return true;
     }
     private boolean tpHere(CommandSender commandSender, String[] args)
@@ -171,6 +179,8 @@ public class RootCommandExecutor implements CommandExecutor
                 null
         };
         Location location = ((Player) commandSender).getLocation();
+        
+        int sCount = 0,fCount = 0;
         for (Player player : players)
         {
             playersPairs[2] = StringPair.playerName(player.getName());
@@ -179,10 +189,23 @@ public class RootCommandExecutor implements CommandExecutor
                     "tphere.before-tp", playersPairs));
             if (!player.teleport(location))
             {
+                fCount++;
                 commandSender.sendMessage(rootPlugin.getLanguageManager().getMessage(
                         "tphere.fail-to-teleport-someone", playersPairs));
             }
+            else
+            {
+                sCount++;
+            }
         }
+    
+        StringPair[] cPairs = new StringPair[]{
+                StringPair.teleportedCount(String.valueOf(sCount)),
+                StringPair.unteleportedCount(String.valueOf(fCount)),
+                StringPair.senderName(commandSender.getName())
+        };
+        commandSender.sendMessage(rootPlugin.getLanguageManager().getMessage(
+                "tphere.completed", cPairs));
         return true;
     }
     private boolean showHelp(CommandSender commandSender, String[] args)

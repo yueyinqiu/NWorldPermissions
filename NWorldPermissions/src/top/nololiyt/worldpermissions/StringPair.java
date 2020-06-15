@@ -27,4 +27,10 @@ class StringPair {
     static StringPair worldName(String value) {
         return new StringPair("{worldName}", value);
     }
+    static StringPair teleportedCount(String value) {
+        return new StringPair("{teleportedCount}", value);
+    }
+    static StringPair unteleportedCount(String value) {
+        return new StringPair("{unteleportedCount}", value);
+    }
 }

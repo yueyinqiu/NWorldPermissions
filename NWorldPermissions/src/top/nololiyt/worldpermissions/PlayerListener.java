@@ -28,7 +28,7 @@ public class PlayerListener implements Listener
     @EventHandler
     public void onPlayerLogin(PlayerJoinEvent e)
     {
-        if(!rootPlugin.getConfig().getBoolean("enable-offline-controller"))
+        if (!rootPlugin.getConfig().getBoolean("enable-offline-controller"))
         {
             return;
         }
@@ -42,8 +42,9 @@ public class PlayerListener implements Listener
     
         YamlConfiguration yamlConfiguration = YamlConfiguration
                 .loadConfiguration(file);
-        Location location = yamlConfiguration.getLocation("position");
-        player.teleport(location);
+        Object location = yamlConfiguration.get("position");
+        if (location != null)
+            player.teleport((Location) location);
     }
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent e)

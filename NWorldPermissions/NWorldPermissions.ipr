@@ -157,6 +157,7 @@
         <w>teleportation</w>
         <w>teleported</w>
         <w>teleporting</w>
+        <w>unteleported</w>
       </words>
     </dictionary>
   </component>

@@ -10,7 +10,6 @@ messages:
       {playerName}，一股怪异的力量阻止了你的传送！
     # When trying teleporting to a controlled world without the permission, one will receive this message.
     # {playerName} : Name of the player.
-
     teleported: |
       {playerName}，在传送时，你感受到了一股怪异的力量，但它对你没什么效果。
     # When teleporting to a controlled world with the permission (or is an operator), one will receive this message and be successfully teleported.
@@ -38,6 +37,12 @@ messages:
     # {senderName} : Name of the player calling the command.
     # {playerName} : Name of the aimed player.
     # {worldName} : Name of the world.
+    completed: |
+      报告{senderName}！{teleportedCount}个玩家被传送了；{unteleportedCount}个玩家传送失败了。
+    # When the command '/nworldpermissions tphere <world_name>' completed, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {teleportedCount} : Count of the teleported players.
+    # {unteleportedCount} : Count of the unteleported players.
 
   setofflinehere:
     is-not-player-calling: |
@@ -53,7 +58,11 @@ messages:
       {playerName}！你之前没有打开离线玩家管理，这项指令无法使用，现在改……也来不及。
     # When using '/nworldpermissions setofflinehere <world_name>', but some of the players can't be teleported, the sender will receive this message.
     # {senderName} : Name of the player calling the command.
-
+    completed: |
+      报告{senderName}！{teleportedCount}个离线玩家的记录已被修改。
+    # When the command '/nworldpermissions setofflinehere <world_name>' completed, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {teleportedCount} : Count of the teleported players.
   reload:
     reloaded: |
       报告{senderName}！ NWorldPermissions 已重新加载。

@@ -10,7 +10,6 @@ messages:
       {playerName}, a strange power have stopped your teleporting!
     # When trying teleporting to a controlled world without the permission, one will receive this message.
     # {playerName} : Name of the player.
-
     teleported: |
       You've felt a strange power when teleporting, but it doesn't work for you, {playerName}.
     # When teleporting to a controlled world with the permission (or is an operator), one will receive this message and be successfully teleported.
@@ -38,6 +37,12 @@ messages:
     # {senderName} : Name of the player calling the command.
     # {playerName} : Name of the aimed player.
     # {worldName} : Name of the world.
+    completed: |
+      OK, {senderName}! {teleportedCount} players have being teleported but {unteleportedCount} haven't.
+    # When the command '/nworldpermissions tphere <world_name>' completed, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {teleportedCount} : Count of the teleported players.
+    # {unteleportedCount} : Count of the unteleported players.
 
   setofflinehere:
     is-not-player-calling: |
@@ -53,6 +58,11 @@ messages:
       Oh, {senderName}! You haven't enabled offline controller. And now it seems to late.
     # When using '/nworldpermissions setofflinehere <world_name>', but some of the players can't be teleported, the sender will receive this message.
     # {senderName} : Name of the player calling the command.
+    completed: |
+      OK, {senderName}! {teleportedCount} offline players' records have being changed.
+    # When the command '/nworldpermissions setofflinehere <world_name>' completed, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {teleportedCount} : Count of the teleported players.
 
   reload:
     reloaded: |
