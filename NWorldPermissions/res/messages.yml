@@ -1,0 +1,57 @@
+messages:
+  help: |
+    &r&3Hello, {senderName}&r&3! It's the first time to use 'NWorldPermissions'? Try these commands!
+    /wp config (Permission Required: "nworldpermissions.config")
+    /wp tp (Permission Required: "nworldpermissions.tp")
+    /wp marks (Permission Required: "nworldpermissions.marks")
+  # Available Arg(s): {senderName}.
+
+
+  config:
+    help: |
+      &r&3Hello, {senderName}&r&3! You can try these commands.
+      /wp config reload -- Reload 'config.yml' and 'messages.yml'!
+    # Available Arg(s): {senderName}.
+
+    reload:
+      completed: |
+        &r&3Well, {senderName}&r&3, 'NWorldPermissions' has been reloaded.
+      # Available Arg(s): {senderName}.
+
+
+  tp:
+    help: |
+      &r&3Hello, {senderName}&r&3! You can try these commands to get more.
+      /wp tp online
+      /wp tp offline
+    # Available Arg(s): {senderName}.
+
+  marks:
+    help: |
+      &r&3Hello, {senderName}&r&3! You can try these commands.
+      /wp marks add <mark_name> -- Set a mark, and you can use it later.
+      /wp marks remove <mark_name> -- Remove a mark.
+    # Available Arg(s): {senderName}.
+    add:
+      without-a-position: |
+        {senderName}&r&3? Where are you?
+      # Available Arg(s): {senderName}.
+      completed: |
+        {senderName}&r&3! The position has been marked as '{markName}'.
+      # Available Arg(s): {senderName}, {markName}.
+      with-occupied-name: |
+        &r&3Oh, {senderName}&r&3Oh there has been a mark called '{markName}'.
+      # Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3Oh, what happened? {senderName}&r&3, a strange power stopped me marking the position.
+      # Available Arg(s): {senderName}, {markName}.
+    add:
+      completed: |
+        {senderName}&r&3! The mark '{markName}' has been removed.
+      # Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3Oh, {senderName}&r&3Oh there isn't a mark called '{markName}'.
+      # Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3Oh, what happened? {senderName}&r&3, a strange power stopped me removing the mark.
+      # Available Arg(s): {senderName}, {markName}.

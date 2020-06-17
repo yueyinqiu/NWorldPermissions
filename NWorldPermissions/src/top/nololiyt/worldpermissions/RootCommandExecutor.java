@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import top.nololiyt.worldpermissions.entities.StringPair;
-import top.nololiyt.worldpermissions.executors.CommandRouter;
+import top.nololiyt.worldpermissions.executors.RootRouter;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,58 +22,17 @@ public class RootCommandExecutor implements CommandExecutor
     RootCommandExecutor(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
-        this.router = new CommandRouter(rootPlugin);
+        this.router = new RootRouter(rootPlugin);
     }
     
-    CommandRouter router;
+    RootRouter router;
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args)
     {
-        return  router.RouteCommand(commandSender,command,label,args);
-    }
-    private boolean recordPosition(CommandSender commandSender, String[] args)
-    {
-        if (!commandSender.hasPermission("nworldpermissions.admin"))
-            return true;
-    
-        if (!(commandSender instanceof Player))
-        {
-            StringPair[] pairs = new StringPair[]{
-                    StringPair.senderName(commandSender.getName()),
-            };
-            commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    "record-position.is-not-player-calling", pairs));
-        }
-        
-        if (args.length != 2)
-            return false;
-        
-        Player sender = ((Player) commandSender);
-        try
-        {
-            File file = new File(
-                    rootPlugin.getDataFolder().getAbsolutePath(), "positions.yml");
-            if (!file.exists())
-                file.createNewFile();
-    
-            YamlConfiguration configuration =
-                    YamlConfiguration.loadConfiguration(file);
-    
-            configuration.set(args[1], sender.getLocation());
-            configuration.save(file);
-        }
-        catch(IOException ex)
-        {
-            rootPlugin.getLogger().warning(ex.toString());
-        }
-        StringPair[] cPairs = new StringPair[]{
-                StringPair.positionName(args[1]),
-                StringPair.senderName(sender.getDisplayName())
-        };
-        commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                "record-position.completed", cPairs));
+        router.RouteCommand(commandSender,command,label,args);
         return true;
     }
+    /*
     private boolean setOfflineHere(CommandSender commandSender, String[] args)
     {
         if (!commandSender.hasPermission("nworldpermissions.admin"))
@@ -232,5 +191,5 @@ public class RootCommandExecutor implements CommandExecutor
         }
         return true;
     }
-    
+    */
 }

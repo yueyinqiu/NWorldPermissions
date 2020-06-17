@@ -47,8 +47,8 @@ public class StringPair
         return new StringPair("{unteleportedCount}", value);
     }
     
-    public static StringPair positionName(String value)
+    public static StringPair markName(String value)
     {
-        return new StringPair("{positionName}", value);
+        return new StringPair("{markName}", value);
     }
 }

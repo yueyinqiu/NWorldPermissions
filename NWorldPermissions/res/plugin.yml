@@ -5,4 +5,4 @@ author: yueyinqiu5990
 commands:
   nworldpermissions:
     description: "All commands for the plugin 'NWorldPermissions'."
-    aliases: [wp,wdpr,worldpermissions]
+    aliases: [wp,nwp,nwdp,worldpermissions]

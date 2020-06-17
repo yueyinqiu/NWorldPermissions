@@ -74,7 +74,7 @@ public class PlayerListener implements Listener
             rootPlugin.getLogger().warning(ex.toString());
         }
     }
-    
+    /*
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent e)
     {
@@ -107,7 +107,7 @@ public class PlayerListener implements Listener
         player.sendMessage(rootPlugin.getMessagesManager().getMessage(
                 "teleport-to-controlled-world.stopped", pairs));
     }
-    
+    */
     private boolean worldIsControlled(World world)
     {
         List<String> worlds = rootPlugin.getConfig().getStringList("controlled-worlds");

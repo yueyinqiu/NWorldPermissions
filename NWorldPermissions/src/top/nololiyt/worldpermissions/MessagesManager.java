@@ -1,15 +1,13 @@
 package top.nololiyt.worldpermissions;
 
-import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
+import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
 
 import java.io.*;
-import java.util.List;
 
 public class MessagesManager
 {
-    
     private RootPlugin rootPlugin;
     
     private YamlConfiguration configuration;
@@ -17,7 +15,7 @@ public class MessagesManager
     MessagesManager(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
-        File file = getLanguageFile();
+        File file = getMessagesFile();
         if (!file.exists())
         {
             saveDefaultFile(file);
@@ -25,15 +23,15 @@ public class MessagesManager
         reloadConfiguration();
     }
     
-    private File getLanguageFile()
+    private File getMessagesFile()
     {
         return new File(
-                rootPlugin.getDataFolder().getAbsolutePath(), "language.yml");
+                rootPlugin.getDataFolder().getAbsolutePath(), "messages.yml");
     }
     
     private void saveDefaultFile(File file)
     {
-        InputStream res = rootPlugin.getResource("language.yml");
+        InputStream res = rootPlugin.getResource("messages.yml");
         try
         {
             file.getParentFile().mkdirs();
@@ -63,43 +61,19 @@ public class MessagesManager
     public void reloadConfiguration()
     {
         configuration = YamlConfiguration.loadConfiguration(
-                getLanguageFile());
+                getMessagesFile());
     }
     
-    private String getMessage(String id)
+    public String getMessage(DotDividedStringBuilder node, StringPair[] stringPairs)
     {
-        return configuration.getString("messages." + id,
-                "&cFile 'language.yml' is corrupted and 'messages." + id +"' is missing. You may contact the operators.")
-                .trim().replace('&','§');
-    }
-    
-    public String getMessage(String id, StringPair[] stringPairs)
-    {
-        String str = getMessage(id);
+        String key = node.toString();
+        String result = configuration.getString(key,
+                "&cFile 'messages.yml' is corrupted and '" + key + "' is missing. You may contact the operators.")
+                .trim().replace('&', '§');
         for (StringPair pair : stringPairs)
         {
-            str = str.replace(pair.getKey(), pair.getValue());
+            result = result.replace(pair.getKey(), pair.getValue());
         }
-        return str;
-    }
-    
-    public String getHelp(int page, CommandSender commandSender)
-    {
-        List<String> helpList = configuration.getStringList("messages.help");
-        int size = helpList.size();
-        
-        String result;
-        if (size > page)
-        {
-            result = helpList.get(page);
-        }
-        else
-        {
-            result = helpList.get(size - 1);
-        }
-        
-        StringPair senderPair = StringPair.senderName(commandSender.getName());
-        return result.trim().replace('&','§')
-                .replace(senderPair.getKey(), senderPair.getValue());
+        return result;
     }
 }

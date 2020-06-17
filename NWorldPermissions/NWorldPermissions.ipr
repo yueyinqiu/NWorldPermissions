@@ -6,8 +6,8 @@
       <root id="archive" name="NWorldPermissions.jar">
         <element id="module-output" name="NWorldPermissions" />
         <element id="file-copy" path="$PROJECT_DIR$/res/config.yml" />
-        <element id="file-copy" path="$PROJECT_DIR$/res/language.yml" />
         <element id="file-copy" path="$PROJECT_DIR$/res/plugin.yml" />
+        <element id="file-copy" path="$PROJECT_DIR$/res/messages.yml" />
       </root>
     </artifact>
     <artifact type="jar" name="NWorldPermissions znCH">
