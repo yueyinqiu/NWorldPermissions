@@ -7,12 +7,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import top.nololiyt.worldpermissions.entities.StringPair;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -28,10 +27,12 @@ public class PlayerListener implements Listener
     @EventHandler
     public void onPlayerLogin(PlayerJoinEvent e)
     {
-        if (!rootPlugin.getConfig().getBoolean("enable-offline-controller"))
+        if ((!rootPlugin.getConfig().getBoolean("offline-players-controller.enabled")) ||
+                rootPlugin.getConfig().getBoolean("offline-players-controller.record-only"))
         {
             return;
         }
+        
         Player player = e.getPlayer();
         File file = new File(
                 rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
@@ -49,7 +50,7 @@ public class PlayerListener implements Listener
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent e)
     {
-        if(!rootPlugin.getConfig().getBoolean("enable-offline-controller"))
+        if(!rootPlugin.getConfig().getBoolean("offline-players-controller.enabled"))
         {
             return;
         }
@@ -98,12 +99,12 @@ public class PlayerListener implements Listener
         
         if (player.hasPermission("nworldpermissions.forfreeto." + destName))
         {
-            player.sendMessage(rootPlugin.getLanguageManager().getMessage(
+            player.sendMessage(rootPlugin.getMessagesManager().getMessage(
                     "teleport-to-controlled-world.teleported", pairs));
             return;
         }
         e.setCancelled(true);
-        player.sendMessage(rootPlugin.getLanguageManager().getMessage(
+        player.sendMessage(rootPlugin.getMessagesManager().getMessage(
                 "teleport-to-controlled-world.stopped", pairs));
     }
     

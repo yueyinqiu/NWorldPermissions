@@ -5,15 +5,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class RootPlugin extends JavaPlugin {
-    private LanguageManager languageManager;
-    LanguageManager getLanguageManager()
+    private MessagesManager messagesManager;
+    
+    public MessagesManager getMessagesManager()
     {
-        return languageManager;
+        return messagesManager;
     }
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        languageManager = new LanguageManager(this);
+        messagesManager = new MessagesManager(this);
         
         getCommand("worldpermissions").setExecutor(new RootCommandExecutor(this));
         Bukkit.getPluginManager().registerEvents(

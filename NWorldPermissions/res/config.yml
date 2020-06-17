@@ -1,2 +1,4 @@
 controlled-worlds: []
-enable-offline-controller: true
+offline-players-controller:
+  enabled: true
+  record-only: true

@@ -2,18 +2,19 @@ package top.nololiyt.worldpermissions;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
+import top.nololiyt.worldpermissions.entities.StringPair;
 
 import java.io.*;
 import java.util.List;
 
-class LanguageManager
+public class MessagesManager
 {
     
     private RootPlugin rootPlugin;
     
     private YamlConfiguration configuration;
     
-    LanguageManager(RootPlugin rootPlugin)
+    MessagesManager(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
         File file = getLanguageFile();
@@ -59,7 +60,7 @@ class LanguageManager
         }
     }
     
-    void reloadConfiguration()
+    public void reloadConfiguration()
     {
         configuration = YamlConfiguration.loadConfiguration(
                 getLanguageFile());
@@ -68,11 +69,11 @@ class LanguageManager
     private String getMessage(String id)
     {
         return configuration.getString("messages." + id,
-                "File 'language.yml' is corrupted that 'messages." + id +"' is missing. You may contact the operators.")
-                .trim();
+                "&cFile 'language.yml' is corrupted and 'messages." + id +"' is missing. You may contact the operators.")
+                .trim().replace('&','§');
     }
     
-    String getMessage(String id, StringPair[] stringPairs)
+    public String getMessage(String id, StringPair[] stringPairs)
     {
         String str = getMessage(id);
         for (StringPair pair : stringPairs)
@@ -82,7 +83,7 @@ class LanguageManager
         return str;
     }
     
-    String getHelp(int page, CommandSender commandSender)
+    public String getHelp(int page, CommandSender commandSender)
     {
         List<String> helpList = configuration.getStringList("messages.help");
         int size = helpList.size();
@@ -98,6 +99,7 @@ class LanguageManager
         }
         
         StringPair senderPair = StringPair.senderName(commandSender.getName());
-        return result.trim().replace(senderPair.getKey(), senderPair.getValue());
+        return result.trim().replace('&','§')
+                .replace(senderPair.getKey(), senderPair.getValue());
     }
 }

@@ -15,7 +15,7 @@ messages:
     # When teleporting to a controlled world with the permission (or is an operator), one will receive this message and be successfully teleported.
     # {playerName} : Name of the player.
 
-  tphere:
+  tp-here:
     is-not-player-calling: |
       {senderName}？你在哪啊？
     # When the '/nworldpermissions tphere <world_name>' isn't called by a player, the sender will receive this message.
@@ -44,7 +44,7 @@ messages:
     # {teleportedCount} : Count of the teleported players.
     # {unteleportedCount} : Count of the unteleported players.
 
-  setofflinehere:
+  set-offline-here:
     is-not-player-calling: |
       {senderName}？你在哪啊？
     # When the '/nworldpermissions setofflinehere <world_name>' isn't called by a player, the sender will receive this message.
@@ -63,6 +63,18 @@ messages:
     # When the command '/nworldpermissions setofflinehere <world_name>' completed, the sender will receive this message.
     # {senderName} : Name of the player calling the command.
     # {teleportedCount} : Count of the teleported players.
+
+  record-position:
+    is-not-player-calling: |
+      {senderName}？你在哪啊？
+    # When the '/nworldpermissions recordposition <position_name>' isn't called by a player, the sender will receive this message.
+    # {senderName} : Name of the command sender.
+    completed: |
+      报告{senderName}！已记录{positionName}。
+    # When the command '/nworldpermissions recordposition <position_name>' has completed, the sender will receive this message.
+    # {senderName} : Name of the player calling the command.
+    # {positionName} : Name of the position.
+
   reload:
     reloaded: |
       报告{senderName}！ NWorldPermissions 已重新加载。
@@ -78,36 +90,6 @@ messages:
 
   help:
     - |
-      ====
-      你好吖，{senderName}！这是帮助的第一页（共六页）。
-      可以使用 /nworldpermissions help <页号> 来获得更多帮助。
-    - |
-      ====
-      终于等到你了，{senderName}。这是帮助的第二页（共六页）。
-      你需要自行写入 config.yml 来将部分世界设置为受控世界，然后重启服务器或者使用指令 /nworldpermissions reload 来重新加载。
-    - |
-      ====
-      这是帮助的第三页（共六页）。
-      现在玩家应该无法进入这个世界了，但本来在里面的玩家仍然在其中。
-      你可以使用 /nworldpermissions tphere <世界名> 将该世界的玩家都传送到你这。
-    - |
-      ====
-      这是帮助的第四页（共六页）。
-      现在所有玩家都无法进入这个世界了吧！
-      要让他们能够进入，可以给予 nworldpermissions.forfreeto.<世界名> 权限。
-    - |
-      ====
-      这是帮助的第五页（共六页）。
-      我想你找到关键点了——离线玩家仍旧保持在原世界。
-      你需要设置 enable-offline-controller 为 true 。
-      如此，当玩家离开服务器时，会被记录。
-      随后你可以使用 /nworldpermissions setofflinehere <世界名> 来改变这一记录到你的位置。
-      在下次玩家进入时，会被传送到这一记录点，从而使其离开该世界。
-      但这需要这一玩家在 enable-offline-controller 为 true 时离开过游戏，否则找不到这一记录。
-    - |
-      ====
-      恭喜你，{senderName}！
-      你成功使用了这个插件的所有功能。
-      剩下要告诉你的就是，你可以直接使用 wp 、 wdpr 或 worldpermissions ，而不用打全 nworldpermissions 。
+      你好吖，{senderName}！我不想写中文帮助了，访问 https://www.mcbbs.net/thread-1060874-1-1.html 查看吧！
   # This will be displayed when you use the command '/worldpermissions help'. Adding and removing pages is accepted.
   # {senderName} : Name of the command sender.
