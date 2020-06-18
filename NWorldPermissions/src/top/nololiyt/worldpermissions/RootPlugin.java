@@ -11,12 +11,20 @@ public class RootPlugin extends JavaPlugin {
     {
         return messagesManager;
     }
+    
+    
+    private MarksManager marksManager;
+    public MarksManager getMarksManager()
+    {
+        return marksManager;
+    }
     @Override
     public void onEnable() {
         saveDefaultConfig();
         messagesManager = new MessagesManager(this);
+        marksManager = new MarksManager(this);
         
-        getCommand("worldpermissions").setExecutor(new RootCommandExecutor(this));
+        getCommand("nworldpermissions").setExecutor(new RootCommandExecutor(this));
         Bukkit.getPluginManager().registerEvents(
                 new PlayerListener(this), this);
     }

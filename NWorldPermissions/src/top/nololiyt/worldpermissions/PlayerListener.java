@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
 
 import java.io.File;
@@ -27,8 +28,8 @@ public class PlayerListener implements Listener
     @EventHandler
     public void onPlayerLogin(PlayerJoinEvent e)
     {
-        if ((!rootPlugin.getConfig().getBoolean("offline-players-controller.enabled")) ||
-                rootPlugin.getConfig().getBoolean("offline-players-controller.record-only"))
+        if ((!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled")) ||
+                rootPlugin.getConfig().getBoolean("offline-players-tracker.record-only"))
         {
             return;
         }
@@ -50,7 +51,7 @@ public class PlayerListener implements Listener
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent e)
     {
-        if(!rootPlugin.getConfig().getBoolean("offline-players-controller.enabled"))
+        if(!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled"))
         {
             return;
         }
@@ -74,7 +75,7 @@ public class PlayerListener implements Listener
             rootPlugin.getLogger().warning(ex.toString());
         }
     }
-    /*
+    
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent e)
     {
@@ -100,14 +101,19 @@ public class PlayerListener implements Listener
         if (player.hasPermission("nworldpermissions.forfreeto." + destName))
         {
             player.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    "teleport-to-controlled-world.teleported", pairs));
+                    new DotDividedStringBuilder(
+                            "messages.to-players.when-teleport-to-controlled-worlds.teleported"),
+                    pairs));
             return;
         }
+        
         e.setCancelled(true);
         player.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                "teleport-to-controlled-world.stopped", pairs));
+                new DotDividedStringBuilder(
+                        "messages.to-players.when-teleport-to-controlled-worlds.denied"),
+                pairs));
     }
-    */
+    
     private boolean worldIsControlled(World world)
     {
         List<String> worlds = rootPlugin.getConfig().getStringList("controlled-worlds");

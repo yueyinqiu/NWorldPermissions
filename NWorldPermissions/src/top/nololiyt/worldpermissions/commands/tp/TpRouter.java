@@ -1,15 +1,15 @@
-package top.nololiyt.worldpermissions.executors.tp;
+package top.nololiyt.worldpermissions.commands.tp;
 
-import top.nololiyt.worldpermissions.executors.CommandLayer;
-import top.nololiyt.worldpermissions.executors.Router;
+import top.nololiyt.worldpermissions.commands.CommandLayer;
+import top.nololiyt.worldpermissions.commands.Router;
 
-public class OfflineRouter extends Router
+public class TpRouter extends Router
 {
-    protected final static String layerName = "offline";
+    protected final static String layerName = "tp";
     @Override
     protected String permissionName()
     {
-        return null;
+        return layerName;
     }
     
     @Override
@@ -17,6 +17,7 @@ public class OfflineRouter extends Router
     {
         return layerName;
     }
+    
     /**
      * Return the next layer matching the arg.
      * If no layer match it, please return 'null' and the help list will be sent.
@@ -30,7 +31,9 @@ public class OfflineRouter extends Router
         switch (arg)
         {
             case "offline":
-                return new OfflineRouter();
+                return new OfflineExecutor();
+            case "online":
+                return new OnlineExecutor();
             default:
                 return null;
         }

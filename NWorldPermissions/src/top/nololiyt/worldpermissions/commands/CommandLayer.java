@@ -1,4 +1,4 @@
-package top.nololiyt.worldpermissions.executors;
+package top.nololiyt.worldpermissions.commands;
 
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;

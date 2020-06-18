@@ -1,13 +1,13 @@
-package top.nololiyt.worldpermissions.executors;
+package top.nololiyt.worldpermissions.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
-import top.nololiyt.worldpermissions.entities.StringPair;
+import top.nololiyt.worldpermissions.commands.reload.ReloadRouter;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
-import top.nololiyt.worldpermissions.executors.config.ConfigRouter;
-import top.nololiyt.worldpermissions.executors.marks.MarksRouter;
-import top.nololiyt.worldpermissions.executors.tp.TpRouter;
+import top.nololiyt.worldpermissions.commands.config.ConfigRouter;
+import top.nololiyt.worldpermissions.commands.marks.MarksRouter;
+import top.nololiyt.worldpermissions.commands.tp.TpRouter;
 
 public class RootRouter extends Router
 {
@@ -61,6 +61,8 @@ public class RootRouter extends Router
                 return new TpRouter();
             case "marks":
                 return new MarksRouter();
+            case "reload":
+                return new ReloadRouter();
             default:
                 return null;
         }

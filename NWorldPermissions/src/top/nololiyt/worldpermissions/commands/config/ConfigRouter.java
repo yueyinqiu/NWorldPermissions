@@ -1,7 +1,7 @@
-package top.nololiyt.worldpermissions.executors.config;
+package top.nololiyt.worldpermissions.commands.config;
 
-import top.nololiyt.worldpermissions.executors.CommandLayer;
-import top.nololiyt.worldpermissions.executors.Router;
+import top.nololiyt.worldpermissions.commands.CommandLayer;
+import top.nololiyt.worldpermissions.commands.Router;
 
 public class ConfigRouter extends Router
 {
@@ -29,8 +29,10 @@ public class ConfigRouter extends Router
     {
         switch (arg)
         {
-            case "reload":
-                return new ReloadExecutor();
+            case "add":
+                return new AddExecutor();
+            case "remove":
+                return new RemoveExecutor();
             default:
                 return null;
         }

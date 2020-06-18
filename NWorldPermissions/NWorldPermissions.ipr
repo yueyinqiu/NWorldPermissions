@@ -8,6 +8,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/res/config.yml" />
         <element id="file-copy" path="$PROJECT_DIR$/res/plugin.yml" />
         <element id="file-copy" path="$PROJECT_DIR$/res/messages.yml" />
+        <element id="file-copy" path="$PROJECT_DIR$/res/marks.yml" />
       </root>
     </artifact>
     <artifact type="jar" name="NWorldPermissions znCH">
@@ -16,7 +17,8 @@
         <element id="module-output" name="NWorldPermissions" />
         <element id="file-copy" path="$PROJECT_DIR$/res/plugin.yml" />
         <element id="file-copy" path="$PROJECT_DIR$/res/config.yml" />
-        <element id="file-copy" path="$PROJECT_DIR$/res/otherLanguages/znCH/language.yml" />
+        <element id="file-copy" path="$PROJECT_DIR$/res/marks.yml" />
+        <element id="file-copy" path="$PROJECT_DIR$/res/otherLanguages/messages_zhCH.yml" output-file-name="messages.yml" />
       </root>
     </artifact>
   </component>

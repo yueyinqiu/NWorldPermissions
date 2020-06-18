@@ -1,4 +1,4 @@
-package top.nololiyt.worldpermissions.executors;
+package top.nololiyt.worldpermissions.commands;
 
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
@@ -33,10 +33,11 @@ public abstract class Executor implements CommandLayer
                 return;
             }
         }
+        DotDividedStringBuilder messageKeyCopy = new DotDividedStringBuilder(messageKey);
+        
         if (messageKey() != null)
             messageKey.append(messageKey());
     
-        DotDividedStringBuilder messageKeyCopy = new DotDividedStringBuilder(messageKey);
         if (!run(layer,rootPlugin, permission, messageKey, commandSender, args))
         {
             sendHelp(messageKeyCopy, rootPlugin, commandSender);

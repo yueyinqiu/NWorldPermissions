@@ -1,6 +1,6 @@
 name: NWorldPermissions
 main: top.nololiyt.worldpermissions.RootPlugin
-version: 3.1.2_Pre2
+version: 3.1.2_Pre3
 author: yueyinqiu5990
 commands:
   nworldpermissions:

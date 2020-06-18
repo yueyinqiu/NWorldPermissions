@@ -1,4 +1,7 @@
+# config.yml
+
 controlled-worlds: []
-offline-players-controller:
+
+offline-players-tracker:
   enabled: true
   record-only: true

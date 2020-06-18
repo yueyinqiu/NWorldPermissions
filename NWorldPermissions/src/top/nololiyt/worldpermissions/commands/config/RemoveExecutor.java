@@ -1,14 +1,17 @@
-package top.nololiyt.worldpermissions.executors.config;
+package top.nololiyt.worldpermissions.commands.config;
 
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.Configuration;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
-import top.nololiyt.worldpermissions.executors.Executor;
+import top.nololiyt.worldpermissions.commands.Executor;
 
-public class ReloadExecutor extends Executor
+import java.util.List;
+
+public class RemoveExecutor extends Executor
 {
-    protected final static String layerName = "reload";
+    protected final static String layerName = "remove";
     
     @Override
     protected String permissionName()
@@ -27,16 +30,24 @@ public class ReloadExecutor extends Executor
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
-        rootPlugin.reloadConfig();
-        rootPlugin.getMessagesManager().reloadConfiguration();
-    
-        messageKey.append("completed");
-        StringPair[] pairs = new StringPair[]{
+        if (args.length - 1 != layer)
+            return false;
+        
+        StringPair[] cPairs = new StringPair[]{
+                StringPair.worldName(args[layer]),
                 StringPair.senderName(commandSender.getName())
         };
+    
+        Configuration config = rootPlugin.getConfig();
+        List<String> worlds = config.getStringList("controlled-worlds");
+    
+        worlds.remove(args[layer]);
+        config.set("controlled-worlds", worlds);
+        
+        rootPlugin.saveConfig();
         
         commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                messageKey, pairs));
+                messageKey.append("completed"), cPairs));
         return true;
     }
 }

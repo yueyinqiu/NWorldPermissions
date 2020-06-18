@@ -1,12 +1,11 @@
-package top.nololiyt.worldpermissions.executors.marks;
+package top.nololiyt.worldpermissions.commands.reload;
 
-import top.nololiyt.worldpermissions.executors.CommandLayer;
-import top.nololiyt.worldpermissions.executors.Router;
-import top.nololiyt.worldpermissions.executors.config.ReloadExecutor;
+import top.nololiyt.worldpermissions.commands.CommandLayer;
+import top.nololiyt.worldpermissions.commands.Router;
 
-public class MarksRouter extends Router
+public class ReloadRouter extends Router
 {
-    protected final static String layerName = "marks";
+    protected final static String layerName = "reload";
     @Override
     protected String permissionName()
     {
@@ -30,12 +29,15 @@ public class MarksRouter extends Router
     {
         switch (arg)
         {
-            case "add":
-                return new AddExecutor();
-            case "remove":
-                return new RemoveExecutor();
+            case "config":
+                return new ConfigExecutor();
+            case "messages":
+                return new MessagesExecutor();
+            case "marks":
+                return new MarksExecutor();
             default:
                 return null;
         }
     }
 }
+
