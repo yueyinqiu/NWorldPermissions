@@ -22,7 +22,7 @@ messages:
       # Available Arg(s): {senderName}, {worldName}.
     remove:
       completed: |
-         &r&3Well, {senderName}&r&3, world '{worldName}' has been uncontrolled.
+        &r&3Well, {senderName}&r&3, world '{worldName}' has been uncontrolled.
       # Available Arg(s): {senderName}, {worldName}.
 
   tp:
@@ -57,7 +57,6 @@ messages:
       # Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
         &r&3OK, {senderName}&r&3! {teleportedCount}&r&3 offline players have being teleport.
-        Don't forget to set 'offline-players-tracker.record-only' to 'false' in file 'config.yml'.
       # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
 
   marks:
@@ -92,6 +91,7 @@ messages:
 
   reload:
     help: |
+      &r&3Hello, {senderName}&r&3! You can try these commands.
       /wp reload config -- To reload file 'config.yml'.
       /wp reload messages -- To reload file 'messages.yml'.
       /wp reload marks -- To reload file 'marks.yml'.
