@@ -2,123 +2,123 @@
 
 messages:
   help: |
-    &r&3Hello, {senderName}&r&3!
-    It's the first time to use 'NWorldPermissions'? Try these commands!
-    /wp config (Permission Required: "nworldpermissions.config")
-    /wp marks (Permission Required: "nworldpermissions.marks")
-    /wp tp (Permission Required: "nworldpermissions.tp")
-    /wp reload (Permission Required: "nworldpermissions.reload")
+    &r&3> 你好，{senderName}&r&3！
+    第一次使用NWorldPermissions？试试这些：
+    /wp config （需要权限：nworldpermissions.config）
+    /wp marks （需要权限：nworldpermissions.marks）
+    /wp tp （需要权限：nworldpermissions.tp）
+    /wp reload （需要权限：nworldpermissions.reload）
   # Available Arg(s): {senderName}.
 
   config:
     help: |
-      &r&3Hello, {senderName}&r&3! You can try these commands.
-      /wp config add -- To make a world controlled.
-      /wp config remove -- To make a world uncontrolled.
+      &r&3> 你好，{senderName}&r&3！试试这些：
+      /wp config add -- 添加受控世界
+      /wp config remove -- 移除受控世界
     # Available Arg(s): {senderName}.
     add:
       completed: |
-        &r&3Well, {senderName}&r&3, world '{worldName}' has been controlled.
+        &r&3> 报告，{senderName}&r&3！{worldName}已成为受控世界！
       # Available Arg(s): {senderName}, {worldName}.
     remove:
       completed: |
-         &r&3Well, {senderName}&r&3, world '{worldName}' has been uncontrolled.
+        &r&3> 报告，{senderName}&r&3！{worldName}已不再是受控世界！
       # Available Arg(s): {senderName}, {worldName}.
 
   tp:
     help: |
-      &r&3Hello, {senderName}&r&3! You can try these commands.
-      /wp tp online <world_name> <mark_name> -- To teleport all the online players in the world to a mark.
-      /wp tp offline <world_name> <mark_name> -- To teleport all the tracked offline players in the world to a mark.
+      &r&3> 你好，{senderName}&r&3！试试这些：
+      /wp tp online <world_name> <mark_name> -- 传送某个世界中的在线玩家到指定的mark点
+      /wp tp offline <world_name> <mark_name> -- 传送某个世界中被追踪的离线玩家到指定的mark点
     # Available Arg(s): {senderName}.
     online:
       no-such-world: |
-        {senderName}&r&3? Which world is '{worldName}'?
+        &r&3> 报告，{senderName}&r&3！未能找到{worldName}。
       # Available Arg(s): {senderName}, {worldName}, {markName}.
       no-such-mark: |
-        {senderName}&r&3? Where is '{markName}'?
+        &r&3> 报告，{senderName}&r&3！未能找到{markName}。
       # Available Arg(s): {senderName}, {worldName}, {markName}.
       failed-to-teleport-someone: |
-        &r&3Oh, {senderName}&r&3, {playerName}&r&3 can't be teleported here!
+        &r&3> 啊哦，{playerName}&r&3传送失败了。
       # Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}.
       completed: |
-        &r&3OK, {senderName}&r&3! {teleportedCount}&r&3 players have being teleported but {unteleportedCount}&r&3 haven't.
+        &r&3> 报告，{senderName}&r&3！有{teleportedCount}&r&3个玩家传送成功，{unteleportedCount}&r&3个失败。
       # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}, {unteleportedCount}.
     offline:
       tracker-not-enabled: |
-        &r&3Oh, {senderName}&r&3! You haven't enabled the offline players tracker.
-        Make sure you've set 'offline-players-tracker.enabled' to 'true', and 'offline-players-tracker.record-only' to 'false' in file 'config.yml'.
+        &r&3> 哦不，{senderName}&r&3！你没有开启离线玩家追踪。
+        请确认在config.yml中的offline-players-tracker.enabled值为true；且offline-players-tracker.record-only值为false。
       # Available Arg(s): {senderName}.
       no-such-world: |
-        {senderName}&r&3? Which world is '{worldName}'?
+        &r&3> 报告，{senderName}&r&3！未能找到{worldName}。
       # Available Arg(s): {senderName}, {worldName}, {markName}.
       no-such-mark: |
-        {senderName}&r&3? Where is '{markName}'?
+        &r&3> 报告，{senderName}&r&3！未能找到{markName}。
       # Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
-        &r&3OK, {senderName}&r&3! {teleportedCount}&r&3 offline players have being teleport.
-        Don't forget to set 'offline-players-tracker.record-only' to 'false' in file 'config.yml'.
+        &r&3> 报告，{senderName}&r&3! 有{teleportedCount}&r&3个离线玩家的位置已被修改。
       # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
 
   marks:
     help: |
-      &r&3Hello, {senderName}&r&3! You can try these commands.
-      /wp marks add <mark_name> -- To set a mark, then you can use it later.
-      /wp marks remove <mark_name> -- To remove a mark.
+      &r&3> 你好，{senderName}&r&3！试试这些：
+      /wp marks add <mark_name> -- 设置一个mark点
+      /wp marks remove <mark_name> -- 移除一个mark点
     # Available Arg(s): {senderName}.
     add:
       without-a-position: |
-        {senderName}&r&3? Where are you?
+        &r&3> {senderName}&r&3？你在哪啊？
       # Available Arg(s): {senderName}.
       with-occupied-name: |
-        &r&3Oh, {senderName}&r&3, there has already been a mark called '{markName}'.
+        &r&3> 报告，{senderName}&r&3！目前已经有一个被称为{markName}的mark点了。
       # Available Arg(s): {senderName}, {markName}.
       completed: |
-        {senderName}&r&3! The position has been marked as '{markName}'.
+        &r&3> 报告，{senderName}&r&3！成功设置{markName}。
       # Available Arg(s): {senderName}, {markName}.
       failed: |
-        &r&3Oh, what happened? {senderName}&r&3, a strange power has stopped me marking the position.
+        &r&3> 蛤？发生了什么屁屁？mark点设置失败了！
       # Available Arg(s): {senderName}, {markName}.
     remove:
       completed: |
-        {senderName}&r&3! The mark '{markName}' has been removed.
+        &r&3> 报告，{senderName}&r&3！成功移除{markName}。
       # Available Arg(s): {senderName}, {markName}.
       no-such-mark: |
-        &r&3Oh, {senderName}&r&3Oh there isn't a mark called '{markName}'.
+        &r&3> 报告，{senderName}&r&3！没有找到{markName}。
       # Available Arg(s): {senderName}, {markName}.
       failed: |
-        &r&3Oh, what happened? {senderName}&r&3, a strange power has stopped me removing the mark.
+        &r&3> 蛤？发生了什么屁屁？mark点移除失败了！
       # Available Arg(s): {senderName}, {markName}.
 
   reload:
     help: |
-      /wp reload config -- To reload file 'config.yml'.
-      /wp reload messages -- To reload file 'messages.yml'.
-      /wp reload marks -- To reload file 'marks.yml'.
+      &r&3> 你好，{senderName}&r&3！试试这些：
+      /wp reload config -- 重载config.yml
+      /wp reload messages -- 重载messages.yml
+      /wp reload marks -- 重载marks.yml
     # Available Arg(s): {senderName}.
     config:
       completed: |
-        &r&3Well, {senderName}&r&3, file 'config.yml' has been reloaded.
+        &r&3> 报告，{senderName}&r&3，已重载config.yml。
       # Available Arg(s): {senderName}.
     messages:
       completed: |
-        &r&3Well, {senderName}&r&3, file 'messages.yml' has been reloaded.
+        &r&3> 报告，{senderName}&r&3，已重载messages.yml。
       # Available Arg(s): {senderName}.
     marks:
       completed: |
-        &r&3Well, {senderName}&r&3, file 'marks.yml' has been reloaded.
+        &r&3> 报告，{senderName}&r&3，已重载marks.yml。
       # Available Arg(s): {senderName}.
 
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |
-        &r&3You've felt a strange power when teleporting, but it doesn't work for you, {playerName}&r&3.
+        &r&3> 你在传送时感受到了一股奇怪的力量，但它对你没什么效果。
       # Available Arg(s): {playerName}.
       denied: |
-        {playerName}&r&3, a strange power have stopped your teleporting!
+        &r&3> 一股奇怪的力量阻止了你的传送。
       # Available Arg(s): {playerName}.
 
     when-teleported-by-tp-online:
       before-teleport: |
-        &r&3You've felt a strange power when teleporting, but it doesn't work for you, {playerName}&r&3.
+        &r&3> 一股奇怪的力量正试图将你传送。
       # Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}.

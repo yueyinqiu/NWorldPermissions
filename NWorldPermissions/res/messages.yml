@@ -2,7 +2,7 @@
 
 messages:
   help: |
-    &r&3Hello, {senderName}&r&3!
+    &r&3> Hello, {senderName}&r&3!
     It's the first time to use 'NWorldPermissions'? Try these commands!
     /wp config (Permission Required: "nworldpermissions.config")
     /wp marks (Permission Required: "nworldpermissions.marks")
@@ -12,113 +12,113 @@ messages:
 
   config:
     help: |
-      &r&3Hello, {senderName}&r&3! You can try these commands.
+      &r&3> Hello, {senderName}&r&3! You can try these commands.
       /wp config add -- To make a world controlled.
       /wp config remove -- To make a world uncontrolled.
     # Available Arg(s): {senderName}.
     add:
       completed: |
-        &r&3Well, {senderName}&r&3, world '{worldName}' has been controlled.
+        &r&3> Well, {senderName}&r&3, world '{worldName}' has been controlled.
       # Available Arg(s): {senderName}, {worldName}.
     remove:
       completed: |
-        &r&3Well, {senderName}&r&3, world '{worldName}' has been uncontrolled.
+        &r&3> Well, {senderName}&r&3, world '{worldName}' has been uncontrolled.
       # Available Arg(s): {senderName}, {worldName}.
 
   tp:
     help: |
-      &r&3Hello, {senderName}&r&3! You can try these commands.
+      &r&3> Hello, {senderName}&r&3! You can try these commands.
       /wp tp online <world_name> <mark_name> -- To teleport all the online players in the world to a mark.
       /wp tp offline <world_name> <mark_name> -- To teleport all the tracked offline players in the world to a mark.
     # Available Arg(s): {senderName}.
     online:
       no-such-world: |
-        {senderName}&r&3? Which world is '{worldName}'?
+        &r&3> {senderName}&r&3? Which world is '{worldName}'?
       # Available Arg(s): {senderName}, {worldName}, {markName}.
       no-such-mark: |
-        {senderName}&r&3? Where is '{markName}'?
+        &r&3> {senderName}&r&3? Where is '{markName}'?
       # Available Arg(s): {senderName}, {worldName}, {markName}.
       failed-to-teleport-someone: |
-        &r&3Oh, {senderName}&r&3, {playerName}&r&3 can't be teleported here!
+        &r&3> Oh, {senderName}&r&3, {playerName}&r&3 can't be teleported here!
       # Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}.
       completed: |
-        &r&3OK, {senderName}&r&3! {teleportedCount}&r&3 players have being teleported but {unteleportedCount}&r&3 haven't.
+        &r&3> OK, {senderName}&r&3! {teleportedCount}&r&3 players have been teleported but {unteleportedCount}&r&3 haven't.
       # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}, {unteleportedCount}.
     offline:
       tracker-not-enabled: |
-        &r&3Oh, {senderName}&r&3! You haven't enabled the offline players tracker.
+        &r&3> Oh, {senderName}&r&3! You haven't enabled the offline players tracker.
         Make sure you've set 'offline-players-tracker.enabled' to 'true', and 'offline-players-tracker.record-only' to 'false' in file 'config.yml'.
       # Available Arg(s): {senderName}.
       no-such-world: |
-        {senderName}&r&3? Which world is '{worldName}'?
+        &r&3> {senderName}&r&3? Which world is '{worldName}'?
       # Available Arg(s): {senderName}, {worldName}, {markName}.
       no-such-mark: |
-        {senderName}&r&3? Where is '{markName}'?
+        &r&3> {senderName}&r&3? Where is '{markName}'?
       # Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
-        &r&3OK, {senderName}&r&3! {teleportedCount}&r&3 offline players have being teleport.
+        &r&3> OK, {senderName}&r&3! {teleportedCount}&r&3 offline players have been teleported.
       # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
 
   marks:
     help: |
-      &r&3Hello, {senderName}&r&3! You can try these commands.
+      &r&3> Hello, {senderName}&r&3! You can try these commands.
       /wp marks add <mark_name> -- To set a mark, then you can use it later.
       /wp marks remove <mark_name> -- To remove a mark.
     # Available Arg(s): {senderName}.
     add:
       without-a-position: |
-        {senderName}&r&3? Where are you?
+        &r&3> {senderName}&r&3? Where are you?
       # Available Arg(s): {senderName}.
       with-occupied-name: |
-        &r&3Oh, {senderName}&r&3, there has already been a mark called '{markName}'.
+        &r&3> Oh, {senderName}&r&3, there has already been a mark called '{markName}'.
       # Available Arg(s): {senderName}, {markName}.
       completed: |
-        {senderName}&r&3! The position has been marked as '{markName}'.
+        &r&3> {senderName}&r&3! The position has been marked as '{markName}'.
       # Available Arg(s): {senderName}, {markName}.
       failed: |
-        &r&3Oh, what happened? {senderName}&r&3, a strange power has stopped me marking the position.
+        &r&3> Oh, what happened? {senderName}&r&3, a strange power has stopped me marking the position.
       # Available Arg(s): {senderName}, {markName}.
     remove:
       completed: |
-        {senderName}&r&3! The mark '{markName}' has been removed.
+        &r&3> {senderName}&r&3! The mark '{markName}' has been removed.
       # Available Arg(s): {senderName}, {markName}.
       no-such-mark: |
-        &r&3Oh, {senderName}&r&3Oh there isn't a mark called '{markName}'.
+        &r&3> Oh, {senderName}&r&3Oh there isn't a mark called '{markName}'.
       # Available Arg(s): {senderName}, {markName}.
       failed: |
-        &r&3Oh, what happened? {senderName}&r&3, a strange power has stopped me removing the mark.
+        &r&3> Oh, what happened? {senderName}&r&3, a strange power has stopped me removing the mark.
       # Available Arg(s): {senderName}, {markName}.
 
   reload:
     help: |
-      &r&3Hello, {senderName}&r&3! You can try these commands.
+      &r&3> Hello, {senderName}&r&3! You can try these commands.
       /wp reload config -- To reload file 'config.yml'.
       /wp reload messages -- To reload file 'messages.yml'.
       /wp reload marks -- To reload file 'marks.yml'.
     # Available Arg(s): {senderName}.
     config:
       completed: |
-        &r&3Well, {senderName}&r&3, file 'config.yml' has been reloaded.
+        &r&3> Well, {senderName}&r&3, file 'config.yml' has been reloaded.
       # Available Arg(s): {senderName}.
     messages:
       completed: |
-        &r&3Well, {senderName}&r&3, file 'messages.yml' has been reloaded.
+        &r&3> Well, {senderName}&r&3, file 'messages.yml' has been reloaded.
       # Available Arg(s): {senderName}.
     marks:
       completed: |
-        &r&3Well, {senderName}&r&3, file 'marks.yml' has been reloaded.
+        &r&3> Well, {senderName}&r&3, file 'marks.yml' has been reloaded.
       # Available Arg(s): {senderName}.
 
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |
-        &r&3You've felt a strange power when teleporting, but it doesn't work for you, {playerName}&r&3.
+        &r&3> You've felt a strange power when teleporting, but it doesn't work for you, {playerName}&r&3.
       # Available Arg(s): {playerName}.
       denied: |
-        {playerName}&r&3, a strange power have stopped your teleporting!
+        &r&3> {playerName}&r&3, a strange power have stopped your teleporting!
       # Available Arg(s): {playerName}.
 
     when-teleported-by-tp-online:
       before-teleport: |
-        &r&3You've felt a strange power when teleporting, but it doesn't work for you, {playerName}&r&3.
+        &r&3> A strange power is trying to teleport you, {playerName}&r&3.
       # Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}.
