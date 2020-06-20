@@ -72,8 +72,8 @@ public class MessagesManager
         if(result == null)
         {
             rootPlugin.getLogger().severe(
-                    "&cFile 'messages.yml' is corrupted and '" + key
-                            + "' is missing. You may contact the operators.");
+                    "File 'messages.yml' is corrupted and '" + key
+                            + "' is missing.");
             return "";
         }
         
