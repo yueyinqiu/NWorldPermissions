@@ -54,7 +54,7 @@ public class MessagesManager
         }
         catch (IOException e)
         {
-            rootPlugin.getLogger().warning(e.toString());
+            e.printStackTrace();
         }
     }
     
@@ -67,9 +67,17 @@ public class MessagesManager
     public String getMessage(DotDividedStringBuilder node, StringPair[] stringPairs)
     {
         String key = node.toString();
-        String result = configuration.getString(key,
-                "&cFile 'messages.yml' is corrupted and '" + key + "' is missing. You may contact the operators.")
-                .trim().replace('&', '§');
+        String result = configuration.getString(key);
+        
+        if(result == null)
+        {
+            rootPlugin.getLogger().severe(
+                    "&cFile 'messages.yml' is corrupted and '" + key
+                            + "' is missing. You may contact the operators.");
+            return "";
+        }
+        
+        result.trim().replace('&', '§');
         for (StringPair pair : stringPairs)
         {
             result = result.replace(pair.getKey(), pair.getValue());

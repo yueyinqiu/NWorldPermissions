@@ -46,9 +46,11 @@ public class AddExecutor extends Executor
         }
         config.set("controlled-worlds", worlds);
         rootPlugin.saveConfig();
-        
-        commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                messageKey.append("completed"), cPairs));
+    
+        String message = rootPlugin.getMessagesManager().getMessage(
+                messageKey.append("completed"), cPairs);
+        if (message != "")
+            commandSender.sendMessage(message);
         return true;
     }
 }

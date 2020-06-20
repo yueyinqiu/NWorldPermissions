@@ -27,5 +27,7 @@ public class RootPlugin extends JavaPlugin {
         getCommand("nworldpermissions").setExecutor(new RootCommandExecutor(this));
         Bukkit.getPluginManager().registerEvents(
                 new PlayerListener(this), this);
+    
+        new UpdateCheckerSpigotMC(this).checkAndLog();
     }
 }

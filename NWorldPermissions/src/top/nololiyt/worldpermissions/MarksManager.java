@@ -59,7 +59,7 @@ public class MarksManager
         }
         catch (IOException e)
         {
-            rootPlugin.getLogger().warning(e.toString());
+            e.printStackTrace();
         }
     }
     

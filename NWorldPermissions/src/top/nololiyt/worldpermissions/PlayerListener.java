@@ -72,7 +72,7 @@ public class PlayerListener implements Listener
         }
         catch (IOException ex)
         {
-            rootPlugin.getLogger().warning(ex.toString());
+            ex.printStackTrace();
         }
     }
     
@@ -80,15 +80,15 @@ public class PlayerListener implements Listener
     public void onPlayerTeleport(PlayerTeleportEvent e)
     {
         World dest = e.getTo().getWorld();
-        if(dest.equals(e.getFrom().getWorld()))
+        if (dest.equals(e.getFrom().getWorld()))
         {
             return;
         }
-        
+    
         String destName = dest.getName();
-        
+    
         Player player = e.getPlayer();
-        
+    
         if (!worldIsControlled(dest))
         {
             return;
@@ -97,21 +97,25 @@ public class PlayerListener implements Listener
         StringPair[] pairs = new StringPair[]{
                 StringPair.playerName(player.getDisplayName())
         };
-        
+    
         if (player.hasPermission("nworldpermissions.forfreeto." + destName))
         {
-            player.sendMessage(rootPlugin.getMessagesManager().getMessage(
+            String message = rootPlugin.getMessagesManager().getMessage(
                     new DotDividedStringBuilder(
                             "messages.to-players.when-teleport-to-controlled-worlds.teleported"),
-                    pairs));
+                    pairs);
+            if (message != "")
+                player.sendMessage(message);
             return;
         }
-        
+    
         e.setCancelled(true);
-        player.sendMessage(rootPlugin.getMessagesManager().getMessage(
+        String message = rootPlugin.getMessagesManager().getMessage(
                 new DotDividedStringBuilder(
-                        "messages.to-players.when-teleport-to-controlled-worlds.denied"),
-                pairs));
+                        "messages.to-players.when-teleport-to-controlled-worlds.denied"
+                ), pairs);
+        if (message != "")
+            player.sendMessage(message);
     }
     
     private boolean worldIsControlled(World world)

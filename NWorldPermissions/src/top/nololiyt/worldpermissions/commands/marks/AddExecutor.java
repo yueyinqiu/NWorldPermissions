@@ -38,8 +38,12 @@ public class AddExecutor extends Executor
             StringPair[] pairs = new StringPair[]{
                     StringPair.senderName(commandSender.getName()),
             };
-            commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("without-a-position"), pairs));
+    
+            String message = rootPlugin.getMessagesManager().getMessage(
+                    messageKey.append("without-a-position"), pairs);
+            if (message != "")
+                commandSender.sendMessage(message);
+            return true;
         }
     
         if (args.length - 1 != layer)
@@ -55,21 +59,30 @@ public class AddExecutor extends Executor
             MarksManager marksManager = rootPlugin.getMarksManager();
             if(marksManager.getMark(args[layer]) != null)
             {
-                commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                        messageKey.append("with-occupied-name"), cPairs));
+                String message = rootPlugin.getMessagesManager().getMessage(
+                        messageKey.append("with-occupied-name"), cPairs);
+                if (message != "")
+                    sender.sendMessage(message);
+                
                 return true;
             }
             marksManager.setMark(args[layer],sender.getLocation());
     
-            commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("completed"), cPairs));
+    
+            String message = rootPlugin.getMessagesManager().getMessage(
+                    messageKey.append("completed"), cPairs);
+            if (message != "")
+                sender.sendMessage(message);
             return true;
         }
         catch(IOException ex)
         {
             ex.printStackTrace();
-            commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("failed"), cPairs));
+    
+            String message = rootPlugin.getMessagesManager().getMessage(
+                    messageKey.append("failed"), cPairs);
+            if (message != "")
+                sender.sendMessage(message);
             return true;
         }
     }

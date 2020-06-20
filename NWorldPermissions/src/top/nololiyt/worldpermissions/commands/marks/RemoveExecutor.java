@@ -45,8 +45,10 @@ public class RemoveExecutor extends Executor
             
             if(marksManager.getMark(args[layer]) == null)
             {
-                commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                        messageKey.append("no-such-mark"), cPairs));
+                String message = rootPlugin.getMessagesManager().getMessage(
+                        messageKey.append("no-such-mark"), cPairs);
+                if (message != "")
+                    commandSender.sendMessage(message);
                 return true;
             }
     
@@ -55,12 +57,18 @@ public class RemoveExecutor extends Executor
         catch(IOException ex)
         {
             ex.printStackTrace();
-            commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("failed"), cPairs));
+    
+            String message = rootPlugin.getMessagesManager().getMessage(
+                    messageKey.append("failed"), cPairs);
+            if (message != "")
+                commandSender.sendMessage(message);
             return true;
         }
-        commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                messageKey.append("completed"), cPairs));
+    
+        String message = rootPlugin.getMessagesManager().getMessage(
+                messageKey.append("completed"), cPairs);
+        if (message != "")
+            commandSender.sendMessage(message);
         return true;
     }
 }
