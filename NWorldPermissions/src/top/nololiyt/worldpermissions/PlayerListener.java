@@ -104,7 +104,7 @@ public class PlayerListener implements Listener
                     new DotDividedStringBuilder(
                             "messages.to-players.when-teleport-to-controlled-worlds.teleported"),
                     pairs);
-            if (message != "")
+            if (!message.isEmpty())
                 player.sendMessage(message);
             return;
         }
@@ -114,7 +114,7 @@ public class PlayerListener implements Listener
                 new DotDividedStringBuilder(
                         "messages.to-players.when-teleport-to-controlled-worlds.denied"
                 ), pairs);
-        if (message != "")
+        if (!message.isEmpty())
             player.sendMessage(message);
     }
     

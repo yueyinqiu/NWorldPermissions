@@ -68,7 +68,7 @@ public abstract class Router implements CommandLayer
         
         String message = rootPlugin.getMessagesManager().getMessage(
                 messageKey, pairs);
-        if (message != "")
+        if (!message.isEmpty())
             commandSender.sendMessage(message);
         return true;
     }

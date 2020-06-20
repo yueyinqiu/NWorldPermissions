@@ -77,7 +77,7 @@ public class MessagesManager
             return "";
         }
         
-        result.trim().replace('&', '§');
+        result = result.trim().replace('&', '§');
         for (StringPair pair : stringPairs)
         {
             result = result.replace(pair.getKey(), pair.getValue());

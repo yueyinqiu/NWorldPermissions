@@ -47,7 +47,7 @@ public class RemoveExecutor extends Executor
             {
                 String message = rootPlugin.getMessagesManager().getMessage(
                         messageKey.append("no-such-mark"), cPairs);
-                if (message != "")
+                if (!message.isEmpty())
                     commandSender.sendMessage(message);
                 return true;
             }
@@ -60,14 +60,14 @@ public class RemoveExecutor extends Executor
     
             String message = rootPlugin.getMessagesManager().getMessage(
                     messageKey.append("failed"), cPairs);
-            if (message != "")
+            if (!message.isEmpty())
                 commandSender.sendMessage(message);
             return true;
         }
     
         String message = rootPlugin.getMessagesManager().getMessage(
                 messageKey.append("completed"), cPairs);
-        if (message != "")
+        if (!message.isEmpty())
             commandSender.sendMessage(message);
         return true;
     }

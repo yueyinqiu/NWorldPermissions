@@ -37,7 +37,7 @@ public class ConfigExecutor extends Executor
     
         String message = rootPlugin.getMessagesManager().getMessage(
                 messageKey, pairs);
-        if (message != "")
+        if (!message.isEmpty())
             commandSender.sendMessage(message);
         return true;
     }

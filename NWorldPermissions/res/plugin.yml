@@ -1,6 +1,6 @@
 name: NWorldPermissions
 main: top.nololiyt.worldpermissions.RootPlugin
-version: 4.0.2_Pre1
+version: 4.0.2
 author: yueyinqiu5990
 description: A strange power stopping players being teleported to a world.
 website: https://github.com/yueyinqiu/NWorldPermissions/wiki

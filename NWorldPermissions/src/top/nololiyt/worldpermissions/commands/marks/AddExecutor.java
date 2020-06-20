@@ -41,7 +41,7 @@ public class AddExecutor extends Executor
     
             String message = rootPlugin.getMessagesManager().getMessage(
                     messageKey.append("without-a-position"), pairs);
-            if (message != "")
+            if (!message.isEmpty())
                 commandSender.sendMessage(message);
             return true;
         }
@@ -61,7 +61,7 @@ public class AddExecutor extends Executor
             {
                 String message = rootPlugin.getMessagesManager().getMessage(
                         messageKey.append("with-occupied-name"), cPairs);
-                if (message != "")
+                if (!message.isEmpty())
                     sender.sendMessage(message);
                 
                 return true;
@@ -71,7 +71,7 @@ public class AddExecutor extends Executor
     
             String message = rootPlugin.getMessagesManager().getMessage(
                     messageKey.append("completed"), cPairs);
-            if (message != "")
+            if (!message.isEmpty())
                 sender.sendMessage(message);
             return true;
         }
@@ -81,7 +81,7 @@ public class AddExecutor extends Executor
     
             String message = rootPlugin.getMessagesManager().getMessage(
                     messageKey.append("failed"), cPairs);
-            if (message != "")
+            if (!message.isEmpty())
                 sender.sendMessage(message);
             return true;
         }

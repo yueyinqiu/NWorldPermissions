@@ -48,7 +48,7 @@ public class RemoveExecutor extends Executor
     
         String message = rootPlugin.getMessagesManager().getMessage(
                 messageKey.append("completed"), cPairs);
-        if (message != "")
+        if (!message.isEmpty())
             commandSender.sendMessage(message);
         return true;
     }
