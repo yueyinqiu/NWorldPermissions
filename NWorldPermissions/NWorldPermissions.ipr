@@ -11,16 +11,6 @@
         <element id="file-copy" path="$PROJECT_DIR$/res/marks.yml" />
       </root>
     </artifact>
-    <artifact type="jar" name="NWorldPermissions znCH">
-      <output-path>$PROJECT_DIR$/out/artifacts/NWorldPermissions_znCH</output-path>
-      <root id="archive" name="NWorldPermissions znCH.jar">
-        <element id="module-output" name="NWorldPermissions" />
-        <element id="file-copy" path="$PROJECT_DIR$/res/plugin.yml" />
-        <element id="file-copy" path="$PROJECT_DIR$/res/config.yml" />
-        <element id="file-copy" path="$PROJECT_DIR$/res/marks.yml" />
-        <element id="file-copy" path="$PROJECT_DIR$/res/otherLanguages/messages_zhCH.yml" output-file-name="messages.yml" />
-      </root>
-    </artifact>
   </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
