@@ -168,6 +168,7 @@
     <library name="bukkit-1.15.2-R0.1-20200606.093523-114">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/libs/bukkit-1.15.2-R0.1-20200606.093523-114.jar!/" />
+        <root url="jar://$PROJECT_DIR$/libs/json-20200518.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
