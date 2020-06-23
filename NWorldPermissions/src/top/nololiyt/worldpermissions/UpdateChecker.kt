@@ -21,7 +21,7 @@ class UpdateChecker(private val plugin: Plugin) {
                 val jsonObject = JSONObject(
                     URL("https://api.github.com/repos/yueyinqiu/NWorldPermissions/releases/latest").readText()
                 );
-                val tagName = jsonObject.getString("tag_name")
+                val tagName = jsonObject.getString("tag_name");
 
                 if (!plugin.description.version.equals(tagName, true)) {
                     val browserDownloadUrl = jsonObject.getJSONArray("assets")
@@ -31,11 +31,11 @@ class UpdateChecker(private val plugin: Plugin) {
                     plugin.logger.warning(
                         "A new version: '" + tagName + "' is available. " +
                                 "It can be downloaded at '" + browserDownloadUrl + "'."
-                    )
+                    );
                 }
 
             } catch (e: Exception) {
-                e.printStackTrace()
+                e.printStackTrace();
             }
         });
     }
