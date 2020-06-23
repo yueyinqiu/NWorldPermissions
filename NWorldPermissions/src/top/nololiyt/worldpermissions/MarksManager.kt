@@ -10,58 +10,61 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 
-class MarksManager internal constructor(private val rootPlugin: RootPlugin) {
+class MarksManager(private val rootPlugin: RootPlugin) {
 
-    private var configuration: YamlConfiguration? = null
+    private val configuration: YamlConfiguration = YamlConfiguration();
 
     private val marksFile: File
-        get() = File(
-                rootPlugin.dataFolder.absolutePath, "marks.yml")
+        get() = File(rootPlugin.dataFolder.absolutePath, "marks.yml")
 
     init {
-        val file = marksFile
-        if (!file.exists()) {
-            saveDefaultFile(file)
-        }
-        reloadConfiguration()
+        reloadConfiguration();
     }
 
     private fun saveDefaultFile(file: File) {
-        val res = rootPlugin.getResource("marks.yml")
-        try {
-            file.parentFile.mkdirs()
-            file.delete()
-            file.createNewFile()
-            val fileOutputStream = FileOutputStream(file)
+        val res = rootPlugin.getResource("marks.yml");
 
-            val buffer = ByteArray(4096)
+        var fileOutputStream:FileOutputStream? = null;
+
+        try {
+            file.parentFile.mkdirs();
+            file.delete();
+            file.createNewFile();
+
+            fileOutputStream = FileOutputStream(file);
+
+            val buffer = ByteArray(4096);
             while (true) {
-                val count = res!!.read(buffer, 0, buffer.size)
-                fileOutputStream.write(buffer, 0, count)
+                val count = res!!.read(buffer, 0, buffer.size);
+                fileOutputStream.write(buffer, 0, count);
                 if (count < buffer.size) {
-                    break
+                    break;
                 }
             }
 
-            fileOutputStream.close()
         } catch (e: IOException) {
-            e.printStackTrace()
+            e.printStackTrace();
+        } finally {
+            fileOutputStream?.close();
         }
-
     }
 
     fun reloadConfiguration() {
-        configuration = YamlConfiguration.loadConfiguration(
-                marksFile)
+        val file = marksFile;
+        if (!file.exists()) {
+            saveDefaultFile(file);
+        }
+        configuration.load(file);
     }
 
     fun setMark(name: String, mark: Location?) {
-        configuration!!.set(name, mark)
-        configuration!!.save(marksFile)
+        configuration.set(name, mark);
+        configuration.save(marksFile);
     }
 
     fun getMark(name: String): Location? {
-        val oLocation = configuration!!.get(name) ?: return null
-        return oLocation as Location
+        val oLocation = configuration.get(name)
+            ?: return null;
+        return oLocation as Location;
     }
 }
