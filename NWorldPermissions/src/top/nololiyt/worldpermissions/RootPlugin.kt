@@ -7,25 +7,21 @@ import top.nololiyt.worldpermissions.playerlisteners.LoginAndQuitListener
 import top.nololiyt.worldpermissions.playerlisteners.TeleportListener
 
 class RootPlugin : JavaPlugin() {
-    var messagesManager: MessagesManager? = null
-        private set
 
-
-    var marksManager: MarksManager? = null
-        private set
+    var messagesManager: MessagesManager = MessagesManager(this);
+    var marksManager: MarksManager = MarksManager(this);
 
     override fun onEnable() {
-        saveDefaultConfig()
-        messagesManager = MessagesManager(this)
-        marksManager = MarksManager(this)
+        saveDefaultConfig();
 
-        getCommand("nworldpermissions")!!.setExecutor(RootCommandExecutor(this))
+        getCommand("nworldpermissions")!!.setExecutor(
+            RootCommandExecutor(this));
 
         Bukkit.getPluginManager().registerEvents(
-                LoginAndQuitListener(this), this)
+                LoginAndQuitListener(this), this);
         Bukkit.getPluginManager().registerEvents(
-                TeleportListener(this), this)
+                TeleportListener(this), this);
 
-        UpdateChecker(this).checkAndLog()
+        UpdateChecker(this).checkAndLog();
     }
 }
