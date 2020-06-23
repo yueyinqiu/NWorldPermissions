@@ -9,11 +9,11 @@ import top.nololiyt.worldpermissions.commands.Executor
 class ConfigExecutor : Executor() {
 
     override fun permissionName(): String? {
-        return null
+        return null;
     }
 
     override fun messageKey(): String? {
-        return layerName
+        return layerName;
     }
 
     override fun run(layer: Int, rootPlugin: RootPlugin, permission: DotDividedStringBuilder,
@@ -21,20 +21,19 @@ class ConfigExecutor : Executor() {
                      args: Array<String>): Boolean {
 
         rootPlugin.saveDefaultConfig();
-        rootPlugin.reloadConfig()
+        rootPlugin.reloadConfig();
 
-        messageKey.append("completed")
+        messageKey.append("completed");
 
-        val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
+        val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name));
 
-        val message = rootPlugin.messagesManager.getMessage(
-                messageKey, pairs)
+        val message = rootPlugin.messagesManager.getMessage(messageKey, pairs);
         if (!message.isBlank())
-            commandSender.sendMessage(message)
-        return true
+            commandSender.sendMessage(message);
+        return true;
     }
 
     companion object {
-        protected val layerName = "config"
+        private const val layerName = "config"
     }
 }
