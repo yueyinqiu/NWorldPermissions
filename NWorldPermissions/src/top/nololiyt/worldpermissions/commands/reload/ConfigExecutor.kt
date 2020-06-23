@@ -19,6 +19,8 @@ class ConfigExecutor : Executor() {
     override fun run(layer: Int, rootPlugin: RootPlugin, permission: DotDividedStringBuilder,
                      messageKey: DotDividedStringBuilder, commandSender: CommandSender,
                      args: Array<String>): Boolean {
+
+        rootPlugin.saveDefaultConfig();
         rootPlugin.reloadConfig()
 
         messageKey.append("completed")
