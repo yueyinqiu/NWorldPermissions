@@ -57,10 +57,7 @@ abstract class Router : CommandLayer {
         messageKey.append("help")
         val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
 
-        val message = rootPlugin.messagesManager.getMessage(
-                messageKey, pairs)
-        if (!message.isBlank())
-            commandSender.sendMessage(message)
+        rootPlugin.messagesManager.sendMessage(messageKey, pairs,commandSender);
         return true
     }
 }

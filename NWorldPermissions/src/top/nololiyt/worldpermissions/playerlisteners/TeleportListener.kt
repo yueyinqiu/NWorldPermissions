@@ -29,22 +29,16 @@ class TeleportListener(private val rootPlugin: RootPlugin) : Listener {
         val pairs = arrayOf<StringPair?>(StringPair.playerName(player.displayName))
 
         if (player.hasPermission("nworldpermissions.forfreeto.$destName")) {
-            val message = rootPlugin.messagesManager.getMessage(
-                    DotDividedStringBuilder(
-                            "messages.to-players.when-teleport-to-controlled-worlds.teleported"),
-                    pairs)
-            if (!message.isBlank())
-                player.sendMessage(message)
+
+            rootPlugin.messagesManager.sendMessage(DotDividedStringBuilder(
+                "messages.to-players.when-teleport-to-controlled-worlds.teleported"), pairs, player);
             return
         }
 
         e.isCancelled = true
-        val message = rootPlugin.messagesManager.getMessage(
-                DotDividedStringBuilder(
-                        "messages.to-players.when-teleport-to-controlled-worlds.denied"
-                ), pairs)
-        if (!message.isBlank())
-            player.sendMessage(message)
+
+        rootPlugin.messagesManager.sendMessage(DotDividedStringBuilder(
+            "messages.to-players.when-teleport-to-controlled-worlds.denied"), pairs, player);
     }
 
     private fun worldIsControlled(world: World): Boolean {

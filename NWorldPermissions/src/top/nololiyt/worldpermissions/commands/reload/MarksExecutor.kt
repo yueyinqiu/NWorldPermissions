@@ -21,14 +21,9 @@ class MarksExecutor : Executor() {
                      args: Array<String>): Boolean {
         rootPlugin.marksManager!!.reloadConfiguration()
 
-        messageKey.append("completed")
-
         val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
 
-        val message = rootPlugin.messagesManager.getMessage(
-                messageKey, pairs)
-        if (!message.isBlank())
-            commandSender.sendMessage(message)
+        rootPlugin.messagesManager.sendMessage(messageKey.append("completed"), pairs,commandSender);
         return true
     }
 
