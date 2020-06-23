@@ -8,8 +8,8 @@ import top.nololiyt.worldpermissions.playerlisteners.TeleportListener
 
 class RootPlugin : JavaPlugin() {
 
-    var messagesManager: MessagesManager = MessagesManager(this);
-    var marksManager: MarksManager = MarksManager(this);
+    val messagesManager: MessagesManager = MessagesManager(this);
+    val marksManager: MarksManager = MarksManager(this);
 
     override fun onEnable() {
         saveDefaultConfig();

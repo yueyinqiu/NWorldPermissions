@@ -5,16 +5,17 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import top.nololiyt.worldpermissions.commands.RootRouter
 
-class RootCommandExecutor internal constructor(private val rootPlugin: RootPlugin) : CommandExecutor {
+class RootCommandExecutor(rootPlugin: RootPlugin) : CommandExecutor {
 
-    internal var router: RootRouter
+    private val router: RootRouter = RootRouter(rootPlugin)
 
-    init {
-        this.router = RootRouter(rootPlugin)
-    }
-
-    override fun onCommand(commandSender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
-        router.RouteCommand(commandSender, command, label, args)
-        return true
+    override fun onCommand(
+        commandSender: CommandSender,
+        command: Command,
+        label: String,
+        args: Array<String>
+    ): Boolean {
+        router.RouteCommand(commandSender, command, label, args);
+        return true;
     }
 }
