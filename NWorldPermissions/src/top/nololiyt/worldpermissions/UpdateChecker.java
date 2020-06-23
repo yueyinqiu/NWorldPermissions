@@ -13,11 +13,11 @@ import java.io.Reader;
 import java.net.URL;
 import java.util.Scanner;
 
-public class UpdateCheckerGitHub
+public class UpdateChecker
 {
     private Plugin plugin;
     
-    public UpdateCheckerGitHub(Plugin plugin)
+    public UpdateChecker(Plugin plugin)
     {
         this.plugin = plugin;
     }

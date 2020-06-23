@@ -28,6 +28,6 @@ public class RootPlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(
                 new PlayerListener(this), this);
     
-        new UpdateCheckerGitHub(this).checkAndLog();
+        new UpdateChecker(this).checkAndLog();
     }
 }
