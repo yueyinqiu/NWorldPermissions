@@ -18,34 +18,25 @@ class UpdateChecker(private val plugin: Plugin) {
     fun checkAndLog() {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, Runnable {
             try {
-                URL("https://api.github.com/repos/yueyinqiu/NWorldPermissions/releases/latest")
-                        .openStream().use { inputStream ->
-                            val jsonObject = JSONObject(
-                                    readToEnd(inputStream)
-                            )
-                            val tag_name = jsonObject.getString("tag_name")
+                val jsonObject = JSONObject(
+                    URL("https://api.github.com/repos/yueyinqiu/NWorldPermissions/releases/latest").readText()
+                );
+                val tagName = jsonObject.getString("tag_name")
 
-                            if (!plugin.description.version.equals(tag_name, ignoreCase = true)) {
-                                val assets = jsonObject.getJSONArray("assets")
-                                val asset = assets.getJSONObject(0)
-                                val browser_download_url = asset.getString("browser_download_url")
+                if (!plugin.description.version.equals(tagName, true)) {
+                    val browserDownloadUrl = jsonObject.getJSONArray("assets")
+                        .getJSONObject(0)
+                        .getString("browser_download_url");
 
-                                plugin.logger.warning("A new version: '" + tag_name + "' is available. " +
-                                        "It can be downloaded at '" + browser_download_url + "'.")
-                            }
-                        }
+                    plugin.logger.warning(
+                        "A new version: '" + tagName + "' is available. " +
+                                "It can be downloaded at '" + browserDownloadUrl + "'."
+                    )
+                }
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         });
-    }
-
-    private fun readToEnd(inputStream: InputStream): String {
-        val scanner = Scanner(inputStream)
-        val stringBuilder = StringBuilder()
-        while (scanner.hasNextLine()) {
-            stringBuilder.append(scanner.nextLine())
-        }
-        return stringBuilder.toString()
     }
 }
