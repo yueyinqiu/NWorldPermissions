@@ -6,13 +6,12 @@ import top.nololiyt.worldpermissions.entities.StringPair
 
 import java.io.*
 
-class MessagesManager internal constructor(private val rootPlugin: RootPlugin) {
+class MessagesManager(private val rootPlugin: RootPlugin) {
 
     private var configuration: YamlConfiguration? = null
 
     private val messagesFile: File
-        get() = File(
-                rootPlugin.dataFolder.absolutePath, "messages.yml")
+        get() = File(rootPlugin.dataFolder.absolutePath, "messages.yml");
 
     init {
         val file = messagesFile

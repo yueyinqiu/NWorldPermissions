@@ -33,7 +33,7 @@ class RemoveExecutor : Executor() {
             val marksManager = rootPlugin.marksManager
 
             if (marksManager!!.getMark(args[layer]) == null) {
-                val message = rootPlugin.messagesManager!!.getMessage(
+                val message = rootPlugin.messagesManager.getMessage(
                         messageKey.append("no-such-mark"), cPairs)
                 if (!message.isBlank())
                     commandSender.sendMessage(message)
@@ -42,7 +42,7 @@ class RemoveExecutor : Executor() {
 
             marksManager.setMark(args[layer], null);
 
-            val message = rootPlugin.messagesManager!!.getMessage(
+            val message = rootPlugin.messagesManager.getMessage(
                     messageKey.append("completed"), cPairs)
             if (!message.isBlank())
                 commandSender.sendMessage(message)
@@ -51,7 +51,7 @@ class RemoveExecutor : Executor() {
         } catch (ex: IOException) {
             ex.printStackTrace()
 
-            val message = rootPlugin.messagesManager!!.getMessage(
+            val message = rootPlugin.messagesManager.getMessage(
                     messageKey.append("failed"), cPairs)
             if (!message.isBlank())
                 commandSender.sendMessage(message)

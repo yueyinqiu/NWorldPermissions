@@ -29,7 +29,7 @@ class TeleportListener(private val rootPlugin: RootPlugin) : Listener {
         val pairs = arrayOf<StringPair?>(StringPair.playerName(player.displayName))
 
         if (player.hasPermission("nworldpermissions.forfreeto.$destName")) {
-            val message = rootPlugin.messagesManager!!.getMessage(
+            val message = rootPlugin.messagesManager.getMessage(
                     DotDividedStringBuilder(
                             "messages.to-players.when-teleport-to-controlled-worlds.teleported"),
                     pairs)
@@ -39,7 +39,7 @@ class TeleportListener(private val rootPlugin: RootPlugin) : Listener {
         }
 
         e.isCancelled = true
-        val message = rootPlugin.messagesManager!!.getMessage(
+        val message = rootPlugin.messagesManager.getMessage(
                 DotDividedStringBuilder(
                         "messages.to-players.when-teleport-to-controlled-worlds.denied"
                 ), pairs)

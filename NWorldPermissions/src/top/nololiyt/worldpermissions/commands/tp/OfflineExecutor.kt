@@ -35,21 +35,21 @@ class OfflineExecutor : Executor() {
         val basePairs = arrayOf<StringPair?>(StringPair.markName(markName), StringPair.worldName(worldName), StringPair.senderName(commandSender.name))
 
         if (!rootPlugin.config.getBoolean("offline-players-tracker.enabled") || rootPlugin.config.getBoolean("offline-players-tracker.record-only")) {
-            commandSender.sendMessage(rootPlugin.messagesManager!!.getMessage(
+            commandSender.sendMessage(rootPlugin.messagesManager.getMessage(
                     messageKey.append("tracker-not-enabled"), basePairs))
             return true
         }
 
         val world = Bukkit.getWorld(args[layer])
         if (world == null) {
-            commandSender.sendMessage(rootPlugin.messagesManager!!.getMessage(
+            commandSender.sendMessage(rootPlugin.messagesManager.getMessage(
                     messageKey.append("no-such-world"), basePairs))
             return true
         }
 
         val location = rootPlugin.marksManager!!.getMark(markName)
         if (location == null) {
-            commandSender.sendMessage(rootPlugin.messagesManager!!.getMessage(
+            commandSender.sendMessage(rootPlugin.messagesManager.getMessage(
                     messageKey.append("no-such-mark"), basePairs))
             return true
         }
@@ -73,7 +73,7 @@ class OfflineExecutor : Executor() {
             }
         }
         val cPairs = arrayOf<StringPair?>(StringPair.teleportedCount(count.toString()), StringPair.markName(markName), StringPair.worldName(worldName), StringPair.senderName(commandSender.name))
-        commandSender.sendMessage(rootPlugin.messagesManager!!.getMessage(
+        commandSender.sendMessage(rootPlugin.messagesManager.getMessage(
                 messageKey.append("completed"), cPairs))
         return true
     }

@@ -44,7 +44,7 @@ abstract class Executor : CommandLayer {
         messageKey.append("help")
         val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
 
-        val message = rootPlugin.messagesManager!!.getMessage(
+        val message = rootPlugin.messagesManager.getMessage(
                 messageKey, pairs)
         if (!message.isBlank())
             commandSender.sendMessage(message)

@@ -19,13 +19,13 @@ class MessagesExecutor : Executor() {
     override fun run(layer: Int, rootPlugin: RootPlugin, permission: DotDividedStringBuilder,
                      messageKey: DotDividedStringBuilder, commandSender: CommandSender,
                      args: Array<String>): Boolean {
-        rootPlugin.messagesManager!!.reloadConfiguration()
+        rootPlugin.messagesManager.reloadConfiguration()
 
         messageKey.append("completed")
 
         val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
 
-        val message = rootPlugin.messagesManager!!.getMessage(
+        val message = rootPlugin.messagesManager.getMessage(
                 messageKey, pairs)
         if (!message.isBlank())
             commandSender.sendMessage(message)

@@ -28,7 +28,7 @@ class AddExecutor : Executor() {
         if (commandSender !is Player) {
             val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
 
-            val message = rootPlugin.messagesManager!!.getMessage(
+            val message = rootPlugin.messagesManager.getMessage(
                     messageKey.append("without-a-position"), pairs)
             if (!message.isBlank())
                 commandSender.sendMessage(message)
@@ -42,7 +42,7 @@ class AddExecutor : Executor() {
         try {
             val marksManager = rootPlugin.marksManager
             if (marksManager!!.getMark(args[layer]) != null) {
-                val message = rootPlugin.messagesManager!!.getMessage(
+                val message = rootPlugin.messagesManager.getMessage(
                         messageKey.append("with-occupied-name"), cPairs)
                 if (!message.isBlank())
                     commandSender.sendMessage(message)
@@ -52,7 +52,7 @@ class AddExecutor : Executor() {
             marksManager.setMark(args[layer], commandSender.location)
 
 
-            val message = rootPlugin.messagesManager!!.getMessage(
+            val message = rootPlugin.messagesManager.getMessage(
                     messageKey.append("completed"), cPairs)
             if (!message.isBlank())
                 commandSender.sendMessage(message)
@@ -60,7 +60,7 @@ class AddExecutor : Executor() {
         } catch (ex: IOException) {
             ex.printStackTrace()
 
-            val message = rootPlugin.messagesManager!!.getMessage(
+            val message = rootPlugin.messagesManager.getMessage(
                     messageKey.append("failed"), cPairs)
             if (!message.isBlank())
                 commandSender.sendMessage(message)

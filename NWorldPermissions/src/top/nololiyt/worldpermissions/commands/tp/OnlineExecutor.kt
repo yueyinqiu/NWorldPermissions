@@ -37,14 +37,14 @@ class OnlineExecutor : Executor() {
 
         val world = Bukkit.getWorld(args[layer])
         if (world == null) {
-            commandSender.sendMessage(rootPlugin.messagesManager!!.getMessage(
+            commandSender.sendMessage(rootPlugin.messagesManager.getMessage(
                     messageKey.append("no-such-world"), basePairs))
             return true
         }
 
         val location = rootPlugin.marksManager!!.getMark(markName)
         if (location == null) {
-            commandSender.sendMessage(rootPlugin.messagesManager!!.getMessage(
+            commandSender.sendMessage(rootPlugin.messagesManager.getMessage(
                     messageKey.append("no-such-mark"), basePairs))
             return true
         }
@@ -58,13 +58,13 @@ class OnlineExecutor : Executor() {
         for (player in players) {
             playersPairs[0] = StringPair.playerName(player.displayName)
 
-            player.sendMessage(rootPlugin.messagesManager!!.getMessage(
+            player.sendMessage(rootPlugin.messagesManager.getMessage(
                     DotDividedStringBuilder(
                             "messages.to-players.when-teleported-by-tp-online.before-teleport"),
                     playersPairs))
             if (!player.teleport(location)) {
                 fCount++
-                commandSender.sendMessage(rootPlugin.messagesManager!!.getMessage(
+                commandSender.sendMessage(rootPlugin.messagesManager.getMessage(
                         messageKey.append("failed-to-teleport-someone"), playersPairs))
             } else {
                 sCount++
@@ -72,7 +72,7 @@ class OnlineExecutor : Executor() {
         }
 
         val cPairs = arrayOf<StringPair?>(StringPair.teleportedCount(sCount.toString()), StringPair.unteleportedCount(fCount.toString()), StringPair.markName(markName), StringPair.worldName(worldName), StringPair.senderName(commandSender.name))
-        commandSender.sendMessage(rootPlugin.messagesManager!!.getMessage(
+        commandSender.sendMessage(rootPlugin.messagesManager.getMessage(
                 messageKey.append("completed"), cPairs))
         return true
     }

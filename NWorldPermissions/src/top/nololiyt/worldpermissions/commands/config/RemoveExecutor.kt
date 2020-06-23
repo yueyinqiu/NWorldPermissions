@@ -33,7 +33,7 @@ class RemoveExecutor : Executor() {
 
         rootPlugin.saveConfig()
 
-        val message = rootPlugin.messagesManager!!.getMessage(
+        val message = rootPlugin.messagesManager.getMessage(
                 messageKey.append("completed"), cPairs)
         if (!message.isBlank())
             commandSender.sendMessage(message)
