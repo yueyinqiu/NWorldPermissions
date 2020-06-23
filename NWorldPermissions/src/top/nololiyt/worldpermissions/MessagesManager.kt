@@ -8,63 +8,63 @@ import java.io.*
 
 class MessagesManager(private val rootPlugin: RootPlugin) {
 
-    private var configuration: YamlConfiguration? = null
-
-    private val messagesFile: File
-        get() = File(rootPlugin.dataFolder.absolutePath, "messages.yml");
+    private val configuration: YamlConfiguration = YamlConfiguration();
 
     init {
-        val file = messagesFile
-        if (!file.exists()) {
-            saveDefaultFile(file)
-        }
-        reloadConfiguration()
+        reloadConfiguration();
     }
 
     private fun saveDefaultFile(file: File) {
-        val res = rootPlugin.getResource("messages.yml")
-        try {
-            file.parentFile.mkdirs()
-            file.delete()
-            file.createNewFile()
-            val fileOutputStream = FileOutputStream(file)
+        val res = rootPlugin.getResource("messages.yml");
 
-            val buffer = ByteArray(4096)
+        var fileOutputStream: FileOutputStream? = null;
+        try {
+            file.parentFile.mkdirs();
+            file.delete();
+            file.createNewFile();
+
+            fileOutputStream = FileOutputStream(file);
+
+            val buffer = ByteArray(4096);
             while (true) {
-                val count = res!!.read(buffer, 0, buffer.size)
-                fileOutputStream.write(buffer, 0, count)
+                val count = res!!.read(buffer, 0, buffer.size);
+                fileOutputStream.write(buffer, 0, count);
                 if (count < buffer.size) {
-                    break
+                    break;
                 }
             }
-
-            fileOutputStream.close()
         } catch (e: IOException) {
-            e.printStackTrace()
+            e.printStackTrace();
+        }
+        finally {
+            fileOutputStream?.close();
         }
 
     }
 
     fun reloadConfiguration() {
-        configuration = YamlConfiguration.loadConfiguration(
-                messagesFile)
+        val file = File(rootPlugin.dataFolder.absolutePath, "messages.yml");
+        if (!file.exists()) {
+            saveDefaultFile(file);
+        }
+        configuration.load(file);
     }
 
     fun getMessage(node: DotDividedStringBuilder, stringPairs: Array<StringPair?>): String {
-        val key = node.toString()
-        var result = configuration!!.getString(key)
+        val key = node.toString();
+        val result = configuration.getString(key);
 
         if (result == null) {
             rootPlugin.logger.severe(
                     "File 'messages.yml' is corrupted and '" + key
-                            + "' is missing.")
-            return ""
+                            + "' is missing.");
+            return "";
         }
 
-        var r = result.trim().replace('&', '§')
+        var r = result.trim().replace('&', '§');
         for (pair in stringPairs) {
-            r = r.replace(pair!!.key, pair!!.value)
+            r = r.replace(pair!!.key, pair.value);
         }
-        return r
+        return r;
     }
 }
