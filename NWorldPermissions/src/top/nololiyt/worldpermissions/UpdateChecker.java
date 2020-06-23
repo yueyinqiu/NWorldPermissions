@@ -40,7 +40,7 @@ public class UpdateChecker
                     JSONObject asset = assets.getJSONObject(0);
                     String browser_download_url = asset.getString("browser_download_url");
     
-                    plugin.getLogger().warning("A new version: '" + tag_name + "' is available." +
+                    plugin.getLogger().warning("A new version: '" + tag_name + "' is available. " +
                             "It can be downloaded at '" + browser_download_url + "'.");
                 }
             }
