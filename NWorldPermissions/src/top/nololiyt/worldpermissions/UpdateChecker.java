@@ -44,7 +44,7 @@ public class UpdateChecker
                             "It can be downloaded at '" + browser_download_url + "'.");
                 }
             }
-            catch (IOException | JSONException e)
+            catch (Exception e)
             {
                 e.printStackTrace();
             }
