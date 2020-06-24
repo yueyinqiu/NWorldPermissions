@@ -11,37 +11,31 @@ import top.nololiyt.worldpermissions.entities.StringPair
 
 class TeleportListener(private val rootPlugin: RootPlugin) : Listener
 {
-    
     @EventHandler
     fun onPlayerTeleport(e: PlayerTeleportEvent)
     {
-        val dest = e.to!!.world
+        val dest = e.to!!.world!!;
         if (dest == e.from.world)
         {
-            return
+            return;
         }
         
-        val destName = dest!!.name
+        val destName = dest.name;
         
-        val player = e.player
+        val player = e.player;
+        if (!worldIsControlled(dest)) return;
         
-        if (!worldIsControlled(dest))
-        {
-            return
-        }
-        
-        val pairs = arrayOf<StringPair?>(StringPair.playerName(player.displayName))
+        val pairs = arrayOf<StringPair?>(StringPair.playerName(player.displayName));
         
         if (player.hasPermission("nworldpermissions.forfreeto.$destName"))
         {
-            
             rootPlugin.messagesManager.sendMessage(
                 DotDividedStringBuilder("messages.to-players.when-teleport-to-controlled-worlds.teleported"), pairs,
                 player);
-            return
+            return;
         }
         
-        e.isCancelled = true
+        e.isCancelled = true;
         
         rootPlugin.messagesManager.sendMessage(
             DotDividedStringBuilder("messages.to-players.when-teleport-to-controlled-worlds.denied"), pairs, player);
@@ -49,8 +43,8 @@ class TeleportListener(private val rootPlugin: RootPlugin) : Listener
     
     private fun worldIsControlled(world: World): Boolean
     {
-        val worlds = rootPlugin.config.getStringList("controlled-worlds")
-        val destName = world.name
-        return worlds.contains(destName)
+        val worlds = rootPlugin.config.getStringList("controlled-worlds");
+        val destName = world.name;
+        return worlds.contains(destName);
     }
 }
