@@ -32,6 +32,6 @@ class MessagesExecutor : Executor()
     
     companion object
     {
-        protected val layerName = "messages"
+        private const val layerName = "messages"
     }
 }

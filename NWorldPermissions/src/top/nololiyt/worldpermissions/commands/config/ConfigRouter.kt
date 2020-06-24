@@ -34,6 +34,6 @@ class ConfigRouter : Router()
     
     companion object
     {
-        protected val layerName = "config"
+        private const val layerName = "config"
     }
 }

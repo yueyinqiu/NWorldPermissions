@@ -35,6 +35,6 @@ class ReloadRouter : Router()
     
     companion object
     {
-        protected val layerName = "reload"
+        private const val layerName= "reload"
     }
 }

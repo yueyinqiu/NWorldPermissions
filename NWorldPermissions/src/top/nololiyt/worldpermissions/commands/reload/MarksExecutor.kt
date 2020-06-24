@@ -32,6 +32,6 @@ class MarksExecutor : Executor()
     
     companion object
     {
-        protected val layerName = "marks"
+        private const val layerName = "marks";
     }
 }

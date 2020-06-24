@@ -58,6 +58,6 @@ class RemoveExecutor : Executor()
     
     companion object
     {
-        protected val layerName = "remove"
+        private const val layerName= "remove"
     }
 }

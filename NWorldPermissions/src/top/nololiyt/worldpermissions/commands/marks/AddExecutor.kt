@@ -65,6 +65,6 @@ class AddExecutor : Executor()
     
     companion object
     {
-        protected val layerName = "add"
+        private const val layerName = "add"
     }
 }

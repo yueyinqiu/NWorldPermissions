@@ -34,6 +34,6 @@ class MarksRouter : Router()
     
     companion object
     {
-        protected val layerName = "marks"
+        private const val layerName= "marks"
     }
 }
