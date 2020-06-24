@@ -9,9 +9,9 @@ class DotDividedStringBuilder
         return stringBuilder.toString();
     }
     
-    fun append(name: String): DotDividedStringBuilder
+    fun append(name: String?): DotDividedStringBuilder
     {
-        this.stringBuilder.append('.').append(name);
+        if (name != null) this.stringBuilder.append('.').append(name);
         return this;
     }
     

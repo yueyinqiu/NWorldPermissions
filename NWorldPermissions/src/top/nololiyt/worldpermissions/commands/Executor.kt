@@ -19,29 +19,26 @@ abstract class Executor : CommandLayer
     {
         if (permissionName() != null)
         {
-            permission.append(permissionName()!!)
-            if (!commandSender.hasPermission(permission.toString()))
-            {
-                return
-            }
+            permission.append(permissionName());
+            if (!commandSender.hasPermission(permission.toString())) return;
         }
-        val messageKeyCopy = DotDividedStringBuilder(messageKey)
-        
-        if (messageKey() != null) messageKey.append(messageKey()!!)
-        
+        val messageKeyCopy = DotDividedStringBuilder(messageKey);
+    
+        if (messageKey() != null) messageKey.append(messageKey());
+    
         if (!run(layer, rootPlugin, permission, messageKey, commandSender, args))
         {
-            sendHelp(messageKeyCopy, rootPlugin, commandSender)
+            sendHelp(messageKeyCopy, rootPlugin, commandSender);
         }
     }
     
-    protected fun sendHelp(messageKey: DotDividedStringBuilder, rootPlugin: RootPlugin,
+    private fun sendHelp(messageKey: DotDividedStringBuilder, rootPlugin: RootPlugin,
         commandSender: CommandSender): Boolean
     {
-        messageKey.append("help")
-        val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
+        messageKey.append("help");
+        val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name));
         
         rootPlugin.messagesManager.sendMessage(messageKey, pairs, commandSender);
-        return true
+        return true;
     }
 }

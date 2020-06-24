@@ -11,26 +11,23 @@ import top.nololiyt.worldpermissions.commands.tp.TpRouter
 
 class RootRouter(private val rootPlugin: RootPlugin) : Router()
 {
-    
-    
-    fun RouteCommand(commandSender: CommandSender, command: Command, label: String, args: Array<String>)
+    fun routeCommand(commandSender: CommandSender, args: Array<String>)
     {
-        val messagesRoot = DotDividedStringBuilder("messages")
-        val permissionRoot = DotDividedStringBuilder("nworldpermissions")
+        val messagesRoot = DotDividedStringBuilder("messages");
+        val permissionRoot = DotDividedStringBuilder("nworldpermissions");
         
-        execute(0, rootPlugin, permissionRoot, messagesRoot, commandSender, args)
-        
+        execute(0, rootPlugin, permissionRoot, messagesRoot, commandSender, args);
     }
     
     
     override fun permissionName(): String?
     {
-        return null
+        return null;
     }
     
     override fun messageKey(): String?
     {
-        return null
+        return null;
     }
     
     /**
@@ -42,13 +39,13 @@ class RootRouter(private val rootPlugin: RootPlugin) : Router()
      */
     override fun nextLayer(arg: String): CommandLayer?
     {
-        when (arg)
+        return when (arg)
         {
-            "config" -> return ConfigRouter()
-            "tp"     -> return TpRouter()
-            "marks"  -> return MarksRouter()
-            "reload" -> return ReloadRouter()
-            else     -> return null
+            "config" -> ConfigRouter()
+            "tp"     -> TpRouter()
+            "marks"  -> MarksRouter()
+            "reload" -> ReloadRouter()
+            else     -> null
         }
     }
 }

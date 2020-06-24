@@ -12,7 +12,7 @@ class RootCommandExecutor(rootPlugin: RootPlugin) : CommandExecutor
     
     override fun onCommand(commandSender: CommandSender, command: Command, label: String, args: Array<String>): Boolean
     {
-        router.RouteCommand(commandSender, command, label, args);
+        router.routeCommand(commandSender, args);
         return true;
     }
 }

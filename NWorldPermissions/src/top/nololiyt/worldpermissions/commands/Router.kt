@@ -22,37 +22,35 @@ abstract class Router : CommandLayer
     {
         if (permissionName() != null)
         {
-            permission.append(permissionName()!!)
+            permission.append(permissionName());
             if (!commandSender.hasPermission(permission.toString()))
-            {
-                return
-            }
+                return;
         }
-        if (messageKey() != null) messageKey.append(messageKey()!!)
+        if (messageKey() != null) messageKey.append(messageKey());
         
         if (args.size <= layer)
         {
-            sendHelp(messageKey, rootPlugin, commandSender)
-            return
+            sendHelp(messageKey, rootPlugin, commandSender);
+            return;
         }
         
-        val nextLayer = nextLayer(args[layer].toLowerCase())
+        val nextLayer = nextLayer(args[layer].toLowerCase());
         if (nextLayer == null)
         {
-            sendHelp(messageKey, rootPlugin, commandSender)
-            return
+            sendHelp(messageKey, rootPlugin, commandSender);
+            return;
         }
-        nextLayer.execute(layer + 1, rootPlugin, permission, messageKey, commandSender, args)
+        
+        nextLayer.execute(layer + 1, rootPlugin, permission, messageKey, commandSender, args);
     }
     
     
     private fun sendHelp(messageKey: DotDividedStringBuilder, rootPlugin: RootPlugin,
         commandSender: CommandSender): Boolean
     {
-        messageKey.append("help")
-        val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
-        
+        messageKey.append("help");
+        val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name));
         rootPlugin.messagesManager.sendMessage(messageKey, pairs, commandSender);
-        return true
+        return true;
     }
 }
