@@ -7,12 +7,12 @@ class MarksRouter : Router()
 {
     override fun permissionName(): String?
     {
-        return layerName
+        return layerName;
     }
     
     override fun messageKey(): String?
     {
-        return layerName
+        return layerName;
     }
     
     /**
@@ -24,16 +24,16 @@ class MarksRouter : Router()
      */
     override fun nextLayer(arg: String): CommandLayer?
     {
-        when (arg)
+        return when (arg)
         {
-            "add"    -> return AddExecutor()
-            "remove" -> return RemoveExecutor()
-            else     -> return null
-        }
+            "add"    -> AddExecutor()
+            "remove" -> RemoveExecutor()
+            else     -> null
+        };
     }
     
     companion object
     {
-        private const val layerName= "marks"
+        private const val layerName= "marks";
     }
 }

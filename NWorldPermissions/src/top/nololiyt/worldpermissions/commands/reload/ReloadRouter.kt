@@ -7,12 +7,12 @@ class ReloadRouter : Router()
 {
     override fun permissionName(): String?
     {
-        return layerName
+        return layerName;
     }
     
     override fun messageKey(): String?
     {
-        return layerName
+        return layerName;
     }
     
     /**
@@ -24,17 +24,17 @@ class ReloadRouter : Router()
      */
     override fun nextLayer(arg: String): CommandLayer?
     {
-        when (arg)
+        return when (arg)
         {
-            "config"   -> return ConfigExecutor()
-            "messages" -> return MessagesExecutor()
-            "marks"    -> return MarksExecutor()
-            else       -> return null
-        }
+            "config"   -> ConfigExecutor()
+            "messages" -> MessagesExecutor()
+            "marks"    -> MarksExecutor()
+            else       -> null
+        };
     }
     
     companion object
     {
-        private const val layerName= "reload"
+        private const val layerName= "reload";
     }
 }

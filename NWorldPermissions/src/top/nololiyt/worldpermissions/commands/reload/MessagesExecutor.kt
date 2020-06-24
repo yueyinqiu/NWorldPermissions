@@ -11,27 +11,27 @@ class MessagesExecutor : Executor()
     
     override fun permissionName(): String?
     {
-        return null
+        return null;
     }
     
     override fun messageKey(): String?
     {
-        return layerName
+        return layerName;
     }
     
     override fun run(layer: Int, rootPlugin: RootPlugin, permission: DotDividedStringBuilder,
         messageKey: DotDividedStringBuilder, commandSender: CommandSender, args: Array<String>): Boolean
     {
-        rootPlugin.messagesManager.reloadConfiguration()
+        rootPlugin.messagesManager.reloadConfiguration();
         
-        val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
+        val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name));
         
         rootPlugin.messagesManager.sendMessage(messageKey.append("completed"), pairs, commandSender);
-        return true
+        return true;
     }
     
     companion object
     {
-        private const val layerName = "messages"
+        private const val layerName = "messages";
     }
 }

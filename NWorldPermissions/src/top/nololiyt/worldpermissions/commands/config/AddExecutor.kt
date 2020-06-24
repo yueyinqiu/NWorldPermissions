@@ -9,39 +9,35 @@ import top.nololiyt.worldpermissions.commands.Executor
 
 class AddExecutor : Executor()
 {
-    
     override fun permissionName(): String?
     {
-        return null
+        return null;
     }
     
     override fun messageKey(): String?
     {
-        return layerName
+        return layerName;
     }
     
     override fun run(layer: Int, rootPlugin: RootPlugin, permission: DotDividedStringBuilder,
         messageKey: DotDividedStringBuilder, commandSender: CommandSender, args: Array<String>): Boolean
     {
-        if (args.size - 1 != layer) return false
-        
-        val cPairs = arrayOf<StringPair?>(StringPair.worldName(args[layer]), StringPair.senderName(commandSender.name))
-        
-        val config = rootPlugin.config
-        val worlds = config.getStringList("controlled-worlds")
-        if (!worlds.contains(args[layer]))
-        {
-            worlds.add(args[layer])
-        }
-        config.set("controlled-worlds", worlds)
-        rootPlugin.saveConfig()
-        
+        if (args.size - 1 != layer) return false;
+    
+        val cPairs = arrayOf<StringPair?>(StringPair.worldName(args[layer]), StringPair.senderName(commandSender.name));
+    
+        val config = rootPlugin.config;
+        val worlds = config.getStringList("controlled-worlds");
+        if (!worlds.contains(args[layer])) worlds.add(args[layer]);
+        config.set("controlled-worlds", worlds);
+        rootPlugin.saveConfig();
+    
         rootPlugin.messagesManager.sendMessage(messageKey.append("completed"), cPairs, commandSender);
-        return true
+        return true;
     }
     
     companion object
     {
-        private const val layerName = "add"
+        private const val layerName = "add";
     }
 }

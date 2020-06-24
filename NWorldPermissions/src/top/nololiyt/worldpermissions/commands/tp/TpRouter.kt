@@ -7,12 +7,12 @@ class TpRouter : Router()
 {
     override fun permissionName(): String?
     {
-        return layerName
+        return layerName;
     }
     
     override fun messageKey(): String?
     {
-        return layerName
+        return layerName;
     }
     
     /**
@@ -24,16 +24,16 @@ class TpRouter : Router()
      */
     override fun nextLayer(arg: String): CommandLayer?
     {
-        when (arg)
+        return when (arg)
         {
-            "offline" -> return OfflineExecutor()
-            "online"  -> return OnlineExecutor()
-            else      -> return null
-        }
+            "offline" -> OfflineExecutor()
+            "online"  -> OnlineExecutor()
+            else      -> null
+        };
     }
     
     companion object
     {
-        protected val layerName = "tp"
+        private const val layerName  = "tp";
     }
 }

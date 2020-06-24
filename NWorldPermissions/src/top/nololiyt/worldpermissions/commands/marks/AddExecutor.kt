@@ -17,12 +17,12 @@ class AddExecutor : Executor()
     
     override fun permissionName(): String?
     {
-        return null
+        return null;
     }
     
     override fun messageKey(): String?
     {
-        return layerName
+        return layerName;
     }
     
     override fun run(layer: Int, rootPlugin: RootPlugin, permission: DotDividedStringBuilder,
@@ -30,41 +30,41 @@ class AddExecutor : Executor()
     {
         if (commandSender !is Player)
         {
-            val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
+            val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name));
             
             rootPlugin.messagesManager.sendMessage(messageKey.append("without-a-position"), pairs, commandSender);
-            return true
+            return true;
         }
         
-        if (args.size - 1 != layer) return false
+        if (args.size - 1 != layer) return false;
         
         val cPairs =
-            arrayOf<StringPair?>(StringPair.markName(args[layer]), StringPair.senderName(commandSender.displayName))
+            arrayOf<StringPair?>(StringPair.markName(args[layer]), StringPair.senderName(commandSender.displayName));
         try
         {
-            val marksManager = rootPlugin.marksManager
-            if (marksManager!!.getMark(args[layer]) != null)
+            val marksManager = rootPlugin.marksManager;
+            if (marksManager.getMark(args[layer]) != null)
             {
                 rootPlugin.messagesManager.sendMessage(messageKey.append("with-occupied-name"), cPairs, commandSender);
-                return true
+                return true;
             }
-            marksManager.setMark(args[layer], commandSender.location)
+            marksManager.setMark(args[layer], commandSender.location);
             
             rootPlugin.messagesManager.sendMessage(messageKey.append("completed"), cPairs, commandSender);
-            return true
+            return true;
         }
         catch (ex: IOException)
         {
-            ex.printStackTrace()
+            ex.printStackTrace();
             
             rootPlugin.messagesManager.sendMessage(messageKey.append("failed"), cPairs, commandSender);
-            return true
+            return true;
         }
         
     }
     
     companion object
     {
-        private const val layerName = "add"
+        private const val layerName = "add";
     }
 }

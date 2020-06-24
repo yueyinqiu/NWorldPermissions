@@ -19,12 +19,12 @@ class OnlineExecutor : Executor()
     
     override fun permissionName(): String?
     {
-        return null
+        return null;
     }
     
     override fun messageKey(): String?
     {
-        return layerName
+        return layerName;
     }
     
     override fun run(layer: Int, rootPlugin: RootPlugin, permission: DotDividedStringBuilder,
@@ -32,63 +32,60 @@ class OnlineExecutor : Executor()
     {
         if (args.size - 1 != layer + 1) return false
         
-        val worldName = args[layer]
-        val markName = args[layer + 1]
+        val worldName = args[layer];
+        val markName = args[layer + 1];
         
         val basePairs = arrayOf<StringPair?>(StringPair.markName(markName), StringPair.worldName(worldName),
-            StringPair.senderName(commandSender.name))
+            StringPair.senderName(commandSender.name));
         
-        val world = Bukkit.getWorld(args[layer])
+        val world = Bukkit.getWorld(args[layer]);
         if (world == null)
         {
             rootPlugin.messagesManager.sendMessage(messageKey.append("no-such-world"), basePairs, commandSender);
-            return true
+            return true;
         }
         
-        val location = rootPlugin.marksManager!!.getMark(markName)
+        val location = rootPlugin.marksManager.getMark(markName);
         if (location == null)
         {
             rootPlugin.messagesManager.sendMessage(messageKey.append("no-such-mark"), basePairs, commandSender);
-            return true
+            return true;
         }
         
-        val players = world.players
+        val players = world.players;
         
         val playersPairs = arrayOf(null, StringPair.markName(markName), StringPair.worldName(worldName),
-            StringPair.senderName(commandSender.name))
+            StringPair.senderName(commandSender.name));
         
-        var sCount = 0
-        var fCount = 0
+        var sCount = 0;
+        var fCount = 0;
         val completedMessage = DotDividedStringBuilder(messageKey).append("completed");
         messageKey.append("failed-to-teleport-someone");
         for (player in players)
         {
-            playersPairs[0] = StringPair.playerName(player.displayName)
-            
+            playersPairs[0] = StringPair.playerName(player.displayName);
+    
             rootPlugin.messagesManager.sendMessage(
                 DotDividedStringBuilder("messages.to-players.when-teleported-by-tp-online.before-teleport"),
                 playersPairs, player);
             if (!player.teleport(location))
             {
-                fCount++
+                fCount++;
                 rootPlugin.messagesManager.sendMessage(messageKey, playersPairs, commandSender);
             }
-            else
-            {
-                sCount++
-            }
+            else sCount++;
         }
         
         val cPairs = arrayOf<StringPair?>(StringPair.teleportedCount(sCount.toString()),
             StringPair.unteleportedCount(fCount.toString()), StringPair.markName(markName),
-            StringPair.worldName(worldName), StringPair.senderName(commandSender.name))
+            StringPair.worldName(worldName), StringPair.senderName(commandSender.name));
         
         rootPlugin.messagesManager.sendMessage(completedMessage, cPairs, commandSender);
-        return true
+        return true;
     }
     
     companion object
     {
-        protected val layerName = "online"
+        private const val layerName  = "online";
     }
 }

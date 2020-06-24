@@ -17,47 +17,47 @@ class RemoveExecutor : Executor()
     
     override fun permissionName(): String?
     {
-        return null
+        return null;
     }
     
     override fun messageKey(): String?
     {
-        return layerName
+        return layerName;
     }
     
     override fun run(layer: Int, rootPlugin: RootPlugin, permission: DotDividedStringBuilder,
         messageKey: DotDividedStringBuilder, commandSender: CommandSender, args: Array<String>): Boolean
     {
-        if (args.size - 1 != layer) return false
+        if (args.size - 1 != layer) return false;
         
         val cPairs = arrayOf<StringPair?>(StringPair.markName(args[layer]), StringPair.senderName(commandSender.name))
         try
         {
-            val marksManager = rootPlugin.marksManager
+            val marksManager = rootPlugin.marksManager;
             
-            if (marksManager!!.getMark(args[layer]) == null)
+            if (marksManager.getMark(args[layer]) == null)
             {
                 rootPlugin.messagesManager.sendMessage(messageKey.append("no-such-mark"), cPairs, commandSender);
-                return true
+                return true;
             }
             
             marksManager.setMark(args[layer], null);
             
             rootPlugin.messagesManager.sendMessage(messageKey.append("completed"), cPairs, commandSender);
-            return true
+            return true;
             
         }
         catch (ex: IOException)
         {
-            ex.printStackTrace()
+            ex.printStackTrace();
             
             rootPlugin.messagesManager.sendMessage(messageKey.append("failed"), cPairs, commandSender);
-            return true
+            return true;
         }
     }
     
     companion object
     {
-        private const val layerName= "remove"
+        private const val layerName= "remove";
     }
 }

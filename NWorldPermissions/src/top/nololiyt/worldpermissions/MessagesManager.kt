@@ -89,7 +89,7 @@ class MessagesManager(private val rootPlugin: RootPlugin)
         
         if (result == null)
         {
-            rootPlugin.logger.severe("File 'messages.yml' is corrupted and '" + key + "' is missing.");
+            rootPlugin.logger.severe("File 'messages.yml' is corrupted and '$key' is missing.");
             return;
         }
         
