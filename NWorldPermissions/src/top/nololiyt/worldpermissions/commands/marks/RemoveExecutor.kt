@@ -12,45 +12,52 @@ import top.nololiyt.worldpermissions.commands.Executor
 import java.io.File
 import java.io.IOException
 
-class RemoveExecutor : Executor() {
-
-    override fun permissionName(): String? {
+class RemoveExecutor : Executor()
+{
+    
+    override fun permissionName(): String?
+    {
         return null
     }
-
-    override fun messageKey(): String? {
+    
+    override fun messageKey(): String?
+    {
         return layerName
     }
-
+    
     override fun run(layer: Int, rootPlugin: RootPlugin, permission: DotDividedStringBuilder,
-                     messageKey: DotDividedStringBuilder, commandSender: CommandSender,
-                     args: Array<String>): Boolean {
-        if (args.size - 1 != layer)
-            return false
-
+        messageKey: DotDividedStringBuilder, commandSender: CommandSender, args: Array<String>): Boolean
+    {
+        if (args.size - 1 != layer) return false
+        
         val cPairs = arrayOf<StringPair?>(StringPair.markName(args[layer]), StringPair.senderName(commandSender.name))
-        try {
+        try
+        {
             val marksManager = rootPlugin.marksManager
-
-            if (marksManager!!.getMark(args[layer]) == null) {
-                rootPlugin.messagesManager.sendMessage(messageKey.append("no-such-mark"), cPairs,commandSender);
+            
+            if (marksManager!!.getMark(args[layer]) == null)
+            {
+                rootPlugin.messagesManager.sendMessage(messageKey.append("no-such-mark"), cPairs, commandSender);
                 return true
             }
-
+            
             marksManager.setMark(args[layer], null);
-
-            rootPlugin.messagesManager.sendMessage(messageKey.append("completed"), cPairs,commandSender);
+            
+            rootPlugin.messagesManager.sendMessage(messageKey.append("completed"), cPairs, commandSender);
             return true
-
-        } catch (ex: IOException) {
+            
+        }
+        catch (ex: IOException)
+        {
             ex.printStackTrace()
-
-            rootPlugin.messagesManager.sendMessage(messageKey.append("failed"), cPairs,commandSender);
+            
+            rootPlugin.messagesManager.sendMessage(messageKey.append("failed"), cPairs, commandSender);
             return true
         }
     }
-
-    companion object {
+    
+    companion object
+    {
         protected val layerName = "remove"
     }
 }

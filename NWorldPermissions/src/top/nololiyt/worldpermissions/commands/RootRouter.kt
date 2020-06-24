@@ -9,27 +9,30 @@ import top.nololiyt.worldpermissions.commands.config.ConfigRouter
 import top.nololiyt.worldpermissions.commands.marks.MarksRouter
 import top.nololiyt.worldpermissions.commands.tp.TpRouter
 
-class RootRouter(private val rootPlugin: RootPlugin) : Router() {
-
-
-    fun RouteCommand(commandSender: CommandSender, command: Command,
-                     label: String, args: Array<String>) {
+class RootRouter(private val rootPlugin: RootPlugin) : Router()
+{
+    
+    
+    fun RouteCommand(commandSender: CommandSender, command: Command, label: String, args: Array<String>)
+    {
         val messagesRoot = DotDividedStringBuilder("messages")
         val permissionRoot = DotDividedStringBuilder("nworldpermissions")
-
+        
         execute(0, rootPlugin, permissionRoot, messagesRoot, commandSender, args)
-
+        
     }
-
-
-    override fun permissionName(): String? {
+    
+    
+    override fun permissionName(): String?
+    {
         return null
     }
-
-    override fun messageKey(): String? {
+    
+    override fun messageKey(): String?
+    {
         return null
     }
-
+    
     /**
      * Return the next layer matching the arg.
      * If no layer match it, please return 'null' and the help list will be sent.
@@ -37,13 +40,15 @@ class RootRouter(private val rootPlugin: RootPlugin) : Router() {
      * @param arg
      * @return
      */
-    override fun nextLayer(arg: String): CommandLayer? {
-        when (arg) {
+    override fun nextLayer(arg: String): CommandLayer?
+    {
+        when (arg)
+        {
             "config" -> return ConfigRouter()
-            "tp" -> return TpRouter()
-            "marks" -> return MarksRouter()
+            "tp"     -> return TpRouter()
+            "marks"  -> return MarksRouter()
             "reload" -> return ReloadRouter()
-            else -> return null
+            else     -> return null
         }
     }
 }

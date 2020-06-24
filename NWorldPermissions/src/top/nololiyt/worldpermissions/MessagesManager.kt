@@ -7,49 +7,61 @@ import top.nololiyt.worldpermissions.entities.StringPair
 
 import java.io.*
 
-class MessagesManager(private val rootPlugin: RootPlugin) {
-
+class MessagesManager(private val rootPlugin: RootPlugin)
+{
+    
     private val configuration: YamlConfiguration = YamlConfiguration();
-
-    init {
+    
+    init
+    {
         reloadConfiguration();
     }
-
-    private fun saveDefaultFile(file: File) {
+    
+    private fun saveDefaultFile(file: File)
+    {
         val res = rootPlugin.getResource("messages.yml");
-
+        
         var fileOutputStream: FileOutputStream? = null;
-        try {
+        try
+        {
             file.parentFile.mkdirs();
             file.delete();
             file.createNewFile();
-
+            
             fileOutputStream = FileOutputStream(file);
-
+            
             val buffer = ByteArray(4096);
-            while (true) {
+            while (true)
+            {
                 val count = res!!.read(buffer, 0, buffer.size);
                 fileOutputStream.write(buffer, 0, count);
-                if (count < buffer.size) {
+                if (count < buffer.size)
+                {
                     break;
                 }
             }
-        } catch (e: IOException) {
+        }
+        catch (e: IOException)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             fileOutputStream?.close();
         }
-
+        
     }
-
-    fun reloadConfiguration() {
+    
+    fun reloadConfiguration()
+    {
         val file = File(rootPlugin.dataFolder.absolutePath, "messages.yml");
-        if (!file.exists()) {
+        if (!file.exists())
+        {
             saveDefaultFile(file);
         }
         configuration.load(file);
     }
-
+    
     /*
     fun getMessage(node: DotDividedStringBuilder, stringPairs: Array<StringPair?>): String {
         val key = node.toString();
@@ -70,23 +82,22 @@ class MessagesManager(private val rootPlugin: RootPlugin) {
         return r;
     }
 */
-    fun sendMessage(node: DotDividedStringBuilder, stringPairs: Array<StringPair?>, target: CommandSender) {
+    fun sendMessage(node: DotDividedStringBuilder, stringPairs: Array<StringPair?>, target: CommandSender)
+    {
         val key = node.toString();
         val result = configuration.getString(key);
-
-        if (result == null) {
-            rootPlugin.logger.severe(
-                "File 'messages.yml' is corrupted and '" + key
-                        + "' is missing."
-            );
+        
+        if (result == null)
+        {
+            rootPlugin.logger.severe("File 'messages.yml' is corrupted and '" + key + "' is missing.");
             return;
         }
-
+        
         var r = result.trim().replace('&', '§');
-        for (pair in stringPairs) {
+        for (pair in stringPairs)
+        {
             r = r.replace(pair!!.key, pair.value);
         }
-        if (!r.isEmpty())
-            target.sendMessage(r);
+        if (!r.isEmpty()) target.sendMessage(r);
     }
 }

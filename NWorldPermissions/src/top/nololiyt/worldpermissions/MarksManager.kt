@@ -10,61 +10,74 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 
-class MarksManager(private val rootPlugin: RootPlugin) {
-
+class MarksManager(private val rootPlugin: RootPlugin)
+{
+    
     private val configuration: YamlConfiguration = YamlConfiguration();
-
+    
     private val marksFile: File
         get() = File(rootPlugin.dataFolder.absolutePath, "marks.yml")
-
-    init {
+    
+    init
+    {
         reloadConfiguration();
     }
-
-    private fun saveDefaultFile(file: File) {
+    
+    private fun saveDefaultFile(file: File)
+    {
         val res = rootPlugin.getResource("marks.yml");
-
-        var fileOutputStream:FileOutputStream? = null;
-
-        try {
+        
+        var fileOutputStream: FileOutputStream? = null;
+        
+        try
+        {
             file.parentFile.mkdirs();
             file.delete();
             file.createNewFile();
-
+            
             fileOutputStream = FileOutputStream(file);
-
+            
             val buffer = ByteArray(4096);
-            while (true) {
+            while (true)
+            {
                 val count = res!!.read(buffer, 0, buffer.size);
                 fileOutputStream.write(buffer, 0, count);
-                if (count < buffer.size) {
+                if (count < buffer.size)
+                {
                     break;
                 }
             }
-
-        } catch (e: IOException) {
+            
+        }
+        catch (e: IOException)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             fileOutputStream?.close();
         }
     }
-
-    fun reloadConfiguration() {
+    
+    fun reloadConfiguration()
+    {
         val file = marksFile;
-        if (!file.exists()) {
+        if (!file.exists())
+        {
             saveDefaultFile(file);
         }
         configuration.load(file);
     }
-
-    fun setMark(name: String, mark: Location?) {
+    
+    fun setMark(name: String, mark: Location?)
+    {
         configuration.set(name, mark);
         configuration.save(marksFile);
     }
-
-    fun getMark(name: String): Location? {
-        val oLocation = configuration.get(name)
-            ?: return null;
+    
+    fun getMark(name: String): Location?
+    {
+        val oLocation = configuration.get(name) ?: return null;
         return oLocation as Location;
     }
 }

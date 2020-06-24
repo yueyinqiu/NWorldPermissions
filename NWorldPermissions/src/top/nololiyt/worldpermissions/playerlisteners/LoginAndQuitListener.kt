@@ -16,50 +16,52 @@ import top.nololiyt.worldpermissions.entities.StringPair
 import java.io.File
 import java.io.IOException
 
-class LoginAndQuitListener(private val rootPlugin: RootPlugin) : Listener {
-
+class LoginAndQuitListener(private val rootPlugin: RootPlugin) : Listener
+{
+    
     @EventHandler
-    fun onPlayerLogin(e: PlayerJoinEvent) {
-        if (!rootPlugin.config.getBoolean("offline-players-tracker.enabled") || rootPlugin.config.getBoolean("offline-players-tracker.record-only")) {
-            return
+    fun onPlayerLogin(e: PlayerJoinEvent)
+    {
+        if (!rootPlugin.config.getBoolean("offline-players-tracker.enabled") || rootPlugin.config.getBoolean(
+                "offline-players-tracker.record-only"))
+        {
+            return;
         }
-
-        val player = e.player
-        var file = File(
-                rootPlugin.dataFolder.absolutePath, "playersData")
+        
+        val player = e.player;
+        var file = File(rootPlugin.dataFolder.absolutePath, "playersData");
         file.mkdirs()
         file = File(file.absolutePath, player.uniqueId.toString() + ".yml")
-        if (!file.exists())
-            return
-
-        val yamlConfiguration = YamlConfiguration
-                .loadConfiguration(file)
+        if (!file.exists()) return
+        
+        val yamlConfiguration = YamlConfiguration.loadConfiguration(file)
         val location = yamlConfiguration.get("position")
-        if (location != null)
-            player.teleport((location as Location?)!!)
+        if (location != null) player.teleport((location as Location?)!!)
     }
-
+    
     @EventHandler
-    fun onPlayerQuitEvent(e: PlayerQuitEvent) {
-        if (!rootPlugin.config.getBoolean("offline-players-tracker.enabled")) {
+    fun onPlayerQuitEvent(e: PlayerQuitEvent)
+    {
+        if (!rootPlugin.config.getBoolean("offline-players-tracker.enabled"))
+        {
             return
         }
         val player = e.player
-        try {
-            var file = File(
-                    rootPlugin.dataFolder.absolutePath, "playersData")
+        try
+        {
+            var file = File(rootPlugin.dataFolder.absolutePath, "playersData")
             file.mkdirs()
             file = File(file.absolutePath, player.uniqueId.toString() + ".yml")
-            if (!file.exists())
-                file.createNewFile()
-
-            val yamlConfiguration = YamlConfiguration
-                    .loadConfiguration(file)
+            if (!file.exists()) file.createNewFile()
+            
+            val yamlConfiguration = YamlConfiguration.loadConfiguration(file)
             yamlConfiguration.set("position", player.location)
             yamlConfiguration.save(file)
-        } catch (ex: IOException) {
+        }
+        catch (ex: IOException)
+        {
             ex.printStackTrace()
         }
-
+        
     }
 }

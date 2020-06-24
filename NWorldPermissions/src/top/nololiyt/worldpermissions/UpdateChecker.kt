@@ -13,28 +13,30 @@ import java.io.Reader
 import java.net.URL
 import java.util.Scanner
 
-class UpdateChecker(private val plugin: Plugin) {
-
-    fun checkAndLog() {
+class UpdateChecker(private val plugin: Plugin)
+{
+    
+    fun checkAndLog()
+    {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, Runnable {
-            try {
+            try
+            {
                 val jsonObject = JSONObject(
-                    URL("https://api.github.com/repos/yueyinqiu/NWorldPermissions/releases/latest").readText()
-                );
+                    URL("https://api.github.com/repos/yueyinqiu/NWorldPermissions/releases/latest").readText());
                 val tagName = jsonObject.getString("tag_name");
-
-                if (!plugin.description.version.equals(tagName, true)) {
-                    val browserDownloadUrl = jsonObject.getJSONArray("assets")
-                        .getJSONObject(0)
-                        .getString("browser_download_url");
-
+                
+                if (!plugin.description.version.equals(tagName, true))
+                {
+                    val browserDownloadUrl =
+                        jsonObject.getJSONArray("assets").getJSONObject(0).getString("browser_download_url");
+                    
                     plugin.logger.warning(
-                        "A new version: '" + tagName + "' is available. " +
-                                "It can be downloaded at '" + browserDownloadUrl + "'."
-                    );
+                        "A new version: '" + tagName + "' is available. " + "It can be downloaded at '" + browserDownloadUrl + "'.");
                 }
-
-            } catch (e: Exception) {
+                
+            }
+            catch (e: Exception)
+            {
                 e.printStackTrace();
             }
         });

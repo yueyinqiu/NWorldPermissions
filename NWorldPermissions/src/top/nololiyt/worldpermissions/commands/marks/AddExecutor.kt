@@ -12,50 +12,59 @@ import top.nololiyt.worldpermissions.commands.Executor
 import java.io.File
 import java.io.IOException
 
-class AddExecutor : Executor() {
-
-    override fun permissionName(): String? {
+class AddExecutor : Executor()
+{
+    
+    override fun permissionName(): String?
+    {
         return null
     }
-
-    override fun messageKey(): String? {
+    
+    override fun messageKey(): String?
+    {
         return layerName
     }
-
+    
     override fun run(layer: Int, rootPlugin: RootPlugin, permission: DotDividedStringBuilder,
-                     messageKey: DotDividedStringBuilder, commandSender: CommandSender,
-                     args: Array<String>): Boolean {
-        if (commandSender !is Player) {
+        messageKey: DotDividedStringBuilder, commandSender: CommandSender, args: Array<String>): Boolean
+    {
+        if (commandSender !is Player)
+        {
             val pairs = arrayOf<StringPair?>(StringPair.senderName(commandSender.name))
-
-            rootPlugin.messagesManager.sendMessage(messageKey.append("without-a-position"), pairs,commandSender);
+            
+            rootPlugin.messagesManager.sendMessage(messageKey.append("without-a-position"), pairs, commandSender);
             return true
         }
-
-        if (args.size - 1 != layer)
-            return false
-
-        val cPairs = arrayOf<StringPair?>(StringPair.markName(args[layer]), StringPair.senderName(commandSender.displayName))
-        try {
+        
+        if (args.size - 1 != layer) return false
+        
+        val cPairs =
+            arrayOf<StringPair?>(StringPair.markName(args[layer]), StringPair.senderName(commandSender.displayName))
+        try
+        {
             val marksManager = rootPlugin.marksManager
-            if (marksManager!!.getMark(args[layer]) != null) {
-                rootPlugin.messagesManager.sendMessage(messageKey.append("with-occupied-name"), cPairs,commandSender);
+            if (marksManager!!.getMark(args[layer]) != null)
+            {
+                rootPlugin.messagesManager.sendMessage(messageKey.append("with-occupied-name"), cPairs, commandSender);
                 return true
             }
             marksManager.setMark(args[layer], commandSender.location)
-
-            rootPlugin.messagesManager.sendMessage(messageKey.append("completed"), cPairs,commandSender);
-            return true
-        } catch (ex: IOException) {
-            ex.printStackTrace()
-
-            rootPlugin.messagesManager.sendMessage(messageKey.append("failed"), cPairs,commandSender);
+            
+            rootPlugin.messagesManager.sendMessage(messageKey.append("completed"), cPairs, commandSender);
             return true
         }
-
+        catch (ex: IOException)
+        {
+            ex.printStackTrace()
+            
+            rootPlugin.messagesManager.sendMessage(messageKey.append("failed"), cPairs, commandSender);
+            return true
+        }
+        
     }
-
-    companion object {
+    
+    companion object
+    {
         protected val layerName = "add"
     }
 }
