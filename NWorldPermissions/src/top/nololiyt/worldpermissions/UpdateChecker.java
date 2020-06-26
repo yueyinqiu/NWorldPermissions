@@ -27,7 +27,7 @@ public class UpdateChecker
     {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
             try (InputStream inputStream = new URL(
-                    "https://api.github.com/repos/yueyinqiu/NWorldPermissions/releases/latest")
+                    "https://yueyinqiu.github.io/NWorldPermissions/version.html")
                     .openStream(); Scanner scanner = new Scanner(inputStream))
             {
                 if(scanner.hasNextInt())
