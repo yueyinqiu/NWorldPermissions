@@ -47,12 +47,14 @@ public class LoginAndQuitListener implements Listener
         if (position == null) return;
         Location location = (Location) position;
     
-        int times = yamlConfiguration.getBoolean("changed", false) ?
+        int times = yamlConfiguration.getBoolean("changed") ?
                 rootPlugin.getConfig().getInt("offline-players-tracker.teleport-times.position-changed") :
                 rootPlugin.getConfig().getInt("offline-players-tracker.teleport-times.position-unchanged");
     
         for (int i = 0; i < times; i++)
+        {
             player.teleport(location);
+        }
     }
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent e)

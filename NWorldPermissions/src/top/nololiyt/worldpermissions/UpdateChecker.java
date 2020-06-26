@@ -22,25 +22,21 @@ public class UpdateChecker
         this.plugin = plugin;
     }
     
+    private static final int CURRENT_VERSION = 1;
     public void checkAndLog()
     {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
             try (InputStream inputStream = new URL(
                     "https://api.github.com/repos/yueyinqiu/NWorldPermissions/releases/latest")
-                    .openStream())
+                    .openStream(); Scanner scanner = new Scanner(inputStream))
             {
-                JSONObject jsonObject = new JSONObject(
-                        readToEnd(inputStream)
-                );
-                String tag_name = jsonObject.getString("tag_name");
-    
-                if (!plugin.getDescription().getVersion().equalsIgnoreCase(tag_name))
+                if(scanner.hasNextInt())
                 {
-                    String browser_download_url = jsonObject.getJSONArray("assets")
-                            .getJSONObject(0).getString("browser_download_url");
-    
-                    plugin.getLogger().warning("A new version: '" + tag_name + "' is available. " +
-                            "It can be downloaded at '" + browser_download_url + "'.");
+                    int ver = scanner.nextInt();
+                    if(ver > CURRENT_VERSION)
+                    {
+                        plugin.getLogger().warning("A new version available.");
+                    }
                 }
             }
             catch (Exception e)

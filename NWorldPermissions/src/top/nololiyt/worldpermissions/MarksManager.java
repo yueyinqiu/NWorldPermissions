@@ -2,14 +2,11 @@ package top.nololiyt.worldpermissions;
 
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
-import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
-import top.nololiyt.worldpermissions.entities.StringPair;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 public class MarksManager
 {
@@ -65,8 +62,7 @@ public class MarksManager
         {
             saveDefaultFile(file);
         }
-        configuration = YamlConfiguration.loadConfiguration(
-                getMarksFile());
+        configuration = YamlConfiguration.loadConfiguration(file);
     }
     
     public void setMark(String name, Location mark) throws IOException
