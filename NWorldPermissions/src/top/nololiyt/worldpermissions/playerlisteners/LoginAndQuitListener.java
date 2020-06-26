@@ -29,12 +29,10 @@ public class LoginAndQuitListener implements Listener
     @EventHandler
     public void onPlayerLogin(PlayerJoinEvent e)
     {
-        if ((!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled")) ||
-                rootPlugin.getConfig().getBoolean("offline-players-tracker.record-only"))
-        {
+        if ((!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled")))
             return;
-        }
-        
+    
+    
         Player player = e.getPlayer();
         File file = new File(
                 rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
@@ -45,9 +43,16 @@ public class LoginAndQuitListener implements Listener
     
         YamlConfiguration yamlConfiguration = YamlConfiguration
                 .loadConfiguration(file);
-        Object location = yamlConfiguration.get("position");
-        if (location != null)
-            player.teleport((Location) location);
+        Object position = yamlConfiguration.get("position");
+        if (position == null) return;
+        Location location = (Location) position;
+    
+        int times = yamlConfiguration.getBoolean("changed", false) ?
+                rootPlugin.getConfig().getInt("offline-players-tracker.teleport-times.position-changed") :
+                rootPlugin.getConfig().getInt("offline-players-tracker.teleport-times.position-unchanged");
+    
+        for (int i = 0; i < times; i++)
+            player.teleport(location);
     }
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent e)
@@ -69,6 +74,7 @@ public class LoginAndQuitListener implements Listener
             YamlConfiguration yamlConfiguration = YamlConfiguration
                     .loadConfiguration(file);
             yamlConfiguration.set("position", player.getLocation());
+            yamlConfiguration.set("changed", false);
             yamlConfiguration.save(file);
         }
         catch (IOException ex)

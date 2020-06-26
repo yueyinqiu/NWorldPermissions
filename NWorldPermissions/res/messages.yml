@@ -47,7 +47,7 @@ messages:
     offline:
       tracker-not-enabled: |
         &r&3> Oh, {senderName}&r&3! You haven't enabled the offline players tracker.
-        Make sure you've set 'offline-players-tracker.enabled' to 'true', and 'offline-players-tracker.record-only' to 'false' in file 'config.yml'.
+        Make sure you've set 'offline-players-tracker.enabled' to 'true' in file 'config.yml'.
       # Available Arg(s): {senderName}.
       no-such-world: |
         &r&3> {senderName}&r&3? Which world is '{worldName}'?

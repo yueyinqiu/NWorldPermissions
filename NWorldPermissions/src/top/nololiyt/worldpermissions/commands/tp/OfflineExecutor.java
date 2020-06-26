@@ -82,6 +82,7 @@ public class OfflineExecutor extends Executor
             if (configuration.getLocation("position").getWorld().equals(world))
             {
                 configuration.set("position", location);
+                configuration.set("changed", true);
                 try
                 {
                     configuration.save(file);
