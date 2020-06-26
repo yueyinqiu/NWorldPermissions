@@ -37,8 +37,7 @@ class OfflineExecutor : Executor()
         val basePairs = arrayOf<StringPair?>(StringPair.markName(markName), StringPair.worldName(worldName),
             StringPair.senderName(commandSender.name));
         
-        if (!rootPlugin.config.getBoolean("offline-players-tracker.enabled") || rootPlugin.config.getBoolean(
-                "offline-players-tracker.record-only"))
+        if (!rootPlugin.config.getBoolean("offline-players-tracker.enabled"))
         {
             rootPlugin.messagesManager.sendMessage(messageKey.append("tracker-not-enabled"), basePairs, commandSender);
             return true;
@@ -68,7 +67,8 @@ class OfflineExecutor : Executor()
             val position = configuration.getLocation("position") ?: continue;
             if (position.world == world)
             {
-                configuration.set("position", location)
+                configuration.set("position", location);
+                configuration.set("changed", true);
                 try
                 {
                     configuration.save(file);

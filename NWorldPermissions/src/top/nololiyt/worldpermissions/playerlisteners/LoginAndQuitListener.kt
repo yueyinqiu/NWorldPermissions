@@ -21,17 +21,28 @@ class LoginAndQuitListener(private val rootPlugin: RootPlugin) : Listener
     @EventHandler
     fun onPlayerLogin(e: PlayerJoinEvent)
     {
-        if (!rootPlugin.config.getBoolean("offline-players-tracker.enabled") || rootPlugin.config.getBoolean(
-                "offline-players-tracker.record-only")) return;
+        if (!rootPlugin.config.getBoolean("offline-players-tracker.enabled")) return;
         val player = e.player;
         var file = File(rootPlugin.dataFolder.absolutePath, "playersData");
         file.mkdirs();
         file = File(file.absolutePath, player.uniqueId.toString() + ".yml");
         if (!file.exists()) return;
-        
+    
         val yamlConfiguration = YamlConfiguration.loadConfiguration(file);
-        val location = yamlConfiguration.get("position");
-        if (location != null) player.teleport((location as Location?)!!);
+        val position = yamlConfiguration.get("position");
+        if (position != null)
+        {
+            val location = position as Location;
+            val times = when (yamlConfiguration.getBoolean("changed", false))
+            {
+                true  -> rootPlugin.config.getInt("offline-players-tracker.teleport-times.position-changed")
+                false -> rootPlugin.config.getInt("offline-players-tracker.teleport-times.position-unchanged")
+            }
+            for (index in 0 until times)
+            {
+                player.teleport(location);
+            }
+        }
     }
     
     @EventHandler
@@ -48,6 +59,7 @@ class LoginAndQuitListener(private val rootPlugin: RootPlugin) : Listener
             
             val yamlConfiguration = YamlConfiguration.loadConfiguration(file);
             yamlConfiguration.set("position", player.location);
+            yamlConfiguration.set("changed", false);
             yamlConfiguration.save(file);
         }
         catch (ex: IOException)

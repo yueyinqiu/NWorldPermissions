@@ -1,7 +1,9 @@
 # config.yml
 
-controlled-worlds: []
+controlled-worlds:
 
 offline-players-tracker:
   enabled: true
-  record-only: true
+  teleport-times:
+    position-changed: 0
+    position-unchanged: 0
