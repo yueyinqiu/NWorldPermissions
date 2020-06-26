@@ -20,11 +20,6 @@ public class MarksManager
     MarksManager(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
-        File file = getMarksFile();
-        if (!file.exists())
-        {
-            saveDefaultFile(file);
-        }
         reloadConfiguration();
     }
     
@@ -65,6 +60,11 @@ public class MarksManager
     
     public void reloadConfiguration()
     {
+        File file = getMarksFile();
+        if (!file.exists())
+        {
+            saveDefaultFile(file);
+        }
         configuration = YamlConfiguration.loadConfiguration(
                 getMarksFile());
     }

@@ -36,9 +36,8 @@ public class UpdateChecker
     
                 if (!plugin.getDescription().getVersion().equalsIgnoreCase(tag_name))
                 {
-                    JSONArray assets = jsonObject.getJSONArray("assets");
-                    JSONObject asset = assets.getJSONObject(0);
-                    String browser_download_url = asset.getString("browser_download_url");
+                    String browser_download_url = jsonObject.getJSONArray("assets")
+                            .getJSONObject(0).getString("browser_download_url");
     
                     plugin.getLogger().warning("A new version: '" + tag_name + "' is available. " +
                             "It can be downloaded at '" + browser_download_url + "'.");

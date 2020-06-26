@@ -27,6 +27,7 @@ public class ConfigExecutor extends Executor
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
+        rootPlugin.saveDefaultConfig();
         rootPlugin.reloadConfig();
     
         messageKey.append("completed");

@@ -15,18 +15,7 @@ public class MessagesManager
     MessagesManager(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
-        File file = getMessagesFile();
-        if (!file.exists())
-        {
-            saveDefaultFile(file);
-        }
         reloadConfiguration();
-    }
-    
-    private File getMessagesFile()
-    {
-        return new File(
-                rootPlugin.getDataFolder().getAbsolutePath(), "messages.yml");
     }
     
     private void saveDefaultFile(File file)
@@ -60,8 +49,13 @@ public class MessagesManager
     
     public void reloadConfiguration()
     {
-        configuration = YamlConfiguration.loadConfiguration(
-                getMessagesFile());
+        File file =  new File(
+                rootPlugin.getDataFolder().getAbsolutePath(), "messages.yml");
+        if (!file.exists())
+        {
+            saveDefaultFile(file);
+        }
+        configuration = YamlConfiguration.loadConfiguration(file);
     }
     
     public String getMessage(DotDividedStringBuilder node, StringPair[] stringPairs)
