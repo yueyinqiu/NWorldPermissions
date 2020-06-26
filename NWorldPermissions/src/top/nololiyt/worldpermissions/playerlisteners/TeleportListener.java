@@ -44,22 +44,18 @@ public class TeleportListener implements Listener
         
         if (player.hasPermission("nworldpermissions.forfreeto." + destName))
         {
-            String message = rootPlugin.getMessagesManager().getMessage(
+            rootPlugin.getMessagesManager().sendMessage(
                     new DotDividedStringBuilder(
                             "messages.to-players.when-teleport-to-controlled-worlds.teleported"),
-                    pairs);
-            if (!message.isEmpty())
-                player.sendMessage(message);
+                    pairs,player);
             return;
         }
         
         e.setCancelled(true);
-        String message = rootPlugin.getMessagesManager().getMessage(
+        rootPlugin.getMessagesManager().sendMessage(
                 new DotDividedStringBuilder(
                         "messages.to-players.when-teleport-to-controlled-worlds.denied"
-                ), pairs);
-        if (!message.isEmpty())
-            player.sendMessage(message);
+                ), pairs,player);
     }
     
     private boolean worldIsControlled(World world)

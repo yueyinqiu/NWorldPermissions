@@ -36,10 +36,8 @@ public class ConfigExecutor extends Executor
                 StringPair.senderName(commandSender.getName())
         };
     
-        String message = rootPlugin.getMessagesManager().getMessage(
-                messageKey, pairs);
-        if (!message.isEmpty())
-            commandSender.sendMessage(message);
+        rootPlugin.getMessagesManager().sendMessage(
+                messageKey, pairs,commandSender);
         return true;
     }
 }

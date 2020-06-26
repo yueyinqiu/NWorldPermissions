@@ -49,24 +49,24 @@ public class OfflineExecutor extends Executor
         if ((!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled")) ||
                 rootPlugin.getConfig().getBoolean("offline-players-tracker.record-only"))
         {
-            commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("tracker-not-enabled"), basePairs));
+            rootPlugin.getMessagesManager().sendMessage(
+                    messageKey.append("tracker-not-enabled"), basePairs,commandSender);
             return true;
         }
         
         World world = Bukkit.getWorld(args[layer]);
         if (world == null)
         {
-            commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("no-such-world"), basePairs));
+            rootPlugin.getMessagesManager().sendMessage(
+                    messageKey.append("no-such-world"), basePairs,commandSender);
             return true;
         }
     
         Location location = rootPlugin.getMarksManager().getMark(markName);
         if (location == null)
         {
-            commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("no-such-mark"), basePairs));
+          rootPlugin.getMessagesManager().sendMessage(
+                    messageKey.append("no-such-mark"), basePairs,commandSender);
             return true;
         }
     
@@ -99,8 +99,8 @@ public class OfflineExecutor extends Executor
                 StringPair.worldName(worldName),
                 StringPair.senderName(commandSender.getName())
         };
-        commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                messageKey.append("completed"), cPairs));
+        rootPlugin.getMessagesManager().sendMessage(
+                messageKey.append("completed"), cPairs,commandSender);
         return true;
     }
 }

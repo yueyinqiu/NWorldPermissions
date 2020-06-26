@@ -39,10 +39,8 @@ public class AddExecutor extends Executor
                     StringPair.senderName(commandSender.getName()),
             };
     
-            String message = rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("without-a-position"), pairs);
-            if (!message.isEmpty())
-                commandSender.sendMessage(message);
+            rootPlugin.getMessagesManager().sendMessage(
+                    messageKey.append("without-a-position"), pairs,commandSender);
             return true;
         }
     
@@ -59,30 +57,23 @@ public class AddExecutor extends Executor
             MarksManager marksManager = rootPlugin.getMarksManager();
             if(marksManager.getMark(args[layer]) != null)
             {
-                String message = rootPlugin.getMessagesManager().getMessage(
-                        messageKey.append("with-occupied-name"), cPairs);
-                if (!message.isEmpty())
-                    sender.sendMessage(message);
-                
+                rootPlugin.getMessagesManager().sendMessage(
+                        messageKey.append("with-occupied-name"), cPairs,sender);
                 return true;
             }
             marksManager.setMark(args[layer],sender.getLocation());
     
     
-            String message = rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("completed"), cPairs);
-            if (!message.isEmpty())
-                sender.sendMessage(message);
+            rootPlugin.getMessagesManager().sendMessage(
+                    messageKey.append("completed"), cPairs,sender);
             return true;
         }
         catch(IOException ex)
         {
             ex.printStackTrace();
     
-            String message = rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("failed"), cPairs);
-            if (!message.isEmpty())
-                sender.sendMessage(message);
+            rootPlugin.getMessagesManager().sendMessage(
+                    messageKey.append("failed"), cPairs,sender);
             return true;
         }
     }

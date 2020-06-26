@@ -51,16 +51,16 @@ public class OnlineExecutor extends Executor
         World world = Bukkit.getWorld(args[layer]);
         if (world == null)
         {
-            commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("no-such-world"), basePairs));
+            rootPlugin.getMessagesManager().sendMessage(
+                    messageKey.append("no-such-world"), basePairs, commandSender);
             return true;
         }
     
         Location location = rootPlugin.getMarksManager().getMark(markName);
         if (location == null)
         {
-            commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                    messageKey.append("no-such-mark"), basePairs));
+            rootPlugin.getMessagesManager().sendMessage(
+                    messageKey.append("no-such-mark"), basePairs, commandSender);
             return true;
         }
     
@@ -73,20 +73,21 @@ public class OnlineExecutor extends Executor
                 StringPair.senderName(commandSender.getName())
         };
         
-        int sCount = 0,fCount = 0;
+        int sCount = 0, fCount = 0;
+        DotDividedStringBuilder cKey = new DotDividedStringBuilder(messageKey);
+        messageKey.append("failed-to-teleport-someone");
         for (Player player : players)
         {
             playersPairs[0] = StringPair.playerName(player.getDisplayName());
-        
-            player.sendMessage(rootPlugin.getMessagesManager().getMessage(
+    
+            rootPlugin.getMessagesManager().sendMessage(
                     new DotDividedStringBuilder(
                             "messages.to-players.when-teleported-by-tp-online.before-teleport"),
-                    playersPairs));
+                    playersPairs, player);
             if (!player.teleport(location))
             {
                 fCount++;
-                commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                        messageKey.append("failed-to-teleport-someone"), playersPairs));
+                rootPlugin.getMessagesManager().sendMessage(messageKey, playersPairs, commandSender);
             }
             else
             {
@@ -101,8 +102,8 @@ public class OnlineExecutor extends Executor
                 StringPair.worldName(worldName),
                 StringPair.senderName(commandSender.getName())
         };
-        commandSender.sendMessage(rootPlugin.getMessagesManager().getMessage(
-                messageKey.append("completed"), cPairs));
+        rootPlugin.getMessagesManager().sendMessage(
+                cKey.append("completed"), cPairs, commandSender);
         return true;
     }
 }

@@ -9,6 +9,7 @@ import top.nololiyt.worldpermissions.entities.StringPair;
 public abstract class Executor implements CommandLayer
 {
     protected abstract String permissionName();
+    
     protected abstract String messageKey();
     
     protected abstract boolean run(int layer,
@@ -38,7 +39,7 @@ public abstract class Executor implements CommandLayer
         if (messageKey() != null)
             messageKey.append(messageKey());
     
-        if (!run(layer,rootPlugin, permission, messageKey, commandSender, args))
+        if (!run(layer, rootPlugin, permission, messageKey, commandSender, args))
         {
             sendHelp(messageKeyCopy, rootPlugin, commandSender);
         }
@@ -51,11 +52,8 @@ public abstract class Executor implements CommandLayer
         StringPair[] pairs = new StringPair[]{
                 StringPair.senderName(commandSender.getName())
         };
-        
-        String message = rootPlugin.getMessagesManager().getMessage(
-                messageKey, pairs);
-        if (!message.isEmpty())
-            commandSender.sendMessage(message);
+    
+        rootPlugin.getMessagesManager().sendMessage(messageKey, pairs, commandSender);
         return true;
     }
 }

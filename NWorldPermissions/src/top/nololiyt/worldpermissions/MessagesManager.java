@@ -1,5 +1,7 @@
 package top.nololiyt.worldpermissions;
 
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
@@ -49,7 +51,7 @@ public class MessagesManager
     
     public void reloadConfiguration()
     {
-        File file =  new File(
+        File file = new File(
                 rootPlugin.getDataFolder().getAbsolutePath(), "messages.yml");
         if (!file.exists())
         {
@@ -58,24 +60,28 @@ public class MessagesManager
         configuration = YamlConfiguration.loadConfiguration(file);
     }
     
-    public String getMessage(DotDividedStringBuilder node, StringPair[] stringPairs)
+    public void sendMessage(DotDividedStringBuilder node, StringPair[] stringPairs, CommandSender target)
     {
         String key = node.toString();
         String result = configuration.getString(key);
         
-        if(result == null)
+        if (result == null)
         {
             rootPlugin.getLogger().severe(
                     "File 'messages.yml' is corrupted and '" + key
                             + "' is missing.");
-            return "";
+            return;
         }
         
-        result = result.trim().replace('&', '§');
+        result = result.trim();
+        if (result.isEmpty())
+            return;
+        
+        result = result.replace('&', '§');
         for (StringPair pair : stringPairs)
         {
             result = result.replace(pair.getKey(), pair.getValue());
         }
-        return result;
+        target.sendMessage(result);
     }
 }

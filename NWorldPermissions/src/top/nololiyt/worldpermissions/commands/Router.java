@@ -8,10 +8,13 @@ import top.nololiyt.worldpermissions.entities.StringPair;
 public abstract class Router implements CommandLayer
 {
     protected abstract String permissionName();
+    
     protected abstract String messageKey();
+    
     /**
      * Return the next layer matching the arg.
      * If no layer match it, please return 'null' and the help list will be sent.
+     *
      * @param arg
      * @return
      */
@@ -66,10 +69,8 @@ public abstract class Router implements CommandLayer
                 StringPair.senderName(commandSender.getName())
         };
         
-        String message = rootPlugin.getMessagesManager().getMessage(
-                messageKey, pairs);
-        if (!message.isEmpty())
-            commandSender.sendMessage(message);
+        rootPlugin.getMessagesManager().sendMessage(
+                messageKey, pairs, commandSender);
         return true;
     }
 }
