@@ -3,7 +3,7 @@ package top.nololiyt.worldpermissions;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import top.nololiyt.worldpermissions.playerlisteners.LoginAndQuitListener;
+import top.nololiyt.worldpermissions.playerlisteners.JoinAndQuitListener;
 import top.nololiyt.worldpermissions.playerlisteners.TeleportListener;
 
 public class RootPlugin extends JavaPlugin {
@@ -32,7 +32,7 @@ public class RootPlugin extends JavaPlugin {
         getCommand("nworldpermissions").setExecutor(new RootCommandExecutor(this));
     
         Bukkit.getPluginManager().registerEvents(
-                new LoginAndQuitListener(this), this);
+                new JoinAndQuitListener(this), this);
         Bukkit.getPluginManager().registerEvents(
                 new TeleportListener(this), this);
     

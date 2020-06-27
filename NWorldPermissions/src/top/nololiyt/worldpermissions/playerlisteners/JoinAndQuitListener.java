@@ -1,4 +1,4 @@
-package top.nololiyt.worldpermissions;
+package top.nololiyt.worldpermissions.playerlisteners;
 
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
 
@@ -16,24 +17,22 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class PlayerListener implements Listener
+public class JoinAndQuitListener implements Listener
 {
     private RootPlugin rootPlugin;
     
-    PlayerListener(RootPlugin rootPlugin)
+    public JoinAndQuitListener(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
     }
     
     @EventHandler
-    public void onPlayerLogin(PlayerJoinEvent e)
+    public void onPlayerJoin(PlayerJoinEvent e)
     {
-        if ((!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled")) ||
-                rootPlugin.getConfig().getBoolean("offline-players-tracker.record-only"))
-        {
+        if ((!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled")))
             return;
-        }
-        
+    
+    
         Player player = e.getPlayer();
         File file = new File(
                 rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
@@ -44,9 +43,18 @@ public class PlayerListener implements Listener
     
         YamlConfiguration yamlConfiguration = YamlConfiguration
                 .loadConfiguration(file);
-        Object location = yamlConfiguration.get("position");
-        if (location != null)
-            player.teleport((Location) location);
+        Object position = yamlConfiguration.get("position");
+        if (position == null) return;
+        Location location = (Location) position;
+    
+        int times = yamlConfiguration.getBoolean("changed") ?
+                rootPlugin.getConfig().getInt("offline-players-tracker.teleport-times.position-changed") :
+                rootPlugin.getConfig().getInt("offline-players-tracker.teleport-times.position-unchanged");
+    
+        for (int i = 0; i < times; i++)
+        {
+            player.teleport(location);
+        }
     }
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent e)
@@ -68,56 +76,12 @@ public class PlayerListener implements Listener
             YamlConfiguration yamlConfiguration = YamlConfiguration
                     .loadConfiguration(file);
             yamlConfiguration.set("position", player.getLocation());
+            yamlConfiguration.set("changed", false);
             yamlConfiguration.save(file);
         }
         catch (IOException ex)
         {
             ex.printStackTrace();
         }
-    }
-    
-    @EventHandler
-    public void onPlayerTeleport(PlayerTeleportEvent e)
-    {
-        World dest = e.getTo().getWorld();
-        if (dest.equals(e.getFrom().getWorld()))
-        {
-            return;
-        }
-    
-        String destName = dest.getName();
-    
-        Player player = e.getPlayer();
-    
-        if (!worldIsControlled(dest))
-        {
-            return;
-        }
-    
-        StringPair[] pairs = new StringPair[]{
-                StringPair.playerName(player.getDisplayName())
-        };
-    
-        if (player.hasPermission("nworldpermissions.forfreeto." + destName))
-        {
-            rootPlugin.getMessagesManager().sendMessage(
-                    new DotDividedStringBuilder(
-                            "messages.to-players.when-teleport-to-controlled-worlds.teleported"),
-                    pairs,player);
-            return;
-        }
-    
-        e.setCancelled(true);
-        rootPlugin.getMessagesManager().sendMessage(
-                new DotDividedStringBuilder(
-                        "messages.to-players.when-teleport-to-controlled-worlds.denied"
-                ), pairs,player);
-    }
-    
-    private boolean worldIsControlled(World world)
-    {
-        List<String> worlds = rootPlugin.getConfig().getStringList("controlled-worlds");
-        String destName = world.getName();
-        return worlds.contains(destName);
     }
 }
