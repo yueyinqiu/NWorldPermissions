@@ -17,7 +17,7 @@ public class MessagesManager
     MessagesManager(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
-        reloadConfiguration();
+        // reloadConfiguration();
     }
     
     private void saveDefaultFile(File file)

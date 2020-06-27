@@ -22,7 +22,7 @@ public class UpdateChecker
         this.plugin = plugin;
     }
     
-    private static final int CURRENT_VERSION = 1;
+    private static final int CURRENT_VERSION = 2;
     public void checkAndLog()
     {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {

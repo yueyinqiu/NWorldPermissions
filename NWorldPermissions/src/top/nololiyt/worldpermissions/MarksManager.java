@@ -17,7 +17,7 @@ public class MarksManager
     MarksManager(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
-        reloadConfiguration();
+        // reloadConfiguration();
     }
     
     private File getMarksFile()
