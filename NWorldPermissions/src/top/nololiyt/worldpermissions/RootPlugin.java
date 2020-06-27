@@ -26,8 +26,8 @@ public class RootPlugin extends JavaPlugin {
         messagesManager = new MessagesManager(this);
         marksManager = new MarksManager(this);
         
-        messagesManager.reloadConfiguration();
-        marksManager.reloadConfiguration();
+        // messagesManager.reloadConfiguration();
+        // marksManager.reloadConfiguration();
     
         getCommand("nworldpermissions").setExecutor(new RootCommandExecutor(this));
     

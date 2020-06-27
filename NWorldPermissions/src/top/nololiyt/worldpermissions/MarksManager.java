@@ -17,58 +17,21 @@ public class MarksManager
     MarksManager(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
-        // reloadConfiguration();
-    }
-    
-    private File getMarksFile()
-    {
-        return new File(
-                rootPlugin.getDataFolder().getAbsolutePath(), "marks.yml");
-    }
-    
-    private void saveDefaultFile(File file)
-    {
-        InputStream res = rootPlugin.getResource("marks.yml");
-        try
-        {
-            file.getParentFile().mkdirs();
-            file.delete();
-            file.createNewFile();
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-    
-            byte[] buffer = new byte[4096];
-            for (; ; )
-            {
-                int count = res.read(buffer, 0, buffer.length);
-                fileOutputStream.write(buffer, 0, count);
-                if (count < buffer.length)
-                {
-                    break;
-                }
-            }
-    
-            fileOutputStream.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        reloadConfiguration();
     }
     
     public void reloadConfiguration()
     {
-        File file = getMarksFile();
-        if (!file.exists())
-        {
-            saveDefaultFile(file);
-        }
-        configuration = YamlConfiguration.loadConfiguration(file);
+        rootPlugin.saveResource("marks.yml", false);
+        configuration = YamlConfiguration.loadConfiguration(new File(
+                rootPlugin.getDataFolder().getAbsolutePath(), "marks.yml"));
     }
     
     public void setMark(String name, Location mark) throws IOException
     {
         configuration.set(name, mark);
-        configuration.save(getMarksFile());
+        configuration.save(new File(
+                rootPlugin.getDataFolder().getAbsolutePath(), "marks.yml"));
     }
     
     public Location getMark(String name)

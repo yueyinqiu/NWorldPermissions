@@ -17,47 +17,14 @@ public class MessagesManager
     MessagesManager(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
-        // reloadConfiguration();
-    }
-    
-    private void saveDefaultFile(File file)
-    {
-        InputStream res = rootPlugin.getResource("messages.yml");
-        try
-        {
-            file.getParentFile().mkdirs();
-            file.delete();
-            file.createNewFile();
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-    
-            byte[] buffer = new byte[4096];
-            for (; ; )
-            {
-                int count = res.read(buffer, 0, buffer.length);
-                fileOutputStream.write(buffer, 0, count);
-                if (count < buffer.length)
-                {
-                    break;
-                }
-            }
-    
-            fileOutputStream.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        reloadConfiguration();
     }
     
     public void reloadConfiguration()
     {
-        File file = new File(
-                rootPlugin.getDataFolder().getAbsolutePath(), "messages.yml");
-        if (!file.exists())
-        {
-            saveDefaultFile(file);
-        }
-        configuration = YamlConfiguration.loadConfiguration(file);
+        rootPlugin.saveResource("messages.yml", false);
+        configuration = YamlConfiguration.loadConfiguration(new File(
+                rootPlugin.getDataFolder().getAbsolutePath(), "messages.yml"));
     }
     
     public void sendMessage(DotDividedStringBuilder node, StringPair[] stringPairs, CommandSender target)
