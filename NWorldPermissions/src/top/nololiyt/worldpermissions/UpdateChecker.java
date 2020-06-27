@@ -7,6 +7,7 @@ import org.bukkit.plugin.Plugin;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -19,7 +20,6 @@ public class UpdateChecker
         this.plugin = plugin;
     }
     
-    private static final int CURRENT_VERSION = 2;
     public void checkAndLog()
     {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
@@ -27,12 +27,15 @@ public class UpdateChecker
                     "https://yueyinqiu.github.io/NWorldPermissions/version.html")
                     .openStream(); Scanner scanner = new Scanner(inputStream))
             {
-                if(scanner.hasNextInt())
+                if(scanner.hasNextBigDecimal())
                 {
-                    int ver = scanner.nextInt();
-                    if(ver > CURRENT_VERSION)
+                    BigDecimal ver = scanner.nextBigDecimal();
+                    BigDecimal current = new BigDecimal(
+                            plugin.getDescription().getVersion()
+                    );
+                    if (ver.compareTo(current) > 0)
                     {
-                        plugin.getLogger().warning("A new version available.");
+                        plugin.getLogger().warning("A new version:'" + ver.toString() + "' available.");
                     }
                 }
             }
