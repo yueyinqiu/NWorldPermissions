@@ -5,7 +5,7 @@ import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.reload.ReloadRouter;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
-import top.nololiyt.worldpermissions.commands.config.ConfigRouter;
+import top.nololiyt.worldpermissions.commands.worlds.WorldsRouter;
 import top.nololiyt.worldpermissions.commands.marks.MarksRouter;
 import top.nololiyt.worldpermissions.commands.tp.TpRouter;
 
@@ -55,8 +55,8 @@ public class RootRouter extends Router
     {
         switch (arg)
         {
-            case "config":
-                return new ConfigRouter();
+            case "worlds":
+                return new WorldsRouter();
             case "tp":
                 return new TpRouter();
             case "marks":

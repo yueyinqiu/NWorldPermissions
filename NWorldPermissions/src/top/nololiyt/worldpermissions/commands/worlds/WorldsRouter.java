@@ -1,11 +1,11 @@
-package top.nololiyt.worldpermissions.commands.config;
+package top.nololiyt.worldpermissions.commands.worlds;
 
 import top.nololiyt.worldpermissions.commands.CommandLayer;
 import top.nololiyt.worldpermissions.commands.Router;
 
-public class ConfigRouter extends Router
+public class WorldsRouter extends Router
 {
-    protected final static String layerName = "config";
+    protected final static String layerName = "worlds";
     @Override
     protected String permissionName()
     {

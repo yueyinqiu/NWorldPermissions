@@ -1,4 +1,4 @@
-package top.nololiyt.worldpermissions.commands.config;
+package top.nololiyt.worldpermissions.commands.worlds;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
@@ -9,9 +9,9 @@ import top.nololiyt.worldpermissions.commands.Executor;
 
 import java.util.List;
 
-public class AddExecutor extends Executor
+public class RemoveExecutor extends Executor
 {
-    protected final static String layerName = "add";
+    protected final static String layerName = "remove";
     
     @Override
     protected String permissionName()
@@ -40,15 +40,19 @@ public class AddExecutor extends Executor
     
         Configuration config = rootPlugin.getConfig();
         List<String> worlds = config.getStringList("controlled-worlds");
-        if (!worlds.contains(args[layer]))
+    
+        if(!worlds.remove(args[layer]))
         {
-            worlds.add(args[layer]);
+            rootPlugin.getMessagesManager().sendMessage(
+                    messageKey.append("no-such-controlled-world"), cPairs, commandSender);
         }
+        
         config.set("controlled-worlds", worlds);
+        
         rootPlugin.saveConfig();
     
         rootPlugin.getMessagesManager().sendMessage(
-                messageKey.append("completed"), cPairs,commandSender);
+                messageKey.append("completed"), cPairs, commandSender);
         return true;
     }
 }

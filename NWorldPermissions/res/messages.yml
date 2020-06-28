@@ -4,25 +4,34 @@ messages:
   help: |
     &r&3> Hello, {senderName}&r&3!
     It's the first time to use 'NWorldPermissions'? Try these commands!
-    /wp config (Permission Required: "nworldpermissions.config")
+    /wp worlds (Permission Required: "nworldpermissions.worlds")
     /wp marks (Permission Required: "nworldpermissions.marks")
     /wp tp (Permission Required: "nworldpermissions.tp")
     /wp reload (Permission Required: "nworldpermissions.reload")
   # Available Arg(s): {senderName}.
 
-  config:
+  worlds:
     help: |
       &r&3> Hello, {senderName}&r&3! You can try these commands.
       /wp config add -- To make a world controlled.
       /wp config remove -- To make a world uncontrolled.
     # Available Arg(s): {senderName}.
     add:
+      already-controlled: |
+        &r&3> Well, {senderName}&r&3, world '{worldName}' has already been controlled before.
+      # Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3> Well, {senderName}&r&3, world '{worldName}' has been controlled.
+        &r&3> Well, {senderName}&r&3, world '{worldName}' has been controlled now.
+      # Available Arg(s): {senderName}, {worldName}.
+      completed-but-no-such-world: |
+        &r&3> Well, {senderName}&r&3, world '{worldName}' has been controlled now, but actually there isn't such a world. Is there a typo?
       # Available Arg(s): {senderName}, {worldName}.
     remove:
+      no-such-controlled-world: |
+        &r&3> Well, {senderName}&r&3, world '{worldName}' hasn't been controlled before.
+      # Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3> Well, {senderName}&r&3, world '{worldName}' has been uncontrolled.
+        &r&3> Well, {senderName}&r&3, world '{worldName}' has been uncontrolled now.
       # Available Arg(s): {senderName}, {worldName}.
 
   tp:
