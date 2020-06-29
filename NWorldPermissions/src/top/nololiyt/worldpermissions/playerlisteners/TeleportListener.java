@@ -23,6 +23,10 @@ public class TeleportListener implements Listener
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent e)
     {
+        if(e.isCancelled())
+        {
+            return;
+        }
         World dest = e.getTo().getWorld();
         if (dest.equals(e.getFrom().getWorld()))
         {
