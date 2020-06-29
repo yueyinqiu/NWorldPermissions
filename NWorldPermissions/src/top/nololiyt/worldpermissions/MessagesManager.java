@@ -1,5 +1,6 @@
 package top.nololiyt.worldpermissions;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -43,8 +44,7 @@ public class MessagesManager
         result = result.trim();
         if (result.isEmpty())
             return;
-        
-        result = result.replace('&', '§');
+        result = ChatColor.translateAlternateColorCodes('&',result);
         for (StringPair pair : stringPairs)
         {
             result = result.replace(pair.getKey(), pair.getValue());
