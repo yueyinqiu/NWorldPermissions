@@ -1,7 +1,6 @@
 package top.nololiyt.worldpermissions.commands.marks;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import top.nololiyt.worldpermissions.MarksManager;
 import top.nololiyt.worldpermissions.RootPlugin;
@@ -9,7 +8,6 @@ import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 
-import java.io.File;
 import java.io.IOException;
 
 public class AddExecutor extends Executor
@@ -40,7 +38,7 @@ public class AddExecutor extends Executor
             };
     
             rootPlugin.getMessagesManager().sendMessage(
-                    messageKey.append("without-a-position"), pairs,commandSender);
+                    pairs, commandSender, messageKey.append("without-a-position"));
             return true;
         }
     
@@ -58,14 +56,14 @@ public class AddExecutor extends Executor
             if(marksManager.getMark(args[layer]) != null)
             {
                 rootPlugin.getMessagesManager().sendMessage(
-                        messageKey.append("with-occupied-name"), cPairs,sender);
+                        cPairs, sender, messageKey.append("with-occupied-name"));
                 return true;
             }
             marksManager.setMark(args[layer],sender.getLocation());
     
     
             rootPlugin.getMessagesManager().sendMessage(
-                    messageKey.append("completed"), cPairs,sender);
+                    cPairs, sender, messageKey.append("completed"));
             return true;
         }
         catch(IOException ex)
@@ -73,7 +71,7 @@ public class AddExecutor extends Executor
             ex.printStackTrace();
     
             rootPlugin.getMessagesManager().sendMessage(
-                    messageKey.append("failed"), cPairs,sender);
+                    cPairs, sender, messageKey.append("failed"));
             return true;
         }
     }

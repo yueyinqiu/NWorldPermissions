@@ -44,7 +44,7 @@ public class RemoveExecutor extends Executor
         if(!worlds.remove(args[layer]))
         {
             rootPlugin.getMessagesManager().sendMessage(
-                    messageKey.append("no-such-controlled-world"), cPairs, commandSender);
+                    cPairs, commandSender, messageKey.append("no-such-controlled-world"));
         }
         
         config.set("controlled-worlds", worlds);
@@ -52,7 +52,7 @@ public class RemoveExecutor extends Executor
         rootPlugin.saveConfig();
     
         rootPlugin.getMessagesManager().sendMessage(
-                messageKey.append("completed"), cPairs, commandSender);
+                cPairs, commandSender, messageKey.append("completed"));
         return true;
     }
 }

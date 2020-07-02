@@ -1,9 +1,10 @@
 package top.nololiyt.worldpermissions;
 
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.omg.CORBA.NVList;
+import sun.rmi.runtime.Log;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
 
@@ -23,16 +24,17 @@ public class MessagesManager
     
     public void reloadConfiguration()
     {
-        rootPlugin.saveResource("messages.yml", false);
-        configuration = YamlConfiguration.loadConfiguration(new File(
-                rootPlugin.getDataFolder().getAbsolutePath(), "messages.yml"));
+        File file = new File(rootPlugin.getDataFolder().getAbsolutePath(), "messages.yml");
+        if (!file.exists())
+            rootPlugin.saveResource("messages.yml", false);
+        configuration = YamlConfiguration.loadConfiguration(file);
     }
     
-    public void sendMessage(DotDividedStringBuilder node, StringPair[] stringPairs, CommandSender target)
+    public void sendMessage(StringPair[] stringPairs, CommandSender target, DotDividedStringBuilder node)
     {
         String key = node.toString();
         String result = configuration.getString(key);
-        
+    
         if (result == null)
         {
             rootPlugin.getLogger().severe(
@@ -40,15 +42,25 @@ public class MessagesManager
                             + "' is missing.");
             return;
         }
-        
-        result = result.trim();
+        sendMessage(stringPairs, target, result);
+    }
+    
+    public void sendMessage(StringPair[] stringPairs, CommandSender target, String message)
+    {
+        String result = message.trim();
         if (result.isEmpty())
             return;
-        result = ChatColor.translateAlternateColorCodes('&',result);
+        result = ChatColor.translateAlternateColorCodes('&', result);
         for (StringPair pair : stringPairs)
         {
             result = result.replace(pair.getKey(), pair.getValue());
         }
         target.sendMessage(result);
+    }
+    
+    public String getItem(DotDividedStringBuilder node)
+    {
+        rootPlugin.getLogger().info(node.toString());
+        return configuration.getString(node.toString());
     }
 }

@@ -37,7 +37,7 @@ public class ConfigExecutor extends Executor
         };
     
         rootPlugin.getMessagesManager().sendMessage(
-                messageKey, pairs,commandSender);
+                pairs, commandSender, messageKey);
         return true;
     }
 }

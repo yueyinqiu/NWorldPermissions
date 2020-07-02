@@ -1,14 +1,12 @@
 package top.nololiyt.worldpermissions.commands.marks;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 import top.nololiyt.worldpermissions.MarksManager;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 
-import java.io.File;
 import java.io.IOException;
 
 public class RemoveExecutor extends Executor
@@ -46,7 +44,7 @@ public class RemoveExecutor extends Executor
             if(marksManager.getMark(args[layer]) == null)
             {
                 rootPlugin.getMessagesManager().sendMessage(
-                        messageKey.append("no-such-mark"), cPairs,commandSender);
+                        cPairs, commandSender, messageKey.append("no-such-mark"));
                 return true;
             }
     
@@ -57,12 +55,12 @@ public class RemoveExecutor extends Executor
             ex.printStackTrace();
     
             rootPlugin.getMessagesManager().sendMessage(
-                    messageKey.append("failed"), cPairs,commandSender);
+                    cPairs, commandSender, messageKey.append("failed"));
             return true;
         }
     
         rootPlugin.getMessagesManager().sendMessage(
-                messageKey.append("completed"), cPairs,commandSender);
+                cPairs, commandSender, messageKey.append("completed"));
         return true;
     }
 }

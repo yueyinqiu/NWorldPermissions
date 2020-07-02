@@ -73,6 +73,7 @@ messages:
       &r&3> Hello, {senderName}&r&3! You can try these commands.
       /wp marks add <mark_name> -- To set a mark, then you can use it later.
       /wp marks remove <mark_name> -- To remove a mark.
+      /wp marks list -- To list all the marks.
     # Available Arg(s): {senderName}.
     add:
       without-a-position: |
@@ -97,6 +98,16 @@ messages:
       failed: |
         &r&3> Oh, what happened? {senderName}&r&3, a strange power has stopped me removing the mark.
       # Available Arg(s): {senderName}, {markName}.
+    list:
+      # The following three messages will get jointed together before being sent.
+      # They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+      # The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+      beginning: "&r&3> Well, {senderName}&r&3. There are the marks:\n"
+      # Available Arg(s): {senderName}.
+      separator: "\n"
+      # Available Arg(s): {senderName}.
+      ending: "\nThat's all."
+      # Available Arg(s): {senderName}.
 
   reload:
     help: |

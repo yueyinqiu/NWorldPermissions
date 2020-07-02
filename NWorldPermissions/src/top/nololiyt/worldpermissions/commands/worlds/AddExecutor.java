@@ -45,7 +45,7 @@ public class AddExecutor extends Executor
         if (worlds.contains(args[layer]))
         {
             rootPlugin.getMessagesManager().sendMessage(
-                    messageKey.append("already-controlled"), cPairs, commandSender);
+                    cPairs, commandSender, messageKey.append("already-controlled"));
             return true;
         }
         
@@ -58,13 +58,13 @@ public class AddExecutor extends Executor
             if(world.getName().equals(args[layer]))
             {
                 rootPlugin.getMessagesManager().sendMessage(
-                        messageKey.append("completed"), cPairs, commandSender);
+                        cPairs, commandSender, messageKey.append("completed"));
                 return true;
             }
         }
     
         rootPlugin.getMessagesManager().sendMessage(
-                messageKey.append("completed-but-no-such-world"), cPairs, commandSender);
+                cPairs, commandSender, messageKey.append("completed-but-no-such-world"));
         return true;
     }
 }

@@ -4,15 +4,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 public class OnlineExecutor extends Executor
@@ -52,7 +49,7 @@ public class OnlineExecutor extends Executor
         if (world == null)
         {
             rootPlugin.getMessagesManager().sendMessage(
-                    messageKey.append("no-such-world"), basePairs, commandSender);
+                    basePairs, commandSender, messageKey.append("no-such-world"));
             return true;
         }
     
@@ -60,7 +57,7 @@ public class OnlineExecutor extends Executor
         if (location == null)
         {
             rootPlugin.getMessagesManager().sendMessage(
-                    messageKey.append("no-such-mark"), basePairs, commandSender);
+                    basePairs, commandSender, messageKey.append("no-such-mark"));
             return true;
         }
     
@@ -81,13 +78,13 @@ public class OnlineExecutor extends Executor
             playersPairs[0] = StringPair.playerName(player.getDisplayName());
     
             rootPlugin.getMessagesManager().sendMessage(
-                    new DotDividedStringBuilder(
-                            "messages.to-players.when-teleported-by-tp-online.before-teleport"),
-                    playersPairs, player);
+                    playersPairs, player, new DotDividedStringBuilder(
+                            "messages.to-players.when-teleported-by-tp-online.before-teleport")
+            );
             if (!player.teleport(location))
             {
                 fCount++;
-                rootPlugin.getMessagesManager().sendMessage(messageKey, playersPairs, commandSender);
+                rootPlugin.getMessagesManager().sendMessage(playersPairs, commandSender, messageKey);
             }
             else
             {
@@ -103,7 +100,7 @@ public class OnlineExecutor extends Executor
                 StringPair.senderName(commandSender.getName())
         };
         rootPlugin.getMessagesManager().sendMessage(
-                cKey.append("completed"), cPairs, commandSender);
+                cPairs, commandSender, cKey.append("completed"));
         return true;
     }
 }

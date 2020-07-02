@@ -33,6 +33,8 @@ public class MarksRouter extends Router
                 return new AddExecutor();
             case "remove":
                 return new RemoveExecutor();
+            case "list":
+                return new ListExecutor();
             default:
                 return null;
         }

@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Set;
 
 public class MarksManager
 {
@@ -22,9 +23,10 @@ public class MarksManager
     
     public void reloadConfiguration()
     {
-        rootPlugin.saveResource("marks.yml", false);
-        configuration = YamlConfiguration.loadConfiguration(new File(
-                rootPlugin.getDataFolder().getAbsolutePath(), "marks.yml"));
+        File file = new File(rootPlugin.getDataFolder().getAbsolutePath(), "marks.yml");
+        if (!file.exists())
+            rootPlugin.saveResource("marks.yml", false);
+        configuration = YamlConfiguration.loadConfiguration(file);
     }
     
     public void setMark(String name, Location mark) throws IOException
@@ -42,5 +44,9 @@ public class MarksManager
             return null;
         }
         return (Location) oLocation;
+    }
+    public Set<String> allMarksName()
+    {
+        return configuration.getKeys(false);
     }
 }

@@ -36,7 +36,7 @@ public class MarksExecutor extends Executor
         };
     
         rootPlugin.getMessagesManager().sendMessage(
-                messageKey, pairs,commandSender);
+                pairs, commandSender, messageKey);
         return true;
     }
 }

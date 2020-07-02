@@ -53,7 +53,7 @@ public abstract class Executor implements CommandLayer
                 StringPair.senderName(commandSender.getName())
         };
     
-        rootPlugin.getMessagesManager().sendMessage(messageKey, pairs, commandSender);
+        rootPlugin.getMessagesManager().sendMessage(pairs, commandSender, messageKey);
         return true;
     }
 }
