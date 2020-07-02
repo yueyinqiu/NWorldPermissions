@@ -32,17 +32,9 @@ public class MessagesManager
     
     public void sendMessage(StringPair[] stringPairs, CommandSender target, DotDividedStringBuilder node)
     {
-        String key = node.toString();
-        String result = configuration.getString(key);
-    
-        if (result == null)
-        {
-            rootPlugin.getLogger().severe(
-                    "File 'messages.yml' is corrupted and '" + key
-                            + "' is missing.");
-            return;
-        }
-        sendMessage(stringPairs, target, result);
+        String message = getItem(node);
+        if (message != null)
+            sendMessage(stringPairs, target, message);
     }
     
     public void sendMessage(StringPair[] stringPairs, CommandSender target, String message)
@@ -60,7 +52,15 @@ public class MessagesManager
     
     public String getItem(DotDividedStringBuilder node)
     {
-        rootPlugin.getLogger().info(node.toString());
-        return configuration.getString(node.toString());
+        String key = node.toString();
+        String result = configuration.getString(key);
+    
+        if (result == null)
+        {
+            rootPlugin.getLogger().severe(
+                    "File 'messages.yml' is corrupted and '" + key
+                            + "' is missing.");
+        }
+        return result;
     }
 }

@@ -13,8 +13,9 @@ messages:
   worlds:
     help: |
       &r&3> Hello, {senderName}&r&3! You can try these commands.
-      /wp config add <world_name> -- To make a world controlled.
-      /wp config remove <world_name> -- To make a world uncontrolled.
+      /wp worlds add <world_name> -- To make a world controlled.
+      /wp worlds remove <world_name> -- To make a world uncontrolled.
+      /wp worlds list -- To list all controlled worlds.
     # Available Arg(s): {senderName}.
     add:
       already-controlled: |
@@ -33,6 +34,19 @@ messages:
       completed: |
         &r&3> Well, {senderName}&r&3, world '{worldName}' has been uncontrolled now.
       # Available Arg(s): {senderName}, {worldName}.
+    list:
+      list:
+        # The following 3 messages will get jointed together before being sent.
+        # They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        # The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3> Well, {senderName}&r&3. There are the controlled worlds:\n&l"
+        # Available Arg(s): {senderName}.
+        separator: "\n"
+        # Available Arg(s): {senderName}.
+        ending: "\n&r&3That's all."
+        # Available Arg(s): {senderName}.
+      zero-worlds-are-controlled: "\n&r&3Oh, {senderName}&r&3! There is no world having been controlled."
+      # Available Arg(s): {senderName}.
 
   tp:
     help: |
@@ -99,14 +113,17 @@ messages:
         &r&3> Oh, what happened? {senderName}&r&3, a strange power has stopped me removing the mark.
       # Available Arg(s): {senderName}, {markName}.
     list:
-      # The following three messages will get jointed together before being sent.
-      # They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
-      # The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
-      beginning: "&r&3> Well, {senderName}&r&3. There are the marks:\n"
-      # Available Arg(s): {senderName}.
-      separator: "\n"
-      # Available Arg(s): {senderName}.
-      ending: "\nThat's all."
+      list:
+        # The following 3 messages will get jointed together before being sent.
+        # They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        # The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3> Well, {senderName}&r&3. There are the marks:\n&l"
+        # Available Arg(s): {senderName}.
+        separator: "\n"
+        # Available Arg(s): {senderName}.
+        ending: "\n&r&3That's all."
+        # Available Arg(s): {senderName}.
+      zero-marks-have-been-set: "\n&r&3Oh, {senderName}&r&3! There is no mark having been set."
       # Available Arg(s): {senderName}.
 
   reload:

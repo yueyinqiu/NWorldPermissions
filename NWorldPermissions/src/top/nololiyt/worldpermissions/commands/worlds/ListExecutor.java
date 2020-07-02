@@ -1,16 +1,16 @@
-package top.nololiyt.worldpermissions.commands.marks;
+package top.nololiyt.worldpermissions.commands.worlds;
 
+import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import top.nololiyt.worldpermissions.MarksManager;
+import org.bukkit.configuration.Configuration;
 import top.nololiyt.worldpermissions.MessagesManager;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
 
-import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 
 public class ListExecutor extends Executor
 {
@@ -35,18 +35,18 @@ public class ListExecutor extends Executor
     {
         MessagesManager messagesManager = rootPlugin.getMessagesManager();
     
-        Set<String> marks = rootPlugin.getMarksManager().allMarksName();
-        if (marks.isEmpty())
+        List<String> worlds = rootPlugin.getConfig().getStringList("controlled-worlds");
+        if (worlds.isEmpty())
         {
             messagesManager.sendMessage(new StringPair[]{
                     StringPair.senderName(commandSender.getName())
-            }, commandSender, messageKey.append("zero-marks-have-been-set"));
+            }, commandSender, messageKey.append("zero-worlds-are-controlled"));
             return true;
         }
         
         StringBuilder message = new StringBuilder();
         messageKey.append("list");
-    
+        
         String beginning = messagesManager.getItem(
                 new DotDividedStringBuilder(messageKey).append("beginning"));
         if (beginning == null)
@@ -57,8 +57,7 @@ public class ListExecutor extends Executor
                 new DotDividedStringBuilder(messageKey).append("separator"));
         if (separator == null)
             return true;
-        
-        for (String name : marks)
+        for (String name : worlds)
         {
             message.append(name);
             message.append(separator);
@@ -66,7 +65,7 @@ public class ListExecutor extends Executor
     
         int ml = message.length();
         message.delete(ml - separator.length(), ml);
-        
+    
         String ending = messagesManager.getItem(messageKey.append("ending"));
         if (ending == null)
             return true;

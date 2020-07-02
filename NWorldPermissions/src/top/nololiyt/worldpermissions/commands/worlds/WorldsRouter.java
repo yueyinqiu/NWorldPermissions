@@ -6,6 +6,7 @@ import top.nololiyt.worldpermissions.commands.Router;
 public class WorldsRouter extends Router
 {
     protected final static String layerName = "worlds";
+    
     @Override
     protected String permissionName()
     {
@@ -17,6 +18,7 @@ public class WorldsRouter extends Router
     {
         return layerName;
     }
+    
     /**
      * Return the next layer matching the arg.
      * If no layer match it, please return 'null' and the help list will be sent.
@@ -33,6 +35,8 @@ public class WorldsRouter extends Router
                 return new AddExecutor();
             case "remove":
                 return new RemoveExecutor();
+            case "list":
+                return new ListExecutor();
             default:
                 return null;
         }
