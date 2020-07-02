@@ -27,7 +27,7 @@ public class UpdateChecker
                     "https://yueyinqiu.github.io/NWorldPermissions/version.html")
                     .openStream(); Scanner scanner = new Scanner(inputStream))
             {
-                if(scanner.hasNextBigDecimal())
+                if (scanner.hasNextBigDecimal())
                 {
                     BigDecimal ver = scanner.nextBigDecimal();
                     BigDecimal current = new BigDecimal(
@@ -35,7 +35,8 @@ public class UpdateChecker
                     );
                     if (ver.compareTo(current) > 0)
                     {
-                        plugin.getLogger().warning("A new version:'" + ver.toString() + "' available.");
+                        plugin.getLogger().warning("Version: '" + ver.toString() + "' available. " +
+                                "You are now using '" + current.toString() + "'.");
                     }
                 }
             }
