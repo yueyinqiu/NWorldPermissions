@@ -36,7 +36,8 @@ public class UpdateChecker
                     if (ver.compareTo(current) > 0)
                     {
                         plugin.getLogger().warning("Version: '" + ver.toString() + "' available. " +
-                                "You are now using '" + current.toString() + "'.");
+                                "You are now using '" + current.toString() + "'. " +
+                                "You may visit 'https://yueyinqiu.github.io/NWorldPermissions/download.html' to download the newer version");
                     }
                 }
             }
