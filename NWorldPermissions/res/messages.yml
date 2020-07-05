@@ -65,7 +65,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: Um, where is the mark '{markName}&r&3'?
       # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
       failed-to-teleport-someone: |
-        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 can't be teleported here. {teleportationTimes} times has been tried but {teleportedTimes} succeeded.
+        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 can't be teleported here. The player should be teleported {teleportationTimes}&r&3 times, but only {teleportedTimes} succeeded.
       # Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
       completed: |
         &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 players have been teleported for {teleportationTimes}&r&3 times, but {unteleportedCount}&r&3 haven't.

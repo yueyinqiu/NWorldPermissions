@@ -130,7 +130,7 @@ public class OnlineExecutor extends Executor
             {
                 fCount++;
                 playersFailPairs[1] = StringPair.teleportedTimes(String.valueOf(realTimes));
-                rootPlugin.getMessagesManager().sendMessage(playersPairs, commandSender, messageKey);
+                rootPlugin.getMessagesManager().sendMessage(playersFailPairs, commandSender, messageKey);
             }
             else
             {
