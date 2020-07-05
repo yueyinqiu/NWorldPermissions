@@ -1,7 +1,7 @@
 ---
 name: Bug
-about: "Something isn't working."
-title: ''
+about: "Report a problem."
+title: 'Report a problem.'
 labels: bug
 assignees: ''
 

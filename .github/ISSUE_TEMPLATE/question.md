@@ -1,7 +1,7 @@
 ---
 name: Question
-about: "Have some questions or need help."
-title: ''
+about: "Ask some questions or ask for help."
+title: 'Ask some questions or ask for help.'
 labels: question
 assignees: ''
 

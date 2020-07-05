@@ -1,7 +1,7 @@
 ---
 name: Documentation
-about: "Improvements or additions to documentation."
-title: ''
+about: "Want the documentation improved."
+title: 'Want the documentation improved.'
 labels: documentation
 assignees: ''
 

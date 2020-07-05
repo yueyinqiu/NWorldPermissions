@@ -1,7 +1,7 @@
 ---
 name: Chat
 about: "Just want to chat."
-title: ''
+title: 'Just want to chat.'
 labels: chat
 assignees: ''
 

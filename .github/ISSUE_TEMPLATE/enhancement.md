@@ -1,7 +1,7 @@
 ---
 name: Enhancement
-about: "New feature or request."
-title: ''
+about: "Request for a new feature."
+title: 'Request for a new feature.'
 labels: enhancement
 assignees: ''
 
