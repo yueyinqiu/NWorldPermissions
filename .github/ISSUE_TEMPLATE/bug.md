@@ -28,4 +28,4 @@ A clear and concise description of what you expected to happen.
  - Plugin version: [e.g. 4.22]
 
 **Additional context**
-Add any other context about the problem here.
+Add any other context here.

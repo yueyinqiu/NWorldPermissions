@@ -18,4 +18,4 @@ If you have tried something but it doesn't work as you expected, please describe
 Ex. I've tried to set [...], but it [...].
 
 **Additional context**
-Add any other context about the problem here.
+Add any other context here.

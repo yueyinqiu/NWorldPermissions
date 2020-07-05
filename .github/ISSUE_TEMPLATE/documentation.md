@@ -18,4 +18,4 @@ Ex. I've followed the page [...], but it doesn't work until I realized that [...
 Ex. Add [...], Change [...] to [...].
 
 **Additional context**
-Add any other context about the problem here.
+Add any other context here.
