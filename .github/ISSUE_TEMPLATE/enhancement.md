@@ -7,7 +7,8 @@ assignees: ''
 
 ---
 
-If applicable, add some screenshots.
+If applicable, add some screenshots.  
+Don't forget the title.
 
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is.  

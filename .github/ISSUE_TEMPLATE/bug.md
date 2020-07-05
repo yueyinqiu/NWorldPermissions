@@ -7,7 +7,8 @@ assignees: ''
 
 ---
 
-If applicable, add some screenshots.
+If applicable, add some screenshots.  
+Don't forget the title.
 
 **Describe the bug**
 A clear and concise description of what the bug is.

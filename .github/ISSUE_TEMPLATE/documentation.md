@@ -7,7 +7,8 @@ assignees: ''
 
 ---
 
-If applicable, add some screenshots.
+If applicable, add some screenshots.  
+Don't forget the title.
 
 **Have your faced a puzzle because of the documentation? Please describe.**
 A clear and concise description of what happened.  

@@ -7,7 +7,8 @@ assignees: ''
 
 ---
 
-If applicable, add some screenshots.
+If applicable, add some screenshots.  
+Don't forget the title.
 
 **Describe your question**
 A description of the question.
