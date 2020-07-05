@@ -54,22 +54,22 @@ messages:
     help: |
       &r&3[&bNWorldPermissions&3]:
       You can try these commands.
-      /wp tp online <world_name> <mark_name> -- To teleport all the online players in the specific world to a mark.
+      /wp tp online <world_name> <mark_name> [teleportation_times = 1] -- To teleport all the online players in the specific world to a mark.
       /wp tp offline <world_name> <mark_name> -- To teleport all the tracked offline players in the specific world to a mark.
     # Available Arg(s): {senderName}.
     online:
       no-such-world: |
         &r&3[&bNWorldPermissions&3]: Um, which world is '{worldName}&r&3'?
-      # Available Arg(s): {senderName}, {worldName}, {markName}.
+      # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
       no-such-mark: |
         &r&3[&bNWorldPermissions&3]: Um, where is the mark '{markName}&r&3'?
-      # Available Arg(s): {senderName}, {worldName}, {markName}.
+      # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
       failed-to-teleport-someone: |
-        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 can't be teleported here!
-      # Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}.
+        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 can't be teleported here. {teleportationTimes} times has been tried but {teleportedTimes} succeeded.
+      # Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 players have been teleported but {unteleportedCount}&r&3 haven't.
-      # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}, {unteleportedCount}.
+        &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 players have been teleported for {teleportationTimes}&r&3 times, but {unteleportedCount}&r&3 haven't.
+      # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
     offline:
       tracker-not-enabled: |
         &r&3[&bNWorldPermissions&3]: Uh, the offline players tracker isn't enabled.

@@ -51,4 +51,13 @@ public class StringPair
     {
         return new StringPair("{markName}", value);
     }
+    
+    public static StringPair teleportationTimes(String value)
+    {
+        return new StringPair("{teleportationTimes}", value);
+    }
+    public static StringPair teleportedTimes(String value)
+    {
+        return new StringPair("{teleportedTimes}", value);
+    }
 }
