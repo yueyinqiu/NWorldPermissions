@@ -40,7 +40,7 @@ public class ListExecutor extends Executor
         {
             messagesManager.sendMessage(new StringPair[]{
                     StringPair.senderName(commandSender.getName())
-            }, commandSender, messageKey.append("zero-marks-have-been-set"));
+            }, commandSender, messageKey.append("no-mark"));
             return true;
         }
         

@@ -40,7 +40,7 @@ public class ListExecutor extends Executor
         {
             messagesManager.sendMessage(new StringPair[]{
                     StringPair.senderName(commandSender.getName())
-            }, commandSender, messageKey.append("zero-worlds-are-controlled"));
+            }, commandSender, messageKey.append("no-controlled-world"));
             return true;
         }
         
