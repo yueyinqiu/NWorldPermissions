@@ -1,10 +1,7 @@
 package top.nololiyt.worldpermissions.commands.worlds;
 
-import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.Configuration;
-import top.nololiyt.worldpermissions.MessagesManager;
+import top.nololiyt.worldpermissions.configurationmanagers.MessagesManager;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;

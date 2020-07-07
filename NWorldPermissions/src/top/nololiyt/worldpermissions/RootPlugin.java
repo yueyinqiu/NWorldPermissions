@@ -2,6 +2,8 @@ package top.nololiyt.worldpermissions;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import top.nololiyt.worldpermissions.configurationmanagers.MarksManager;
+import top.nololiyt.worldpermissions.configurationmanagers.MessagesManager;
 import top.nololiyt.worldpermissions.playerlisteners.JoinAndQuitListener;
 import top.nololiyt.worldpermissions.playerlisteners.TeleportListener;
 

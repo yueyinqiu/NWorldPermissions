@@ -1,15 +1,12 @@
 package top.nololiyt.worldpermissions.commands.marks;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import top.nololiyt.worldpermissions.MarksManager;
-import top.nololiyt.worldpermissions.MessagesManager;
+import top.nololiyt.worldpermissions.configurationmanagers.MessagesManager;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
 
-import java.io.IOException;
 import java.util.Set;
 
 public class ListExecutor extends Executor
