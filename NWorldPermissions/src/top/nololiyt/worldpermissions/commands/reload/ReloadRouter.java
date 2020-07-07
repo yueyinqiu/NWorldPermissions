@@ -35,6 +35,8 @@ public class ReloadRouter extends Router
                 return new MessagesExecutor();
             case "marks":
                 return new MarksExecutor();
+            case "all":
+                return new AllExecutor();
             default:
                 return null;
         }

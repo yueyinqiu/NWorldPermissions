@@ -27,17 +27,15 @@ public class ConfigExecutor extends Executor
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
+        reload(rootPlugin, messageKey, commandSender);
+        return true;
+    }
+    
+    void reload(RootPlugin rootPlugin, DotDividedStringBuilder messageKey, CommandSender commandSender)
+    {
         rootPlugin.saveDefaultConfig();
         rootPlugin.reloadConfig();
-    
-        messageKey.append("completed");
         
-        StringPair[] pairs = new StringPair[]{
-                StringPair.senderName(commandSender.getName())
-        };
-    
-        rootPlugin.getMessagesManager().sendMessage(
-                commandSender, messageKey, pairs);
-        return true;
+        ExecutorMessagesSender.sendMessage(rootPlugin, messageKey, commandSender);
     }
 }

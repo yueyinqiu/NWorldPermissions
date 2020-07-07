@@ -137,6 +137,7 @@ messages:
       /wp reload config -- To reload file 'config.yml'.
       /wp reload messages -- To reload file 'messages.yml'.
       /wp reload marks -- To reload file 'marks.yml'.
+      /wp reload all -- To reload all the files above.
     # Available Arg(s): {senderName}.
     config:
       completed: |

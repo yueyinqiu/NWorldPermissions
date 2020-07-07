@@ -3,7 +3,6 @@ package top.nololiyt.worldpermissions.commands.reload;
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
-import top.nololiyt.worldpermissions.entities.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 
 public class MessagesExecutor extends Executor
@@ -27,16 +26,13 @@ public class MessagesExecutor extends Executor
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
-        rootPlugin.getMessagesManager().reload();
-    
-        messageKey.append("completed");
-        
-        StringPair[] pairs = new StringPair[]{
-                StringPair.senderName(commandSender.getName())
-        };
-        
-        rootPlugin.getMessagesManager().sendMessage(
-                commandSender, messageKey, pairs);
+        reload(rootPlugin, messageKey, commandSender);
         return true;
+    }
+    
+    void reload(RootPlugin rootPlugin, DotDividedStringBuilder messageKey, CommandSender commandSender)
+    {
+        rootPlugin.getMessagesManager().reload();
+        ExecutorMessagesSender.sendMessage(rootPlugin, messageKey, commandSender);
     }
 }

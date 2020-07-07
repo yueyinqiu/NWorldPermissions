@@ -2,12 +2,12 @@ package top.nololiyt.worldpermissions.commands.reload;
 
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
-import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.commands.Executor;
 
-public class MarksExecutor extends Executor
+public class AllExecutor extends Executor
 {
-    protected final static String layerName = "marks";
+    protected final static String layerName = "all";
     
     @Override
     protected String permissionName()
@@ -26,13 +26,9 @@ public class MarksExecutor extends Executor
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
-        reload(rootPlugin, messageKey, commandSender);
+        new ConfigExecutor().reload(rootPlugin,messageKey,commandSender);
+        new MarksExecutor().reload(rootPlugin,messageKey,commandSender);
+        new MessagesExecutor().reload(rootPlugin,messageKey,commandSender);
         return true;
-    }
-    
-    void reload(RootPlugin rootPlugin, DotDividedStringBuilder messageKey, CommandSender commandSender)
-    {
-        rootPlugin.getMarksManager().reload();
-        ExecutorMessagesSender.sendMessage(rootPlugin, messageKey, commandSender);
     }
 }
