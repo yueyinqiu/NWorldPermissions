@@ -44,13 +44,13 @@ public class ListExecutor extends Executor
         StringBuilder message = new StringBuilder();
         messageKey.append("list");
         
-        String beginning = messagesManager.getItem(
+        String beginning = messagesManager.getItemAndShowError(
                 new DotDividedStringBuilder(messageKey).append("beginning"));
         if (beginning == null)
             return true;
         message.append(beginning);
     
-        String separator = messagesManager.getItem(
+        String separator = messagesManager.getItemAndShowError(
                 new DotDividedStringBuilder(messageKey).append("separator"));
         if (separator == null)
             return true;
@@ -63,7 +63,7 @@ public class ListExecutor extends Executor
         int ml = message.length();
         message.delete(ml - separator.length(), ml);
     
-        String ending = messagesManager.getItem(messageKey.append("ending"));
+        String ending = messagesManager.getItemAndShowError(messageKey.append("ending"));
         if (ending == null)
             return true;
         message.append(ending);

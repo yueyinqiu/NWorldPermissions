@@ -27,7 +27,7 @@ public class MessagesExecutor extends Executor
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
-        rootPlugin.getMessagesManager().reloadConfiguration();
+        rootPlugin.getMessagesManager().reload();
     
         messageKey.append("completed");
         

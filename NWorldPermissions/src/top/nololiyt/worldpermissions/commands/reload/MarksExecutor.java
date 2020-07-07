@@ -27,7 +27,7 @@ public class MarksExecutor extends Executor
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
-        rootPlugin.getMarksManager().reloadConfiguration();
+        rootPlugin.getMarksManager().reload();
     
         messageKey.append("completed");
         
