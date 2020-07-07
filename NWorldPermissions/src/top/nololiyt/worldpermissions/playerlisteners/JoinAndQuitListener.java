@@ -52,10 +52,11 @@ public class JoinAndQuitListener implements Listener
             player.teleport(playersPosition.getPosition());
         }
     }
+    
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent e)
     {
-        if(!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled"))
+        if (!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled"))
             return;
         
         Player player = e.getPlayer();
@@ -74,6 +75,7 @@ public class JoinAndQuitListener implements Listener
 class OfflinePlayersPositionManager
 {
     private RootPlugin rootPlugin;
+    
     OfflinePlayersPositionManager(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
@@ -89,12 +91,13 @@ class OfflinePlayersPositionManager
         YamlConfiguration yamlConfiguration = YamlConfiguration
                 .loadConfiguration(file);
         Object position = yamlConfiguration.get("position");
-        if(position == null)
+        if (position == null)
             return null;
         
         boolean changed = yamlConfiguration.getBoolean("changed");
         return new OfflinePlayersPosition((Location) position, changed);
     }
+    
     void savePlayersPosition(OfflinePlayer player, OfflinePlayersPosition position) throws IOException
     {
         File file = new File(rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
