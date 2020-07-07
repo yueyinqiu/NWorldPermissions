@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
