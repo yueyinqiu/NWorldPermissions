@@ -35,7 +35,7 @@ public class UpdateChecker
                     {
                         plugin.getLogger().warning("Version: '" + latest.toString() + "' is available. " +
                                 "And you are now using '" + current.toString() + "'. " +
-                                "Visit 'https://yueyinqiu.github.io/NWorldPermissions/download' to download the newer version");
+                                "Visit 'https://yueyinqiu.github.io/NWorldPermissions/download' to download the newer version.");
                     }
                 }
             }
