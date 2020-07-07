@@ -1,6 +1,5 @@
 package top.nololiyt.worldpermissions.commands;
 
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.reload.ReloadRouter;
@@ -20,14 +19,12 @@ public class RootRouter extends Router
     }
     
     
-    public void RouteCommand(CommandSender commandSender, Command command,
-                                String label, String[] args)
+    public void RouteCommand(CommandSender commandSender, String[] args)
     {
         DotDividedStringBuilder messagesRoot = new DotDividedStringBuilder("messages");
         DotDividedStringBuilder permissionRoot = new DotDividedStringBuilder("nworldpermissions");
     
-        execute(0,rootPlugin,permissionRoot,messagesRoot,commandSender,args);
-        
+        execute(0, rootPlugin, permissionRoot, messagesRoot, commandSender, args);
     }
     
     
@@ -43,13 +40,6 @@ public class RootRouter extends Router
         return null;
     }
     
-    /**
-     * Return the next layer matching the arg.
-     * If no layer match it, please return 'null' and the help list will be sent.
-     *
-     * @param arg
-     * @return
-     */
     @Override
     protected CommandLayer nextLayer(String arg)
     {
