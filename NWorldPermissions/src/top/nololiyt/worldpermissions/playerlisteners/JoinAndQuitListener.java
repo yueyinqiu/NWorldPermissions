@@ -1,6 +1,7 @@
 package top.nololiyt.worldpermissions.playerlisteners;
 
 import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -11,6 +12,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entities.OfflinePlayersPosition;
 import top.nololiyt.worldpermissions.entities.StringPair;
 
 import java.io.File;
@@ -20,10 +22,12 @@ import java.util.List;
 public class JoinAndQuitListener implements Listener
 {
     private RootPlugin rootPlugin;
+    private OfflinePlayersPositionManager positionManager;
     
     public JoinAndQuitListener(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
+        this.positionManager = new OfflinePlayersPositionManager(rootPlugin);
     }
     
     @EventHandler
@@ -34,54 +38,72 @@ public class JoinAndQuitListener implements Listener
     
     
         Player player = e.getPlayer();
-        File file = new File(
-                rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
-        file.mkdirs();
-        file = new File(file.getAbsolutePath(), player.getUniqueId().toString() + ".yml");
-        if (!file.exists())
+        OfflinePlayersPosition playersPosition = positionManager.readPlayersPosition(player);
+    
+        if (playersPosition == null)
             return;
     
-        YamlConfiguration yamlConfiguration = YamlConfiguration
-                .loadConfiguration(file);
-        Object position = yamlConfiguration.get("position");
-        if (position == null) return;
-        Location location = (Location) position;
-    
-        int times = yamlConfiguration.getBoolean("changed") ?
+        int times = playersPosition.hasChanged() ?
                 rootPlugin.getConfig().getInt("offline-players-tracker.teleport-times.position-changed") :
                 rootPlugin.getConfig().getInt("offline-players-tracker.teleport-times.position-unchanged");
     
         for (int i = 0; i < times; i++)
         {
-            player.teleport(location);
+            player.teleport(playersPosition.getPosition());
         }
     }
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent e)
     {
         if(!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled"))
-        {
             return;
-        }
+        
         Player player = e.getPlayer();
         try
         {
-            File file = new File(
-                    rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
-            file.mkdirs();
-            file = new File(file.getAbsolutePath(), player.getUniqueId().toString() + ".yml");
-            if (!file.exists())
-                file.createNewFile();
-    
-            YamlConfiguration yamlConfiguration = YamlConfiguration
-                    .loadConfiguration(file);
-            yamlConfiguration.set("position", player.getLocation());
-            yamlConfiguration.set("changed", false);
-            yamlConfiguration.save(file);
+            positionManager.savePlayersPosition(player,
+                    new OfflinePlayersPosition(player.getLocation(), false));
         }
         catch (IOException ex)
         {
             ex.printStackTrace();
         }
+    }
+}
+
+class OfflinePlayersPositionManager
+{
+    private RootPlugin rootPlugin;
+    OfflinePlayersPositionManager(RootPlugin rootPlugin)
+    {
+        this.rootPlugin = rootPlugin;
+    }
+    
+    OfflinePlayersPosition readPlayersPosition(OfflinePlayer player)
+    {
+        File file = new File(rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
+        file = new File(file.getAbsolutePath(), player.getUniqueId().toString() + ".yml");
+        if (!file.exists())
+            return null;
+        
+        YamlConfiguration yamlConfiguration = YamlConfiguration
+                .loadConfiguration(file);
+        Object position = yamlConfiguration.get("position");
+        if(position == null)
+            return null;
+        
+        boolean changed = yamlConfiguration.getBoolean("changed");
+        return new OfflinePlayersPosition((Location) position, changed);
+    }
+    void savePlayersPosition(OfflinePlayer player, OfflinePlayersPosition position) throws IOException
+    {
+        File file = new File(rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
+        file = new File(file.getAbsolutePath(), player.getUniqueId().toString() + ".yml");
+        
+        YamlConfiguration yamlConfiguration = new YamlConfiguration();
+        yamlConfiguration.set("position", position.getPosition());
+        yamlConfiguration.set("changed", position.hasChanged());
+        
+        yamlConfiguration.save(file);
     }
 }
