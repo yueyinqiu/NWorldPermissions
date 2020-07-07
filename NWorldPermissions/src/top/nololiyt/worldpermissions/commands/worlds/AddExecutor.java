@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 
@@ -34,37 +35,47 @@ public class AddExecutor extends Executor
     {
         if (args.length - 1 != layer)
             return false;
-        
-        StringPair[] cPairs = new StringPair[]{
-                StringPair.worldName(args[layer]),
+    
+        String worldName = args[layer];
+        MessagesSender messagesSender = new MessagesSender(
+                rootPlugin.getMessagesManager(), commandSender, new StringPair[]{
+                StringPair.worldName(worldName),
                 StringPair.senderName(commandSender.getName())
-        };
+        });
     
         Configuration config = rootPlugin.getConfig();
         List<String> worlds = config.getStringList("controlled-worlds");
-        if (worlds.contains(args[layer]))
+    
+        if (worlds.contains(worldName))
         {
-            rootPlugin.getMessagesManager().sendMessage(
-                    commandSender, messageKey.append("already-controlled"), cPairs);
+            messagesSender.send(messageKey.append("already-controlled"));
             return true;
         }
-        
-        worlds.add(args[layer]);
+    
+        worlds.add(worldName);
         config.set("controlled-worlds", worlds);
         rootPlugin.saveConfig();
+    
+        if (existed(worldName))
+            messagesSender.send(messageKey.append("completed-but-no-such-world"));
         
+        messagesSender.send(messageKey.append("completed"));
+        return true;
+    }
+    
+    /**
+     * 世界是否存在（指的是是否存在，而不是是否受控）
+     * @return
+     */
+    private boolean existed(String worldName)
+    {
         for (World world : Bukkit.getWorlds())
         {
-            if(world.getName().equals(args[layer]))
+            if (world.getName().equals(worldName))
             {
-                rootPlugin.getMessagesManager().sendMessage(
-                        commandSender, messageKey.append("completed"), cPairs);
                 return true;
             }
         }
-    
-        rootPlugin.getMessagesManager().sendMessage(
-                commandSender, messageKey.append("completed-but-no-such-world"), cPairs);
-        return true;
+        return false;
     }
 }
