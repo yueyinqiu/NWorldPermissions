@@ -4,9 +4,7 @@ import jdk.internal.util.xml.impl.ReaderUTF8;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Scanner;
@@ -29,15 +27,16 @@ public class UpdateChecker
             {
                 if (scanner.hasNextBigDecimal())
                 {
-                    BigDecimal ver = scanner.nextBigDecimal();
+                    BigDecimal latest = scanner.nextBigDecimal();
                     BigDecimal current = new BigDecimal(
                             plugin.getDescription().getVersion()
                     );
-                    if (ver.compareTo(current) > 0)
+                    
+                    if (latest.compareTo(current) > 0)
                     {
-                        plugin.getLogger().warning("Version: '" + ver.toString() + "' available. " +
-                                "You are now using '" + current.toString() + "'. " +
-                                "You may visit 'https://yueyinqiu.github.io/NWorldPermissions/download.html' to download the newer version");
+                        plugin.getLogger().warning("Version: '" + latest.toString() + "' is available. " +
+                                "And you are now using '" + current.toString() + "'. " +
+                                "Visit 'https://yueyinqiu.github.io/NWorldPermissions/download' to download the newer version");
                     }
                 }
             }
@@ -47,7 +46,7 @@ public class UpdateChecker
             }
         });
     }
-    
+    /*
     private String readToEnd(InputStream inputStream)
     {
         Scanner scanner = new Scanner(inputStream);
@@ -58,4 +57,5 @@ public class UpdateChecker
         }
         return stringBuilder.toString();
     }
+    */
 }
