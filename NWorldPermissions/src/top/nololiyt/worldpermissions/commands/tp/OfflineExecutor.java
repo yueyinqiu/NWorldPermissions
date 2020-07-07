@@ -50,7 +50,7 @@ public class OfflineExecutor extends Executor
                 rootPlugin.getConfig().getBoolean("offline-players-tracker.record-only"))
         {
             rootPlugin.getMessagesManager().sendMessage(
-                    basePairs, commandSender, messageKey.append("tracker-not-enabled"));
+                    commandSender, messageKey.append("tracker-not-enabled"), basePairs);
             return true;
         }
         
@@ -58,7 +58,7 @@ public class OfflineExecutor extends Executor
         if (world == null)
         {
             rootPlugin.getMessagesManager().sendMessage(
-                    basePairs, commandSender, messageKey.append("no-such-world"));
+                    commandSender, messageKey.append("no-such-world"), basePairs);
             return true;
         }
     
@@ -66,7 +66,7 @@ public class OfflineExecutor extends Executor
         if (location == null)
         {
           rootPlugin.getMessagesManager().sendMessage(
-                  basePairs, commandSender, messageKey.append("no-such-mark"));
+                  commandSender, messageKey.append("no-such-mark"), basePairs);
             return true;
         }
     
@@ -101,7 +101,7 @@ public class OfflineExecutor extends Executor
                 StringPair.senderName(commandSender.getName())
         };
         rootPlugin.getMessagesManager().sendMessage(
-                cPairs, commandSender, messageKey.append("completed"));
+                commandSender, messageKey.append("completed"), cPairs);
         return true;
     }
 }

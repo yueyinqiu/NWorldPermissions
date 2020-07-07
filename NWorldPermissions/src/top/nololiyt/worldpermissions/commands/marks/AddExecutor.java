@@ -38,7 +38,7 @@ public class AddExecutor extends Executor
             };
     
             rootPlugin.getMessagesManager().sendMessage(
-                    pairs, commandSender, messageKey.append("without-a-position"));
+                    commandSender, messageKey.append("without-a-position"), pairs);
             return true;
         }
     
@@ -56,14 +56,14 @@ public class AddExecutor extends Executor
             if(marksManager.getMark(args[layer]) != null)
             {
                 rootPlugin.getMessagesManager().sendMessage(
-                        cPairs, sender, messageKey.append("with-occupied-name"));
+                        sender, messageKey.append("with-occupied-name"), cPairs);
                 return true;
             }
             marksManager.setMark(args[layer],sender.getLocation());
     
     
             rootPlugin.getMessagesManager().sendMessage(
-                    cPairs, sender, messageKey.append("completed"));
+                    sender, messageKey.append("completed"), cPairs);
             return true;
         }
         catch(IOException ex)
@@ -71,7 +71,7 @@ public class AddExecutor extends Executor
             ex.printStackTrace();
     
             rootPlugin.getMessagesManager().sendMessage(
-                    cPairs, sender, messageKey.append("failed"));
+                    sender, messageKey.append("failed"), cPairs);
             return true;
         }
     }

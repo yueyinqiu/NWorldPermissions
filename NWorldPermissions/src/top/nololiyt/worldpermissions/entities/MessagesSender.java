@@ -17,10 +17,10 @@ public class MessagesSender
     }
     public void send(String message)
     {
-        messagesManager.sendMessage(args, target, message);
+        messagesManager.sendMessage(target, message, args);
     }
-    public void send(DotDividedStringBuilder message)
+    public void send(DotDividedStringBuilder messageKey)
     {
-        messagesManager.sendMessage(args, target, message);
+        messagesManager.sendMessage(target, messageKey, args);
     }
 }

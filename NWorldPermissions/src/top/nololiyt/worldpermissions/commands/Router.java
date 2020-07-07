@@ -70,7 +70,7 @@ public abstract class Router implements CommandLayer
         };
         
         rootPlugin.getMessagesManager().sendMessage(
-                pairs, commandSender, messageKey);
+                commandSender, messageKey, pairs);
         return true;
     }
 }

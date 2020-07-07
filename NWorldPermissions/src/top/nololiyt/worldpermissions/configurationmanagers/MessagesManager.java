@@ -33,20 +33,21 @@ public class MessagesManager extends ConfigurationManager
         }
         return result;
     }
-    public void sendMessage(StringPair[] stringPairs, CommandSender target, DotDividedStringBuilder node)
+    
+    public void sendMessage(CommandSender target, DotDividedStringBuilder messageKey, StringPair[] args)
     {
-        String message = getItemAndShowError(node);
+        String message = getItemAndShowError(messageKey);
         if (message != null)
-            sendMessage(stringPairs, target, message);
+            sendMessage(target, message, args);
     }
     
-    public void sendMessage(StringPair[] stringPairs, CommandSender target, String message)
+    public void sendMessage(CommandSender target, String message, StringPair[] args)
     {
         String result = message.trim();
         if (result.isEmpty())
             return;
         result = ChatColor.translateAlternateColorCodes('&', result);
-        for (StringPair pair : stringPairs)
+        for (StringPair pair : args)
         {
             result = result.replace(pair.getKey(), pair.getValue());
         }

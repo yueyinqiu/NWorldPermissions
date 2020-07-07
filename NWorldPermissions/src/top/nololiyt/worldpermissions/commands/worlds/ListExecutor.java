@@ -35,9 +35,9 @@ public class ListExecutor extends Executor
         List<String> worlds = rootPlugin.getConfig().getStringList("controlled-worlds");
         if (worlds.isEmpty())
         {
-            messagesManager.sendMessage(new StringPair[]{
+            messagesManager.sendMessage(commandSender, messageKey.append("no-controlled-world"), new StringPair[]{
                     StringPair.senderName(commandSender.getName())
-            }, commandSender, messageKey.append("no-controlled-world"));
+            });
             return true;
         }
         
@@ -68,9 +68,9 @@ public class ListExecutor extends Executor
             return true;
         message.append(ending);
         
-        messagesManager.sendMessage(new StringPair[]{
+        messagesManager.sendMessage(commandSender, message.toString(), new StringPair[]{
                 StringPair.senderName(commandSender.getName())
-        }, commandSender, message.toString());
+        });
         return true;
     }
 }

@@ -5,14 +5,11 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.TraderLlama;
-import sun.util.resources.cldr.yav.LocaleNames_yav;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entities.StringPair;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 public class OnlineExecutor extends Executor
@@ -76,7 +73,7 @@ public class OnlineExecutor extends Executor
         if (world == null)
         {
             rootPlugin.getMessagesManager().sendMessage(
-                    basePairs, commandSender, messageKey.append("no-such-world"));
+                    commandSender, messageKey.append("no-such-world"), basePairs);
             return true;
         }
     
@@ -84,7 +81,7 @@ public class OnlineExecutor extends Executor
         if (location == null)
         {
             rootPlugin.getMessagesManager().sendMessage(
-                    basePairs, commandSender, messageKey.append("no-such-mark"));
+                    commandSender, messageKey.append("no-such-mark"), basePairs);
             return true;
         }
         
@@ -116,8 +113,8 @@ public class OnlineExecutor extends Executor
     
     
             rootPlugin.getMessagesManager().sendMessage(
-                    playersPairs, player, new DotDividedStringBuilder(
-                            "messages.to-players.when-teleported-by-tp-online.before-teleport")
+                    player, new DotDividedStringBuilder(
+                            "messages.to-players.when-teleported-by-tp-online.before-teleport"), playersPairs
             );
     
             int realTimes = 0;
@@ -130,7 +127,7 @@ public class OnlineExecutor extends Executor
             {
                 fCount++;
                 playersFailPairs[1] = StringPair.teleportedTimes(String.valueOf(realTimes));
-                rootPlugin.getMessagesManager().sendMessage(playersFailPairs, commandSender, messageKey);
+                rootPlugin.getMessagesManager().sendMessage(commandSender, messageKey, playersFailPairs);
             }
             else
             {
@@ -147,7 +144,7 @@ public class OnlineExecutor extends Executor
                 StringPair.teleportationTimes(sTimes)
         };
         rootPlugin.getMessagesManager().sendMessage(
-                cPairs, commandSender, cKey.append("completed"));
+                commandSender, cKey.append("completed"), cPairs);
         return true;
     }
 }

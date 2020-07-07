@@ -35,9 +35,9 @@ public class ListExecutor extends Executor
         Set<String> marks = rootPlugin.getMarksManager().allMarksName();
         if (marks.isEmpty())
         {
-            messagesManager.sendMessage(new StringPair[]{
+            messagesManager.sendMessage(commandSender, messageKey.append("no-mark"), new StringPair[]{
                     StringPair.senderName(commandSender.getName())
-            }, commandSender, messageKey.append("no-mark"));
+            });
             return true;
         }
         
@@ -69,9 +69,9 @@ public class ListExecutor extends Executor
             return true;
         message.append(ending);
         
-        messagesManager.sendMessage(new StringPair[]{
+        messagesManager.sendMessage(commandSender, message.toString(), new StringPair[]{
                 StringPair.senderName(commandSender.getName())
-        }, commandSender, message.toString());
+        });
         return true;
     }
 }
