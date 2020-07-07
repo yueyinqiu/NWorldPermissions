@@ -2,7 +2,7 @@ package top.nololiyt.worldpermissions.commands;
 
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
-import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 
 public interface CommandLayer
 {

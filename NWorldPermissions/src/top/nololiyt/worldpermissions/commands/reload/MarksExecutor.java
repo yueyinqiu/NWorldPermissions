@@ -3,7 +3,7 @@ package top.nololiyt.worldpermissions.commands.reload;
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
-import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 
 public class MarksExecutor extends Executor
 {

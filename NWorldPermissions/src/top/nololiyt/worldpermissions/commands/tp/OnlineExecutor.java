@@ -7,8 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
-import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
-import top.nololiyt.worldpermissions.entities.StringPair;
+import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
 import java.util.List;
 

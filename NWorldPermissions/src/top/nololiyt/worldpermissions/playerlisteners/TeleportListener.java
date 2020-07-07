@@ -6,9 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import top.nololiyt.worldpermissions.RootPlugin;
-import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
-import top.nololiyt.worldpermissions.entities.MessagesSender;
-import top.nololiyt.worldpermissions.entities.StringPair;
+import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
+import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
 public class TeleportListener implements Listener
 {

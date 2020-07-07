@@ -1,4 +1,4 @@
-package top.nololiyt.worldpermissions.entities;
+package top.nololiyt.worldpermissions.entitiesandtools;
 
 public class DotDividedStringBuilder
 {

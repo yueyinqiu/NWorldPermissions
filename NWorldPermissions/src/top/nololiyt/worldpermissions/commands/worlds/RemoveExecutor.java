@@ -3,8 +3,8 @@ package top.nololiyt.worldpermissions.commands.worlds;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
 import top.nololiyt.worldpermissions.RootPlugin;
-import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
-import top.nololiyt.worldpermissions.entities.StringPair;
+import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 
 import java.util.List;

@@ -2,22 +2,17 @@ package top.nololiyt.worldpermissions.playerlisteners;
 
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
 import top.nololiyt.worldpermissions.RootPlugin;
-import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
-import top.nololiyt.worldpermissions.entities.OfflinePlayersPosition;
-import top.nololiyt.worldpermissions.entities.StringPair;
+import top.nololiyt.worldpermissions.entitiesandtools.OfflinePlayersPosition;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 public class JoinAndQuitListener implements Listener
 {

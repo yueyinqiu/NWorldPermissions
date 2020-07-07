@@ -2,8 +2,8 @@ package top.nololiyt.worldpermissions.commands.reload;
 
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
-import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
-import top.nololiyt.worldpermissions.entities.StringPair;
+import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
 public class ExecutorMessagesSender
 {

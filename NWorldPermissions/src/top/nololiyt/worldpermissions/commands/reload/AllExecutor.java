@@ -2,7 +2,7 @@ package top.nololiyt.worldpermissions.commands.reload;
 
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
-import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.commands.Executor;
 
 public class AllExecutor extends Executor
