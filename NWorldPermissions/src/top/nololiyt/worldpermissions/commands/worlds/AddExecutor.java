@@ -57,9 +57,9 @@ public class AddExecutor extends Executor
         rootPlugin.saveConfig();
     
         if (existed(worldName))
-            messagesSender.send(messageKey.append("completed-but-no-such-world"));
+            messagesSender.send(messageKey.append("completed"));
         
-        messagesSender.send(messageKey.append("completed"));
+        messagesSender.send(messageKey.append("completed-but-no-such-world"));
         return true;
     }
     
