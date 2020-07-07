@@ -5,6 +5,7 @@ import top.nololiyt.worldpermissions.configurationmanagers.MessagesManager;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
 import java.util.Set;
@@ -31,48 +32,30 @@ public class ListExecutor extends Executor
                           String[] args)
     {
         MessagesManager messagesManager = rootPlugin.getMessagesManager();
+        MessagesSender messagesSender = new MessagesSender(messagesManager,
+                commandSender, new StringPair[]{
+                StringPair.senderName(commandSender.getName())
+        });
     
         Set<String> marks = rootPlugin.getMarksManager().allMarksName();
         if (marks.isEmpty())
         {
-            messagesManager.sendMessage(commandSender, messageKey.append("no-mark"), new StringPair[]{
-                    StringPair.senderName(commandSender.getName())
-            });
+            messagesSender.send(messageKey.append("no-mark"));
             return true;
         }
-        
-        StringBuilder message = new StringBuilder();
         messageKey.append("list");
     
-        String beginning = messagesManager.getItemAndShowError(
-                new DotDividedStringBuilder(messageKey).append("beginning"));
-        if (beginning == null)
-            return true;
-        message.append(beginning);
-    
-        String separator = messagesManager.getItemAndShowError(
-                new DotDividedStringBuilder(messageKey).append("separator"));
-        if (separator == null)
-            return true;
-        
-        for (String name : marks)
-        {
-            message.append(name);
-            message.append(separator);
-        }
-    
-        int ml = message.length();
-        message.delete(ml - separator.length(), ml);
-        
-        String ending = messagesManager.getItemAndShowError(messageKey.append("ending"));
-        if (ending == null)
-            return true;
-        message.append(ending);
-        
-        messagesManager.sendMessage(commandSender, message.toString(), new StringPair[]{
-                StringPair.senderName(commandSender.getName())
-        });
+        String beginning = getMessageItem(messagesManager, messageKey, "beginning");
+        String separator = getMessageItem(messagesManager, messageKey, "separator");
+        String ending = getMessageItem(messagesManager, messageKey, "separator");
+        messagesSender.sendJointed(beginning, separator, ending, marks);
         return true;
     }
     
+    private String getMessageItem(MessagesManager messagesManager,
+                                  DotDividedStringBuilder messageKey, String nodeName)
+    {
+        return messagesManager.getItemAndShowError(
+                new DotDividedStringBuilder(messageKey).append(nodeName));
+    }
 }
