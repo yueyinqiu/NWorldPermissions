@@ -20,7 +20,7 @@ public class RootCommandExecutor implements CommandExecutor
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args)
     {
-        router.RouteCommand(commandSender, command, label, args);
+        router.RouteCommand(commandSender, args);
         return true;
     }
 }
