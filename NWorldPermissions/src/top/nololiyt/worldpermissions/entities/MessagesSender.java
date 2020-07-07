@@ -6,8 +6,39 @@ import top.nololiyt.worldpermissions.configurationmanagers.MessagesManager;
 public class MessagesSender
 {
     private CommandSender target;
+    
+    public CommandSender getTarget()
+    {
+        return target;
+    }
+    
+    public void setTarget(CommandSender target)
+    {
+        this.target = target;
+    }
+    
     private StringPair[] args;
+    public StringPair[] getArgs()
+    {
+        return args;
+    }
+    
+    public void setArgs(StringPair[] args)
+    {
+        this.args = args;
+    }
+    
     private MessagesManager messagesManager;
+    public MessagesManager getMessagesManager()
+    {
+        return messagesManager;
+    }
+    
+    public void setMessagesManager(MessagesManager messagesManager)
+    {
+        this.messagesManager = messagesManager;
+    }
+    
     
     public MessagesSender(MessagesManager messagesManager, CommandSender target, StringPair[] args)
     {
