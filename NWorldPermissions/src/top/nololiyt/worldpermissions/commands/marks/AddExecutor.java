@@ -1,10 +1,12 @@
 package top.nololiyt.worldpermissions.commands.marks;
 
+import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import top.nololiyt.worldpermissions.configurationmanagers.MarksManager;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entities.MessagesSender;
 import top.nololiyt.worldpermissions.entities.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 
@@ -31,48 +33,54 @@ public class AddExecutor extends Executor
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
+        MessagesSender messagesSender = new MessagesSender(rootPlugin.getMessagesManager(),
+                commandSender, null);
+    
         if (!(commandSender instanceof Player))
         {
-            StringPair[] pairs = new StringPair[]{
+            messagesSender.setArgs(new StringPair[]{
                     StringPair.senderName(commandSender.getName()),
-            };
-    
-            rootPlugin.getMessagesManager().sendMessage(
-                    commandSender, messageKey.append("without-a-position"), pairs);
+            });
+            messagesSender.send(messageKey.append("without-a-position"));
             return true;
         }
     
         if (args.length - 1 != layer)
             return false;
     
-        Player sender = ((Player) commandSender);
-        StringPair[] cPairs = new StringPair[]{
-                StringPair.markName(args[layer]),
-                StringPair.senderName(sender.getDisplayName())
-        };
+        Player player = (Player) commandSender;
+    
+        String markName = args[layer];
+    
+        messagesSender.setArgs(new StringPair[]{
+                StringPair.markName(markName),
+                StringPair.senderName(player.getDisplayName())
+        });
         try
         {
-            MarksManager marksManager = rootPlugin.getMarksManager();
-            if(marksManager.getMark(args[layer]) != null)
-            {
-                rootPlugin.getMessagesManager().sendMessage(
-                        sender, messageKey.append("with-occupied-name"), cPairs);
-                return true;
-            }
-            marksManager.setMark(args[layer],sender.getLocation());
-    
-    
-            rootPlugin.getMessagesManager().sendMessage(
-                    sender, messageKey.append("completed"), cPairs);
-            return true;
+            addMark(rootPlugin.getMarksManager(), markName,
+                    player.getLocation(), messagesSender,
+                    messageKey);
         }
-        catch(IOException ex)
+        catch (IOException ex)
         {
             ex.printStackTrace();
-    
-            rootPlugin.getMessagesManager().sendMessage(
-                    sender, messageKey.append("failed"), cPairs);
-            return true;
+            messagesSender.send(messageKey.append("failed"));
         }
+        return true;
+    }
+    
+    private void addMark(MarksManager marksManager, String markName, Location location,
+                         MessagesSender messagesSender, DotDividedStringBuilder messageKey)
+            throws IOException
+    {
+        if (marksManager.getMark(markName) != null)
+        {
+            messagesSender.send(messageKey.append("with-occupied-name"));
+            return;
+        }
+    
+        marksManager.setMark(markName, location);
+        messagesSender.send(messageKey.append("completed"));
     }
 }
