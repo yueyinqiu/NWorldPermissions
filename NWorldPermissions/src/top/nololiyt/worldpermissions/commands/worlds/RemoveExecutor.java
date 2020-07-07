@@ -4,6 +4,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 
@@ -33,26 +34,28 @@ public class RemoveExecutor extends Executor
         if (args.length - 1 != layer)
             return false;
         
-        StringPair[] cPairs = new StringPair[]{
-                StringPair.worldName(args[layer]),
+        String worldName = args[layer];
+    
+        MessagesSender messagesSender = new MessagesSender(rootPlugin.getMessagesManager(),
+                commandSender, new StringPair[]{
+                StringPair.worldName(worldName),
                 StringPair.senderName(commandSender.getName())
-        };
+        });
     
         Configuration config = rootPlugin.getConfig();
         List<String> worlds = config.getStringList("controlled-worlds");
     
-        if(!worlds.remove(args[layer]))
+        if (!worlds.remove(worldName))
         {
-            rootPlugin.getMessagesManager().sendMessage(
-                    commandSender, messageKey.append("no-such-controlled-world"), cPairs);
+            messagesSender.send(messageKey.append("no-such-controlled-world"));
+            return true;
         }
         
         config.set("controlled-worlds", worlds);
         
         rootPlugin.saveConfig();
     
-        rootPlugin.getMessagesManager().sendMessage(
-                commandSender, messageKey.append("completed"), cPairs);
+        messagesSender.send(messageKey.append("completed"));
         return true;
     }
 }
