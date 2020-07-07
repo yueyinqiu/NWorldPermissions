@@ -7,6 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
+import top.nololiyt.worldpermissions.entitiesandtools.OfflinePlayersPosition;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 
@@ -39,69 +41,71 @@ public class OfflineExecutor extends Executor
     
         String worldName = args[layer];
         String markName = args[layer + 1];
-        
-        StringPair[] basePairs = new StringPair[]{
+    
+        MessagesSender messagesSender = new MessagesSender(rootPlugin.getMessagesManager(),
+                commandSender, new StringPair[]{
                 StringPair.markName(markName),
                 StringPair.worldName(worldName),
                 StringPair.senderName(commandSender.getName())
-        };
-        
+        });
+    
         if ((!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled")) ||
                 rootPlugin.getConfig().getBoolean("offline-players-tracker.record-only"))
         {
-            rootPlugin.getMessagesManager().sendMessage(
-                    commandSender, messageKey.append("tracker-not-enabled"), basePairs);
+            messagesSender.send("tracker-not-enabled");
             return true;
         }
-        
+    
         World world = Bukkit.getWorld(args[layer]);
         if (world == null)
         {
-            rootPlugin.getMessagesManager().sendMessage(
-                    commandSender, messageKey.append("no-such-world"), basePairs);
+            messagesSender.send("no-such-world");
             return true;
         }
     
         Location location = rootPlugin.getMarksManager().getMark(markName);
         if (location == null)
         {
-          rootPlugin.getMessagesManager().sendMessage(
-                  commandSender, messageKey.append("no-such-mark"), basePairs);
+            messagesSender.send("no-such-mark");
             return true;
         }
-    
-        File dir = new File(
-                rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
-        dir.mkdirs();
-    
-        int count = 0;
-        for (File file : dir.listFiles())
-        {
-            YamlConfiguration configuration =
-                    YamlConfiguration.loadConfiguration(file);
-            if (configuration.getLocation("position").getWorld().equals(world))
-            {
-                configuration.set("position", location);
-                configuration.set("changed", true);
-                try
-                {
-                    configuration.save(file);
-                    count++;
-                }
-                catch (IOException ex)
-                {
-                    ex.printStackTrace();
-                }
-            }
-        }
-        StringPair[] cPairs = new StringPair[]{
+        
+        long count = setPosition(
+                new File(rootPlugin.getDataFolder().getAbsolutePath(), "playersData"),
+                world, location);
+        
+        messagesSender.setArgs(new StringPair[]{
                 StringPair.teleportedCount(String.valueOf(count)),
                 StringPair.markName(markName),
                 StringPair.worldName(worldName),
                 StringPair.senderName(commandSender.getName())
-        };
-        rootPlugin.getMessagesManager().sendMessage(
-                commandSender, messageKey.append("completed"), cPairs);
+        });
+        messagesSender.send(messageKey.append("completed"));
         return true;
+    }
+    
+    private long setPosition(File dir, World world, Location mark)
+    {
+        dir.mkdirs();
+        long count = 0;
+        for (File file : dir.listFiles())
+        {
+            OfflinePlayersPosition position = OfflinePlayersPosition.fromFile(file);
+            if (!position.getPosition().getWorld().equals(world))
+            {
+                continue;
+            }
+            position = new OfflinePlayersPosition(mark, true);
+            try
+            {
+                position.saveTo(file);
+                count++;
+            }
+            catch (IOException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+        return count;
     }
 }

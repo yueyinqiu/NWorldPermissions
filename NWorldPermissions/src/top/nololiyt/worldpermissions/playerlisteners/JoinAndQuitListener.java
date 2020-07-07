@@ -1,8 +1,6 @@
 package top.nololiyt.worldpermissions.playerlisteners;
 
-import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -80,17 +78,8 @@ class OfflinePlayersPositionManager
     {
         File file = new File(rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
         file = new File(file.getAbsolutePath(), player.getUniqueId().toString() + ".yml");
-        if (!file.exists())
-            return null;
-        
-        YamlConfiguration yamlConfiguration = YamlConfiguration
-                .loadConfiguration(file);
-        Object position = yamlConfiguration.get("position");
-        if (position == null)
-            return null;
-        
-        boolean changed = yamlConfiguration.getBoolean("changed");
-        return new OfflinePlayersPosition((Location) position, changed);
+    
+        return OfflinePlayersPosition.fromFile(file);
     }
     
     void savePlayersPosition(OfflinePlayer player, OfflinePlayersPosition position) throws IOException
@@ -98,10 +87,6 @@ class OfflinePlayersPositionManager
         File file = new File(rootPlugin.getDataFolder().getAbsolutePath(), "playersData");
         file = new File(file.getAbsolutePath(), player.getUniqueId().toString() + ".yml");
         
-        YamlConfiguration yamlConfiguration = new YamlConfiguration();
-        yamlConfiguration.set("position", position.getPosition());
-        yamlConfiguration.set("changed", position.hasChanged());
-        
-        yamlConfiguration.save(file);
+        position.saveTo(file);
     }
 }
