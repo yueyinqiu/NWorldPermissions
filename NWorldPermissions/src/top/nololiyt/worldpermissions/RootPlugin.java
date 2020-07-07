@@ -1,12 +1,13 @@
 package top.nololiyt.worldpermissions;
 
-
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.nololiyt.worldpermissions.playerlisteners.JoinAndQuitListener;
 import top.nololiyt.worldpermissions.playerlisteners.TeleportListener;
 
-public class RootPlugin extends JavaPlugin {
+public class RootPlugin extends JavaPlugin
+{
+    
     private MessagesManager messagesManager;
     
     public MessagesManager getMessagesManager()
@@ -16,13 +17,17 @@ public class RootPlugin extends JavaPlugin {
     
     
     private MarksManager marksManager;
+    
     public MarksManager getMarksManager()
     {
         return marksManager;
     }
+    
     @Override
-    public void onEnable() {
+    public void onEnable()
+    {
         saveDefaultConfig();
+        
         messagesManager = new MessagesManager(this);
         marksManager = new MarksManager(this);
         

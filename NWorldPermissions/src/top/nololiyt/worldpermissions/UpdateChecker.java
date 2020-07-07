@@ -1,6 +1,5 @@
 package top.nololiyt.worldpermissions;
 
-import jdk.internal.util.xml.impl.ReaderUTF8;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
