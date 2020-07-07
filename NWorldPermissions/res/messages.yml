@@ -154,11 +154,11 @@ messages:
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |
-        &r&3[&bNWorldPermissions&3]: You've felt a strange power when teleporting, but it doesn't work for you.
-      # Available Arg(s): {playerName}.
+        &r&3[&bNWorldPermissions&3]: You've felt a strange power when teleporting to {worldName}&r&3, but it doesn't work for you.
+      # Available Arg(s): {playerName}, {worldName}.
       denied: |
         &r&3[&bNWorldPermissions&3]: A strange power have stopped your teleportation!
-      # Available Arg(s): {playerName}.
+      # Available Arg(s): {playerName}, {worldName}.
 
     when-teleported-by-tp-online:
       before-teleport: |

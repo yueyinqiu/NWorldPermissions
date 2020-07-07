@@ -7,9 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entities.DotDividedStringBuilder;
+import top.nololiyt.worldpermissions.entities.MessagesSender;
 import top.nololiyt.worldpermissions.entities.StringPair;
-
-import java.util.List;
 
 public class TeleportListener implements Listener
 {
@@ -23,49 +22,46 @@ public class TeleportListener implements Listener
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent e)
     {
-        if(e.isCancelled())
-        {
+        if (e.isCancelled())
             return;
-        }
-        World dest = e.getTo().getWorld();
-        if (dest.equals(e.getFrom().getWorld()))
-        {
+    
+        World destWorld = e.getTo().getWorld();
+    
+        if (destWorld.equals(e.getFrom().getWorld()))
             return;
-        }
-        
-        String destName = dest.getName();
-        
+    
+        String destWorldName = destWorld.getName();
+    
+        if (!worldIsControlled(destWorldName))
+            return;
+    
         Player player = e.getPlayer();
-        
-        if (!worldIsControlled(dest))
+        MessagesSender messagesSender = createMessagesSender(player, destWorldName);
+    
+        if (player.hasPermission("nworldpermissions.forfreeto." + destWorldName))
         {
+            messagesSender.send(new DotDividedStringBuilder(
+                    "messages.to-players.when-teleport-to-controlled-worlds.teleported"));
             return;
         }
-        
-        StringPair[] pairs = new StringPair[]{
-                StringPair.playerName(player.getDisplayName())
-        };
-        
-        if (player.hasPermission("nworldpermissions.forfreeto." + destName))
-        {
-            rootPlugin.getMessagesManager().sendMessage(
-                    pairs, player, new DotDividedStringBuilder(
-                            "messages.to-players.when-teleport-to-controlled-worlds.teleported")
-            );
-            return;
-        }
-        
+    
         e.setCancelled(true);
-        rootPlugin.getMessagesManager().sendMessage(
-                pairs, player, new DotDividedStringBuilder(
-                        "messages.to-players.when-teleport-to-controlled-worlds.denied"
-                ));
+        messagesSender.send(new DotDividedStringBuilder(
+                "messages.to-players.when-teleport-to-controlled-worlds.denied"));
     }
     
-    private boolean worldIsControlled(World world)
+    private MessagesSender createMessagesSender(Player player, String destWorldName)
     {
-        List<String> worlds = rootPlugin.getConfig().getStringList("controlled-worlds");
-        String destName = world.getName();
-        return worlds.contains(destName);
+        StringPair[] pairs = new StringPair[]{
+                StringPair.playerName(player.getDisplayName()),
+                StringPair.worldName(destWorldName)
+        };
+        return new MessagesSender(rootPlugin.getMessagesManager(), player, pairs);
+    }
+    
+    private boolean worldIsControlled(String worldName)
+    {
+        return rootPlugin.getConfig().getStringList("controlled-worlds")
+                .contains(worldName);
     }
 }
