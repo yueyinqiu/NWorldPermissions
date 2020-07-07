@@ -18,7 +18,7 @@ public class AllExecutor extends Executor
     @Override
     protected String messageKey()
     {
-        return layerName;
+        return null;
     }
     
     @Override
@@ -26,9 +26,14 @@ public class AllExecutor extends Executor
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
-        new ConfigExecutor().reload(rootPlugin,messageKey,commandSender);
-        new MarksExecutor().reload(rootPlugin,messageKey,commandSender);
-        new MessagesExecutor().reload(rootPlugin,messageKey,commandSender);
+        ReloadExecutor[] executors = new ReloadExecutor[]{
+                new ConfigExecutor(), new MarksExecutor(), new MessagesExecutor()
+        };
+        
+        for (ReloadExecutor executor : executors)
+        {
+            executor.run(rootPlugin, messageKey, commandSender);
+        }
         return true;
     }
 }

@@ -5,7 +5,7 @@ import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 
-public class MarksExecutor extends Executor
+public class MarksExecutor extends ReloadExecutor
 {
     protected final static String layerName = "marks";
     
@@ -22,17 +22,8 @@ public class MarksExecutor extends Executor
     }
     
     @Override
-    protected boolean run(int layer, RootPlugin rootPlugin, DotDividedStringBuilder permission,
-                          DotDividedStringBuilder messageKey, CommandSender commandSender,
-                          String[] args)
-    {
-        reload(rootPlugin, messageKey, commandSender);
-        return true;
-    }
-    
-    void reload(RootPlugin rootPlugin, DotDividedStringBuilder messageKey, CommandSender commandSender)
+    public void reload(RootPlugin rootPlugin)
     {
         rootPlugin.getMarksManager().reload();
-        ExecutorMessagesSender.sendMessage(rootPlugin, messageKey, commandSender);
     }
 }

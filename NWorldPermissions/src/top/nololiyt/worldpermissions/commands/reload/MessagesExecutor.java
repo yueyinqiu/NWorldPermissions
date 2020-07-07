@@ -5,7 +5,7 @@ import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.commands.Executor;
 
-public class MessagesExecutor extends Executor
+public class MessagesExecutor extends ReloadExecutor
 {
     protected final static String layerName = "messages";
     
@@ -22,17 +22,8 @@ public class MessagesExecutor extends Executor
     }
     
     @Override
-    protected boolean run(int layer, RootPlugin rootPlugin, DotDividedStringBuilder permission,
-                          DotDividedStringBuilder messageKey, CommandSender commandSender,
-                          String[] args)
-    {
-        reload(rootPlugin, messageKey, commandSender);
-        return true;
-    }
-    
-    void reload(RootPlugin rootPlugin, DotDividedStringBuilder messageKey, CommandSender commandSender)
+    public void reload(RootPlugin rootPlugin)
     {
         rootPlugin.getMessagesManager().reload();
-        ExecutorMessagesSender.sendMessage(rootPlugin, messageKey, commandSender);
     }
 }

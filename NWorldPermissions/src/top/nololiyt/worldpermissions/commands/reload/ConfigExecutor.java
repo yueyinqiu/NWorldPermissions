@@ -5,7 +5,9 @@ import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.commands.Executor;
 
-public class ConfigExecutor extends Executor
+import java.nio.channels.Pipe;
+
+public class ConfigExecutor extends ReloadExecutor
 {
     protected final static String layerName = "config";
     
@@ -22,19 +24,9 @@ public class ConfigExecutor extends Executor
     }
     
     @Override
-    protected boolean run(int layer, RootPlugin rootPlugin, DotDividedStringBuilder permission,
-                          DotDividedStringBuilder messageKey, CommandSender commandSender,
-                          String[] args)
-    {
-        reload(rootPlugin, messageKey, commandSender);
-        return true;
-    }
-    
-    void reload(RootPlugin rootPlugin, DotDividedStringBuilder messageKey, CommandSender commandSender)
+     public void reload(RootPlugin rootPlugin)
     {
         rootPlugin.saveDefaultConfig();
         rootPlugin.reloadConfig();
-        
-        ExecutorMessagesSender.sendMessage(rootPlugin, messageKey, commandSender);
     }
 }
