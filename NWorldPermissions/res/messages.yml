@@ -152,6 +152,30 @@ messages:
         &r&3[&bNWorldPermissions&3]: Well, file 'marks.yml' has been reloaded.
       # Available Arg(s): {senderName}.
 
+  version:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      You can try these commands.
+      /wp version current -- To get the current version info.
+      /wp reload latest -- To get the latest version info.
+    # Available Arg(s): {senderName}.
+    current:
+      message: |
+        &r&3[&bNWorldPermissions&3]: Well, the current version is '{version}&r&3'.
+      # Available Arg(s): {senderName}, {version}.
+    latest:
+      message: |
+        &r&3[&bNWorldPermissions&3]:
+        Well, the latest version is '{version}&r&3' ({time}&r&3).
+        You may download it at 'https://yueyinqiu.github.io/NWorldPermissions/download'.s
+      # Available Arg(s): {senderName}, {version}, {time}.
+      checker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Uh, the update checker isn't enabled.
+      # Available Arg(s): {senderName}.
+      failed-to-check: |
+        &r&3[&bNWorldPermissions&3]: Um, I don't know what happened, but actually I can't check the update.
+      # Available Arg(s): {senderName}.
+
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |

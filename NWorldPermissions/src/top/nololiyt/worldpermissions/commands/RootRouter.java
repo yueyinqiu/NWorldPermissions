@@ -3,6 +3,7 @@ package top.nololiyt.worldpermissions.commands;
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.reload.ReloadRouter;
+import top.nololiyt.worldpermissions.commands.version.VersionRouter;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.commands.worlds.WorldsRouter;
 import top.nololiyt.worldpermissions.commands.marks.MarksRouter;
@@ -53,6 +54,8 @@ public class RootRouter extends Router
                 return new MarksRouter();
             case "reload":
                 return new ReloadRouter();
+            case "version":
+                return new VersionRouter();
             default:
                 return null;
         }

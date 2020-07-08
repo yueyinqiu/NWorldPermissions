@@ -17,12 +17,18 @@ public class RootPlugin extends JavaPlugin
         return messagesManager;
     }
     
-    
     private MarksManager marksManager;
     
     public MarksManager getMarksManager()
     {
         return marksManager;
+    }
+    
+    private VersionManager versionManager;
+    
+    public VersionManager getVersionManager()
+    {
+        return versionManager;
     }
     
     
@@ -33,6 +39,7 @@ public class RootPlugin extends JavaPlugin
         
         messagesManager = new MessagesManager(this);
         marksManager = new MarksManager(this);
+        versionManager = new VersionManager(this);
         
         getCommand("nworldpermissions").setExecutor(new RootCommandExecutor(this));
     
@@ -40,7 +47,5 @@ public class RootPlugin extends JavaPlugin
                 new JoinAndQuitListener(this), this);
         Bukkit.getPluginManager().registerEvents(
                 new TeleportListener(this), this);
-    
-        new VersionManager(this);
     }
 }

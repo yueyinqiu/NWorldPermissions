@@ -3,13 +3,11 @@ package top.nololiyt.worldpermissions;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 import top.nololiyt.worldpermissions.entitiesandtools.LatestVersion;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.Scanner;
@@ -26,7 +24,8 @@ public class VersionManager
         long oPeriod = plugin.getConfig().getLong("update-checker.period");
         long period = oPeriod <= 0 ? 20 * (30 * 60) : oPeriod;
         
-        if (plugin.getConfig().getBoolean("update-checker.log-after-first-check"))
+        if (updateCheckerEnabled =
+                plugin.getConfig().getBoolean("update-checker.log-after-first-check"))
         {
             checkAndLog();
             startCheckLoop(period, period);
@@ -39,6 +38,12 @@ public class VersionManager
     public LatestVersion getLatestVersion()
     {
         return latestVersion;
+    }
+    
+    private boolean updateCheckerEnabled;
+    public boolean isUpdateCheckerEnabled()
+    {
+        return updateCheckerEnabled;
     }
     
     public BigDecimal getCurrentVersion()
@@ -110,7 +115,6 @@ public class VersionManager
                 {
     
                 }
-                
             }
         }.runTaskTimerAsynchronously(plugin, delay, period);
     }

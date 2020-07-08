@@ -60,4 +60,13 @@ public class StringPair
     {
         return new StringPair("{teleportedTimes}", value);
     }
+    
+    public static StringPair time(String value)
+    {
+        return new StringPair("{time}", value);
+    }
+    public static StringPair version(String value)
+    {
+        return new StringPair("{version}", value);
+    }
 }
