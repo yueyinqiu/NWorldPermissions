@@ -141,7 +141,7 @@ messages:
     # Available Arg(s): {senderName}.
     config:
       completed: |
-        &r&3[&bNWorldPermissions&3]: Well, file 'config.yml' has been reloaded.
+        &r&3[&bNWorldPermissions&3]: Well, file 'config.yml' has been reloaded, but note that the update checker won't be affected.
       # Available Arg(s): {senderName}.
     messages:
       completed: |
