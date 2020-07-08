@@ -9,6 +9,7 @@ messages:
     /wp marks (Permission Required: "nworldpermissions.marks")
     /wp tp (Permission Required: "nworldpermissions.tp")
     /wp reload (Permission Required: "nworldpermissions.reload")
+    /wp version (Permission Required: "nworldpermissions.version")
   # Available Arg(s): {senderName}.
 
   worlds:
@@ -167,7 +168,7 @@ messages:
       message: |
         &r&3[&bNWorldPermissions&3]:
         Well, the latest version is '{version}&r&3' ({time}&r&3).
-        You may download it at 'https://yueyinqiu.github.io/NWorldPermissions/download'.s
+        You may download it at 'https://yueyinqiu.github.io/NWorldPermissions/download'.
       # Available Arg(s): {senderName}, {version}, {time}.
       checker-not-enabled: |
         &r&3[&bNWorldPermissions&3]: Uh, the update checker isn't enabled.
