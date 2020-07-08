@@ -34,7 +34,7 @@ public class VersionManager
         startCheckLoop(0, period);
     }
     
-    private LatestVersion latestVersion;
+    private volatile LatestVersion latestVersion;
     
     public LatestVersion getLatestVersion()
     {
