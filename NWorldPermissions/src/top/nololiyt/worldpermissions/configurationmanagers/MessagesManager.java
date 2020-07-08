@@ -1,5 +1,6 @@
 package top.nololiyt.worldpermissions.configurationmanagers;
 
+import com.sun.istack.internal.NotNull;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
@@ -20,7 +21,7 @@ public class MessagesManager extends ConfigurationManager
         return "messages.yml";
     }
     
-    public String getItemAndShowError(DotDividedStringBuilder node)
+    public @NotNull String getItemAndShowError(DotDividedStringBuilder node)
     {
         String key = node.toString();
         String result = getConfiguration().getString(key);
@@ -30,6 +31,7 @@ public class MessagesManager extends ConfigurationManager
             getRootPlugin().getLogger().severe(
                     "File 'messages.yml' is corrupted and '" + key
                             + "' is missing.");
+            return key;
         }
         return result;
     }
@@ -37,11 +39,10 @@ public class MessagesManager extends ConfigurationManager
     public void sendMessage(CommandSender target, DotDividedStringBuilder messageKey, StringPair[] args)
     {
         String message = getItemAndShowError(messageKey);
-        if (message != null)
-            sendMessage(target, message, args);
+        sendMessage(target, message, args);
     }
     
-    public void sendMessage(CommandSender target, String message, StringPair[] args)
+    public void sendMessage(CommandSender target, @NotNull String message, StringPair[] args)
     {
         String result = message.trim();
         if (result.isEmpty())
