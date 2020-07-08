@@ -25,6 +25,7 @@ public class RootPlugin extends JavaPlugin
         return marksManager;
     }
     
+    
     @Override
     public void onEnable()
     {
@@ -40,6 +41,6 @@ public class RootPlugin extends JavaPlugin
         Bukkit.getPluginManager().registerEvents(
                 new TeleportListener(this), this);
     
-        new UpdateChecker(this).checkAndLog();
+        new VersionManager(this);
     }
 }
