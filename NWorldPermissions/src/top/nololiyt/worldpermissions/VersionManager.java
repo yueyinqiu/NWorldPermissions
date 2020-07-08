@@ -1,6 +1,5 @@
 package top.nololiyt.worldpermissions;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import top.nololiyt.worldpermissions.entitiesandtools.LatestVersion;
@@ -41,6 +40,7 @@ public class VersionManager
     }
     
     private boolean updateCheckerEnabled;
+    
     public boolean isUpdateCheckerEnabled()
     {
         return updateCheckerEnabled;
@@ -54,40 +54,62 @@ public class VersionManager
     
     private void checkAndLog()
     {
-        Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
-            try
+        new BukkitRunnable()
+        {
+            @Override
+            public void run()
             {
-                checkAndSave();
-                if (this.latestVersion == null)
+                try
                 {
-                    log("Update check failed.");
-                    return;
+                    LatestVersion latestVersion = checkAndSave();
+                    if (latestVersion == null)
+                    {
+                        warning("Update check failed.");
+                        return;
+                    }
+    
+                    BigDecimal current = getCurrentVersion();
+                    if (latestVersion.getVersion().compareTo(current) > 0)
+                        warning("Version: '" + latestVersion.getVersion().toString() + "' is available. " +
+                                "And you are now using '" + current.toString() + "'. " +
+                                "Visit 'https://yueyinqiu.github.io/NWorldPermissions/download' to download it.");
+                    else
+                        warning("The current version is the latest.");
                 }
-    
-                BigDecimal current = getCurrentVersion();
-                if (latestVersion.getVersion().compareTo(current) > 0)
-                    log("Version: '" + latestVersion.getVersion().toString() + "' is available. " +
-                            "And you are now using '" + current.toString() + "'. " +
-                            "Visit 'https://yueyinqiu.github.io/NWorldPermissions/download' to download it.");
-
-                else
-                    log("The current version is the latest.");
-    
+                catch (Exception e)
+                {
+                    warning("Update check failed.");
+                    printStackTrace(e);
+                }
             }
-            catch (Exception e)
+        }.runTaskAsynchronously(this.plugin);
+    }
+    
+    private void printStackTrace(Exception e)
+    {
+        new BukkitRunnable()
+        {
+            @Override
+            public void run()
             {
-                log("Update check failed.");
                 e.printStackTrace();
             }
-        });
+        }.runTask(plugin);
     }
     
-    private void log(String s)
+    private void warning(String s)
     {
-        plugin.getLogger().warning(s);
+        new BukkitRunnable()
+        {
+            @Override
+            public void run()
+            {
+                plugin.getLogger().warning(s);
+            }
+        }.runTask(plugin);
     }
     
-    private void checkAndSave() throws IOException
+    private LatestVersion checkAndSave() throws IOException
     {
         try (InputStream inputStream = new URL(CHECK_LINK)
                 .openStream(); Scanner scanner = new Scanner(inputStream))
@@ -95,9 +117,10 @@ public class VersionManager
             if (scanner.hasNextBigDecimal())
             {
                 BigDecimal latest = scanner.nextBigDecimal();
-                latestVersion = new LatestVersion(new Date(), latest);
+                this.latestVersion = new LatestVersion(new Date(), latest);
             }
         }
+        return this.latestVersion;
     }
     
     private void startCheckLoop(long delay, long period)
