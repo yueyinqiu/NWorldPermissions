@@ -20,16 +20,17 @@ public class VersionManager
     public VersionManager(Plugin plugin)
     {
         this.plugin = plugin;
-        long oPeriod = plugin.getConfig().getLong("update-checker.period");
-        long period = oPeriod <= 0 ? 20 * (30 * 60) : oPeriod;
-        
-        if (updateCheckerEnabled =
-                plugin.getConfig().getBoolean("update-checker.log-after-first-check"))
+        if (updateCheckerEnabled = plugin.getConfig().getBoolean("update-checker.enabled"))
         {
-            checkAndLog();
-            startCheckLoop(period, period);
+            long oPeriod = plugin.getConfig().getLong("update-checker.period");
+            long period = oPeriod <= 0 ? 20 * (30 * 60) : oPeriod;
+            if (plugin.getConfig().getBoolean("update-checker.log-after-first-check"))
+            {
+                checkAndLog();
+                startCheckLoop(period, period);
+            }
+            startCheckLoop(0, period);
         }
-        startCheckLoop(0, period);
     }
     
     private volatile LatestVersion latestVersion;
