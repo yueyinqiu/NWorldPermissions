@@ -5,18 +5,28 @@ import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.commands.Executor;
 
+import java.util.List;
+
 public class AllExecutor extends Executor
 {
     protected final static String layerName = "all";
     
     @Override
-    protected String permissionName()
+    public String permissionName()
     {
         return null;
     }
     
     @Override
-    protected String messageKey()
+    public String messageKey()
+    {
+        return null;
+    }
+    
+    @Override
+    public List<String> tabComplete(int layer, RootPlugin rootPlugin,
+                                    DotDividedStringBuilder permission,
+                                    CommandSender commandSender, String[] args)
     {
         return null;
     }

@@ -9,21 +9,31 @@ import top.nololiyt.worldpermissions.entitiesandtools.LatestVersion;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
+import java.util.List;
+
 
 public class LatestExecutor extends Executor
 {
     protected final static String layerName = "latest";
     
     @Override
-    protected String permissionName()
+    public String permissionName()
     {
         return null;
     }
     
     @Override
-    protected String messageKey()
+    public String messageKey()
     {
         return layerName;
+    }
+    
+    @Override
+    public List<String> tabComplete(int layer, RootPlugin rootPlugin,
+                                    DotDividedStringBuilder permission,
+                                    CommandSender commandSender, String[] args)
+    {
+        return null;
     }
     
     @Override

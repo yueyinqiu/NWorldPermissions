@@ -2,34 +2,41 @@ package top.nololiyt.worldpermissions.commands.tp;
 
 import top.nololiyt.worldpermissions.commands.CommandLayer;
 import top.nololiyt.worldpermissions.commands.Router;
+import top.nololiyt.worldpermissions.commands.reload.AllExecutor;
+import top.nololiyt.worldpermissions.commands.reload.ConfigExecutor;
+import top.nololiyt.worldpermissions.commands.reload.MarksExecutor;
+import top.nololiyt.worldpermissions.commands.reload.MessagesExecutor;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TpRouter extends Router
 {
     protected final static String layerName = "tp";
     
     @Override
-    protected String permissionName()
+    public String permissionName()
     {
         return layerName;
     }
     
     @Override
-    protected String messageKey()
+    public String messageKey()
     {
         return layerName;
     }
     
-    @Override
-    protected CommandLayer nextLayer(String arg)
+    private Map<String, CommandLayer> commandLayers = new HashMap<String, CommandLayer>()
     {
-        switch (arg)
         {
-            case "offline":
-                return new OfflineExecutor();
-            case "online":
-                return new OnlineExecutor();
-            default:
-                return null;
+            put("offline", new OfflineExecutor());
+            put("online", new OnlineExecutor());
         }
+    };
+    
+    @Override
+    protected Map<String, CommandLayer> nextLayers()
+    {
+        return commandLayers;
     }
 }

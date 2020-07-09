@@ -15,15 +15,22 @@ public class ListExecutor extends Executor
     protected final static String layerName = "list";
     
     @Override
-    protected String permissionName()
+    public String permissionName()
     {
         return null;
     }
     
     @Override
-    protected String messageKey()
+    public String messageKey()
     {
         return layerName;
+    }
+    
+    @Override
+    public List<String> tabComplete(int layer,RootPlugin rootPlugin, DotDividedStringBuilder permission,
+                                    CommandSender commandSender, String[] args)
+    {
+        return null;
     }
     
     @Override

@@ -5,18 +5,20 @@ import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.commands.Executor;
 
+import java.util.List;
+
 public class MessagesExecutor extends ReloadExecutor
 {
     protected final static String layerName = "messages";
     
     @Override
-    protected String permissionName()
+    public String permissionName()
     {
         return null;
     }
     
     @Override
-    protected String messageKey()
+    public String messageKey()
     {
         return layerName;
     }

@@ -5,18 +5,20 @@ import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 
+import java.util.List;
+
 public class MarksExecutor extends ReloadExecutor
 {
     protected final static String layerName = "marks";
     
     @Override
-    protected String permissionName()
+    public String permissionName()
     {
         return null;
     }
     
     @Override
-    protected String messageKey()
+    public String messageKey()
     {
         return layerName;
     }

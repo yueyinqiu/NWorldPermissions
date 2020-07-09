@@ -2,36 +2,41 @@ package top.nololiyt.worldpermissions.commands.marks;
 
 import top.nololiyt.worldpermissions.commands.CommandLayer;
 import top.nololiyt.worldpermissions.commands.Router;
+import top.nololiyt.worldpermissions.commands.worlds.AddExecutor;
+import top.nololiyt.worldpermissions.commands.worlds.ListExecutor;
+import top.nololiyt.worldpermissions.commands.worlds.RemoveExecutor;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MarksRouter extends Router
 {
     protected final static String layerName = "marks";
     
     @Override
-    protected String permissionName()
+    public String permissionName()
     {
         return layerName;
     }
     
     @Override
-    protected String messageKey()
+    public String messageKey()
     {
         return layerName;
     }
     
-    @Override
-    protected CommandLayer nextLayer(String arg)
+    private Map<String, CommandLayer> commandLayers = new HashMap<String, CommandLayer>()
     {
-        switch (arg)
         {
-            case "add":
-                return new AddExecutor();
-            case "remove":
-                return new RemoveExecutor();
-            case "list":
-                return new ListExecutor();
-            default:
-                return null;
+            put("add", new AddExecutor());
+            put("remove", new RemoveExecutor());
+            put("list", new ListExecutor());
         }
+    };
+    
+    @Override
+    protected Map<String, CommandLayer> nextLayers()
+    {
+        return commandLayers;
     }
 }

@@ -9,6 +9,11 @@ import top.nololiyt.worldpermissions.commands.worlds.WorldsRouter;
 import top.nololiyt.worldpermissions.commands.marks.MarksRouter;
 import top.nololiyt.worldpermissions.commands.tp.TpRouter;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 public class RootRouter extends Router
 {
     
@@ -20,44 +25,46 @@ public class RootRouter extends Router
     }
     
     
-    public void RouteCommand(CommandSender commandSender, String[] args)
+    public void routeCommand(CommandSender commandSender, String[] args)
     {
         DotDividedStringBuilder messagesRoot = new DotDividedStringBuilder("messages");
         DotDividedStringBuilder permissionRoot = new DotDividedStringBuilder("nworldpermissions");
-    
+        
         execute(0, rootPlugin, permissionRoot, messagesRoot, commandSender, args);
     }
+    public List<String> doTabComplete(CommandSender commandSender, String[] args)
+    {
+        DotDividedStringBuilder permissionRoot = new DotDividedStringBuilder("nworldpermissions");
     
+        return tabComplete(0, rootPlugin, permissionRoot, commandSender, args);
+    }
     
     @Override
-    protected String permissionName()
+    public String permissionName()
     {
         return null;
     }
     
     @Override
-    protected String messageKey()
+    public String messageKey()
     {
         return null;
     }
     
-    @Override
-    protected CommandLayer nextLayer(String arg)
+    private Map<String, CommandLayer> commandLayers = new HashMap<String, CommandLayer>()
     {
-        switch (arg)
         {
-            case "worlds":
-                return new WorldsRouter();
-            case "tp":
-                return new TpRouter();
-            case "marks":
-                return new MarksRouter();
-            case "reload":
-                return new ReloadRouter();
-            case "version":
-                return new VersionRouter();
-            default:
-                return null;
+            put("worlds", new WorldsRouter());
+            put("tp", new TpRouter());
+            put("marks", new MarksRouter());
+            put("reload", new ReloadRouter());
+            put("version", new VersionRouter());
         }
+    };
+    
+    @Override
+    protected Map<String, CommandLayer> nextLayers()
+    {
+        return commandLayers;
     }
 }

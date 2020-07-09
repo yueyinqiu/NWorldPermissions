@@ -6,6 +6,8 @@ import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
+import java.util.List;
+
 public abstract class ReloadExecutor extends Executor
 {
     void run(RootPlugin rootPlugin,DotDividedStringBuilder messageKey,CommandSender commandSender)
@@ -13,6 +15,14 @@ public abstract class ReloadExecutor extends Executor
         run(-1, rootPlugin, null,
                 new DotDividedStringBuilder(messageKey).append(messageKey()),
                 commandSender, null);
+    }
+    
+    @Override
+    public List<String> tabComplete(int layer, RootPlugin rootPlugin,
+                                    DotDividedStringBuilder permission,
+                                    CommandSender commandSender, String[] args)
+    {
+        return null;
     }
     
     @Override

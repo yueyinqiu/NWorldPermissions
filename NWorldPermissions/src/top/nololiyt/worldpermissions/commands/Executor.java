@@ -5,13 +5,12 @@ import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
+import java.util.List;
+import java.util.Set;
+
 
 public abstract class Executor implements CommandLayer
 {
-    protected abstract String permissionName();
-    
-    protected abstract String messageKey();
-    
     protected abstract boolean run(int layer,
                                    RootPlugin rootPlugin,
                                    DotDividedStringBuilder permission,

@@ -13,21 +13,44 @@ import top.nololiyt.worldpermissions.commands.Executor;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OfflineExecutor extends Executor
 {
     protected final static String layerName = "offline";
     
     @Override
-    protected String permissionName()
+    public String permissionName()
     {
         return null;
     }
     
     @Override
-    protected String messageKey()
+    public String messageKey()
     {
         return layerName;
+    }
+    
+    @Override
+    public List<String> tabComplete(int layer, RootPlugin rootPlugin,
+                                    DotDividedStringBuilder permission,
+                                    CommandSender commandSender, String[] args)
+    {
+        if (args.length - 1 == layer - 1)
+        {
+            List<String> result = new ArrayList<>();
+            for (World world : Bukkit.getWorlds())
+            {
+                result.add(world.getName());
+            }
+            return result;
+        }
+        if (args.length - 1 == layer)
+        {
+            return new ArrayList<>(rootPlugin.getMarksManager().allMarksName());
+        }
+        return null;
     }
     
     @Override

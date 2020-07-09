@@ -1,42 +1,43 @@
 package top.nololiyt.worldpermissions.commands.reload;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import top.nololiyt.worldpermissions.commands.CommandLayer;
 import top.nololiyt.worldpermissions.commands.Router;
+import top.nololiyt.worldpermissions.commands.worlds.AddExecutor;
+import top.nololiyt.worldpermissions.commands.worlds.ListExecutor;
+import top.nololiyt.worldpermissions.commands.worlds.RemoveExecutor;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ReloadRouter extends Router
 {
     protected final static String layerName = "reload";
     
     @Override
-    protected String permissionName()
+    public String permissionName()
     {
         return layerName;
     }
     
     @Override
-    protected String messageKey()
+    public String messageKey()
     {
         return layerName;
     }
     
-    @Override
-    protected CommandLayer nextLayer(String arg)
+    private Map<String, CommandLayer> commandLayers = new HashMap<String, CommandLayer>()
     {
-        switch (arg)
         {
-            case "config":
-                return new ConfigExecutor();
-            case "messages":
-                return new MessagesExecutor();
-            case "marks":
-                return new MarksExecutor();
-            case "all":
-                return new AllExecutor();
-            default:
-                return null;
+            put("config", new ConfigExecutor());
+            put("messages", new MessagesExecutor());
+            put("marks", new MarksExecutor());
+            put("all", new AllExecutor());
         }
+    };
+    
+    @Override
+    protected Map<String, CommandLayer> nextLayers()
+    {
+        return commandLayers;
     }
 }
