@@ -9,7 +9,7 @@ import top.nololiyt.worldpermissions.commands.worlds.WorldsRouter;
 import top.nololiyt.worldpermissions.commands.marks.MarksRouter;
 import top.nololiyt.worldpermissions.commands.tp.TpRouter;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -51,7 +51,7 @@ public class RootRouter extends Router
         return null;
     }
     
-    private Map<String, CommandLayer> commandLayers = new HashMap<String, CommandLayer>()
+    private Map<String, CommandLayer> commandLayers = new LinkedHashMap<String, CommandLayer>()
     {
         {
             put("worlds", new WorldsRouter());

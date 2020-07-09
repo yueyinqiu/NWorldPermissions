@@ -8,7 +8,7 @@ import top.nololiyt.worldpermissions.commands.tp.OfflineExecutor;
 import top.nololiyt.worldpermissions.commands.tp.OnlineExecutor;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class VersionRouter extends Router
@@ -27,7 +27,7 @@ public class VersionRouter extends Router
         return layerName;
     }
     
-    private Map<String, CommandLayer> commandLayers = new HashMap<String, CommandLayer>()
+    private Map<String, CommandLayer> commandLayers = new LinkedHashMap<String, CommandLayer>()
     {
         {
             put("latest", new LatestExecutor());

@@ -7,7 +7,7 @@ import top.nololiyt.worldpermissions.commands.reload.ConfigExecutor;
 import top.nololiyt.worldpermissions.commands.reload.MarksExecutor;
 import top.nololiyt.worldpermissions.commands.reload.MessagesExecutor;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class TpRouter extends Router
@@ -26,7 +26,7 @@ public class TpRouter extends Router
         return layerName;
     }
     
-    private Map<String, CommandLayer> commandLayers = new HashMap<String, CommandLayer>()
+    private Map<String, CommandLayer> commandLayers = new LinkedHashMap<String, CommandLayer>()
     {
         {
             put("offline", new OfflineExecutor());

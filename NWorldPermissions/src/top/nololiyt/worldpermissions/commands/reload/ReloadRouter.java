@@ -6,7 +6,7 @@ import top.nololiyt.worldpermissions.commands.worlds.AddExecutor;
 import top.nololiyt.worldpermissions.commands.worlds.ListExecutor;
 import top.nololiyt.worldpermissions.commands.worlds.RemoveExecutor;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ReloadRouter extends Router
@@ -25,7 +25,7 @@ public class ReloadRouter extends Router
         return layerName;
     }
     
-    private Map<String, CommandLayer> commandLayers = new HashMap<String, CommandLayer>()
+    private Map<String, CommandLayer> commandLayers = new LinkedHashMap<String, CommandLayer>()
     {
         {
             put("config", new ConfigExecutor());

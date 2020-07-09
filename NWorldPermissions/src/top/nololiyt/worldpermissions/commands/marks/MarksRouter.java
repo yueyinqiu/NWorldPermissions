@@ -3,7 +3,7 @@ package top.nololiyt.worldpermissions.commands.marks;
 import top.nololiyt.worldpermissions.commands.CommandLayer;
 import top.nololiyt.worldpermissions.commands.Router;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MarksRouter extends Router
@@ -22,7 +22,7 @@ public class MarksRouter extends Router
         return layerName;
     }
     
-    private Map<String, CommandLayer> commandLayers = new HashMap<String, CommandLayer>()
+    private Map<String, CommandLayer> commandLayers = new LinkedHashMap<String, CommandLayer>()
     {
         {
             put("add", new AddExecutor());
