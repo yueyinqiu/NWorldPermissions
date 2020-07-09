@@ -79,6 +79,7 @@ public class MessagesSender
             return;
     
         builder.delete(builderLength - separator.length(), builderLength);
+        builder.append(ending);
         send(builder.toString());
     }
     
