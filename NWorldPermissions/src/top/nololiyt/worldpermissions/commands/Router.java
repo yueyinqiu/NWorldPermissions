@@ -86,6 +86,33 @@ public abstract class Router implements CommandLayer
             }
         }
         
+        if (args.length == layer + 1)
+        {
+            List<String> result = new ArrayList<>();
+            for (Map.Entry<String, CommandLayer> entry : nextLayers().entrySet())
+            {
+                String key = entry.getKey();
+                if (!key.startsWith(args[layer]))
+                {
+                    continue;
+                }
+                String newNode = entry.getValue().permissionName();
+                if (newNode == null)
+                {
+                    result.add(entry.getKey());
+                    continue;
+                }
+    
+                DotDividedStringBuilder permissionCopy = new DotDividedStringBuilder(permission);
+                permissionCopy.append(newNode);
+                if (commandSender.hasPermission(permissionCopy.toString()))
+                {
+                    result.add(key);
+                }
+            }
+            return result;
+        }
+    
         CommandLayer nextLayer = nextLayers().get(args[layer]);
         if (nextLayer != null)
         {
@@ -96,24 +123,7 @@ public abstract class Router implements CommandLayer
                     commandSender,
                     args);
         }
-        
-        List<String> result = new ArrayList<>();
-        for (Map.Entry<String, CommandLayer> entry : nextLayers().entrySet())
-        {
-            String newNode = entry.getValue().permissionName();
-            if (newNode == null)
-            {
-                result.add(entry.getKey());
-                continue;
-            }
     
-            DotDividedStringBuilder permissionCopy = new DotDividedStringBuilder(permission);
-            permissionCopy.append(newNode);
-            if (commandSender.hasPermission(permissionCopy.toString()))
-            {
-                result.add(entry.getKey());
-            }
-        }
-        return result;
+        return null;
     }
 }

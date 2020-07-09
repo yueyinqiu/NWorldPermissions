@@ -4,10 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
-import top.nololiyt.worldpermissions.VersionManager;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.commands.Executor;
-import top.nololiyt.worldpermissions.entitiesandtools.LatestVersion;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
@@ -32,15 +30,17 @@ public class CurrentExecutor extends Executor
     }
     
     @Override
-    public List<String> tabComplete(int layer, RootPlugin rootPlugin,
-                                    DotDividedStringBuilder permission,
-                                    CommandSender commandSender, String[] args)
+    public List<String> getTabComplete(RootPlugin rootPlugin,int ordinal)
     {
-        return null;
+        switch (ordinal)
+        {
+            default:
+                return new ArrayList<>();
+        }
     }
     
     @Override
-    protected boolean run(int layer, RootPlugin rootPlugin, DotDividedStringBuilder permission,
+    protected boolean run(int layer, RootPlugin rootPlugin,
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {

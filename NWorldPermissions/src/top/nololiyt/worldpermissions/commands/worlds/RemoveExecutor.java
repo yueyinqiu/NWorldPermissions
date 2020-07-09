@@ -8,6 +8,7 @@ import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RemoveExecutor extends Executor
@@ -27,14 +28,19 @@ public class RemoveExecutor extends Executor
     }
     
     @Override
-    public List<String> tabComplete(int layer,RootPlugin rootPlugin, DotDividedStringBuilder permission,
-                                    CommandSender commandSender, String[] args)
+    public List<String> getTabComplete(RootPlugin rootPlugin,int ordinal)
     {
-        return rootPlugin.getConfig().getStringList("controlled-worlds");
+        switch (ordinal)
+        {
+            case 0:
+                return rootPlugin.getConfig().getStringList("controlled-worlds");
+            default:
+                return new ArrayList<>();
+        }
     }
     
     @Override
-    protected boolean run(int layer, RootPlugin rootPlugin, DotDividedStringBuilder permission,
+    protected boolean run(int layer, RootPlugin rootPlugin,
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {

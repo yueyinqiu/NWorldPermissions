@@ -30,19 +30,24 @@ public class AddExecutor extends Executor
     }
     
     @Override
-    public List<String> tabComplete(int layer,RootPlugin rootPlugin, DotDividedStringBuilder permission,
-                                    CommandSender commandSender, String[] args)
+    public List<String> getTabComplete(RootPlugin rootPlugin,int ordinal)
     {
-        List<String> result = new ArrayList<>();
-        for (World world : Bukkit.getWorlds())
+        switch (ordinal)
         {
-            result.add(world.getName());
+            case 0:
+                List<String> result = new ArrayList<>();
+                for (World world : Bukkit.getWorlds())
+                {
+                    result.add(world.getName());
+                }
+                return result;
+            default:
+                return new ArrayList<>();
         }
-        return result;
     }
     
     @Override
-    protected boolean run(int layer, RootPlugin rootPlugin, DotDividedStringBuilder permission,
+    protected boolean run(int layer, RootPlugin rootPlugin,
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {

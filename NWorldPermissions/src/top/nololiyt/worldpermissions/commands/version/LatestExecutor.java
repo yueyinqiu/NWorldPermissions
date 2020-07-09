@@ -9,6 +9,7 @@ import top.nololiyt.worldpermissions.entitiesandtools.LatestVersion;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,15 +30,16 @@ public class LatestExecutor extends Executor
     }
     
     @Override
-    public List<String> tabComplete(int layer, RootPlugin rootPlugin,
-                                    DotDividedStringBuilder permission,
-                                    CommandSender commandSender, String[] args)
+    public List<String> getTabComplete(RootPlugin rootPlugin,int ordinal)
     {
-        return null;
+        switch (ordinal)
+        {
+            default:
+                return new ArrayList<>();
+        }
     }
-    
     @Override
-    protected boolean run(int layer, RootPlugin rootPlugin, DotDividedStringBuilder permission,
+    protected boolean run(int layer, RootPlugin rootPlugin,
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {

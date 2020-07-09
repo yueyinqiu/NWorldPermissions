@@ -29,15 +29,19 @@ public class RemoveExecutor extends Executor
     }
     
     @Override
-    public List<String> tabComplete(int layer, RootPlugin rootPlugin,
-                                    DotDividedStringBuilder permission,
-                                    CommandSender commandSender, String[] args)
+    public List<String> getTabComplete(RootPlugin rootPlugin,int ordinal)
     {
-        return new ArrayList<>(rootPlugin.getMarksManager().allMarksName());
+        switch (ordinal)
+        {
+            case 0:
+                return new ArrayList<>(rootPlugin.getMarksManager().allMarksName());
+            default:
+                return new ArrayList<>();
+        }
     }
     
     @Override
-    protected boolean run(int layer, RootPlugin rootPlugin, DotDividedStringBuilder permission,
+    protected boolean run(int layer, RootPlugin rootPlugin,
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {

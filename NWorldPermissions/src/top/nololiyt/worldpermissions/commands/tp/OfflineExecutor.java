@@ -33,28 +33,26 @@ public class OfflineExecutor extends Executor
     }
     
     @Override
-    public List<String> tabComplete(int layer, RootPlugin rootPlugin,
-                                    DotDividedStringBuilder permission,
-                                    CommandSender commandSender, String[] args)
+    public List<String> getTabComplete(RootPlugin rootPlugin,int ordinal)
     {
-        if (args.length - 1 == layer - 1)
+        switch (ordinal)
         {
-            List<String> result = new ArrayList<>();
-            for (World world : Bukkit.getWorlds())
-            {
-                result.add(world.getName());
-            }
-            return result;
+            case 0:
+                List<String> result = new ArrayList<>();
+                for (World world : Bukkit.getWorlds())
+                {
+                    result.add(world.getName());
+                }
+                return result;
+            case 1:
+                return new ArrayList<>(rootPlugin.getMarksManager().allMarksName());
+            default:
+                return new ArrayList<>();
         }
-        if (args.length - 1 == layer)
-        {
-            return new ArrayList<>(rootPlugin.getMarksManager().allMarksName());
-        }
-        return null;
     }
     
     @Override
-    protected boolean run(int layer, RootPlugin rootPlugin, DotDividedStringBuilder permission,
+    protected boolean run(int layer, RootPlugin rootPlugin,
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
