@@ -2,9 +2,6 @@ package top.nololiyt.worldpermissions.commands.marks;
 
 import top.nololiyt.worldpermissions.commands.CommandLayer;
 import top.nololiyt.worldpermissions.commands.Router;
-import top.nololiyt.worldpermissions.commands.worlds.AddExecutor;
-import top.nololiyt.worldpermissions.commands.worlds.ListExecutor;
-import top.nololiyt.worldpermissions.commands.worlds.RemoveExecutor;
 
 import java.util.HashMap;
 import java.util.Map;
