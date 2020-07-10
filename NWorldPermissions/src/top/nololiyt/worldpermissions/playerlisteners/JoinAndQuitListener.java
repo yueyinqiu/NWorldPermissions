@@ -24,7 +24,7 @@ public class JoinAndQuitListener implements Listener
         this.positionManager = new OfflinePlayersPositionManager(rootPlugin);
     }
     
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerJoin(PlayerJoinEvent e)
     {
         if ((!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled")))
@@ -47,7 +47,7 @@ public class JoinAndQuitListener implements Listener
         }
     }
     
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerQuitEvent(PlayerQuitEvent e)
     {
         if (!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled"))
