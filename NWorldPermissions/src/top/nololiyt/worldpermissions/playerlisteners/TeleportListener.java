@@ -27,8 +27,8 @@ public class TeleportListener implements Listener
             return;
     
         World destWorld = e.getTo().getWorld();
-    
-        if (destWorld.equals(e.getFrom().getWorld()))
+        World fromWorld = e.getFrom().getWorld();
+        if (destWorld.equals(fromWorld))
             return;
     
         String destWorldName = destWorld.getName();
@@ -37,7 +37,7 @@ public class TeleportListener implements Listener
             return;
     
         Player player = e.getPlayer();
-        MessagesSender messagesSender = createMessagesSender(player, destWorldName);
+        MessagesSender messagesSender = createMessagesSender(player, fromWorld.getName(), destWorldName);
     
         if (player.hasPermission("nworldpermissions.forfreeto." + destWorldName))
         {
@@ -51,11 +51,12 @@ public class TeleportListener implements Listener
                 "messages.to-players.when-teleport-to-controlled-worlds.denied"));
     }
     
-    private MessagesSender createMessagesSender(Player player, String destWorldName)
+    private MessagesSender createMessagesSender(Player player, String fromWorld, String toWorld)
     {
         StringPair[] pairs = new StringPair[]{
                 StringPair.playerName(player.getDisplayName()),
-                StringPair.worldName(destWorldName)
+                StringPair.fromWorld(fromWorld),
+                StringPair.toWorld(toWorld)
         };
         return new MessagesSender(rootPlugin.getMessagesManager(), player, pairs);
     }

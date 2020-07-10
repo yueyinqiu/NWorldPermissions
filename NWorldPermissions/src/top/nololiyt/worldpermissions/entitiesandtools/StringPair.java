@@ -69,4 +69,12 @@ public class StringPair
     {
         return new StringPair("{version}", value);
     }
+    public static StringPair fromWorld(String value)
+    {
+        return new StringPair("{fromWorld}", value);
+    }
+    public static StringPair toWorld(String value)
+    {
+        return new StringPair("{toWorld}", value);
+    }
 }

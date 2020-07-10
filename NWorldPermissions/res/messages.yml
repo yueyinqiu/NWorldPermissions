@@ -1,10 +1,10 @@
 # messages.yml
 
+# PlaceholderAPI supported. And you can also run the plugin without it.
 messages:
   help: |
     &r&3[&bNWorldPermissions&3]:
-    Hello, {senderName}&r&3!
-    The first time to use 'NWorldPermissions'? Try these commands!
+    Hello, {senderName}&r&3! Try these commands!
     /wp worlds (Permission Required: "nworldpermissions.worlds")
     /wp marks (Permission Required: "nworldpermissions.marks")
     /wp tp (Permission Required: "nworldpermissions.tp")
@@ -15,7 +15,7 @@ messages:
   worlds:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      You can try these commands.
+      Try these commands!
       /wp worlds add <world_name> -- To make a world controlled.
       /wp worlds remove <world_name> -- To make a world uncontrolled.
       /wp worlds list -- To list all the controlled worlds.
@@ -54,7 +54,7 @@ messages:
   tp:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      You can try these commands.
+      Try these commands!
       /wp tp online <world_name> <mark_name> [teleportation_times = 1] -- To teleport all the online players in the specific world to a mark.
       /wp tp offline <world_name> <mark_name> -- To teleport all the tracked offline players in the specific world to a mark.
     # Available Arg(s): {senderName}.
@@ -89,7 +89,7 @@ messages:
   marks:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      You can try these commands.
+      Try these commands!
       /wp marks add <mark_name> -- To set a mark, then you can use it later.
       /wp marks remove <mark_name> -- To remove a mark.
       /wp marks list -- To list all the marks.
@@ -134,7 +134,7 @@ messages:
   reload:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      You can try these commands.
+      Try these commands!
       /wp reload config -- To reload file 'config.yml'.
       /wp reload messages -- To reload file 'messages.yml'.
       /wp reload marks -- To reload file 'marks.yml'.
@@ -156,7 +156,7 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      You can try these commands.
+      Try these commands!
       /wp version current -- To get the current version info.
       /wp reload latest -- To get the latest version info.
     # Available Arg(s): {senderName}.
@@ -180,11 +180,11 @@ messages:
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |
-        &r&3[&bNWorldPermissions&3]: You've felt a strange power when teleporting to {worldName}&r&3, but it doesn't work for you.
-      # Available Arg(s): {playerName}, {worldName}.
+        &r&3[&bNWorldPermissions&3]: You've felt a strange power when teleporting to {toWorld}&r&3, but it doesn't work for you.
+      # Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
       denied: |
-        &r&3[&bNWorldPermissions&3]: A strange power have stopped your teleportation!
-      # Available Arg(s): {playerName}, {worldName}.
+        &r&3[&bNWorldPermissions&3]: A strange power have stopped your teleportation to {toWorld}&r&3, just stay in {fromWorld}&r&3!
+      # Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
 
     when-teleported-by-tp-online:
       before-teleport: |
