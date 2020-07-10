@@ -58,8 +58,8 @@ public class ListExecutor extends Executor
     
         String beginning = getMessageItem(messagesManager, messageKey, "beginning");
         String separator = getMessageItem(messagesManager, messageKey, "separator");
-        String ending = getMessageItem(messagesManager, messageKey, "separator");
-        messagesSender.sendJointed(beginning, separator, ending, worlds);
+        String ending = getMessageItem(messagesManager, messageKey, "ending");
+        messagesSender.sendJointed(beginning, ending,separator , worlds);
         
         return true;
     }

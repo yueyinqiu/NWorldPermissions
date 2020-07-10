@@ -2,7 +2,7 @@ name: NWorldPermissions
 description: A strange power stopping players being teleported to a world.
 website: https://github.com/yueyinqiu/NWorldPermissions/wiki
 
-version: '4.34'
+version: '4.35'
 author: yueyinqiu5990
 main: top.nololiyt.worldpermissions.RootPlugin
 softdepend: [PlaceholderAPI]
