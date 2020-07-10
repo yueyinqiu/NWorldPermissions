@@ -76,8 +76,8 @@ public class AddExecutor extends Executor
     
         if (existed(worldName))
             messagesSender.send(messageKey.append("completed"));
-        
-        messagesSender.send(messageKey.append("completed-but-no-such-world"));
+        else
+            messagesSender.send(messageKey.append("completed-but-no-such-world"));
         return true;
     }
     
