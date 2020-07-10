@@ -3,6 +3,7 @@ package top.nololiyt.worldpermissions.playerlisteners;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import top.nololiyt.worldpermissions.RootPlugin;
@@ -19,7 +20,7 @@ public class TeleportListener implements Listener
         this.rootPlugin = rootPlugin;
     }
     
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerTeleport(PlayerTeleportEvent e)
     {
         if (e.isCancelled())
