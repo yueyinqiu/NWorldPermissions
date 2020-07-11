@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.util.Vector;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
@@ -49,6 +50,11 @@ public class TeleportListener implements Listener
         e.setCancelled(true);
         messagesSender.send(new DotDividedStringBuilder(
                 "messages.to-players.when-teleport-to-controlled-worlds.denied"));
+        if(e.getCause() == PlayerTeleportEvent.TeleportCause.END_PORTAL ||
+                e.getCause() == PlayerTeleportEvent.TeleportCause.END_PORTAL)
+        {
+            player.setVelocity(Vector.getRandom());
+        }
     }
     
     private MessagesSender createMessagesSender(Player player, String fromWorld, String toWorld)
