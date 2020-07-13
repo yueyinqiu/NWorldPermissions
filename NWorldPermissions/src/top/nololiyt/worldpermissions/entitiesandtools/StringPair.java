@@ -77,4 +77,12 @@ public class StringPair
     {
         return new StringPair("{toWorld}", value);
     }
+    public static StringPair worldDisplayName(String value)
+    {
+        return new StringPair("{worldDisplayName}", value);
+    }
+    public static StringPair thrust(String value)
+    {
+        return new StringPair("{thrust}", value);
+    }
 }

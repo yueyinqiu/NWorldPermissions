@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.util.Vector;
 import top.nololiyt.worldpermissions.RootPlugin;
+import top.nololiyt.worldpermissions.configurationmanagers.WorldsManager;
+import top.nololiyt.worldpermissions.entitiesandtools.WorldInfo;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
@@ -34,11 +36,14 @@ public class TeleportListener implements Listener
     
         String destWorldName = destWorld.getName();
     
-        if (!worldIsControlled(destWorldName))
+        WorldInfo worldInfo = rootPlugin.getWorldsManager()
+                .getWorldInfo(destWorldName);
+        if (!worldInfo.isControlled())
             return;
     
         Player player = e.getPlayer();
-        MessagesSender messagesSender = createMessagesSender(player, fromWorld.getName(), destWorldName);
+        MessagesSender messagesSender = createMessagesSender(player, fromWorld.getName(),
+                worldInfo.getDisplay());
     
         if (player.hasPermission("nworldpermissions.forfreeto." + destWorldName))
         {
@@ -50,29 +55,24 @@ public class TeleportListener implements Listener
         e.setCancelled(true);
         messagesSender.send(new DotDividedStringBuilder(
                 "messages.to-players.when-teleport-to-controlled-worlds.denied"));
-        /*
+        
         if(e.getCause() == PlayerTeleportEvent.TeleportCause.NETHER_PORTAL ||
                 e.getCause() == PlayerTeleportEvent.TeleportCause.END_PORTAL)
         {
-            player.setVelocity(player.getVelocity().add(Vector.getRandom().multiply(10.0)));
+            player.setVelocity(player.getVelocity().add(Vector.getRandom().multiply(
+                    worldInfo.getThrust())));
         }
-        */
-        // TODO: do!
     }
     
-    private MessagesSender createMessagesSender(Player player, String fromWorld, String toWorld)
+    private MessagesSender createMessagesSender(Player player, String fromWorld, String toWorldDisplay)
     {
+        WorldsManager worldsManager = rootPlugin.getWorldsManager();
         StringPair[] pairs = new StringPair[]{
                 StringPair.playerName(player.getDisplayName()),
-                StringPair.fromWorld(fromWorld),
-                StringPair.toWorld(toWorld)
+                StringPair.fromWorld(
+                        worldsManager.getWorldInfo(fromWorld).getDisplay()),
+                StringPair.toWorld(toWorldDisplay)
         };
         return new MessagesSender(rootPlugin.getMessagesManager(), player, pairs);
-    }
-    
-    private boolean worldIsControlled(String worldName)
-    {
-        return rootPlugin.getConfig().getStringList("controlled-worlds")
-                .contains(worldName);
     }
 }

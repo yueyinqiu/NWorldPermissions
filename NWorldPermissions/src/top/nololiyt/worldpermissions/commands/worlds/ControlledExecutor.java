@@ -10,10 +10,11 @@ import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-public class ListExecutor extends Executor
+public class ControlledExecutor extends Executor
 {
-    protected final static String layerName = "list";
+    protected final static String layerName = "controlled";
     
     @Override
     public String permissionName()
@@ -47,20 +48,19 @@ public class ListExecutor extends Executor
                 StringPair.senderName(commandSender.getName())
         });
         
-        List<String> worlds = rootPlugin.getConfig().getStringList("controlled-worlds");
-        if (worlds.isEmpty())
+        List<String> worldName = rootPlugin.getWorldsManager().allControlledWorldsName();
+        if (worldName.isEmpty())
         {
             messagesSender.send(messageKey.append("no-controlled-world"));
             return true;
         }
         
         messageKey.append("list");
-    
         String beginning = getMessageItem(messagesManager, messageKey, "beginning");
         String separator = getMessageItem(messagesManager, messageKey, "separator");
         String ending = getMessageItem(messagesManager, messageKey, "ending");
-        messagesSender.sendJointed(beginning, ending,separator , worlds);
         
+        messagesSender.sendJointed(beginning, ending,separator , worldName);
         return true;
     }
     

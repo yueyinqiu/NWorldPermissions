@@ -9,6 +9,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/res/plugin.yml" />
         <element id="file-copy" path="$PROJECT_DIR$/res/messages.yml" />
         <element id="file-copy" path="$PROJECT_DIR$/res/marks.yml" />
+        <element id="file-copy" path="$PROJECT_DIR$/res/worlds.yml" />
       </root>
     </artifact>
   </component>
@@ -149,6 +150,7 @@
         <w>teleportation</w>
         <w>teleported</w>
         <w>teleporting</w>
+        <w>uncontrol</w>
         <w>unteleported</w>
       </words>
     </dictionary>

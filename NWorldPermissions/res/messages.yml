@@ -16,28 +16,30 @@ messages:
     help: |
       &r&3[&bNWorldPermissions&3]:
       Try these commands!
-      /wp worlds add <world_name> -- To make a world controlled.
-      /wp worlds remove <world_name> -- To make a world uncontrolled.
-      /wp worlds list -- To list all the controlled worlds.
+      /wp worlds control <world_name> -- To make a world controlled.
+      /wp worlds uncontrol <world_name> -- To make a world uncontrolled.
+      /wp worlds controlled -- To list all the controlled worlds.
+      /wp worlds set -- To set some custom options of the worlds. (not only the controlled ones)
+      /wp worlds get -- To get the current value of the custom options.
     # Available Arg(s): {senderName}.
-    add:
+    control:
       already-controlled: |
         &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' has already been controlled before.
       # Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' has been controlled now.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' has been controlled now (or its trust has been changed).
       # Available Arg(s): {senderName}, {worldName}.
       completed-but-no-such-world: |
         &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' has been controlled now, but actually there isn't such a world. Is there a typo?
       # Available Arg(s): {senderName}, {worldName}.
-    remove:
+    uncontrol:
       no-such-controlled-world: |
-        &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' hasn't been controlled before.
+        &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' hasn't been controlled yet.
       # Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' has been uncontrolled now.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' isn't uncontrolled now.
       # Available Arg(s): {senderName}, {worldName}.
-    list:
+    controlled:
       list:
         # The following 3 messages will get jointed together before being sent.
         # They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
@@ -50,6 +52,42 @@ messages:
         # Available Arg(s): {senderName}.
       no-controlled-world: "&r&3[&bNWorldPermissions&3]: Uh, there is no controlled world."
       # Available Arg(s): {senderName}.
+    set:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        Try these commands!
+        /wp worlds set display <world_name> <display_name> -- To set the display name of a world.
+        /wp worlds set thrust <world_name> <thrust> -- To set the thrust coefficient when being pushed by the portals. It should be a double value. (set '0' to disable)
+      # Available Arg(s): {senderName}.
+      display:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3'.
+        # Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3', but actually there isn't such a world. Is there a typo?
+        # Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is set to '{thrust}&r&3'.
+        # Available Arg(s): {senderName}, {worldName}, {thrust}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is set to '{thrust}&r&3', but actually there isn't such a world. Is there a typo?
+        # Available Arg(s): {senderName}, {worldName}, {thrust}.
+    get:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        Try these commands!
+        /wp worlds set display <world_name> -- To get the display name of a world.
+        /wp worlds set thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
+      # Available Arg(s): {senderName}.
+      display:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is '{worldDisplayName}&r&3'.
+        # Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is '{thrust}&r&3'.
+        # Available Arg(s): {senderName}, {worldName}, {thrust}.
 
   tp:
     help: |
@@ -189,4 +227,4 @@ messages:
     when-teleported-by-tp-online:
       before-teleport: |
         &r&3[&bNWorldPermissions&3]: A strange power is trying to teleport you to {markName}&r&3.
-      # Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}.
+      # Available Arg(s): {senderName}, {worldDisplayName}, {markName}, {playerName}.

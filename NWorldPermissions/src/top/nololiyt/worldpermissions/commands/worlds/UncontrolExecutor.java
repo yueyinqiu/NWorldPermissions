@@ -1,7 +1,6 @@
 package top.nololiyt.worldpermissions.commands.worlds;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.Configuration;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
@@ -11,9 +10,9 @@ import top.nololiyt.worldpermissions.commands.Executor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RemoveExecutor extends Executor
+public class UncontrolExecutor extends Executor
 {
-    protected final static String layerName = "remove";
+    protected final static String layerName = "uncontrol";
     
     @Override
     public String permissionName()
@@ -55,19 +54,12 @@ public class RemoveExecutor extends Executor
                 StringPair.senderName(commandSender.getName())
         });
     
-        Configuration config = rootPlugin.getConfig();
-        List<String> worlds = config.getStringList("controlled-worlds");
-    
-        if (!worlds.remove(worldName))
+        if (!rootPlugin.getWorldsManager().uncontrol(worldName))
         {
             messagesSender.send(messageKey.append("no-such-controlled-world"));
             return true;
         }
         
-        config.set("controlled-worlds", worlds);
-        
-        rootPlugin.saveConfig();
-    
         messagesSender.send(messageKey.append("completed"));
         return true;
     }

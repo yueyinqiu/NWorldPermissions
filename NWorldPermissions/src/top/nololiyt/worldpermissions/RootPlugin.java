@@ -2,6 +2,7 @@ package top.nololiyt.worldpermissions;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import top.nololiyt.worldpermissions.configurationmanagers.WorldsManager;
 import top.nololiyt.worldpermissions.configurationmanagers.MarksManager;
 import top.nololiyt.worldpermissions.configurationmanagers.MessagesManager;
 import top.nololiyt.worldpermissions.playerlisteners.JoinAndQuitListener;
@@ -30,13 +31,20 @@ public class RootPlugin extends JavaPlugin
     {
         return versionManager;
     }
+    private WorldsManager worldsManager;
+    
+    public WorldsManager getWorldsManager()
+    {
+        return worldsManager;
+    }
     
     
     @Override
     public void onEnable()
     {
         saveDefaultConfig();
-        
+    
+        worldsManager = new WorldsManager(this);
         messagesManager = new MessagesManager(this);
         marksManager = new MarksManager(this);
         versionManager = new VersionManager(this);

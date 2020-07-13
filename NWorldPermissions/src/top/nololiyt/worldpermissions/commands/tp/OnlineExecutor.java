@@ -116,7 +116,10 @@ public class OnlineExecutor extends Executor
                         new MessagesSender(messagesManager, null, new StringPair[]{
                                 null,
                                 StringPair.markName(markName),
-                                StringPair.worldName(worldName),
+                                StringPair.worldDisplayName(
+                                        rootPlugin.getWorldsManager()
+                                                .getWorldInfo(worldName).getDisplay()
+                                ),
                                 StringPair.senderName(senderName),
                                 StringPair.teleportationTimes(times.stringValue)
                         }));

@@ -10,5 +10,3 @@ update-checker:
   enabled: true
   period: 36000
   log-after-first-check: true
-
-controlled-worlds: []

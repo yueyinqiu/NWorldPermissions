@@ -2,10 +2,8 @@ package top.nololiyt.worldpermissions.commands.worlds;
 
 import top.nololiyt.worldpermissions.commands.CommandLayer;
 import top.nololiyt.worldpermissions.commands.Router;
-import top.nololiyt.worldpermissions.commands.marks.MarksRouter;
-import top.nololiyt.worldpermissions.commands.reload.ReloadRouter;
-import top.nololiyt.worldpermissions.commands.tp.TpRouter;
-import top.nololiyt.worldpermissions.commands.version.VersionRouter;
+import top.nololiyt.worldpermissions.commands.worlds.get.GetRouter;
+import top.nololiyt.worldpermissions.commands.worlds.set.SetRouter;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -29,9 +27,11 @@ public class WorldsRouter extends Router
     private Map<String, CommandLayer> commandLayers = new LinkedHashMap<String, CommandLayer>()
     {
         {
-            put("add", new AddExecutor());
-            put("remove", new RemoveExecutor());
-            put("list", new ListExecutor());
+            put("control", new ControlExecutor());
+            put("uncontrol", new UncontrolExecutor());
+            put("controlled", new ControlledExecutor());
+            put("get", new GetRouter());
+            put("set", new SetRouter());
         }
     };
     

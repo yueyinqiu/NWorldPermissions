@@ -1,4 +1,4 @@
-package top.nololiyt.worldpermissions.commands.reload;
+package top.nololiyt.worldpermissions.commands.worlds.set;
 
 import top.nololiyt.worldpermissions.commands.CommandLayer;
 import top.nololiyt.worldpermissions.commands.Router;
@@ -6,14 +6,14 @@ import top.nololiyt.worldpermissions.commands.Router;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class ReloadRouter extends Router
+public class SetRouter extends Router
 {
-    protected final static String layerName = "reload";
+    protected final static String layerName = "set";
     
     @Override
     public String permissionName()
     {
-        return layerName;
+        return null;
     }
     
     @Override
@@ -25,10 +25,8 @@ public class ReloadRouter extends Router
     private Map<String, CommandLayer> commandLayers = new LinkedHashMap<String, CommandLayer>()
     {
         {
-            put("config", new ConfigExecutor());
-            put("messages", new MessagesExecutor());
-            put("marks", new MarksExecutor());
-            put("all", new AllExecutor());
+            put("display", new DisplayExecutor());
+            put("thrust", new ThrustExecutor());
         }
     };
     
