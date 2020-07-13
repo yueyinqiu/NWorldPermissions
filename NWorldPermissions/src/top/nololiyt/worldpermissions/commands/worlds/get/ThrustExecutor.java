@@ -34,8 +34,7 @@ public class ThrustExecutor extends Executor
         switch (ordinal)
         {
             case 0:
-                return new ArrayList<>(
-                        rootPlugin.getWorldsManager().allControlledWorldsName());
+                return rootPlugin.getWorldsManager().getAllWorldName();
             default:
                 return new ArrayList<>();
         }
@@ -59,7 +58,7 @@ public class ThrustExecutor extends Executor
                 StringPair.senderName(commandSender.getName())
         });
     
-        messagesSender.send(messageKey.append("completed"));
+        messagesSender.send(messageKey.append("show"));
         return true;
     }
 }

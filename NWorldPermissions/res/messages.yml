@@ -27,7 +27,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' has already been controlled before.
       # Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' has been controlled now (or its trust has been changed).
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' has been controlled now.
       # Available Arg(s): {senderName}, {worldName}.
       completed-but-no-such-world: |
         &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' has been controlled now, but actually there isn't such a world. Is there a typo?

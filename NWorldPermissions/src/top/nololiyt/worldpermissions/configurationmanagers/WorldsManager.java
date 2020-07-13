@@ -74,6 +74,16 @@ public class WorldsManager extends ConfigurationManager
         return true;
     }
     
+    public List<String> getAllWorldName()
+    {
+        List<String> result = new ArrayList<>();
+        for (World world : Bukkit.getWorlds())
+        {
+            result.add(world.getName());
+        }
+        return result;
+    }
+    
     public boolean existedInGame(String worldName)
     {
         for (World world : Bukkit.getWorlds())

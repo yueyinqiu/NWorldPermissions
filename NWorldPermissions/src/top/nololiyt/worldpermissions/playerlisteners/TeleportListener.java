@@ -55,12 +55,13 @@ public class TeleportListener implements Listener
         e.setCancelled(true);
         messagesSender.send(new DotDividedStringBuilder(
                 "messages.to-players.when-teleport-to-controlled-worlds.denied"));
-        
-        if(e.getCause() == PlayerTeleportEvent.TeleportCause.NETHER_PORTAL ||
+    
+        if (e.getCause() == PlayerTeleportEvent.TeleportCause.NETHER_PORTAL ||
                 e.getCause() == PlayerTeleportEvent.TeleportCause.END_PORTAL)
         {
-            player.setVelocity(player.getVelocity().add(Vector.getRandom().multiply(
-                    worldInfo.getThrust())));
+            double thrust = worldInfo.getThrust();
+            Vector random = Vector.getRandom().multiply(thrust);
+            player.setVelocity(player.getVelocity().add(random));
         }
     }
     

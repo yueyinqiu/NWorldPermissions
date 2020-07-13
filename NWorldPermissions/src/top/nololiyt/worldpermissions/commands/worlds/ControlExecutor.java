@@ -37,11 +37,9 @@ public class ControlExecutor extends Executor
         switch (ordinal)
         {
             case 0:
-                List<String> result = new ArrayList<>();
-                for (World world : Bukkit.getWorlds())
-                {
-                    result.add(world.getName());
-                }
+                WorldsManager worldsManager = rootPlugin.getWorldsManager();
+                List<String> result = worldsManager.getAllWorldName();
+                result.removeAll(worldsManager.allControlledWorldsName());
                 return result;
             default:
                 return new ArrayList<>();

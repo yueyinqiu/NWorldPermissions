@@ -82,7 +82,7 @@ public abstract class Router implements CommandLayer
             permission.append(permissionName());
             if (!commandSender.hasPermission(permission.toString()))
             {
-                return null;
+                return new ArrayList<>();
             }
         }
         
@@ -124,6 +124,6 @@ public abstract class Router implements CommandLayer
                     args);
         }
     
-        return null;
+        return new ArrayList<>();
     }
 }

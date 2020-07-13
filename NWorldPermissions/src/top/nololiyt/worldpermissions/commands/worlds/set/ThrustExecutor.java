@@ -35,16 +35,16 @@ public class ThrustExecutor extends Executor
         switch (ordinal)
         {
             case 0:
-                return new ArrayList<>(
-                        rootPlugin.getWorldsManager().allControlledWorldsName());
+                return rootPlugin.getWorldsManager().getAllWorldName();
             case 1:
                 return new ArrayList<String>()
                 {
                     {
-                        add("2.33");
-                        add("4.123897035163921");
-                        add("5.0");
-                        add("6");
+                        add("0");
+                        add("0.1");
+                        add("0.2");
+                        add("0.3");
+                        add("0.4");
                     }
                 };
             default:

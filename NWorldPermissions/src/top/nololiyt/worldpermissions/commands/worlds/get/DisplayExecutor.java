@@ -3,7 +3,6 @@ package top.nololiyt.worldpermissions.commands.worlds.get;
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
-import top.nololiyt.worldpermissions.configurationmanagers.WorldsManager;
 import top.nololiyt.worldpermissions.entitiesandtools.WorldInfo;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
@@ -34,8 +33,7 @@ public class DisplayExecutor extends Executor
         switch (ordinal)
         {
             case 0:
-                return new ArrayList<>(
-                        rootPlugin.getWorldsManager().allControlledWorldsName());
+                return rootPlugin.getWorldsManager().getAllWorldName();
             default:
                 return new ArrayList<>();
         }
@@ -59,7 +57,7 @@ public class DisplayExecutor extends Executor
                 StringPair.senderName(commandSender.getName())
         });
         
-        messagesSender.send(messageKey.append("completed"));
+        messagesSender.send(messageKey.append("show"));
         return true;
     }
 }

@@ -32,7 +32,7 @@ public class UncontrolExecutor extends Executor
         switch (ordinal)
         {
             case 0:
-                return rootPlugin.getConfig().getStringList("controlled-worlds");
+                return rootPlugin.getWorldsManager().allControlledWorldsName();
             default:
                 return new ArrayList<>();
         }

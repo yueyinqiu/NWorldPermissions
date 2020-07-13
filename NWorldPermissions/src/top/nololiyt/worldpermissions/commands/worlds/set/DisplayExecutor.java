@@ -34,15 +34,15 @@ public class DisplayExecutor extends Executor
         switch (ordinal)
         {
             case 0:
-                return new ArrayList<>(
-                        rootPlugin.getWorldsManager().allControlledWorldsName());
+                return rootPlugin.getWorldsManager().getAllWorldName();
             case 1:
                 return new ArrayList<String>()
                 {
                     {
-                        add("A WORLD!");
-                        add("B WORLD!");
-                        add("C WORLD!");
+                        add("A WORLD");
+                        add("B WORLD");
+                        add("C WORLD");
+                        add("D WORLD");
                     }
                 };
             default:
