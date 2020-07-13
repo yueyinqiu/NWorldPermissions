@@ -41,7 +41,7 @@ public class AllExecutor extends Executor
                           String[] args)
     {
         ReloadExecutor[] executors = new ReloadExecutor[]{
-                new ConfigExecutor(), new MarksExecutor(), new MessagesExecutor()
+                new ConfigExecutor(), new MarksExecutor(), new MessagesExecutor(), new WorldsExecutor()
         };
         
         for (ReloadExecutor executor : executors)

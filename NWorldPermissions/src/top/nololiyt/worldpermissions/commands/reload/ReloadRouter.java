@@ -28,6 +28,7 @@ public class ReloadRouter extends Router
             put("config", new ConfigExecutor());
             put("messages", new MessagesExecutor());
             put("marks", new MarksExecutor());
+            put("worlds", new WorldsExecutor());
             put("all", new AllExecutor());
         }
     };
