@@ -27,8 +27,7 @@ public class MarksManager extends ConfigurationManager
     public void setMark(String name, Location mark) throws IOException
     {
         getConfiguration().set(name, mark);
-        getConfiguration().save(new File(
-                getRootPlugin().getDataFolder().getAbsolutePath(), "marks.yml"));
+        saveConfiguration();
     }
     
     public Location getMark(String name)

@@ -7,6 +7,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.WorldInfo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,16 +52,17 @@ public class WorldsManager extends ConfigurationManager
                 section.getBoolean("controlled"));
     }
     
-    public void set(String world, WorldInfo worldInfo)
+    public void set(String world, WorldInfo worldInfo) throws IOException
     {
         ConfigurationSection section = getConfiguration()
                 .createSection(world);
         section.set("display", worldInfo.getDisplay());
         section.set("thrust", worldInfo.getThrust());
         section.set("controlled", worldInfo.isControlled());
+        saveConfiguration();
     }
     
-    public boolean uncontrol(String world)
+    public boolean uncontrol(String world) throws IOException
     {
         ConfigurationSection section = getConfiguration().
                 getConfigurationSection(world);
@@ -69,7 +71,7 @@ public class WorldsManager extends ConfigurationManager
             return false;
         }
         WorldInfo current = getWorldInfo(world);
-        getConfiguration().set(world,
+        set(world,
                 new WorldInfo(current.getDisplay(), current.getThrust(), false));
         return true;
     }

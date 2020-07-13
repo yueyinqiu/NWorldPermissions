@@ -32,6 +32,9 @@ messages:
       completed-but-no-such-world: |
         &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' has been controlled now, but actually there isn't such a world. Is there a typo?
       # Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me controlling the world.
+      # Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
     uncontrol:
       no-such-controlled-world: |
         &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' hasn't been controlled yet.
@@ -39,6 +42,9 @@ messages:
       completed: |
         &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' isn't uncontrolled now.
       # Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me uncontrolling the world.
+      # Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
     controlled:
       list:
         # The following 3 messages will get jointed together before being sent.
@@ -66,12 +72,18 @@ messages:
         completed-but-no-such-world: |
           &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3', but actually there isn't such a world. Is there a typo?
         # Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me setting the display name.
+        # Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
       thrust:
         completed: |
           &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is set to '{thrust}&r&3'.
         # Available Arg(s): {senderName}, {worldName}, {thrust}.
         completed-but-no-such-world: |
           &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is set to '{thrust}&r&3', but actually there isn't such a world. Is there a typo?
+        # Available Arg(s): {senderName}, {worldName}, {thrust}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me setting the thrust.
         # Available Arg(s): {senderName}, {worldName}, {thrust}.
     get:
       help: |

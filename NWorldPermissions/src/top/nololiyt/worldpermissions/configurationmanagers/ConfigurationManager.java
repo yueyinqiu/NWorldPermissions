@@ -4,6 +4,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import top.nololiyt.worldpermissions.RootPlugin;
 
 import java.io.File;
+import java.io.IOException;
 
 public abstract class ConfigurationManager
 {
@@ -34,5 +35,10 @@ public abstract class ConfigurationManager
     protected YamlConfiguration getConfiguration()
     {
         return configuration;
+    }
+    protected void saveConfiguration() throws IOException
+    {
+        configuration.save(new File(
+                getRootPlugin().getDataFolder().getAbsolutePath(), "marks.yml"));
     }
 }

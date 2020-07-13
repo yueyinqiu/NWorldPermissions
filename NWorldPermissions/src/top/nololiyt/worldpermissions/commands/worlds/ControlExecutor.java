@@ -11,6 +11,7 @@ import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.entitiesandtools.WorldInfo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -70,9 +71,17 @@ public class ControlExecutor extends Executor
             return true;
         }
         
-        worldsManager.set(worldName,
-                new WorldInfo(world.getDisplay(), world.getThrust(), true));
-    
+        try
+        {
+            worldsManager.set(worldName,
+                    new WorldInfo(world.getDisplay(), world.getThrust(), true));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            messagesSender.send(messageKey.append("failed"));
+            return true;
+        }
         if (worldsManager.existedInGame(worldName))
             messagesSender.send(messageKey.append("completed"));
         else

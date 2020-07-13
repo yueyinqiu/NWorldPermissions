@@ -9,6 +9,7 @@ import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,11 +56,12 @@ public class DisplayExecutor extends Executor
                           DotDividedStringBuilder messageKey, CommandSender commandSender,
                           String[] args)
     {
-        if (args.length - 1 != layer + 1)
+        if (args.length - 1 < layer)
             return false;
     
         String world = args[layer];
-        String display = args[layer + 1];
+        String display = getDisplay(layer,args);
+        
         MessagesSender messagesSender = new MessagesSender(
                 rootPlugin.getMessagesManager(), commandSender, new StringPair[]{
                 StringPair.worldName(world),
@@ -70,8 +72,17 @@ public class DisplayExecutor extends Executor
         WorldsManager worldsManager = rootPlugin.getWorldsManager();
         WorldInfo worldInfo = worldsManager.getWorldInfo(world);
         
-        worldsManager.set(world,
-                new WorldInfo(display, worldInfo.getThrust(), worldInfo.isControlled()));
+        try
+        {
+            worldsManager.set(world,
+                    new WorldInfo(display, worldInfo.getThrust(), worldInfo.isControlled()));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            messagesSender.send(messageKey.append("failed"));
+            return true;
+        }
         
         if (worldsManager.existedInGame(world))
             messagesSender.send(messageKey.append("completed"));
@@ -79,5 +90,16 @@ public class DisplayExecutor extends Executor
             messagesSender.send(messageKey.append("completed-but-no-such-world"));
         
         return true;
+    }
+    private String getDisplay(int layer, String[] args)
+    {
+        StringBuilder builder = new StringBuilder();
+        for (int i = layer + 1; i < args.length; i++)
+        {
+            builder.append(args[i]);
+            builder.append(' ');
+        }
+        builder.deleteCharAt(builder.length() - 1);
+        return builder.toString();
     }
 }

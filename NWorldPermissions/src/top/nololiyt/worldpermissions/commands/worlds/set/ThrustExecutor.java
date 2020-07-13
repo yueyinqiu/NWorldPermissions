@@ -10,6 +10,7 @@ import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,10 +42,9 @@ public class ThrustExecutor extends Executor
                 {
                     {
                         add("0");
-                        add("0.1");
-                        add("0.2");
-                        add("0.3");
                         add("0.4");
+                        add("0.7");
+                        add("2.33");
                     }
                 };
             default:
@@ -81,9 +81,17 @@ public class ThrustExecutor extends Executor
         
         WorldsManager worldsManager = rootPlugin.getWorldsManager();
         WorldInfo worldInfo = worldsManager.getWorldInfo(world);
-        
-        worldsManager.set(world,
-                new WorldInfo(worldInfo.getDisplay(), thrust, worldInfo.isControlled()));
+        try
+        {
+            worldsManager.set(world,
+                    new WorldInfo(worldInfo.getDisplay(), thrust, worldInfo.isControlled()));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            messagesSender.send(messageKey.append("failed"));
+            return true;
+        }
         
         if (worldsManager.existedInGame(world))
             messagesSender.send(messageKey.append("completed"));

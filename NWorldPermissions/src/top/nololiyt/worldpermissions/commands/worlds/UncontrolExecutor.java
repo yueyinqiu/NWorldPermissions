@@ -7,6 +7,7 @@ import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,9 +55,18 @@ public class UncontrolExecutor extends Executor
                 StringPair.senderName(commandSender.getName())
         });
     
-        if (!rootPlugin.getWorldsManager().uncontrol(worldName))
+        try
         {
-            messagesSender.send(messageKey.append("no-such-controlled-world"));
+            if (!rootPlugin.getWorldsManager().uncontrol(worldName))
+            {
+                messagesSender.send(messageKey.append("no-such-controlled-world"));
+                return true;
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            messagesSender.send(messageKey.append("failed"));
             return true;
         }
         
