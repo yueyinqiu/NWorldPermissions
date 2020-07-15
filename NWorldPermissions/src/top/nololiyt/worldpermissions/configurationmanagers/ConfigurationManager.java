@@ -39,6 +39,6 @@ public abstract class ConfigurationManager
     protected void saveConfiguration() throws IOException
     {
         configuration.save(new File(
-                getRootPlugin().getDataFolder().getAbsolutePath(), "marks.yml"));
+                getRootPlugin().getDataFolder().getAbsolutePath(), getFileName()));
     }
 }
