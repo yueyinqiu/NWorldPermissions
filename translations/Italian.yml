@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nBene, questi mondi sono controllati:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3Questo è tutto."
       #Available Arg(s): {senderName}.
@@ -87,9 +87,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        Prova questi comandi!
-        /wp worlds set display <world_name> -- Per ottenere il nome visualizzato di un mondo.
-        /wp mondi impostati spinta <world_name> -- Per ottenere il coefficiente di spinta quando viene spinto dai portali.
+        Try these commands!
+        /wp worlds get display <world_name> -- To get the display name of a world.
+        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nBeh, ci sono i marchi:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3Questo è tutto."
       #Available Arg(s): {senderName}.
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Prova questi comandi!
-      /wp versione corrente -- Per ottenere le informazioni sulla versione corrente.
-      /wp ricarica più recente -- Per ottenere le ultime informazioni sulla versione.
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp version latest -- To get the latest version info.
     #Available Arg(s): {senderName}.
     current:
       message: |
