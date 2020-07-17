@@ -39,7 +39,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: Uh, svět '{worldName}&r&3' ještě nebyl ovládán.
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Svět '{worldName}&r&3' nyní není nekontrolovaný.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' is uncontrolled now.
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, co se stalo? Zvláštní síla mě zastavila odovládání světa.
