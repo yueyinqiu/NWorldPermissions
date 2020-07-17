@@ -4,16 +4,26 @@
 messages:
   help: |
     &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
     Hello, {senderName}&r&3! Try these commands!
     /wp worlds (Permission Required: "nworldpermissions.worlds")
     /wp marks (Permission Required: "nworldpermissions.marks")
     /wp tp (Permission Required: "nworldpermissions.tp")
     /wp reload (Permission Required: "nworldpermissions.reload")
     /wp version (Permission Required: "nworldpermissions.version")
+=======
+    Hej, {senderName}&r&3! Prova dessa kommandon!
+    /wp världar (Behörighet krävs: "nworldpermissions. orlds")
+    /wp mark (Behörighet krävs: "nworldpermissions. arks")
+    /wp tp (Behörighet krävs: "nworldpermissions.tp")
+    /wp reload (Behörighet krävs: "nworldpermissions.reload")
+    /wp version (Behörighet krävs: "nworldpermissions.version")
+>>>>>>> crowdin
   #Available Arg(s): {senderName}.
   worlds:
     help: |
       &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
       Try these commands!
       /wp worlds control <world_name> -- To make a world controlled.
       /wp worlds uncontrol <world_name> -- To make a world uncontrolled.
@@ -43,12 +53,44 @@ messages:
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me uncontrolling the world.
+=======
+      Prova dessa kommandon!
+      /wp världar kontroll <world_name> -- För att göra en värld kontrollerad.
+      /wp worlds uncontrol <world_name> – För att göra en värld okontrollerad.
+      /wp worlds controlled – To list all the controlled worlds.
+      /wp worlds set – To set some custom options of the worlds. (inte bara de kontrollerade)
+      /wp världar får – För att få det aktuella värdet av de anpassade alternativen.
+    #Available Arg(s): {senderName}.
+    control:
+      already-controlled: |
+        &r&3[&bNWorldPermissions&3]: Eh, världen '{worldName}&r&3' har redan kontrollerats förut.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Världen '{worldName}&r&3' har nu kontrollerats.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed-but-no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Tja, världen '{worldName}&r&3' har kontrollerats nu, men det finns faktiskt inte en sådan värld. Finns det ett tryck?
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, vad hände? En konstig kraft har stoppat mig att kontrollera världen.
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    uncontrol:
+      no-such-controlled-world: |
+        &r&3[&bNWorldPermissions&3]: Eh, world '{worldName}&r&3' har inte kontrollerats ännu.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Världen '{worldName}&r&3' är inte okontrollerad nu.
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, vad hände? En konstig kraft har hindrat mig att inte kontrollera världen.
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
     controlled:
       list:
         #The following 3 messages will get jointed together before being sent.
         #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+<<<<<<< HEAD
         beginning: "&r&3[&bNWorldPermissions&3]:\nWell, these worlds are controlled:\n"
         #Available Arg(s): {senderName}.
         separator: "\n"
@@ -56,10 +98,20 @@ messages:
         ending: "\n&r&3That's all."
       #Available Arg(s): {senderName}.
       no-controlled-world: "&r&3[&bNWorldPermissions&3]: Uh, there is no controlled world."
+=======
+        beginning: "&r&3[&bNWorldPermissions&3]:\nJa, dessa världar kontrolleras:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3Det är allt."
+      #Available Arg(s): {senderName}.
+      no-controlled-world: "&r&3[&bNWorldPermissions&3]: Eh, det finns ingen kontrollerad värld."
+>>>>>>> crowdin
     #Available Arg(s): {senderName}.
     set:
       help: |
         &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
         Try these commands!
         /wp worlds set display <world_name> <display_name> -- To set the display name of a world.
         /wp worlds set thrust <world_name> <thrust> -- To set the thrust coefficient when being pushed by the portals. It should be a double value. (set '0' to disable)
@@ -83,10 +135,36 @@ messages:
         #Available Arg(s): {senderName}, {worldName}, {thrust}.
         failed: |
           &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me setting the thrust.
+=======
+        Prova dessa kommandon!
+        /wp worlds set display <world_name> <display_name> -- För att ställa in visningsnamnet för en värld.
+        /wp världar satte tryck <world_name> <thrust> -- För att ställa in tryckkoefficienten när den trycks av portalerna. Det ska vara ett dubbelt värde. (sätt '0' på att inaktivera)
+      #Available Arg(s): {senderName}.
+      display:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Ja, världen '{worldName}&r&3's visningsnamn är satt till '{worldDisplayName}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Ja, världen '{worldName}&r&3''s visningsnamn är satt till '{worldDisplayName}&r&3', men det finns faktiskt inte en sådan värld. Finns det ett stavfel?
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Um, vad hände? En konstig ström har hindrat mig från att ställa in visningsnamnet.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Ja, världen '{worldName}&r&3''s tryck är satt till '{thrust}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Ja, världen '{worldName}&r&3''s tryck är satt till '{thrust}&r&3', men det finns faktiskt inte en sådan värld. Finns det ett stavfel?
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Um, vad hände? En konstig kraft har hindrat mig från att sätta dragkraft.
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {worldName}, {thrust}.
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
         Try these commands!
         /wp worlds set display <world_name> -- To get the display name of a world.
         /wp worlds set thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
@@ -98,10 +176,24 @@ messages:
       thrust:
         show: |
           &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is '{thrust}&r&3'.
+=======
+        Prova dessa kommandon!
+        /wp worlds set display <world_name> -- För att få visa namnet på en värld.
+        /wp världar sätter tryckkraft <world_name> -- För att få tryckkoefficienten när den trycks av portalerna.
+      #Available Arg(s): {senderName}.
+      display:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Ja, världen '{worldName}&r&3's visningsnamn är '{worldDisplayName}&r&3'.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Ja, världen '{worldName}&r&3''s tryck är '{thrust}&r&3'.
+>>>>>>> crowdin
   #Available Arg(s): {senderName}, {worldName}, {thrust}.
   tp:
     help: |
       &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
       Try these commands!
       /wp tp online <world_name> <mark_name> [teleportation_times = 1] -- To teleport all the online players in the specific world to a mark.
       /wp tp offline <world_name> <mark_name> -- To teleport all the tracked offline players in the specific world to a mark.
@@ -132,17 +224,56 @@ messages:
       #Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
         &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 offline players have been teleported.
+=======
+      Prova dessa kommandon!
+      /wp tp online <world_name> <mark_name> [teleportation_times = 1] -- För att teleportera alla onlinespelare i den specifika världen till ett märke.
+      /wp tp offline <world_name> <mark_name> -- För att teleportera alla bandade offlinespelare i den specifika världen till ett märke.
+    #Available Arg(s): {senderName}.
+    online:
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Um, vilken värld är '{worldName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, var är märket{markName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      failed-to-teleport-someone: |
+        &r&3[&bNWorldPermissions&3]: Eh, {playerName}&r&3 kan inte teleporteras här. Spelaren ska teleporteras {teleportationTimes}&r&3 gånger, men bara {teleportedTimes} lyckades.
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Tja, {teleportedCount}&r&3 spelare har teleporterats {teleportationTimes}&r&3 gånger, men {unteleportedCount}&r&3 har inte det.
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
+    offline:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Eh, offlinesspåraren är inte aktiverad.
+        Se till att 'offline-players-tracker.enabled' i filen 'config.yml' är 'true'.
+      #Available Arg(s): {senderName}.
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Um, vilken värld är '{worldName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, var är märket{markName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Ja, {teleportedCount}&r&3 offline spelare har teleporterats.
+>>>>>>> crowdin
   #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
   marks:
     help: |
       &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
       Try these commands!
       /wp marks add <mark_name> -- To set a mark, then you can use it later.
       /wp marks remove <mark_name> -- To remove a mark.
+=======
+      Prova dessa kommandon!
+      /wp marks add <mark_name> -- För att sätta en markering, då kan du använda den senare.
+      /wp mark remove <mark_name> -- To remove a mark.
+>>>>>>> crowdin
       /wp marks list -- To list all the marks.
     #Available Arg(s): {senderName}.
     add:
       without-a-position: |
+<<<<<<< HEAD
         &r&3[&bNWorldPermissions&3]: Um, {senderName}&r&3? Where are you?
       #Available Arg(s): {senderName}.
       with-occupied-name: |
@@ -163,12 +294,35 @@ messages:
       #Available Arg(s): {senderName}, {markName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me removing the mark.
+=======
+        &r&3[&bNWorldPermissions&3]: Um, {senderName}&r&3? Var är du?
+      #Available Arg(s): {senderName}.
+      with-occupied-name: |
+        &r&3[&bNWorldPermissions&3]: Eh, det har redan funnits ett märke som heter '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Positionen har markerats som "{markName}&r&3".
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, vad hände? En konstig kraft har stoppat mig att markera positionen.
+    #Available Arg(s): {senderName}, {markName}.
+    remove:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Tja, märket "{markName}&r&3" har tagits bort.
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Eh, det finns inte ett märke som heter "{markName}&r&3".
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, vad hände? En konstig kraft har hindrat mig att ta bort märket.
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {markName}.
     list:
       list:
         #The following 3 messages will get jointed together before being sent.
         #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+<<<<<<< HEAD
         beginning: "&r&3[&bNWorldPermissions&3]:\nWell, there are the marks:\n"
         #Available Arg(s): {senderName}.
         separator: "\n"
@@ -176,10 +330,20 @@ messages:
         ending: "\n&r&3That's all."
       #Available Arg(s): {senderName}.
       no-mark: "&r&3[&bNWorldPermissions&3]: Uh, there is no existed mark."
+=======
+        beginning: "&r&3[&bNWorldPermissions&3]:\nJa, det finns märken:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3Det är allt."
+      #Available Arg(s): {senderName}.
+      no-mark: "&r&3[&bNWorldPermissions&3]: Eh, det finns inget existerande märke."
+>>>>>>> crowdin
   #Available Arg(s): {senderName}.
   reload:
     help: |
       &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
       Try these commands!
       /wp reload config -- To reload file 'config.yml'.
       /wp reload messages -- To reload file 'messages.yml'.
@@ -202,10 +366,35 @@ messages:
     worlds:
       completed: |
         &r&3[&bNWorldPermissions&3]: Well, file 'worlds.yml' has been reloaded.
+=======
+      Prova dessa kommandon!
+      /wp ladda om config -- För att ladda om filen 'config. ml'.
+      /wp ladda om meddelanden -- Ladda om filen 'messages.yml'.
+      /wp reload-markeringar -- För att ladda om filen 'marks.yml'.
+      /wp reload-världar -- För att ladda om filen 'worlds. ml'.
+      /wp ladda om alla -- För att ladda om alla filer ovan.
+    #Available Arg(s): {senderName}.
+    config:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Nåväl, filen 'config.yml' har laddats om, men observera att uppdateringskontrollen inte påverkas.
+    #Available Arg(s): {senderName}.
+    messages:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Nåväl, filen 'messages.yml' har laddats om.
+    #Available Arg(s): {senderName}.
+    marks:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Ja, filen 'marks.yml' har laddats om.
+    #Available Arg(s): {senderName}.
+    worlds:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Nåväl, filen 'världs.yml' har laddats om.
+>>>>>>> crowdin
   #Available Arg(s): {senderName}.
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
       Try these commands!
       /wp version current -- To get the current version info.
       /wp reload latest -- To get the latest version info.
@@ -213,10 +402,20 @@ messages:
     current:
       message: |
         &r&3[&bNWorldPermissions&3]: Well, the current version is '{version}&r&3'.
+=======
+      Prova dessa kommandon!
+      /wp version current -- För att få aktuell versionsinfo.
+      /wp ladda om senaste – För att få senaste versionsinformation.
+    #Available Arg(s): {senderName}.
+    current:
+      message: |
+        &r&3[&bNWorldPermissions&3]: Nåväl, den aktuella versionen är '{version}&r&3'.
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {version}.
     latest:
       message: |
         &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
         Well, the latest version is '{version}&r&3' ({time}&r&3).
         You may download it at 'https://yueyinqiu.github.io/NWorldPermissions/download'.
       #Available Arg(s): {senderName}, {version}, {time}.
@@ -225,10 +424,21 @@ messages:
       #Available Arg(s): {senderName}.
       failed-to-check: |
         &r&3[&bNWorldPermissions&3]: Um, I don't know what happened, but actually I can't check the update.
+=======
+        Nåja, den senaste versionen är '{version}&r&3' ({time}&r&3).
+        Du kan ladda ner den på 'https://yueyinqiu.github.io/NWorldPermissions/download'.
+      #Available Arg(s): {senderName}, {version}, {time}.
+      checker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Eh, uppdateringskontrollen är inte aktiverad.
+      #Available Arg(s): {senderName}.
+      failed-to-check: |
+        &r&3[&bNWorldPermissions&3]: Um, jag vet inte vad som hände, men jag kan faktiskt inte kontrollera uppdateringen.
+>>>>>>> crowdin
   #Available Arg(s): {senderName}.
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |
+<<<<<<< HEAD
         &r&3[&bNWorldPermissions&3]: You've felt a strange power when teleporting to {toWorld}&r&3, but it doesn't work for you.
       #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
       denied: |
@@ -237,3 +447,13 @@ messages:
     when-teleported-by-tp-online:
       before-teleport: |
         &r&3[&bNWorldPermissions&3]: A strange power is trying to teleport you to {markName}&r&3.
+=======
+        &r&3[&bNWorldPermissions&3]: Du har känt en konstig kraft när du teleporterar till {toWorld}&r&3, men det fungerar inte för dig.
+      #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+      denied: |
+        &r&3[&bNWorldPermissions&3]: En konstig ström har stoppat din teleportation till {toWorld}&r&3, stanna bara i {fromWorld}&r&3!
+    #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+    when-teleported-by-tp-online:
+      before-teleport: |
+        &r&3[&bNWorldPermissions&3]: En konstig kraft försöker teleportera dig till {markName}&r&3.
+>>>>>>> crowdin

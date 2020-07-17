@@ -23,6 +23,7 @@ messages:
     #Available Arg(s): {senderName}.
     control:
       already-controlled: |
+<<<<<<< HEAD
         &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' has already been controlled before.
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
@@ -43,12 +44,35 @@ messages:
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me uncontrolling the world.
+=======
+        &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' は以前に制御されています。
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: 現在、ワールド '{worldName}&r&3' が制御されています。
+      #Available Arg(s): {senderName}, {worldName}.
+      completed-but-no-such-world: |
+        &r&3[&bNWorldPermissions&3]: さて、ワールド '{worldName}&r&3' は現在制御されていますが、実際にはそのような世界はありません。タイプミスがありますか？
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]：うーん、どうしたの？不思議な力で世界をコントロールできなくなった。
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    uncontrol:
+      no-such-controlled-world: |
+        &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' はまだ制御されていません。
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: ワールド'{worldName}&r&3' は現在制御されていません。
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]：うーん、どうしたの？不思議な力で世界をコントロールできなくなった。
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
     controlled:
       list:
         #The following 3 messages will get jointed together before being sent.
         #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+<<<<<<< HEAD
         beginning: "&r&3[&bNWorldPermissions&3]:\nWell, these worlds are controlled:\n"
         #Available Arg(s): {senderName}.
         separator: "\n"
@@ -56,6 +80,15 @@ messages:
         ending: "\n&r&3That's all."
       #Available Arg(s): {senderName}.
       no-controlled-world: "&r&3[&bNWorldPermissions&3]: Uh, there is no controlled world."
+=======
+        beginning: "&r&3[&bNWorldPermissions&3]:\nこれらのワールドは制御されています:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3それだけです。"
+      #Available Arg(s): {senderName}.
+      no-controlled-world: "&r&3[&bNWorldPermissions&3]: ああ、コントロールされた世界はありません。"
+>>>>>>> crowdin
     #Available Arg(s): {senderName}.
     set:
       help: |
@@ -69,6 +102,7 @@ messages:
           &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3'.
         #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
         completed-but-no-such-world: |
+<<<<<<< HEAD
           &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3', but actually there isn't such a world. Is there a typo?
         #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
         failed: |
@@ -83,6 +117,22 @@ messages:
         #Available Arg(s): {senderName}, {worldName}, {thrust}.
         failed: |
           &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me setting the thrust.
+=======
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3', でも実はそんな世界はありません タイプミスはありますか?
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: うーん、どうしたの？妙なパワーで表示名を設定するのを止めた。
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: さて、ワールド'{worldName}&r&3'の推力は'{thrust}&r&3'に設定されています。
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3'の推力は '{thrust}&r&3', に設定されました でも実はそんな世界はありません タイプミスはありますか?
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]：うーん、どうしたの？不思議な力でスラストの設定が止まった。
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {worldName}, {thrust}.
     get:
       help: |
@@ -93,11 +143,19 @@ messages:
       #Available Arg(s): {senderName}.
       display:
         show: |
+<<<<<<< HEAD
           &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is '{worldDisplayName}&r&3'.
       #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
       thrust:
         show: |
           &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is '{thrust}&r&3'.
+=======
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is '{worldDisplayName}&r&3''.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        show: |
+          &r&3[&bNWorldPermissions&3]: さて、ワールド'{worldName}&r&3'の推力は'{thrust}&r&3''です。
+>>>>>>> crowdin
   #Available Arg(s): {senderName}, {worldName}, {thrust}.
   tp:
     help: |
@@ -108,6 +166,7 @@ messages:
     #Available Arg(s): {senderName}.
     online:
       no-such-world: |
+<<<<<<< HEAD
         &r&3[&bNWorldPermissions&3]: Um, which world is '{worldName}&r&3'?
       #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
       no-such-mark: |
@@ -132,6 +191,32 @@ messages:
       #Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
         &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 offline players have been teleported.
+=======
+        &r&3[&bNWorldPermissions&3]: うーん、どのワールドが '{worldName}&r&3' ですか?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: うーん、マーク '{markName}&r&3?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      failed-to-teleport-someone: |
+        &r&3[&bNWorldPermissions&3]: うーん、 {playerName}&r&はここでテレポートできません。プレイヤーは {teleportationTimes}&r&回テレポートする必要がありますが、 {teleportedTimes} 回だけテレポートしました。
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: {teleportedCount}&r&人のプレイヤーが {teleportationTimes}&r&回テレポートしましたが、 {unteleportedCount}&r&3回テレポートしていません。
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
+    offline:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: オフラインプレイヤートラッカーが有効ではありません。
+        config.ymlファイルの'offline-players-tracker.enabled'が'true'であることを確認してください。
+      #Available Arg(s): {senderName}.
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: うーん、どのワールドが '{worldName}&r&3' ですか?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: うーん、マーク '{markName}&r&3?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: {teleportedCount}&r&のオフラインプレイヤーがテレポートしました。
+>>>>>>> crowdin
   #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
   marks:
     help: |
@@ -143,6 +228,7 @@ messages:
     #Available Arg(s): {senderName}.
     add:
       without-a-position: |
+<<<<<<< HEAD
         &r&3[&bNWorldPermissions&3]: Um, {senderName}&r&3? Where are you?
       #Available Arg(s): {senderName}.
       with-occupied-name: |
@@ -163,12 +249,35 @@ messages:
       #Available Arg(s): {senderName}, {markName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me removing the mark.
+=======
+        &r&3[&bNWorldPermissions&3]: うーん、 {senderName}&r&3? どこにいますか？
+      #Available Arg(s): {senderName}.
+      with-occupied-name: |
+        &r&3[&bNWorldPermissions&3]: ああ、すでに「{markName}&r&3」というマークがあります。
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: まあ、このポジションは '{markName}&r&3' とマークされています。
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]：うーん、どうしたの？妙な力で位置を示すのが止まった。
+    #Available Arg(s): {senderName}, {markName}.
+    remove:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: マーク「{markName}&r&3」が削除されました。
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: ああ、'{markName}&r&3' という名前のマークがありません。
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]：うーん、どうしたの？妙な力でマークが外れた。
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {markName}.
     list:
       list:
         #The following 3 messages will get jointed together before being sent.
         #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+<<<<<<< HEAD
         beginning: "&r&3[&bNWorldPermissions&3]:\nWell, there are the marks:\n"
         #Available Arg(s): {senderName}.
         separator: "\n"
@@ -176,6 +285,15 @@ messages:
         ending: "\n&r&3That's all."
       #Available Arg(s): {senderName}.
       no-mark: "&r&3[&bNWorldPermissions&3]: Uh, there is no existed mark."
+=======
+        beginning: "&r&3[&bNWorldPermissions&3]:\nさて、マークがあります:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3それだけです。"
+      #Available Arg(s): {senderName}.
+      no-mark: "&r&3[&bNWorldPermissions&3]: ああ、マークは存在しません。"
+>>>>>>> crowdin
   #Available Arg(s): {senderName}.
   reload:
     help: |
@@ -189,6 +307,7 @@ messages:
     #Available Arg(s): {senderName}.
     config:
       completed: |
+<<<<<<< HEAD
         &r&3[&bNWorldPermissions&3]: Well, file 'config.yml' has been reloaded, but note that the update checker won't be affected.
     #Available Arg(s): {senderName}.
     messages:
@@ -202,6 +321,21 @@ messages:
     worlds:
       completed: |
         &r&3[&bNWorldPermissions&3]: Well, file 'worlds.yml' has been reloaded.
+=======
+        &r&3[&bNWorldPermissions&3]: ファイル 'config.yml' が再読み込みされましたが、更新チェッカーは影響を受けないことに注意してください。
+    #Available Arg(s): {senderName}.
+    messages:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: ファイル 'messages.yml' が再読み込みされました。
+    #Available Arg(s): {senderName}.
+    marks:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: さて、ファイル 'marks.yml' が再読み込みされました。
+    #Available Arg(s): {senderName}.
+    worlds:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: 'worlds.yml' ファイルが再読み込みされました。
+>>>>>>> crowdin
   #Available Arg(s): {senderName}.
   version:
     help: |
@@ -212,11 +346,16 @@ messages:
     #Available Arg(s): {senderName}.
     current:
       message: |
+<<<<<<< HEAD
         &r&3[&bNWorldPermissions&3]: Well, the current version is '{version}&r&3'.
+=======
+        &r&3[&bNWorldPermissions&3]: 現在のバージョンは '{version}&r&3' です。
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {version}.
     latest:
       message: |
         &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
         Well, the latest version is '{version}&r&3' ({time}&r&3).
         You may download it at 'https://yueyinqiu.github.io/NWorldPermissions/download'.
       #Available Arg(s): {senderName}, {version}, {time}.
@@ -225,10 +364,21 @@ messages:
       #Available Arg(s): {senderName}.
       failed-to-check: |
         &r&3[&bNWorldPermissions&3]: Um, I don't know what happened, but actually I can't check the update.
+=======
+        さて、最新バージョンは '{version}&r&3' ({time}&r&3).
+        'https://yueinqiu.github.io/NWorldPermissions/download' でダウンロードできます。
+      #Available Arg(s): {senderName}, {version}, {time}.
+      checker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: 更新チェッカーが有効ではありません。
+      #Available Arg(s): {senderName}.
+      failed-to-check: |
+        &r&3[&bNWorldPermissions&3]: うーん、何が起こったのか分かりませんが、実際にはアップデートを確認できません。
+>>>>>>> crowdin
   #Available Arg(s): {senderName}.
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |
+<<<<<<< HEAD
         &r&3[&bNWorldPermissions&3]: You've felt a strange power when teleporting to {toWorld}&r&3, but it doesn't work for you.
       #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
       denied: |
@@ -237,3 +387,13 @@ messages:
     when-teleported-by-tp-online:
       before-teleport: |
         &r&3[&bNWorldPermissions&3]: A strange power is trying to teleport you to {markName}&r&3.
+=======
+        &r&3[&bNWorldPermissions&3]: {toWorld}&r&にテレポートすると、奇妙な力を感じましたが、あなたには効きません。
+      #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+      denied: |
+        &r&3[&bNWorldPermissions&3]: 奇妙なパワーで {toWorld}&r&へのテレポートが停止しました。 {fromWorld}&r&3に滞在しましょう！
+    #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+    when-teleported-by-tp-online:
+      before-teleport: |
+        &r&3[&bNWorldPermissions&3]: 奇妙なパワーが {markName}&r&にテレポートしようとしています。
+>>>>>>> crowdin

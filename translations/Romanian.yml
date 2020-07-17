@@ -4,16 +4,25 @@
 messages:
   help: |
     &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
     Hello, {senderName}&r&3! Try these commands!
     /wp worlds (Permission Required: "nworldpermissions.worlds")
     /wp marks (Permission Required: "nworldpermissions.marks")
     /wp tp (Permission Required: "nworldpermissions.tp")
     /wp reload (Permission Required: "nworldpermissions.reload")
+=======
+    Bună ziua, {senderName}&r&3! Încearcă aceste comenzi!
+    /wp lumi (Permission Necesar: "nworldpermissions. orlds")
+    /wp (Mocalizare necesară: „nworldpermisations. arks")
+    /wp tp (necesar: "nworldpermissions.tp")
+    /wp reload (Permission Necesar: "nworldpermissions.reload")
+>>>>>>> crowdin
     /wp version (Permission Required: "nworldpermissions.version")
   #Available Arg(s): {senderName}.
   worlds:
     help: |
       &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
       Try these commands!
       /wp worlds control <world_name> -- To make a world controlled.
       /wp worlds uncontrol <world_name> -- To make a world uncontrolled.
@@ -43,12 +52,44 @@ messages:
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me uncontrolling the world.
+=======
+      Încercați aceste comenzi!
+      /wp world control <world_name> -- Pentru a face o lume controlată.
+      /wp lumi dezcontrolează <world_name> -- Pentru a face o lume necontrolată.
+      /wp lumi controlate -- Pentru a enumera toate lumile controlate.
+      /wp setează lumi -- Pentru a seta unele opţiuni personalizate ale lumii. (nu numai cele controlate)
+      /wp lumi -- Pentru a obține valoarea curentă a opțiunilor personalizate.
+    #Available Arg(s): {senderName}.
+    control:
+      already-controlled: |
+        &r&3[&bNWorldPermissions&3]: Uh, lumea '{worldName}&r&3' a fost deja controlată înainte.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Păi, lumea '{worldName}&r&3' a fost controlată acum.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed-but-no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Păi, lumea{worldName}&r&3' a fost controlată acum, dar de fapt nu există o astfel de lume. Există vreo tipografie?
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, ce s-a întâmplat? O putere ciudată m-a oprit să controlez lumea.
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    uncontrol:
+      no-such-controlled-world: |
+        &r&3[&bNWorldPermissions&3]: Uh, lumea '{worldName}&r&3' nu a fost controlată încă.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Păi, lumea '{worldName}&r&3' nu este necontrolată acum.
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, ce s-a întâmplat? O putere ciudată m-a oprit să nu controlez lumea.
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
     controlled:
       list:
         #The following 3 messages will get jointed together before being sent.
         #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+<<<<<<< HEAD
         beginning: "&r&3[&bNWorldPermissions&3]:\nWell, these worlds are controlled:\n"
         #Available Arg(s): {senderName}.
         separator: "\n"
@@ -56,10 +97,20 @@ messages:
         ending: "\n&r&3That's all."
       #Available Arg(s): {senderName}.
       no-controlled-world: "&r&3[&bNWorldPermissions&3]: Uh, there is no controlled world."
+=======
+        beginning: "&r&3[&bNWorldPermissions&3]:\nEi bine, aceste lumi sunt controlate:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3Asta e tot."
+      #Available Arg(s): {senderName}.
+      no-controlled-world: "&r&3[&bNWorldPermissions&3]: Uh, nu există o lume controlată."
+>>>>>>> crowdin
     #Available Arg(s): {senderName}.
     set:
       help: |
         &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
         Try these commands!
         /wp worlds set display <world_name> <display_name> -- To set the display name of a world.
         /wp worlds set thrust <world_name> <thrust> -- To set the thrust coefficient when being pushed by the portals. It should be a double value. (set '0' to disable)
@@ -83,10 +134,36 @@ messages:
         #Available Arg(s): {senderName}, {worldName}, {thrust}.
         failed: |
           &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me setting the thrust.
+=======
+        Încercați aceste comenzi!
+        /wp lumi setează afișarea <world_name> <display_name> -- Pentru a seta numele afișat al unei lumi.
+        /wp lumi setează forţa <world_name> <thrust> -- Pentru a seta coeficientul de împingere atunci când este împins de portaluri. Ar trebui să fie o valoare dublă. (setează '0' pentru dezactivare)
+      #Available Arg(s): {senderName}.
+      display:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Ei bine, lumea{worldName}&r&3 numele afișat este setat pe '{worldDisplayName}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Ei bine, lumea '{worldName}&r&3 numele afișat este setat pe '{worldDisplayName}&r&3', dar de fapt nu există o astfel de lume. Există vreo tipografie?
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Um, ce s-a întâmplat? O putere ciudată m-a oprit să-mi setez numele afișat.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Ei bine, lumea '{worldName}&r&3 valoarea trunchiului este setată la '{thrust}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Ei bine, lumea '{worldName}&r&3 valoarea trunchiului este setată la '{thrust}&r&3', dar de fapt nu există o astfel de lume. Există vreo tipografie?
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Um, ce s-a întâmplat? O putere ciudată m-a oprit să setez calmul.
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {worldName}, {thrust}.
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
         Try these commands!
         /wp worlds set display <world_name> -- To get the display name of a world.
         /wp worlds set thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
@@ -98,10 +175,24 @@ messages:
       thrust:
         show: |
           &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is '{thrust}&r&3'.
+=======
+        Încercați aceste comenzi!
+        /wp lumi setează afișarea <world_name> -- Pentru a obține numele afișat al unei lumi.
+        /wp lumi setează împingerea <world_name> -- Pentru a face coeficientul de împingere când este împins de portaluri.
+      #Available Arg(s): {senderName}.
+      display:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Ei bine, lumea{worldName}&r&3 numele afișat este '{worldDisplayName}&r&3'.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Ei bine, lumea '{worldName}&r&3 imbold este '{thrust}&r&3'.
+>>>>>>> crowdin
   #Available Arg(s): {senderName}, {worldName}, {thrust}.
   tp:
     help: |
       &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
       Try these commands!
       /wp tp online <world_name> <mark_name> [teleportation_times = 1] -- To teleport all the online players in the specific world to a mark.
       /wp tp offline <world_name> <mark_name> -- To teleport all the tracked offline players in the specific world to a mark.
@@ -132,10 +223,43 @@ messages:
       #Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
         &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 offline players have been teleported.
+=======
+      Încercați aceste comenzi!
+      /wp tp online <world_name> <mark_name> [teleportare_times = 1] -- Pentru a teleporta toți jucătorii online din lumea specifică într-un punct.
+      /wp tp offline <world_name> <mark_name> -- Pentru a teleporta toți jucătorii offline urmăriți din lumea respectivă cu un marcaj.
+    #Available Arg(s): {senderName}.
+    online:
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Um, care este lumea '{worldName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, unde este semnul '{markName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      failed-to-teleport-someone: |
+        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 nu poate fi teleportat aici. Jucătorul ar trebui să fie teleportat de {teleportationTimes}&r&de 3 ori, dar numai {teleportedTimes} a reușit.
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Ei bine, {teleportedCount}&r&3 jucători au fost teleportați de {teleportationTimes}&r&de 3 ori, dar {unteleportedCount}&r&3 nu au fost teleportați.
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
+    offline:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Uh, trackerul de jucători offline nu este activat.
+        Asigură-te că 'offline-players-tracker.enabled' în fișierul 'config.yml' este 'true'.
+      #Available Arg(s): {senderName}.
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Um, care este lumea '{worldName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, unde este semnul '{markName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Ei bine, {teleportedCount}&r&3 jucători offline au fost teleportați.
+>>>>>>> crowdin
   #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
   marks:
     help: |
       &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
       Try these commands!
       /wp marks add <mark_name> -- To set a mark, then you can use it later.
       /wp marks remove <mark_name> -- To remove a mark.
@@ -163,12 +287,42 @@ messages:
       #Available Arg(s): {senderName}, {markName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me removing the mark.
+=======
+      Încercați aceste comenzi!
+      /wp mark add <mark_name> -- Pentru a seta un marcaj, atunci îl poți folosi mai târziu.
+      /wp marcaje scoate <mark_name> -- Pentru a elimina un marcaj.
+      /wp lista de marcaje -- Pentru a enumera toate marcajele.
+    #Available Arg(s): {senderName}.
+    add:
+      without-a-position: |
+        &r&3[&bNWorldPermissions&3]: Um, {senderName}&r&3? Unde ești?
+      #Available Arg(s): {senderName}.
+      with-occupied-name: |
+        &r&3[&bNWorldPermissions&3]: Uh, a existat deja un semn numit '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Poziția a fost marcată ca '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, ce s-a întâmplat? O putere ciudată m-a oprit să marchez poziția.
+    #Available Arg(s): {senderName}, {markName}.
+    remove:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Ei bine, semnul '{markName}&r&3' a fost eliminat.
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Uh, nu există un semn numit '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, ce s-a întâmplat? O putere ciudată m-a oprit să elimin marcajul.
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {markName}.
     list:
       list:
         #The following 3 messages will get jointed together before being sent.
         #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+<<<<<<< HEAD
         beginning: "&r&3[&bNWorldPermissions&3]:\nWell, there are the marks:\n"
         #Available Arg(s): {senderName}.
         separator: "\n"
@@ -176,10 +330,20 @@ messages:
         ending: "\n&r&3That's all."
       #Available Arg(s): {senderName}.
       no-mark: "&r&3[&bNWorldPermissions&3]: Uh, there is no existed mark."
+=======
+        beginning: "&r&3[&bNWorldPermissions&3]:\nEi bine, sunt punctele:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3Asta e tot."
+      #Available Arg(s): {senderName}.
+      no-mark: "&r&3[&bNWorldPermissions&3]: Uh, nu există niciun marcaj."
+>>>>>>> crowdin
   #Available Arg(s): {senderName}.
   reload:
     help: |
       &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
       Try these commands!
       /wp reload config -- To reload file 'config.yml'.
       /wp reload messages -- To reload file 'messages.yml'.
@@ -202,10 +366,35 @@ messages:
     worlds:
       completed: |
         &r&3[&bNWorldPermissions&3]: Well, file 'worlds.yml' has been reloaded.
+=======
+      Încercaţi aceste comenzi!
+      /wp reload config -- Pentru a reîncărca fişierul 'config. ml".
+      /wp reîncarcă mesajele -- Pentru a reîncărca fișierul 'mesaje.yml'.
+      /wp reload marks -- To reload file 'marks.yml'.
+      /wp reload worlds -- To reload file 'worlds. ml'.
+      /wp reîncărcaţi toate -- Pentru a reîncărca toate fişierele de mai sus.
+    #Available Arg(s): {senderName}.
+    config:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Fișierul 'config.yml' a fost reîncărcat, dar rețineți că verificatorul actualizărilor nu va fi afectat.
+    #Available Arg(s): {senderName}.
+    messages:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Fișierul 'mesaje.yml' a fost reîncărcat.
+    #Available Arg(s): {senderName}.
+    marks:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Fișierul 'marks.yml' a fost reîncărcat.
+    #Available Arg(s): {senderName}.
+    worlds:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Fișierul 'worlds.yml' a fost reîncărcat.
+>>>>>>> crowdin
   #Available Arg(s): {senderName}.
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
       Try these commands!
       /wp version current -- To get the current version info.
       /wp reload latest -- To get the latest version info.
@@ -213,10 +402,20 @@ messages:
     current:
       message: |
         &r&3[&bNWorldPermissions&3]: Well, the current version is '{version}&r&3'.
+=======
+      Încercați aceste comenzi!
+      /wp versiunea curentă -- Pentru a obține informațiile despre versiunea curentă.
+      /wp reincarca ultima -- Pentru a obtine informatiile despre ultima versiune.
+    #Available Arg(s): {senderName}.
+    current:
+      message: |
+        &r&3[&bNWorldPermissions&3]: Ei bine, versiunea curentă este '{version}&r&3'.
+>>>>>>> crowdin
     #Available Arg(s): {senderName}, {version}.
     latest:
       message: |
         &r&3[&bNWorldPermissions&3]:
+<<<<<<< HEAD
         Well, the latest version is '{version}&r&3' ({time}&r&3).
         You may download it at 'https://yueyinqiu.github.io/NWorldPermissions/download'.
       #Available Arg(s): {senderName}, {version}, {time}.
@@ -225,10 +424,21 @@ messages:
       #Available Arg(s): {senderName}.
       failed-to-check: |
         &r&3[&bNWorldPermissions&3]: Um, I don't know what happened, but actually I can't check the update.
+=======
+        Ei bine, ultima versiune este '{version}&r&3' ({time}&r&3).
+        O puteți descărca la 'https://yueyinqiu.github.io/NWorldPermissions/download'.
+      #Available Arg(s): {senderName}, {version}, {time}.
+      checker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Uh, verificatorul de actualizări nu este activat.
+      #Available Arg(s): {senderName}.
+      failed-to-check: |
+        &r&3[&bNWorldPermissions&3]: Um, nu știu ce s-a întâmplat, dar de fapt nu pot verifica actualizarea.
+>>>>>>> crowdin
   #Available Arg(s): {senderName}.
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |
+<<<<<<< HEAD
         &r&3[&bNWorldPermissions&3]: You've felt a strange power when teleporting to {toWorld}&r&3, but it doesn't work for you.
       #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
       denied: |
@@ -237,3 +447,13 @@ messages:
     when-teleported-by-tp-online:
       before-teleport: |
         &r&3[&bNWorldPermissions&3]: A strange power is trying to teleport you to {markName}&r&3.
+=======
+        &r&3[&bNWorldPermissions&3]: Ai simțit o putere ciudată când te teleportezi la {toWorld}&r&3, dar nu funcționează pentru tine.
+      #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+      denied: |
+        &r&3[&bNWorldPermissions&3]: O putere ciudată ți-a oprit teleportarea la {toWorld}&r&3, doar stai în {fromWorld}&r&3!
+    #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+    when-teleported-by-tp-online:
+      before-teleport: |
+        &r&3[&bNWorldPermissions&3]: O putere ciudată încearcă să te teleporteze la {markName}&r&3.
+>>>>>>> crowdin
