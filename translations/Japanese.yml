@@ -1,0 +1,239 @@
+---
+#messages.yml
+#PlaceholderAPI supported. And you can also run the plugin without it.
+messages:
+  help: |
+    &r&3[&bNWorldPermissions&3]:
+    Hello, {senderName}&r&3! Try these commands!
+    /wp worlds (Permission Required: "nworldpermissions.worlds")
+    /wp marks (Permission Required: "nworldpermissions.marks")
+    /wp tp (Permission Required: "nworldpermissions.tp")
+    /wp reload (Permission Required: "nworldpermissions.reload")
+    /wp version (Permission Required: "nworldpermissions.version")
+  #Available Arg(s): {senderName}.
+  worlds:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Try these commands!
+      /wp worlds control <world_name> -- To make a world controlled.
+      /wp worlds uncontrol <world_name> -- To make a world uncontrolled.
+      /wp worlds controlled -- To list all the controlled worlds.
+      /wp worlds set -- To set some custom options of the worlds. (not only the controlled ones)
+      /wp worlds get -- To get the current value of the custom options.
+    #Available Arg(s): {senderName}.
+    control:
+      already-controlled: |
+        &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' は以前に制御されています。
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: 現在、ワールド '{worldName}&r&3' が制御されています。
+      #Available Arg(s): {senderName}, {worldName}.
+      completed-but-no-such-world: |
+        &r&3[&bNWorldPermissions&3]: さて、ワールド '{worldName}&r&3' は現在制御されていますが、実際にはそのような世界はありません。タイプミスがありますか？
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]：うーん、どうしたの？不思議な力で世界をコントロールできなくなった。
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    uncontrol:
+      no-such-controlled-world: |
+        &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' はまだ制御されていません。
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: ワールド'{worldName}&r&3' は現在制御されていません。
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]：うーん、どうしたの？不思議な力で世界をコントロールできなくなった。
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    controlled:
+      list:
+        #The following 3 messages will get jointed together before being sent.
+        #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3[&bNWorldPermissions&3]:\nこれらのワールドは制御されています:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3それだけです。"
+      #Available Arg(s): {senderName}.
+      no-controlled-world: "&r&3[&bNWorldPermissions&3]: ああ、コントロールされた世界はありません。"
+    #Available Arg(s): {senderName}.
+    set:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        Try these commands!
+        /wp worlds set display <world_name> <display_name> -- To set the display name of a world.
+        /wp worlds set thrust <world_name> <thrust> -- To set the thrust coefficient when being pushed by the portals. It should be a double value. (set '0' to disable)
+      #Available Arg(s): {senderName}.
+      display:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3', でも実はそんな世界はありません タイプミスはありますか?
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: うーん、どうしたの？妙なパワーで表示名を設定するのを止めた。
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: さて、ワールド'{worldName}&r&3'の推力は'{thrust}&r&3'に設定されています。
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3'の推力は '{thrust}&r&3', に設定されました でも実はそんな世界はありません タイプミスはありますか?
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]：うーん、どうしたの？不思議な力でスラストの設定が止まった。
+    #Available Arg(s): {senderName}, {worldName}, {thrust}.
+    get:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        Try these commands!
+        /wp worlds set display <world_name> -- To get the display name of a world.
+        /wp worlds set thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
+      #Available Arg(s): {senderName}.
+      display:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is '{worldDisplayName}&r&3''.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        show: |
+          &r&3[&bNWorldPermissions&3]: さて、ワールド'{worldName}&r&3'の推力は'{thrust}&r&3''です。
+  #Available Arg(s): {senderName}, {worldName}, {thrust}.
+  tp:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Try these commands!
+      /wp tp online <world_name> <mark_name> [teleportation_times = 1] -- To teleport all the online players in the specific world to a mark.
+      /wp tp offline <world_name> <mark_name> -- To teleport all the tracked offline players in the specific world to a mark.
+    #Available Arg(s): {senderName}.
+    online:
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: うーん、どのワールドが '{worldName}&r&3' ですか?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: うーん、マーク '{markName}&r&3?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      failed-to-teleport-someone: |
+        &r&3[&bNWorldPermissions&3]: うーん、 {playerName}&r&はここでテレポートできません。プレイヤーは {teleportationTimes}&r&回テレポートする必要がありますが、 {teleportedTimes} 回だけテレポートしました。
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: {teleportedCount}&r&人のプレイヤーが {teleportationTimes}&r&回テレポートしましたが、 {unteleportedCount}&r&3回テレポートしていません。
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
+    offline:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: オフラインプレイヤートラッカーが有効ではありません。
+        config.ymlファイルの'offline-players-tracker.enabled'が'true'であることを確認してください。
+      #Available Arg(s): {senderName}.
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: うーん、どのワールドが '{worldName}&r&3' ですか?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: うーん、マーク '{markName}&r&3?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: {teleportedCount}&r&のオフラインプレイヤーがテレポートしました。
+  #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+  marks:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Try these commands!
+      /wp marks add <mark_name> -- To set a mark, then you can use it later.
+      /wp marks remove <mark_name> -- To remove a mark.
+      /wp marks list -- To list all the marks.
+    #Available Arg(s): {senderName}.
+    add:
+      without-a-position: |
+        &r&3[&bNWorldPermissions&3]: うーん、 {senderName}&r&3? どこにいますか？
+      #Available Arg(s): {senderName}.
+      with-occupied-name: |
+        &r&3[&bNWorldPermissions&3]: ああ、すでに「{markName}&r&3」というマークがあります。
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: まあ、このポジションは '{markName}&r&3' とマークされています。
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]：うーん、どうしたの？妙な力で位置を示すのが止まった。
+    #Available Arg(s): {senderName}, {markName}.
+    remove:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: マーク「{markName}&r&3」が削除されました。
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: ああ、'{markName}&r&3' という名前のマークがありません。
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]：うーん、どうしたの？妙な力でマークが外れた。
+    #Available Arg(s): {senderName}, {markName}.
+    list:
+      list:
+        #The following 3 messages will get jointed together before being sent.
+        #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3[&bNWorldPermissions&3]:\nさて、マークがあります:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3それだけです。"
+      #Available Arg(s): {senderName}.
+      no-mark: "&r&3[&bNWorldPermissions&3]: ああ、マークは存在しません。"
+  #Available Arg(s): {senderName}.
+  reload:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Try these commands!
+      /wp reload config -- To reload file 'config.yml'.
+      /wp reload messages -- To reload file 'messages.yml'.
+      /wp reload marks -- To reload file 'marks.yml'.
+      /wp reload worlds -- To reload file 'worlds.yml'.
+      /wp reload all -- To reload all the files above.
+    #Available Arg(s): {senderName}.
+    config:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: ファイル 'config.yml' が再読み込みされましたが、更新チェッカーは影響を受けないことに注意してください。
+    #Available Arg(s): {senderName}.
+    messages:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: ファイル 'messages.yml' が再読み込みされました。
+    #Available Arg(s): {senderName}.
+    marks:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: さて、ファイル 'marks.yml' が再読み込みされました。
+    #Available Arg(s): {senderName}.
+    worlds:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: 'worlds.yml' ファイルが再読み込みされました。
+  #Available Arg(s): {senderName}.
+  version:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp reload latest -- To get the latest version info.
+    #Available Arg(s): {senderName}.
+    current:
+      message: |
+        &r&3[&bNWorldPermissions&3]: 現在のバージョンは '{version}&r&3' です。
+    #Available Arg(s): {senderName}, {version}.
+    latest:
+      message: |
+        &r&3[&bNWorldPermissions&3]:
+        さて、最新バージョンは '{version}&r&3' ({time}&r&3).
+        'https://yueinqiu.github.io/NWorldPermissions/download' でダウンロードできます。
+      #Available Arg(s): {senderName}, {version}, {time}.
+      checker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: 更新チェッカーが有効ではありません。
+      #Available Arg(s): {senderName}.
+      failed-to-check: |
+        &r&3[&bNWorldPermissions&3]: うーん、何が起こったのか分かりませんが、実際にはアップデートを確認できません。
+  #Available Arg(s): {senderName}.
+  to-players:
+    when-teleport-to-controlled-worlds:
+      teleported: |
+        &r&3[&bNWorldPermissions&3]: {toWorld}&r&にテレポートすると、奇妙な力を感じましたが、あなたには効きません。
+      #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+      denied: |
+        &r&3[&bNWorldPermissions&3]: 奇妙なパワーで {toWorld}&r&へのテレポートが停止しました。 {fromWorld}&r&3に滞在しましょう！
+    #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+    when-teleported-by-tp-online:
+      before-teleport: |
+        &r&3[&bNWorldPermissions&3]: 奇妙なパワーが {markName}&r&にテレポートしようとしています。
