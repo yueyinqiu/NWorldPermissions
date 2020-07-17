@@ -4,42 +4,42 @@
 messages:
   help: |
     &r&3[&bNWorldPermissions&3]:
-    Hello, {senderName}&r&3! 尝试这些命令!
-    /wp worlds (需要权限: "nworldpermissions. orlds")
-    /wp marks (需要权限: "nworldpermissions. arks")
+    你好！{senderName}&r&3！试试这些命令吧！
+    /wp worlds (需要权限: "nworldpermissions. worlds")
+    /wp marks (需要权限: "nworldpermissions. marks")
     /wp tp (需要权限: "nworldpermissions.tp")
     /wp reload (需要权限: "nworldpermissions.reload")
-    /wp 版本 (需要权限: "nworldpermissions.version")
+    /wp version (需要权限: "nworldpermissions.version")
   #Available Arg(s): {senderName}.
   worlds:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      尝试这些命令!
-      /wp world控制 <world_name> - 要控制一个世界。
-      /wp 世界不受控制 <world_name> - 使世界不受控制。
-      /wp 世界控制 -- 列出所有受控制的世界。
-      /wp 世界设置 -- 设置世界的一些自定义选项。 (不仅仅是受控)
-      /wp 世界得到--获取自定义选项的当前值。
+      试试这些命令！
+      /wp worlds control <world_name> - 控制一个世界。
+      /wp worlds uncontrol <world_name> - 使世界不受控制。
+      /wp worlds controlled - 列出所有受控制的世界。
+      /wp worlds set - 设置世界的一些自定义选项。(非受控世界也可设置)
+      /wp worlds get - 获取自定义选项的当前值。
     #Available Arg(s): {senderName}.
     control:
       already-controlled: |
-        &r&3[&bNWorldPermissions&3]: 你, 世界 '{worldName}&r&'以前已被控制。
+        &r&3[&bNWorldPermissions&3]: 蛤？世界 {worldName}&r& 本来就被控制着。
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]：好吧，世界 '{worldName}&r&'现在已被控制。
+        &r&3[&bNWorldPermissions&3]：好了！世界 {worldName}&r& 现在已被控制！
       #Available Arg(s): {senderName}, {worldName}.
       completed-but-no-such-world: |
-        &r&3[&bNWorldPermissions&3]：好吧，世界 '{worldName}&r&'现在被控制，但实际上没有这样一个世界。是否有轮胎？
+        &r&3[&bNWorldPermissions&3]：好了！世界 {worldName}&r& 现在已被控制。不过……实际上没有这样一个世界，打错字了嘛？
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
-        &r&3[&bNWorldPermissions&3]: Um, 发生了什么？奇怪的力量阻止我控制世界。
+        &r&3[&bNWorldPermissions&3]: 哈？发生了什么？奇怪的力量阻止了我的操作。
     #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
     uncontrol:
       no-such-controlled-world: |
         &r&3[&bNWorldPermissions&3]: 你, 世界 '{worldName}&r&' 尚未被控制。
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]：好吧，世界 '{worldName}&r&现在没有失控。
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' is uncontrolled now.
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, 发生了什么？奇怪的力量阻止我控制世界。
@@ -117,7 +117,7 @@ messages:
         &r&3[&bNWorldPermissions&3]：', {playerName}&r&不能在这里传送。玩家应该传送 {teleportationTimes}&r&次，但只有 {teleportedTimes} 次成功。
       #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 players have been teleported for {teleportationTimes}&r&3 times, but {unteleportedCount}&r&3 haven't.
+        &r&3[&bNWorldPermissions&3]: 报告！{teleportedCount}&r&3个玩家被传送了{teleportationTimes}&r&3次，但{unteleportedCount}&r&3个玩家传送失败了。
     #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
     offline:
       tracker-not-enabled: |
