@@ -1,0 +1,239 @@
+---
+#messages.yml
+#PlaceholderAPI supported. And you can also run the plugin without it.
+messages:
+  help: |
+    &r&3[&bNWorldPermissions&3]:
+    Ciao, {senderName}&r&3! Prova questi comandi!
+    /wp mondi (permesso richiesto: "nworldpermissions. orlds")
+    /wp marks (Permesso richiesto: "nworldpermissions. arks")
+    /wp tp (Permesso richiesto: "nworldpermissions.tp")
+    /wp reload (Permesso richiesto: "nworldpermissions.reload")
+    /wp version (Permesso richiesto: "nworldpermissions.version")
+  #Available Arg(s): {senderName}.
+  worlds:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Prova questi comandi!
+      /wp controllo mondi <world_name> -- Per controllare un mondo.
+      /wp worlds uncontrol <world_name> -- To make a world uncontrolled.
+      /wp worlds controlled -- To list all the controlled worlds.
+      /wp worlds set -- To set some custom options of the worlds. (non solo i mondi controllati)
+      /wp ottengono -- Per ottenere il valore corrente delle opzioni personalizzate.
+    #Available Arg(s): {senderName}.
+    control:
+      already-controlled: |
+        &r&3[&bNWorldPermissions&3]: Uh, mondo '{worldName}&r&3' è già stato controllato prima.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Beh, mondo '{worldName}&r&3' è stato controllato ora.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed-but-no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Beh, mondo '{worldName}&r&3' è stato controllato ora, ma in realtà non c'è un tale mondo. C'è un errore?
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, cos'è successo? Uno strano potere mi ha impedito di controllare il mondo.
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    uncontrol:
+      no-such-controlled-world: |
+        &r&3[&bNWorldPermissions&3]: Uh, mondo '{worldName}&r&3' non è ancora stato controllato.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Beh, mondo '{worldName}&r&3' non è attualmente incontrollato.
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, cos'è successo? Uno strano potere mi ha impedito di scontrollare il mondo.
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    controlled:
+      list:
+        #The following 3 messages will get jointed together before being sent.
+        #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3[&bNWorldPermissions&3]:\nBene, questi mondi sono controllati:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3Questo è tutto."
+      #Available Arg(s): {senderName}.
+      no-controlled-world: "&r&3[&bNWorldPermissions&3]: Uh, non c'è nessun mondo controllato."
+    #Available Arg(s): {senderName}.
+    set:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        Prova questi comandi!
+        /wp worlds set display <world_name> <display_name> -- Per impostare il nome visualizzato di un mondo.
+        /wp mondi impostati spinta <world_name> <thrust> -- Per impostare il coefficiente di spinta quando viene spinto dai portali. Dovrebbe essere un valore doppio. (impostare '0' per disabilitare)
+      #Available Arg(s): {senderName}.
+      display:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Beh, mondo '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Beh, mondo '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3', ma in realtà non c'è un mondo del genere. C'è un errore?
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Um, cosa è successo? Uno strano potere mi ha fermato impostando il nome del display.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Beh, mondo '{worldName}&r&La spinta di 3' è impostata a '{thrust}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Beh, mondo '{worldName}&r&La spinta di 3' è impostata a '{thrust}&r&3', ma in realtà non c'è un mondo del genere. C'è un errore?
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Um, cos'è successo? Uno strano potere mi ha impedito di impostare la spinta.
+    #Available Arg(s): {senderName}, {worldName}, {thrust}.
+    get:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        Prova questi comandi!
+        /wp worlds set display <world_name> -- Per ottenere il nome visualizzato di un mondo.
+        /wp mondi impostati spinta <world_name> -- Per ottenere il coefficiente di spinta quando viene spinto dai portali.
+      #Available Arg(s): {senderName}.
+      display:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Beh, mondo '{worldName}&r&3''s display name is '{worldDisplayName}&r&3'.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Beh, mondo '{worldName}&r&3''s push is '{thrust}&r&3'.
+  #Available Arg(s): {senderName}, {worldName}, {thrust}.
+  tp:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Prova questi comandi!
+      /wp tp online <world_name> <mark_name> [teletrasportation_times = 1] -- Per teletrasportare tutti i giocatori online nel mondo specifico a un marchio.
+      /wp tp offline <world_name> <mark_name> -- Per teletrasportare tutti i giocatori offline tracciati nel mondo specifico a un marchio.
+    #Available Arg(s): {senderName}.
+    online:
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Um, quale mondo è '{worldName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, dove è il segno '{markName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      failed-to-teleport-someone: |
+        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 non può essere teletrasportato qui. Il giocatore dovrebbe essere teletrasportato {teleportationTimes}&r&3 volte, ma solo {teleportedTimes} ha avuto successo.
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Beh, {teleportedCount}&r&3 giocatori sono stati teletrasportati per {teleportationTimes}&r&3 volte, ma {unteleportedCount}&r&3 non lo sono.
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
+    offline:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Uh, il tracker dei giocatori offline non è abilitato.
+        Assicurati che 'offline-players-tracker.enabled' nel file 'config.yml' sia 'true'.
+      #Available Arg(s): {senderName}.
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Um, quale mondo è '{worldName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, dove è il segno '{markName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Beh, {teleportedCount}&r&3 giocatori offline sono stati teletrasportati.
+  #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+  marks:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Prova questi comandi!
+      /wp marks add <mark_name> -- Per impostare un segno, allora puoi usarlo più tardi.
+      /wp marks remove <mark_name> -- To remove a mark.
+      /wp marks list -- To list all the marks.
+    #Available Arg(s): {senderName}.
+    add:
+      without-a-position: |
+        &r&3[&bNWorldPermissions&3]: Um, {senderName}&r&3? Dove sei?
+      #Available Arg(s): {senderName}.
+      with-occupied-name: |
+        &r&3[&bNWorldPermissions&3]: Uh, c'è già stato un segno chiamato '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Beh, la posizione è stata contrassegnata come '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, cos'è successo? Uno strano potere mi ha impedito di segnare la posizione.
+    #Available Arg(s): {senderName}, {markName}.
+    remove:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Beh, il segno '{markName}&r&3' è stato rimosso.
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Uh, non c'è un segno chiamato '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, cos'è successo? Uno strano potere mi ha impedito di rimuovere il segno.
+    #Available Arg(s): {senderName}, {markName}.
+    list:
+      list:
+        #The following 3 messages will get jointed together before being sent.
+        #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3[&bNWorldPermissions&3]:\nBeh, ci sono i marchi:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3Questo è tutto."
+      #Available Arg(s): {senderName}.
+      no-mark: "&r&3[&bNWorldPermissions&3]: Uh, non c'è nessun segno esistente."
+  #Available Arg(s): {senderName}.
+  reload:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Prova questi comandi!
+      /wp ricarica la configurazione -- Per ricaricare il file 'config. ml'.
+      /wp ricaricare i messaggi -- Per ricaricare il file 'messages.yml'.
+      /wp reload marks -- Per ricaricare il file 'marks.yml'.
+      /wp reload worlds -- Per ricaricare i mondi del file. ml'.
+      /wp ricaricare tutto -- Per ricaricare tutti i file qui sopra.
+    #Available Arg(s): {senderName}.
+    config:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Beh, il file 'config.yml' è stato ricaricato, ma nota che il controllo degli aggiornamenti non sarà influenzato.
+    #Available Arg(s): {senderName}.
+    messages:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Beh, il file 'messages.yml' è stato ricaricato.
+    #Available Arg(s): {senderName}.
+    marks:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Beh, il file 'marks.yml' è stato ricaricato.
+    #Available Arg(s): {senderName}.
+    worlds:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Beh, il file 'worlds.yml' è stato ricaricato.
+  #Available Arg(s): {senderName}.
+  version:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Prova questi comandi!
+      /wp versione corrente -- Per ottenere le informazioni sulla versione corrente.
+      /wp ricarica più recente -- Per ottenere le ultime informazioni sulla versione.
+    #Available Arg(s): {senderName}.
+    current:
+      message: |
+        &r&3[&bNWorldPermissions&3]: Beh, la versione corrente è '{version}&r&3'.
+    #Available Arg(s): {senderName}, {version}.
+    latest:
+      message: |
+        &r&3[&bNWorldPermissions&3]:
+        Beh, l'ultima versione è '{version}&r&3' ({time}&r&3).
+        Puoi scaricarlo su 'https://yueyinqiu.github.io/NWorldPermissions/download'.
+      #Available Arg(s): {senderName}, {version}, {time}.
+      checker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Uh, il controllo degli aggiornamenti non è abilitato.
+      #Available Arg(s): {senderName}.
+      failed-to-check: |
+        &r&3[&bNWorldPermissions&3]: Um, non so cosa sia successo, ma in realtà non posso controllare l'aggiornamento.
+  #Available Arg(s): {senderName}.
+  to-players:
+    when-teleport-to-controlled-worlds:
+      teleported: |
+        &r&3[&bNWorldPermissions&3]: Hai sentito uno strano potere quando sei teletrasportato a {toWorld}&r&3, ma non funziona per te.
+      #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+      denied: |
+        &r&3[&bNWorldPermissions&3]: Uno strano potere ha fermato il teletrasporto a {toWorld}&r&3, basta rimanere in {fromWorld}&r&3!
+    #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+    when-teleported-by-tp-online:
+      before-teleport: |
+        &r&3[&bNWorldPermissions&3]: Uno strano potere sta cercando di teletrasportarti a {markName}&r&3.
