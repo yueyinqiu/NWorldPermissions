@@ -1,0 +1,3 @@
+files:
+  - source: /NWorldPermissions/res/messages.yml
+    translation: /translations/%language%.yml
