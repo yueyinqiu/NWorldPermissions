@@ -1,0 +1,239 @@
+---
+#messages.yml
+#PlaceholderAPI supported. And you can also run the plugin without it.
+messages:
+  help: |
+    &r&3[&bNWorldPermissions&3]:
+    مرحبا، {senderName}&r&3! جرب هذه الأوامر!
+    /wp World (الإذن مطلوب: "nworldpermissions). orlds")
+    / wp العلامات (الإذن مطلوب: "nworldpermissions). Arks")
+    /wp tp (الإذن مطلوب: "nworldpermissions.tp")
+    /wp إعادة تحميل (الإذن مطلوب: "nworldpermissions.reload")
+    /wp version (الإذن مطلوب: "nworldpermissions.version")
+  #Available Arg(s): {senderName}.
+  worlds:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      جرب هذه الأوامر!
+      /wp World Control <world_name> -- لجعل العالم يتحكم فيه.
+      /wp عوالم تخلو من السيطرة <world_name> -- لجعل العالم بلا سيطرة.
+      عالم /wp يتحكم فيها -- لوضع قائمة بجميع العوالم المتحكم فيها.
+      عالم /wp - لتحديد بعض الخيارات المخصصة للعالم. (ليس فقط تلك التي يتحكم بها)
+      / wp عوالم تحصل -- للحصول على القيمة الحالية للخيارات المخصصة.
+    #Available Arg(s): {senderName}.
+    control:
+      already-controlled: |
+        &r&3[&bNWorldPermissions&3]: أوه، العالم '{worldName}&r&' تم التحكم به من قبل.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: حسناً، تم التحكم في العالم '{worldName}&r&' الآن.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed-but-no-such-world: |
+        &r&3[&bNWorldPermissions&3]: حسنا، تم التحكم في العالم '{worldName}&r&' الآن، ولكن في الواقع ليس هناك عالم كهذا. هل هناك طابع؟
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: أمم، ماذا حدث؟ قوة غريبة توقفت عن التحكم في العالم.
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    uncontrol:
+      no-such-controlled-world: |
+        &r&3[&bNWorldPermissions&3]: أوه، العالم '{worldName}&r&لم يتم التحكم فيه بعد.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: حسنا، العالم '{worldName}&r&' ليس غير خاضع للسيطرة الآن.
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: أمم، ماذا حدث؟ قوة غريبة توقفتني عن السيطرة على العالم.
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    controlled:
+      list:
+        #The following 3 messages will get jointed together before being sent.
+        #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3[&bNWorldPermissions&3]:\nحسناً، هذه العوالم محكومة:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3 هذا كل شيء."
+      #Available Arg(s): {senderName}.
+      no-controlled-world: "&r&3[&bNWorldPermissions&3]: أوه، لا يوجد عالم يتحكم فيه."
+    #Available Arg(s): {senderName}.
+    set:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        جرب هذه الأوامر!
+        /wp عوالم تم تعيينها للعرض <world_name> <display_name> -- لتعيين اسم العرض للعالم .
+        / wp عوالم تعيّن زخما <world_name> <thrust> -- لتعيين معامل الدفع عندما يتم دفعه من خلال البوابات. يجب أن تكون قيمة مزدوجة. (تعيين '0' لتعطيل)
+      #Available Arg(s): {senderName}.
+      display:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: حسنًا، العالم '{worldName}&r&اسم العرض الخاص بـ '{worldDisplayName}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: حسنًا، العالم '{worldName}&r&اسم العرض الخاص بـ '{worldDisplayName}&r&3', ولكن في الواقع ليس هناك مثل هذا العالم. هل هناك طابع؟
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: أمم، ماذا حدث؟ قوة غريبة توقفت عن تعيين اسم العرض.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: حسنا، العالم '{worldName}&r&زخم 3 'تم تعيينه إلى '{thrust}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: حسنًا، العالم '{worldName}&r&زخم 3 'تم تعيينه إلى '{thrust}&r&3', ولكن في الواقع ليس هناك مثل هذا العالم. هل هناك طابع؟
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: مم، ماذا حدث؟ قوة غريبة توقفت عن ضبط العرض.
+    #Available Arg(s): {senderName}, {worldName}, {thrust}.
+    get:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        جرب هذه الأوامر!
+        / wp عوالم مجموعة العرض <world_name> -- للحصول على اسم العرض للعالم .
+        /wp عوالم تعيّن الدفع <world_name> -- للحصول على معامل الدفع عندما يتم دفعه من خلال البوابات.
+      #Available Arg(s): {senderName}.
+      display:
+        show: |
+          &r&3[&bNWorldPermissions&3]: حسنا، العالم '{worldName}&r&اسم العرض هو '{worldDisplayName}&r&3'.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        show: |
+          &r&3[&bNWorldPermissions&3]: حسنا، العالم '{worldName}&r&زخم 3'هو{thrust}&r&3'.
+  #Available Arg(s): {senderName}, {worldName}, {thrust}.
+  tp:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      جرب هذه الأوامر!
+      /wp tp على الإنترنت <world_name> <mark_name> [teleportation_times = 1] -- لنقل جميع اللاعبين عبر الإنترنت في العالم المحدد إلى علامة.
+      /wp Tp دون اتصال <world_name> <mark_name> -- لنقل جميع اللاعبين الذين تم تعقبهم في العالم المحدد إلى علامة ما.
+    #Available Arg(s): {senderName}.
+    online:
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: أمم، أي العالم هو '{worldName}&r&'؟
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: أمم، أين هي العلامة '{markName}&r&'؟
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      failed-to-teleport-someone: |
+        &r&3[&bNWorldPermissions&3]: أوه، {playerName}&r&لا يمكن نقله هنا. يجب أن ينقل اللاعب {teleportationTimes}&r&مرات، ولكن فقط {teleportedTimes} نجح.
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: حسنًا، {teleportedCount}&r&لاعبين تم نقلهم لمدة {teleportationTimes}&r&3 مرات، ولكن {unteleportedCount}&r&لم تكن هناك 3 مرات.
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
+    offline:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: أوه، تعقب اللاعبين دون اتصال غير مفعل.
+        تأكد من 'offline-players-tracker.enabled' في الملف 'config.yml' هو 'true'.
+      #Available Arg(s): {senderName}.
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: أمم، أي العالم هو '{worldName}&r&'؟
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: أمم، أين هي العلامة '{markName}&r&'؟
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: حسنًا، {teleportedCount}&r&لاعبين بدون اتصال تم نقلهم.
+  #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+  marks:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      جرب هذه الأوامر!
+      /wp mark <mark_name> -- لتعيين العلامة، ثم يمكنك استخدامها لاحقاً.
+      /wp العلامات إزالة <mark_name> -- لإزالة العلامة.
+      / wp علامة قائمة -- لوضع جميع العلامات.
+    #Available Arg(s): {senderName}.
+    add:
+      without-a-position: |
+        &r&3[&bNWorldPermissions&3]: أمم، {senderName}&r&3؟ أين أنت؟
+      #Available Arg(s): {senderName}.
+      with-occupied-name: |
+        &r&3[&bNWorldPermissions&3]: أوه، هناك بالفعل علامة تسمى '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: حسنًا، تم وضع علامة على الموقع '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: مم، ماذا حدث؟ قوة غريبة توقفت عن وضع علامة على الموقع.
+    #Available Arg(s): {senderName}, {markName}.
+    remove:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: حسنًا، تم إزالة العلامة '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: أوه، لا توجد علامة تسمى '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: أمم، ماذا حدث؟ قوة غريبة توقفت عن إزالة العلامة.
+    #Available Arg(s): {senderName}, {markName}.
+    list:
+      list:
+        #The following 3 messages will get jointed together before being sent.
+        #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3[&bNWorldPermissions&3]:\nحسنًا، هناك علامات:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3 هذا كل شيء."
+      #Available Arg(s): {senderName}.
+      no-mark: "&r&3[&bNWorldPermissions&3]: أوه، لا توجد علامة موجودة."
+  #Available Arg(s): {senderName}.
+  reload:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      جرب هذه الأوامر!
+      /wp إعادة تحميل الإعدادات -- لإعادة تحميل الملف 'config'. ml'.
+      /wp إعادة تحميل الرسائل -- لإعادة تحميل الملف 'messages.yml'.
+      علامة إعادة تحميل /wp -- لإعادة تحميل الملف 'marks.yml'.
+      /wp يعيد تحميل العوالم -- لإعادة تحميل الملف 'عوالم. ml'.
+      /wp يعيد تحميل الكل -- لإعادة تحميل جميع الملفات أعلاه.
+    #Available Arg(s): {senderName}.
+    config:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: حسناً، تم إعادة تحميل الملف 'config.yml' ولكن لاحظ أن المدقق لن يتأثر.
+    #Available Arg(s): {senderName}.
+    messages:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: حسنا، تم إعادة تحميل الملف 'messages.yml'.
+    #Available Arg(s): {senderName}.
+    marks:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: حسنا، تم إعادة تحميل الملف 'marks.yml'.
+    #Available Arg(s): {senderName}.
+    worlds:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: حسنا، تم إعادة تحميل الملف 'worlds.yml'.
+  #Available Arg(s): {senderName}.
+  version:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      جرب هذه الأوامر!
+      /wp الإصدار الحالي -- للحصول على معلومات الإصدار الحالي.
+      إعادة تحميل أحدث -- للحصول على أحدث معلومات الإصدار.
+    #Available Arg(s): {senderName}.
+    current:
+      message: |
+        &r&3[&bNWorldPermissions&3]: حسنا، الإصدار الحالي هو '{version}&r&3'.
+    #Available Arg(s): {senderName}, {version}.
+    latest:
+      message: |
+        &r&3[&bNWorldPermissions&3]:
+        حسنًا، أحدث إصدار هو '{version}&r&3' ({time}&r&3).
+        يمكنك تنزيله على 'https://yueyinqiu.github.io/NWorldPermissions/download'.
+      #Available Arg(s): {senderName}, {version}, {time}.
+      checker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: أوه، مدقق التحديث غير مفعل.
+      #Available Arg(s): {senderName}.
+      failed-to-check: |
+        &r&3[&bNWorldPermissions&3]: أمم، لا أعرف ماذا حدث، ولكن في الواقع لا أستطيع التحقق من التحديث.
+  #Available Arg(s): {senderName}.
+  to-players:
+    when-teleport-to-controlled-worlds:
+      teleported: |
+        &r&3[&bNWorldPermissions&3]: لقد شعرت بقوة غريبة عند الانتقال إلى {toWorld}&r&، لكنها لا تعمل من أجلك.
+      #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+      denied: |
+        &r&3[&bNWorldPermissions&3]: قوة غريبة توقفت عن الانتقال الخاص بك إلى {toWorld}&r&، فقط البقاء في {fromWorld}&r&3!
+    #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+    when-teleported-by-tp-online:
+      before-teleport: |
+        &r&3[&bNWorldPermissions&3]: قوة غريبة تحاول نقلك إلى {markName}&r&
