@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nBem, esses mundos são controlados:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3 Isso é tudo."
       #Available Arg(s): {senderName}.
@@ -88,8 +88,8 @@ messages:
       help: |
         &r&3[&bNWorldPermissions&3]:
         Try these commands!
-        /wp worlds set display <world_name> -- To get the display name of a world.
-        /wp worlds set thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
+        /wp worlds get display <world_name> -- To get the display name of a world.
+        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nBem, existem as notas:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3 Isso é tudo."
       #Available Arg(s): {senderName}.
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Experimente estes comandos!
-      /wp versão atual -- Para obter as informações da versão atual.
-      /wp recarrega mais recente -- Para obter as informações da versão mais recente.
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp version latest -- To get the latest version info.
     #Available Arg(s): {senderName}.
     current:
       message: |
