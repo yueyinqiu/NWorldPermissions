@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nBueno, estos mundos están controlados:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3Eso es todo."
       #Available Arg(s): {senderName}.
@@ -87,9 +87,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        ¡Prueba estos comandos!
-        /wp mundos set display <world_name> -- Para obtener el nombre de un mundo.
-        /wp worldds set thrust <world_name> -- Para obtener el coeficiente de impulso al ser empujado por los portales.
+        Try these commands!
+        /wp worlds get display <world_name> -- To get the display name of a world.
+        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nBueno, hay las marcas:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3Eso es todo."
       #Available Arg(s): {senderName}.
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      ¡Prueba estos comandos!
-      /wp versión actual -- Para obtener la información de la versión actual.
-      /wp recargue la última -- Para obtener la información de la última versión.
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp version latest -- To get the latest version info.
     #Available Arg(s): {senderName}.
     current:
       message: |
