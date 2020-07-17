@@ -39,7 +39,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: Uh, świat '{worldName}&r&3' nie został jeszcze kontrolowany.
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Cóż, świat '{worldName}&r&3' nie jest teraz niekontrolowany.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' is uncontrolled now.
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, co się stało? Dziwna moc powstrzymała mnie od kontrolowania świata.
@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nCóż, te światy są kontrolowane:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3To wszystko."
       #Available Arg(s): {senderName}.
@@ -87,9 +87,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        Wypróbuj te komendy!
-        /wp ustawienia świata <world_name> -- Aby wyświetlić nazwę świata.
-        /wp worlds set thrust <world_name> -- Aby uzyskać współczynnik ciągu podczas pchania przez portale.
+        Try these commands!
+        /wp worlds get display <world_name> -- To get the display name of a world.
+        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nDobrze, są punkty:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3To wszystko."
       #Available Arg(s): {senderName}.
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Wypróbuj te komendy!
-      /wp aktualna wersja -- Aby uzyskać informacje o bieżącej wersji.
-      /wp przeładuj najnowsze -- Aby uzyskać najnowsze informacje o wersji.
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp version latest -- To get the latest version info.
     #Available Arg(s): {senderName}.
     current:
       message: |

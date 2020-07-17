@@ -4,236 +4,236 @@
 messages:
   help: |
     &r&3[&bNWorldPermissions&3]:
-    Hello, {senderName}&r&3! 尝试这些命令!
-    /wp worlds (需要权限: "nworldpermissions. orlds")
-    /wp marks (需要权限: "nworldpermissions. arks")
+    你好！{senderName}&r&3！试试这些命令吧！
+    /wp worlds (需要权限: "nworldpermissions. worlds")
+    /wp marks (需要权限: "nworldpermissions. marks")
     /wp tp (需要权限: "nworldpermissions.tp")
     /wp reload (需要权限: "nworldpermissions.reload")
-    /wp 版本 (需要权限: "nworldpermissions.version")
+    /wp version (需要权限: "nworldpermissions.version")
   #Available Arg(s): {senderName}.
   worlds:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      尝试这些命令!
-      /wp world控制 <world_name> - 要控制一个世界。
-      /wp 世界不受控制 <world_name> - 使世界不受控制。
-      /wp 世界控制 -- 列出所有受控制的世界。
-      /wp 世界设置 -- 设置世界的一些自定义选项。 (不仅仅是受控)
-      /wp 世界得到--获取自定义选项的当前值。
+      试试这些命令！
+      /wp worlds control <world_name> - 控制一个世界。
+      /wp worlds uncontrol <world_name> - 使世界不受控制。
+      /wp worlds controlled - 列出所有受控制的世界。
+      /wp worlds set - 设置世界的一些自定义选项。(非受控世界也可设置)
+      /wp worlds get - 获取自定义选项的当前值。
     #Available Arg(s): {senderName}.
     control:
       already-controlled: |
-        &r&3[&bNWorldPermissions&3]: 你, 世界 '{worldName}&r&'以前已被控制。
+        &r&3[&bNWorldPermissions&3]: 蛤？世界 {worldName}&r& 本来就被控制着。
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]：好吧，世界 '{worldName}&r&'现在已被控制。
+        &r&3[&bNWorldPermissions&3]：好了！世界 {worldName}&r& 现在已被控制！
       #Available Arg(s): {senderName}, {worldName}.
       completed-but-no-such-world: |
-        &r&3[&bNWorldPermissions&3]：好吧，世界 '{worldName}&r&'现在被控制，但实际上没有这样一个世界。是否有轮胎？
+        &r&3[&bNWorldPermissions&3]：好了！世界 {worldName}&r& 现在已被控制。不过……实际上没有这样一个世界，打错字了嘛？
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
-        &r&3[&bNWorldPermissions&3]: Um, 发生了什么？奇怪的力量阻止我控制世界。
+        &r&3[&bNWorldPermissions&3]: 哈？发生了什么？奇怪的力量阻止了我的操作。
     #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
     uncontrol:
       no-such-controlled-world: |
-        &r&3[&bNWorldPermissions&3]: 你, 世界 '{worldName}&r&' 尚未被控制。
+        &r&3[&bNWorldPermissions&3]: 蛤？世界 {worldName}&r& 不曾被控制。
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]：好吧，世界 '{worldName}&r&现在没有失控。
+        &r&3[&bNWorldPermissions&3]: 报告！世界 {worldName}&r&3 不再受控了！
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
-        &r&3[&bNWorldPermissions&3]: Um, 发生了什么？奇怪的力量阻止我控制世界。
+        &r&3[&bNWorldPermissions&3]: 蛤？发生了什么？奇怪的力量阻止了我的操作。
     #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
     controlled:
       list:
         #The following 3 messages will get jointed together before being sent.
         #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
-        beginning: "&r&3[&bNWorldPermissions&3]:\n好吧, 这些世界被控制:\n"
+        beginning: "&r&3[&bNWorldPermissions&3]:\n这些世界被控制了：\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3、"
         #Available Arg(s): {senderName}.
-        ending: "\n&r&3这一切。"
+        ending: "\n&r&3以上。"
       #Available Arg(s): {senderName}.
-      no-controlled-world: "&r&3[&bNWorldPermissions&3]：啊，没有受控世界。"
+      no-controlled-world: "&r&3[&bNWorldPermissions&3]：啊？并没有受控世界。"
     #Available Arg(s): {senderName}.
     set:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        尝试这些命令!
-        /wp 世界设置显示 <world_name> <display_name> - 设置世界显示名称。
-        /wp 世界设定推力 <world_name> <thrust> - 设置推力系数时由portal推送。 它应该是双数值(设置 '0' 去禁用)
+        试试这些命令！
+        /wp worlds set display <world_name> <display_name> - 设置世界显示名称。
+        /wp worlds set thrust <world_name> <thrust> - 设置推力系数。当无权限玩家尝试通过传送门时会使用到，它应该是一个 double 值。(设置 0 禁用)
       #Available Arg(s): {senderName}.
       display:
         completed: |
-          &r&3[&bNWorldPermissions&3]：好吧，世界 '{worldName}&r&'的显示名称设置为 '{worldDisplayName}&r&3'。
+          &r&3[&bNWorldPermissions&3]：报告！世界 {worldName}&r& 的显示名称已经设置为 {worldDisplayName}&r&3 。
         #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
         completed-but-no-such-world: |
-          &r&3[&bNWorldPermissions&3]: 好吧, 世界 '{worldName}&r&''s 显示名称设置为 '{worldDisplayName}&r&3', 但实际上没有这样一个世界。 是否有轮胎？
+          &r&3[&bNWorldPermissions&3]: 报告！世界 {worldName}&r& 的显示名称已设置为 {worldDisplayName}&r&3 。不过实际上没有这样一个世界，打错字了嘛？
         #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
         failed: |
-          &r&3[&bNWorldPermissions&3]: Um, 发生了什么？奇怪的力量阻止我设置显示名称。
+          &r&3[&bNWorldPermissions&3]: 蛤？发生了什么？奇怪的力量阻止了我的设置。
       #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
       thrust:
         completed: |
-          &r&3[&bNWorldPermissions&3]：好吧，世界 '{worldName}&r&'的推力被设置为'{thrust}&r&3'。
+          &r&3[&bNWorldPermissions&3]：报告！世界 {worldName}&r& 的推力系数被设置为 {thrust}&r&3 。
         #Available Arg(s): {senderName}, {worldName}, {thrust}.
         completed-but-no-such-world: |
-          &r&3[&bNWorldPermissions&3]: 好吧, 世界 '{worldName}&r&'的推力被设置为'{thrust}&r&3', 但实际上没有这样一个世界。 是否有轮胎？
+          &r&3[&bNWorldPermissions&3]: 报告！世界 {worldName}&r& 的推力已经被设置为 {thrust}&r&3 。不过实际上没有这样一个世界，打错字了嘛？
         #Available Arg(s): {senderName}, {worldName}, {thrust}.
         failed: |
-          &r&3[&bNWorldPermissions&3]: Um, 发生了什么？奇怪的力量阻止了我设置主旨。
+          &r&3[&bNWorldPermissions&3]: 蛤？发生了什么？奇怪的力量阻止了我的设置。
     #Available Arg(s): {senderName}, {worldName}, {thrust}.
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        尝试这些命令!
-        /wp 世界设置显示 <world_name> - 获取世界显示名称。
-        /wp 世界设置推力 <world_name> - 在门户网站推送时获得推力系数。
+        试试这些命令！
+        /wp worlds get display <world_name> - 获取世界的显示名称。
+        /wp worlds get thrust <world_name> - 获取世界的推力系数。
       #Available Arg(s): {senderName}.
       display:
         show: |
-          &r&3[&bNWorldPermissions&3]：好吧，世界 '{worldName}&r&'的显示名称是 '{worldDisplayName}&r&3'。
+          &r&3[&bNWorldPermissions&3]: 报告！世界 {worldName}&r& 的显示名称是 {worldDisplayName}&r&3 。
       #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
       thrust:
         show: |
-          &r&3[&bNWorldPermissions&3]：好吧，世界 '{worldName}&r&'的主旨是'{thrust}&r&3'。
+          &r&3[&bNWorldPermissions&3]: 报告！世界 {worldName}&r& 的推力系数是 {thrust}&r&3 。
   #Available Arg(s): {senderName}, {worldName}, {thrust}.
   tp:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      尝试这些命令!
-      /wp tp 在线 <world_name> <mark_name> [teleportation_times = 1] - 将特定世界中的所有在线玩家传送到一个标记。
-      /wp tp 离线 <world_name> <mark_name> - 将特定世界中所有被跟踪的脱机玩家传送到一个标记。
+      试试这些命令！
+      /wp tp online <world_name> <mark_name> [teleportation_times = 1] - 将指定世界中的所有在线玩家传送到一个 mark 。
+      /wp tp offline <world_name> <mark_name> - 将指定世界中所有（被跟踪的）脱机玩家传送到一个 mark 。
     #Available Arg(s): {senderName}.
     online:
       no-such-world: |
-        &r&3[&bNWorldPermissions&3]: Um, 哪个世界是 '{worldName}&r&'?
+        &r&3[&bNWorldPermissions&3]: 蛤？ {worldName}&r& 在哪啊？
       #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
       no-such-mark: |
-        &r&3[&bNWorldPermissions&3]: Um, marks '{markName}&r&3'?
+        &r&3[&bNWorldPermissions&3]: 蛤？ {markName}&r&3 在哪啊？
       #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
       failed-to-teleport-someone: |
-        &r&3[&bNWorldPermissions&3]：', {playerName}&r&不能在这里传送。玩家应该传送 {teleportationTimes}&r&次，但只有 {teleportedTimes} 次成功。
+        &r&3[&bNWorldPermissions&3]: 啊哈…… {playerName}&r& 不能传送到这里。他应该被传送 {teleportationTimes}&r&3 次，但只有 {teleportedTimes} 次成功。
       #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 players have been teleported for {teleportationTimes}&r&3 times, but {unteleportedCount}&r&3 haven't.
+        &r&3[&bNWorldPermissions&3]: 报告！ {teleportedCount}&r&3 个玩家被传送了 {teleportationTimes}&r&3 次，但 {unteleportedCount}&r&3 个玩家传送失败了。
     #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
     offline:
       tracker-not-enabled: |
-        &r&3[&bNWorldPermissions&3]: ', 离线玩家追踪器未启用。
-        请确保文件“config.yml”中的“offline-players-tracker.enabled”为“true”。
+        &r&3[&bNWorldPermissions&3]: 额……离线玩家追踪器并未启用。
+        请确保文件 config.yml 中的 offline-players-tracker.enabled 为 true 。
       #Available Arg(s): {senderName}.
       no-such-world: |
-        &r&3[&bNWorldPermissions&3]: Um, 哪个世界是 '{worldName}&r&'?
+        &r&3[&bNWorldPermissions&3]: 蛤？哪个世界是 {worldName}&r& ？
       #Available Arg(s): {senderName}, {worldName}, {markName}.
       no-such-mark: |
-        &r&3[&bNWorldPermissions&3]: Um, marks '{markName}&r&3'?
+        &r&3[&bNWorldPermissions&3]: 蛤？{markName}&r&3 是哪？
       #Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: 很好, {teleportedCount}&r&个离线玩家已被传送。
+        &r&3[&bNWorldPermissions&3]: 报告！ {teleportedCount}&r& 个离线玩家已被传送。
   #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
   marks:
     help: |
       &r&3[&bNWorldPermissions&3]:
       尝试这些命令!
-      /wp 标记已添加 <mark_name> - 要设置标记，请稍后再使用。
-      /wp 标记移除 <mark_name> - 要移除标记。
-      /wp 标记列表 - 要列出所有标记。
+      /wp marks add <mark_name> - 设置 mark 。
+      /wp marks remove <mark_name> - 移除 mark 。
+      /wp marks list - 列出所有 mark 。
     #Available Arg(s): {senderName}.
     add:
       without-a-position: |
-        &r&3[&bNWorldPermissions&3]: Um, {senderName}&r&? 你在哪里?
+        &r&3[&bNWorldPermissions&3]: 啊？ {senderName}&r& ，你在哪里？
       #Available Arg(s): {senderName}.
       with-occupied-name: |
-        &r&3[&bNWorldPermissions&3]：啊，已经有一个名为 '{markName}&r&的标记。
+        &r&3[&bNWorldPermissions&3]：额，已经有一个名为 {markName}&r&3 的标记了。
       #Available Arg(s): {senderName}, {markName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: 好吧, 位置标记为 '{markName}&r&'。
+        &r&3[&bNWorldPermissions&3]: 报告！该位置已经标记为 {markName}&r& 。
       #Available Arg(s): {senderName}, {markName}.
       failed: |
-        &r&3[&bNWorldPermissions&3]: Um, 发生了什么？奇怪的力量阻止我标记位置。
+        &r&3[&bNWorldPermissions&3]: 啊？发生了什么？奇怪的力量阻止了我标记位置。
     #Available Arg(s): {senderName}, {markName}.
     remove:
       completed: |
-        &r&3[&bNWorldPermissions&3]: 好吧, 标记'{markName}&r&'已被移除。
+        &r&3[&bNWorldPermissions&3]: 报告！标记 {markName}&r&3 已被移除！
       #Available Arg(s): {senderName}, {markName}.
       no-such-mark: |
-        &r&3[&bNWorldPermissions&3]：啊，没有一个名为 '{markName}&r&的标记。
+        &r&3[&bNWorldPermissions&3]：额，没有名为 {markName}&r&3 的标记。
       #Available Arg(s): {senderName}, {markName}.
       failed: |
-        &r&3[&bNWorldPermissions&3]: Um, 发生了什么？奇怪的力量阻止我移除标记。
+        &r&3[&bNWorldPermissions&3]: 啊？发生了什么？奇怪的力量阻止了我移除标记。
     #Available Arg(s): {senderName}, {markName}.
     list:
       list:
         #The following 3 messages will get jointed together before being sent.
         #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
-        beginning: "&r&3[&bNWorldPermissions&3]:\n好吧, 有标记:\n"
+        beginning: "&r&3[&bNWorldPermissions&3]:\n有这些标记：\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3、"
         #Available Arg(s): {senderName}.
-        ending: "\n&r&3这一切。"
+        ending: "\n&r&3以上。"
       #Available Arg(s): {senderName}.
-      no-mark: "&r&3[&bNWorldPermissions&3]：啊，没有标记。"
+      no-mark: "&r&3[&bNWorldPermissions&3]：啊？好像一个标记都没有。"
   #Available Arg(s): {senderName}.
   reload:
     help: |
       &r&3[&bNWorldPermissions&3]:
       尝试这些命令!
-      /wp 重新加载配置 - 重新加载文件 'config. ml'。
-      /wp 重新加载消息-- 重新加载文件 'messages.yml'。
-      /wp 重新加载标记 -- 重新加载文件 'marks.yml'。
-      /wp 重新加载世界 - 重新加载文件 'worlds' ml'。
-      /wp 重新加载所有 -- 重新加载以上所有文件。
+      /wp reload config - 重新加载文件 config.yml 。
+      /wp reload messages - 重新加载文件 messages.yml 。
+      /wp reload marks - 重新加载文件 marks.yml 。
+      /wp reload worlds - 重新加载文件 worlds.yml 。
+      /wp reload all - 重新加载以上所有文件。
     #Available Arg(s): {senderName}.
     config:
       completed: |
-        &r&3[&bNWorldPermissions&3]: 很好, 文件 'config.yml' 已重新载入, 但注意更新检查器不会受到影响。
+        &r&3[&bNWorldPermissions&3]: 很好，文件 config.yml 已重新载入。不过要注意，更新检查器不会受到影响。
     #Available Arg(s): {senderName}.
     messages:
       completed: |
-        &r&3[&bNWorldPermissions&3]: 很好, 文件 'messages.yml' 已重新载入.
+        &r&3[&bNWorldPermissions&3]: 很好，文件'messages.yml 已重新载入。
     #Available Arg(s): {senderName}.
     marks:
       completed: |
-        &r&3[&bNWorldPermissions&3]: 很好, 文件 'marks.yml' 已重新载入.
+        &r&3[&bNWorldPermissions&3]: 很好，文件 marks.yml 已重新载入。
     #Available Arg(s): {senderName}.
     worlds:
       completed: |
-        &r&3[&bNWorldPermissions&3]: 很好, 文件 'worlds.yml' 已重新载入.
+        &r&3[&bNWorldPermissions&3]: 很好，文件 worlds.yml 已重新载入。
   #Available Arg(s): {senderName}.
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      尝试这些命令!
-      /wp 版本电流 -- 获取当前版本信息。
-      /wp 重新加载最新版本 - 获取最新版本
+      试试这些指令！
+      /wp version current - 获取当前版本信息。
+      /wp version latest - 获取最新版本信息。
     #Available Arg(s): {senderName}.
     current:
       message: |
-        &r&3[&bNWorldPermissions&3]：好吧，当前版本是 '{version}&r&3'。
+        &r&3[&bNWorldPermissions&3]：报告！当前版本是 {version}&r&3 ！
     #Available Arg(s): {senderName}, {version}.
     latest:
       message: |
         &r&3[&bNWorldPermissions&3]:
-        很好，最新版本是 '{version}&r&3' ({time}&r&3)。
-        您可以在 'https://yueyinqiu.github.io/NWorldPermissions/download'下载。
+        报告！最新版本是 {version}&r&3 ({time}&r&3)。
+        您可以在 https://yueyinqiu.github.io/NWorldPermissions/download 下载到。
       #Available Arg(s): {senderName}, {version}, {time}.
       checker-not-enabled: |
-        &r&3[&bNWorldPermissions&3]：啊，更新检查器未启用。
+        &r&3[&bNWorldPermissions&3]：额……更新检查器未启用。
       #Available Arg(s): {senderName}.
       failed-to-check: |
-        &r&3[&bNWorldPermissions&3]: Um, 我不知道发生了什么，但实际上我无法检查更新。
+        &r&3[&bNWorldPermissions&3]: 额，更新检查失败了。
   #Available Arg(s): {senderName}.
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |
-        &r&3[&bNWorldPermissions&3]: 你传送到 {toWorld}&r&时感觉到一种奇怪的力量，但它对你不起作用。
+        &r&3[&bNWorldPermissions&3]: 你传送到 {toWorld}&r& 时感觉到一种怪异的力量，但它对你不起作用。
       #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
       denied: |
-        &r&3[&bNWorldPermissions&3]: 一股奇怪的力量已经阻止了您传送到 {toWorld}&r&3, 只要呆在 {fromWorld}&r&3！
+        &r&3[&bNWorldPermissions&3]: 一股怪异的力量阻止了您传送到 {toWorld}&r&3 ，在 {fromWorld}&r&3 好好呆着吧！
     #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
     when-teleported-by-tp-online:
       before-teleport: |
-        &r&3[&bNWorldPermissions&3]: 一股奇怪的力量试图传送你到 {markName}&r&。
+        &r&3[&bNWorldPermissions&3]: 一股怪异的力量试图传送你到 {markName}&r&3 。

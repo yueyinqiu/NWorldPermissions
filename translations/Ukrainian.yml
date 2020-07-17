@@ -39,7 +39,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: Ех, світ '{worldName}&r&3 ' ще не контролюється.
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Ну, світ '{worldName}&r&3 ' не є неконтрольованим.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' is uncontrolled now.
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3 [&bNWorldPermissions&]: добре, що сталося? Дивна сила зупинила мене неконтролюючи світ.
@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nТоді ці світи контролюють:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&три також."
       #Available Arg(s): {senderName}.
@@ -87,9 +87,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        Спробуйте ці команди!
-        /wp світи встановили <world_name> - щоб отримати коротке ім'я світу.
-        /wp світи встановили тя <world_name> - щоб отримати коефіцієнт тяги при натисканні порталів.
+        Try these commands!
+        /wp worlds get display <world_name> -- To get the display name of a world.
+        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nНу, є знаки:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&три також."
       #Available Arg(s): {senderName}.
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Спробуйте ці команди!
-      /wp версії поточний -- щоб отримати інформацію про поточну версію.
-      /wp перезавантажити найновішу -- щоб отримати інформацію про останню версію.
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp version latest -- To get the latest version info.
     #Available Arg(s): {senderName}.
     current:
       message: |

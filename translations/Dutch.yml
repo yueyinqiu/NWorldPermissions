@@ -39,7 +39,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: Uh, wereld '{worldName}&r&3' is nog niet bestuurd.
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Wel, wereld '{worldName}&r&3' wordt nu niet ongecontroleerd.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' is uncontrolled now.
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, wat is er gebeurd? Een vreemde kracht heeft me ervan weerhouden de wereld ongecontroleerd te houden.
@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nWelnu, deze werelden zijn gecontroleerd:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&33Dat is alles."
       #Available Arg(s): {senderName}.
@@ -87,9 +87,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        Probeer deze commando's!
-        /wp worlds set display <world_name> -- Om de weergavenaam van een wereld te krijgen.
-        /wp worlds set thrust <world_name> -- Om de stuwkracht coëfficiënt te krijgen wanneer deze door de portalen wordt geduwd.
+        Try these commands!
+        /wp worlds get display <world_name> -- To get the display name of a world.
+        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nEr zijn de markeringen:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&33Dat is alles."
       #Available Arg(s): {senderName}.
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Probeer deze commando's!
-      /wp versie current -- Voor de informatie van de huidige versie.
-      /wp herlaad laatst -- om de laatste versie info te krijgen.
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp version latest -- To get the latest version info.
     #Available Arg(s): {senderName}.
     current:
       message: |

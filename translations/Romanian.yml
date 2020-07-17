@@ -39,7 +39,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: Uh, lumea '{worldName}&r&3' nu a fost controlată încă.
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Păi, lumea '{worldName}&r&3' nu este necontrolată acum.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' is uncontrolled now.
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, ce s-a întâmplat? O putere ciudată m-a oprit să nu controlez lumea.
@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nEi bine, aceste lumi sunt controlate:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3Asta e tot."
       #Available Arg(s): {senderName}.
@@ -87,9 +87,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        Încercați aceste comenzi!
-        /wp lumi setează afișarea <world_name> -- Pentru a obține numele afișat al unei lumi.
-        /wp lumi setează împingerea <world_name> -- Pentru a face coeficientul de împingere când este împins de portaluri.
+        Try these commands!
+        /wp worlds get display <world_name> -- To get the display name of a world.
+        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nEi bine, sunt punctele:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3Asta e tot."
       #Available Arg(s): {senderName}.
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Încercați aceste comenzi!
-      /wp versiunea curentă -- Pentru a obține informațiile despre versiunea curentă.
-      /wp reincarca ultima -- Pentru a obtine informatiile despre ultima versiune.
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp version latest -- To get the latest version info.
     #Available Arg(s): {senderName}.
     current:
       message: |

@@ -39,7 +39,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: أوه، العالم '{worldName}&r&لم يتم التحكم فيه بعد.
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: حسنا، العالم '{worldName}&r&' ليس غير خاضع للسيطرة الآن.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' is uncontrolled now.
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: أمم، ماذا حدث؟ قوة غريبة توقفتني عن السيطرة على العالم.
@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nحسناً، هذه العوالم محكومة:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3 هذا كل شيء."
       #Available Arg(s): {senderName}.
@@ -87,9 +87,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        جرب هذه الأوامر!
-        / wp عوالم مجموعة العرض <world_name> -- للحصول على اسم العرض للعالم .
-        /wp عوالم تعيّن الدفع <world_name> -- للحصول على معامل الدفع عندما يتم دفعه من خلال البوابات.
+        Try these commands!
+        /wp worlds get display <world_name> -- To get the display name of a world.
+        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nحسنًا، هناك علامات:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3 هذا كل شيء."
       #Available Arg(s): {senderName}.
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      جرب هذه الأوامر!
-      /wp الإصدار الحالي -- للحصول على معلومات الإصدار الحالي.
-      إعادة تحميل أحدث -- للحصول على أحدث معلومات الإصدار.
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp version latest -- To get the latest version info.
     #Available Arg(s): {senderName}.
     current:
       message: |
