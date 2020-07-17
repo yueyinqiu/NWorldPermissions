@@ -1,0 +1,239 @@
+---
+#messages.yml
+#PlaceholderAPI supported. And you can also run the plugin without it.
+messages:
+  help: |
+    &r&3[&bNWorldPermissions&3]:
+    Ahoj, {senderName}&r&3! Vyzkoušejte tyto příkazy!
+    /wp světy (Vyžadováno: "nworldpermissions. orlds")
+    /wp marks (Vyžadováno: "nworldpermissions. arks")
+    /wp tp (Permission Required: "nworldpermissions.tp")
+    /wp reload (Permission required: "nworldpermissions.reload")
+    /wp verze (Vyžadováno "nworldpermissions.version")
+  #Available Arg(s): {senderName}.
+  worlds:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Vyzkoušejte tyto příkazy!
+      /wp worlds control <world_name> -- Chcete-li vytvořit ovládaný svět.
+      /wp světy jsou nekontrolovatelné <world_name> -- Chcete-li svět učinit nekontrolovaný.
+      /wp ovládané světy – Pro zobrazení seznamu všech ovládaných světů.
+      /wp světů nastaveno - Pro nastavení některých vlastních možností světa. (ne jen ty kontrolované)
+      /wp světy -- Pro získání aktuální hodnoty vlastních možností.
+    #Available Arg(s): {senderName}.
+    control:
+      already-controlled: |
+        &r&3[&bNWorldPermissions&3]: Uh, svět '{worldName}&r&3' již byl ovládán dříve.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: No, svět '{worldName}&r&3' byl nyní ovládán.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed-but-no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Svět '{worldName}&r&3' byl nyní ovládán, ale ve skutečnosti neexistuje takový svět. Je tam typo?
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, co se stalo? Zvláštní síla mě zastavila ovládání světa.
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    uncontrol:
+      no-such-controlled-world: |
+        &r&3[&bNWorldPermissions&3]: Uh, svět '{worldName}&r&3' ještě nebyl ovládán.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Svět '{worldName}&r&3' nyní není nekontrolovaný.
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, co se stalo? Zvláštní síla mě zastavila odovládání světa.
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    controlled:
+      list:
+        #The following 3 messages will get jointed together before being sent.
+        #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3[&bNWorldPermissions&3]:\nNo, tyto světy jsou řízeny:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3To je vše."
+      #Available Arg(s): {senderName}.
+      no-controlled-world: "&r&3[&bNWorldPermissions&3]: Uh, neexistuje žádný kontrolovaný svět."
+    #Available Arg(s): {senderName}.
+    set:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        Vyzkoušejte tyto příkazy!
+        /wp světy nastaví zobrazení <world_name> <display_name> -- Chcete-li nastavit zobrazovaný název světa.
+        /wp světy nastaví výpad <world_name> <thrust> -- Pro nastavení koeficientu tahu při tlačení portály. Mělo by to být dvojí hodnota. (nastavte '0' pro vypnutí)
+      #Available Arg(s): {senderName}.
+      display:
+        completed: |
+          Zobrazované jméno &r&3[&bNWorldPermissions&3]: Svět '{worldName}&r&3' je nastaveno na '{worldDisplayName}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Zobrazované jméno na světě '{worldName}&r&3'je nastaveno na '{worldDisplayName}&r&3', ale ve skutečnosti takový svět neexistuje. Je tu typolu?
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Um, co se stalo? Zvláštní energie mě zastavila nastavení jména displeje.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Svět '{worldName}&r&3''s je tažení nastaveno na '{thrust}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Svět '{worldName}&r&3' je posun na '{thrust}&r&3', ale ve skutečnosti takový svět neexistuje. Je tu typolu?
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Um, co se stalo? Zvláštní síla mě zastavila nastavení tahu.
+    #Available Arg(s): {senderName}, {worldName}, {thrust}.
+    get:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        Vyzkoušejte tyto příkazy!
+        /wp světy nastaví zobrazení <world_name> -- Pro zobrazení názvu světa.
+        /wp světy nastaví tah <world_name> -- Pro získání koeficientu tahu při tlačení portály.
+      #Available Arg(s): {senderName}.
+      display:
+        show: |
+          &r&3[&bNWorldPermissions&3]: No, svět '{worldName}&r&3'od zobrazované jméno je '{worldDisplayName}&r&3'.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        show: |
+          &r&3[&bNWorldPermissions&3]: No, svět '{worldName}&r&3''s je '{thrust}&r&3'.
+  #Available Arg(s): {senderName}, {worldName}, {thrust}.
+  tp:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Vyzkoušejte tyto příkazy!
+      /wp tp online <world_name> <mark_name> [teleportation_times = 1] -- Pro teleportování všech online hráčů v konkrétním světě na značku.
+      /wp tp offline <world_name> <mark_name> -- Pro teleportování všech sledovaných offline hráčů v konkrétním světě na značku.
+    #Available Arg(s): {senderName}.
+    online:
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Um, který svět je '{worldName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, kde je značka '{markName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      failed-to-teleport-someone: |
+        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 zde nemůže být teleportováno. Hráč by měl být teleportován {teleportationTimes}&r&3 krát, ale pouze {teleportedTimes} byl úspěšný.
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: {teleportedCount}&r&3 hráči byli teleportováni po dobu {teleportationTimes}&r&3 krát, ale {unteleportedCount}&r&3 byly.
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
+    offline:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Uh, offline hráči tracker není povolen.
+        Ujistěte se, že 'offline-players-tracker.enabled' v souboru 'config.yml' je 'true'.
+      #Available Arg(s): {senderName}.
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Um, který svět je '{worldName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, kde je značka '{markName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: {teleportedCount}&r&3 offline hráči byli teleportováni.
+  #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+  marks:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Vyzkoušejte tyto příkazy!
+      /wp marks add <mark_name> -- Chcete-li nastavit známku, pak ji můžete použít později.
+      /wp marks remove <mark_name> -- Chcete-li odstranit značku.
+      /wp marks list -- Pro zobrazení všech značek.
+    #Available Arg(s): {senderName}.
+    add:
+      without-a-position: |
+        &r&3[&bNWorldPermissions&3]: Um, {senderName}&r&3? Kde jsi?
+      #Available Arg(s): {senderName}.
+      with-occupied-name: |
+        &r&3[&bNWorldPermissions&3]: Uh, již zde byla známka '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Pozice byla označena jako '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, co se stalo? Podivná energie mi zastavila označování polohy.
+    #Available Arg(s): {senderName}, {markName}.
+    remove:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Značka '{markName}&r&3' byla odstraněna.
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Uh, není známka '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, co se stalo? Zvláštní síla mě zastavila, abych odstranila značku.
+    #Available Arg(s): {senderName}, {markName}.
+    list:
+      list:
+        #The following 3 messages will get jointed together before being sent.
+        #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3[&bNWorldPermissions&3]:\nNo, jsou zde značky:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3To je vše."
+      #Available Arg(s): {senderName}.
+      no-mark: "&r&3[&bNWorldPermissions&3]: Uh, neexistuje žádná známka."
+  #Available Arg(s): {senderName}.
+  reload:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Vyzkoušejte tyto příkazy!
+      /wp reload config -- Pro obnovení souboru 'config. ml'.
+      /wp reload messages -- Pro načtení souboru 'messages.yml'.
+      /wp reload marks -- Pro obnovení souboru 'marks.yml'.
+      /wp reload worlds -- Pro načtení souboru 'world'. ml'.
+      /wp reload all -- Pro načtení všech výše uvedených souborů.
+    #Available Arg(s): {senderName}.
+    config:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Soubor 'config.yml' byl znovu načten, ale všimněte si, že kontrolní skript aktualizace nebude ovlivněn.
+    #Available Arg(s): {senderName}.
+    messages:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Soubor 'messages.yml' byl znovu načten.
+    #Available Arg(s): {senderName}.
+    marks:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Soubor 'marks.yml' byl obnoven.
+    #Available Arg(s): {senderName}.
+    worlds:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Soubor 'worlds.yml' byl znovu načten.
+  #Available Arg(s): {senderName}.
+  version:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Vyzkoušejte tyto příkazy!
+      /wp verze aktuální -- Pro získání informací o aktuální verzi.
+      /wp znovu načtěte nejnovější -- Pro získání informací o nejnovější verzi.
+    #Available Arg(s): {senderName}.
+    current:
+      message: |
+        &r&3[&bNWorldPermissions&3]: No, aktuální verze je '{version}&r&3'.
+    #Available Arg(s): {senderName}, {version}.
+    latest:
+      message: |
+        &r&3[&bNWorldPermissions&3]:
+        Dobrá, nejnovější verze je '{version}&r&3' ({time}&r&3).
+        Můžete si ji stáhnout na adrese 'https://yueyinqiu.github.io/NWorldPermissions/download'.
+      #Available Arg(s): {senderName}, {version}, {time}.
+      checker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: nás, kontrolní skript aktualizací není povolen.
+      #Available Arg(s): {senderName}.
+      failed-to-check: |
+        &r&3[&bNWorldPermissions&3]: Um, nevím, co se stalo, ale ve skutečnosti nemohu zkontrolovat aktualizaci.
+  #Available Arg(s): {senderName}.
+  to-players:
+    when-teleport-to-controlled-worlds:
+      teleported: |
+        &r&3[&bNWorldPermissions&3]: Pocítil jsi zvláštní moc, když jsi teleportoval s {toWorld}&r&3, ale nefunguje pro vás.
+      #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+      denied: |
+        &r&3[&bNWorldPermissions&3]: Podivná síla zastavila teleportaci na {toWorld}&r&3, jen zůstaňte v {fromWorld}&r&3!
+    #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+    when-teleported-by-tp-online:
+      before-teleport: |
+        &r&3[&bNWorldPermissions&3]: Zvláštní síla se pokouší teleportovat na {markName}&r&3.
