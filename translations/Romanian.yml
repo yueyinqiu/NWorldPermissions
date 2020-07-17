@@ -39,7 +39,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: Uh, lumea '{worldName}&r&3' nu a fost controlată încă.
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Păi, lumea '{worldName}&r&3' nu este necontrolată acum.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' is uncontrolled now.
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, ce s-a întâmplat? O putere ciudată m-a oprit să nu controlez lumea.
