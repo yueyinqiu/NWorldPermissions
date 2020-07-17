@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3] :\nEh bien, ces mondes sont contrôlés :\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3C'est tout."
       #Available Arg(s): {senderName}.
@@ -87,9 +87,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        Essayez ces commandes!
-        /wp worlds set display <world_name> -- Pour obtenir le nom d'affichage d'un monde.
-        /wp worlds set thrust <world_name> -- Pour obtenir le coefficient de poussée en étant poussé par les portails.
+        Try these commands!
+        /wp worlds get display <world_name> -- To get the display name of a world.
+        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nEh bien, il y a les marques:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3C'est tout."
       #Available Arg(s): {senderName}.
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Essayez ces commandes !
-      version actuelle de /wp -- Pour obtenir les informations de version actuelles.
-      /wp reload latest -- Pour obtenir les dernières infos de version.
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp version latest -- To get the latest version info.
     #Available Arg(s): {senderName}.
     current:
       message: |
