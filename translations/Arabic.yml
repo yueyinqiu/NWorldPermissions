@@ -39,7 +39,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: أوه، العالم '{worldName}&r&لم يتم التحكم فيه بعد.
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: حسنا، العالم '{worldName}&r&' ليس غير خاضع للسيطرة الآن.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' is uncontrolled now.
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: أمم، ماذا حدث؟ قوة غريبة توقفتني عن السيطرة على العالم.
