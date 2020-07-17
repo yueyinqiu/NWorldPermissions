@@ -1,0 +1,239 @@
+---
+#messages.yml
+#PlaceholderAPI supported. And you can also run the plugin without it.
+messages:
+  help: |
+    &r&3[&bNWorldPermissions&3]:
+    Здравствуйте, {senderName}&r&3! Попробуйте эти команды!
+    /wp миры (Требуется (обязательное разрешение: "nworldpermissions. orlds")
+    знаки /wp (Требуется (обязательное разрешение: "nworldpermissions. arks")
+    /wp tp (Требуется (обязательная задача: "nworldpermissions.tp")
+    /wp перезагрузка (обязательная задача: "nworldpermissions.reload")
+    /wp версия (требуется: "nworldpermissions.version")
+  #Available Arg(s): {senderName}.
+  worlds:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Попробуйте следующие команды!
+      /wp worlds control <world_name> -- Чтобы управлять миром.
+      /wp миры не управляют <world_name> -- Чтобы сделать мир бесконтрольным.
+      /wp миры управляются -- Список всех управляемых миров.
+      /wp настроен -- Для настройки параметров миров. (не только управляемые)
+      /wp миры поступают -- Чтобы получить текущее значение пользовательских параметров.
+    #Available Arg(s): {senderName}.
+    control:
+      already-controlled: |
+        &r&3[&bNWorldPermissions&3]: До этого уже контролировался мир '{worldName}&r&3'.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Ну, теперь контролируется мир '{worldName}&r&3'.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed-but-no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Что ж, мир '{worldName}&r&3' теперь контролируется, но такой мир не существует?
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Мне, что случилось? Странная мощь остановила меня контролировать мир.
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    uncontrol:
+      no-such-controlled-world: |
+        &r&3[&bNWorldPermissions&3]: Ух, мир '{worldName}&r&3' пока не контролируется.
+      #Available Arg(s): {senderName}, {worldName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' isn't uncontrolled now.
+      #Available Arg(s): {senderName}, {worldName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Мне, что случилось? Странная сила остановила меня на земле.
+    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+    controlled:
+      list:
+        #The following 3 messages will get jointed together before being sent.
+        #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3[&bNWorldPermissions&3]:\nЧто ж, эти миры контролируются:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3!"
+      #Available Arg(s): {senderName}.
+      no-controlled-world: "&r&3[&bNWorldPermissions&3]: В мире нет управляемого мира."
+    #Available Arg(s): {senderName}.
+    set:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        Попробуйте следующие команды!
+        /wp устанавливает display <world_name> <display_name> -- Для отображения имени мира.
+        /wp миры устанавливают тягу <world_name> <thrust> -- Чтобы задать коэффициент тяги при нажатии порталами. Двойное значение должно быть двойным (установите '0' для отключения)
+      #Available Arg(s): {senderName}.
+      display:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Ну, мир '{worldName}&r&3' имеет значение '{worldDisplayName}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Ну, мир '{worldName}&r&3' имеет значение '{worldDisplayName}&r&3', но на самом деле такого мира нет. Есть опечатка?
+        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Как случилось? Странная мощь остановила меня установить отображаемое имя.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        completed: |
+          &r&3[&bNWorldPermissions&3]: Ну, мир '{worldName}&r&3 имеет силу '{thrust}&r&3'.
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        completed-but-no-such-world: |
+          &r&3[&bNWorldPermissions&3]: Ну, мир '{worldName}&r&3 имеет силу '{thrust}&r&3', но на самом деле такого мира нет. Есть опечатка?
+        #Available Arg(s): {senderName}, {worldName}, {thrust}.
+        failed: |
+          &r&3[&bNWorldPermissions&3]: Гм, что случилось? Странная мощь остановила меня на стрелке.
+    #Available Arg(s): {senderName}, {worldName}, {thrust}.
+    get:
+      help: |
+        &r&3[&bNWorldPermissions&3]:
+        Попробуйте следующие команды!
+        /wp устанавливает параметр отображения <world_name> - Чтобы получить отображаемое имя мира.
+        /wp миры устанавливают тягу <world_name> -- Для получения коэффициента тяги на толкаемые порталами.
+      #Available Arg(s): {senderName}.
+      display:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Ну, мир '{worldName}&r&3''s имя: '{worldDisplayName}&r&3'.
+      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
+      thrust:
+        show: |
+          &r&3[&bNWorldPermissions&3]: Ну, мир '{worldName}&r&3' тяга '{thrust}&r&3'.
+  #Available Arg(s): {senderName}, {worldName}, {thrust}.
+  tp:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Попробуйте следующие команды!
+      /wp tp онлайн <world_name> <mark_name> [teleportation_times = 1] -- Для телепортации всех онлайн-игроков в конкретном мире к знаку.
+      /wp tp offline <world_name> <mark_name> -- Для телепортации всех отслеживаемых игроков в отдельном мире к знаку.
+    #Available Arg(s): {senderName}.
+    online:
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: В каком мире '{worldName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Ум, где знак '{markName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
+      failed-to-teleport-someone: |
+        &r&3[&bNWorldPermissions&3]: Ух, {playerName}&r&3 не может быть телепортирован здесь. Игроку следует телепортировать {teleportationTimes}&r&3 раза, но только {teleportedTimes} успешно.
+      #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Ну, {teleportedCount}&r&3 игроков были телепортированы в {teleportationTimes}&r&раз, а {unteleportedCount}&r&3 закрыто.
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
+    offline:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Да, трекер игроков в автономном режиме не включен.
+        Убедитесь, что 'offline-players-tracker.enabled' в файле 'config.yml' - это 'true'.
+      #Available Arg(s): {senderName}.
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: В каком мире '{worldName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Ум, где знак '{markName}&r&3'?
+      #Available Arg(s): {senderName}, {worldName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Ну, {teleportedCount}&r&3 игрока в автономном режиме телепортированы.
+  #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+  marks:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Попробуйте следующие команды!
+      /wp marks add <mark_name> -- Чтобы задать метку, вы можете использовать ее позже.
+      /wp marks remove <mark_name> -- To remove the mark.
+      /wp marks list -- To list all the marks.
+    #Available Arg(s): {senderName}.
+    add:
+      without-a-position: |
+        &r&3[&bNWorldPermissions&3]: Ум, {senderName}&r&3? Где вы?
+      #Available Arg(s): {senderName}.
+      with-occupied-name: |
+        &r&3[&bNWorldPermissions&3]: Uh, метка под названием '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Что ж, позиция была отмечена как '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Что случилось? Странная мощь остановила меня на положении.
+    #Available Arg(s): {senderName}, {markName}.
+    remove:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Ну, метка '{markName}&r&3' удалена.
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Не существует метка '{markName}&r&3'.
+      #Available Arg(s): {senderName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Мне, что случилось? Странная мощь остановила меня снять знак.
+    #Available Arg(s): {senderName}, {markName}.
+    list:
+      list:
+        #The following 3 messages will get jointed together before being sent.
+        #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
+        #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
+        beginning: "&r&3[&bNWorldPermissions&3]:\nЧто ж, есть знаки:\n"
+        #Available Arg(s): {senderName}.
+        separator: "\n"
+        #Available Arg(s): {senderName}.
+        ending: "\n&r&3!"
+      #Available Arg(s): {senderName}.
+      no-mark: "&r&3[&bNWorldPermissions&3]: Ух знаков не существует."
+  #Available Arg(s): {senderName}.
+  reload:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Попробуйте эти команды!
+      /wp перезагрузите конфигурацию -- Чтобы перезагрузить файл 'config. ml'
+      /wp перезагружает сообщения -- Перезагрузить файл messages.yml'.
+      /wp reload marks -- Перезагрузить файл 'marks.yml'.
+      /wp reload worlds -- Перезагрузить файл 'worlds. ml'.
+      /wp reload all -- Перезагрузить все вышеперечисленные файлы.
+    #Available Arg(s): {senderName}.
+    config:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Что ж, файл 'config.yml' был перезагружен, но обратите внимание, что проверка обновлений не повлияет.
+    #Available Arg(s): {senderName}.
+    messages:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Файл 'messages.yml' был перезагружен.
+    #Available Arg(s): {senderName}.
+    marks:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Файл 'marks.yml' был перезагружен.
+    #Available Arg(s): {senderName}.
+    worlds:
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Файл 'worlds.yml' был перезагружен.
+  #Available Arg(s): {senderName}.
+  version:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Попробуйте следующие команды!
+      /wp версия -- чтобы получить информацию о текущей версии.
+      /wp reload latest -- чтобы получить последнюю информацию о версии.
+    #Available Arg(s): {senderName}.
+    current:
+      message: |
+        &r&3[&bNWorldPermissions&3]: Ну, текущая версия '{version}&r&3'.
+    #Available Arg(s): {senderName}, {version}.
+    latest:
+      message: |
+        &r&3[&bNWorldPermissions&3]:
+        Что же, последняя версия: '{version}&r&3' ({time}&r&3).
+        Вы можете скачать его по ссылке 'https://yueyinqiu.github.io/NWorldPermissions/download'.
+      #Available Arg(s): {senderName}, {version}, {time}.
+      checker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Ух, проверка обновлений не включена.
+      #Available Arg(s): {senderName}.
+      failed-to-check: |
+        &r&3[&bNWorldPermissions&3]: Um, я не знаю, что случилось, но на самом деле я не могу проверить обновление.
+  #Available Arg(s): {senderName}.
+  to-players:
+    when-teleport-to-controlled-worlds:
+      teleported: |
+        &r&3[&bNWorldPermissions&3]: Вы чувствовали странную силу при телепортации на {toWorld}&r&3, но для вас это не работает.
+      #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+      denied: |
+        &r&3[&bNWorldPermissions&3]: странная сила прекратила телепортацию до {toWorld}&r&3, просто оставайтесь {fromWorld}&r&3!
+    #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
+    when-teleported-by-tp-online:
+      before-teleport: |
+        &r&3[&bNWorldPermissions&3]: Странная сила пытается телепортировать вас на {markName}&r&3.
