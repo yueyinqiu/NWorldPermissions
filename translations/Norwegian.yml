@@ -39,7 +39,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: Uh, verden '{worldName}&r&3' har ikke blitt kontrollert ennå.
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Vel, verden '{worldName}&r&3' er ikke ukontrollert nå.
+        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' is uncontrolled now.
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Um, hva har skjedd? En merkelig makt har stoppet meg ved kontroll av verden.
@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nVel, disse verdenene er kontrollert:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3Det er alt."
       #Available Arg(s): {senderName}.
@@ -87,9 +87,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        Prøv disse kommandoene!
-        /wp verdener angitt visning <world_name> -- For å hente visningsnavnet til en verden.
-        /wp verdener satt thrust <world_name> -- For å få thrust koeffisienten når de trykkes inn av portalene.
+        Try these commands!
+        /wp worlds get display <world_name> -- To get the display name of a world.
+        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nVel, det er merkene:\n"
         #Available Arg(s): {senderName}.
-        separator: "\n"
+        separator: "&r&3\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3Det er alt."
       #Available Arg(s): {senderName}.
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Prøv disse kommandoene!
-      /wp versjon gjeldende -- For å få gjeldende versjon info.
-      /wp last inn siste nytt -- For å få siste versjon info.
+      Try these commands!
+      /wp version current -- To get the current version info.
+      /wp version latest -- To get the latest version info.
     #Available Arg(s): {senderName}.
     current:
       message: |
