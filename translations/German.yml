@@ -4,56 +4,16 @@
 messages:
   help: |
     &r&3[&bNWorldPermissions&3]:
-<<<<<<< HEAD
-    Hello, {senderName}&r&3! Try these commands!
-    /wp worlds (Permission Required: "nworldpermissions.worlds")
-    /wp marks (Permission Required: "nworldpermissions.marks")
-    /wp tp (Permission Required: "nworldpermissions.tp")
-    /wp reload (Permission Required: "nworldpermissions.reload")
-    /wp version (Permission Required: "nworldpermissions.version")
-=======
     Hallo, {senderName}&r&3! Probieren Sie diese Befehle aus!
     /wp worlds (Berechtigung erforderlich: "nworldpermissions. orlds")
     /wp markiert (Berechtigung erforderlich: "nworldpermissions. arks")
     /wp tp (Berechtigung erforderlich: "nworldpermissions.tp")
     /wp reload (Berechtigung erforderlich: "nworldpermissions.reload")
     /wp version (Berechtigung erforderlich: "nworldpermissions.version")
->>>>>>> crowdin
   #Available Arg(s): {senderName}.
   worlds:
     help: |
       &r&3[&bNWorldPermissions&3]:
-<<<<<<< HEAD
-      Try these commands!
-      /wp worlds control <world_name> -- To make a world controlled.
-      /wp worlds uncontrol <world_name> -- To make a world uncontrolled.
-      /wp worlds controlled -- To list all the controlled worlds.
-      /wp worlds set -- To set some custom options of the worlds. (not only the controlled ones)
-      /wp worlds get -- To get the current value of the custom options.
-    #Available Arg(s): {senderName}.
-    control:
-      already-controlled: |
-        &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' has already been controlled before.
-      #Available Arg(s): {senderName}, {worldName}.
-      completed: |
-        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' has been controlled now.
-      #Available Arg(s): {senderName}, {worldName}.
-      completed-but-no-such-world: |
-        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' has been controlled now, but actually there isn't such a world. Is there a typo?
-      #Available Arg(s): {senderName}, {worldName}.
-      failed: |
-        &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me controlling the world.
-    #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
-    uncontrol:
-      no-such-controlled-world: |
-        &r&3[&bNWorldPermissions&3]: Uh, world '{worldName}&r&3' hasn't been controlled yet.
-      #Available Arg(s): {senderName}, {worldName}.
-      completed: |
-        &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3' isn't uncontrolled now.
-      #Available Arg(s): {senderName}, {worldName}.
-      failed: |
-        &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me uncontrolling the world.
-=======
       Probieren Sie diese Befehle!
       /wp worlds control <world_name> -- Um eine Welt kontrolliert zu machen.
       /wp Welten unkontrolliert <world_name> -- Um eine Welt unkontrolliert zu machen.
@@ -83,57 +43,23 @@ messages:
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Was ist passiert? Eine seltsame Kraft hat mich daran gehindert, die Welt zu kontrollieren.
->>>>>>> crowdin
     #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
     controlled:
       list:
         #The following 3 messages will get jointed together before being sent.
         #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
-<<<<<<< HEAD
-        beginning: "&r&3[&bNWorldPermissions&3]:\nWell, these worlds are controlled:\n"
-=======
         beginning: "&r&3[&bNWorldPermissions&3]:\nNun, diese Welten werden kontrolliert:\n"
->>>>>>> crowdin
         #Available Arg(s): {senderName}.
         separator: "\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3That's all."
       #Available Arg(s): {senderName}.
-<<<<<<< HEAD
-      no-controlled-world: "&r&3[&bNWorldPermissions&3]: Uh, there is no controlled world."
-=======
       no-controlled-world: "&r&3[&bNWorldPermissions&3]: Äh, es gibt keine kontrollierte Welt."
->>>>>>> crowdin
     #Available Arg(s): {senderName}.
     set:
       help: |
         &r&3[&bNWorldPermissions&3]:
-<<<<<<< HEAD
-        Try these commands!
-        /wp worlds set display <world_name> <display_name> -- To set the display name of a world.
-        /wp worlds set thrust <world_name> <thrust> -- To set the thrust coefficient when being pushed by the portals. It should be a double value. (set '0' to disable)
-      #Available Arg(s): {senderName}.
-      display:
-        completed: |
-          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3'.
-        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
-        completed-but-no-such-world: |
-          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is set to '{worldDisplayName}&r&3', but actually there isn't such a world. Is there a typo?
-        #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
-        failed: |
-          &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me setting the display name.
-      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
-      thrust:
-        completed: |
-          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is set to '{thrust}&r&3'.
-        #Available Arg(s): {senderName}, {worldName}, {thrust}.
-        completed-but-no-such-world: |
-          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is set to '{thrust}&r&3', but actually there isn't such a world. Is there a typo?
-        #Available Arg(s): {senderName}, {worldName}, {thrust}.
-        failed: |
-          &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me setting the thrust.
-=======
         Versuchen Sie diese Befehle!
         /wp worlds set display <world_name> <display_name> -- To set the display name of a world.
         /wp Welten setzen Schub <world_name> <thrust> -- Um den Schub Koeffizient zu setzen, wenn er von den Portalen gedrückt wird. Es sollte ein doppelter Wert sein. (setzen Sie '0' auf deaktivieren)
@@ -157,24 +83,10 @@ messages:
         #Available Arg(s): {senderName}, {worldName}, {thrust}.
         failed: |
           &r&3[&bNWorldPermissions&3]: Um, was ist passiert? Eine seltsame Kraft hat mich davon abgehalten, den Schub zu setzen.
->>>>>>> crowdin
     #Available Arg(s): {senderName}, {worldName}, {thrust}.
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-<<<<<<< HEAD
-        Try these commands!
-        /wp worlds set display <world_name> -- To get the display name of a world.
-        /wp worlds set thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
-      #Available Arg(s): {senderName}.
-      display:
-        show: |
-          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s display name is '{worldDisplayName}&r&3'.
-      #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
-      thrust:
-        show: |
-          &r&3[&bNWorldPermissions&3]: Well, world '{worldName}&r&3''s thrust is '{thrust}&r&3'.
-=======
         Versuchen Sie diese Befehle!
         /wp worlds set display <world_name> -- To get the display name of a world.
         /wp Welten setzen Schub <world_name> -- Um den Schub Koeffizient zu bekommen, wenn er von den Portalen gedrückt wird.
@@ -186,23 +98,10 @@ messages:
       thrust:
         show: |
           &r&3[&bNWorldPermissions&3]: Nun, Welt '{worldName}&r&3' 's Stoß ist '{thrust}&r&3'.
->>>>>>> crowdin
   #Available Arg(s): {senderName}, {worldName}, {thrust}.
   tp:
     help: |
       &r&3[&bNWorldPermissions&3]:
-<<<<<<< HEAD
-      Try these commands!
-      /wp tp online <world_name> <mark_name> [teleportation_times = 1] -- To teleport all the online players in the specific world to a mark.
-      /wp tp offline <world_name> <mark_name> -- To teleport all the tracked offline players in the specific world to a mark.
-    #Available Arg(s): {senderName}.
-    online:
-      no-such-world: |
-        &r&3[&bNWorldPermissions&3]: Um, which world is '{worldName}&r&3'?
-      #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
-      no-such-mark: |
-        &r&3[&bNWorldPermissions&3]: Um, where is the mark '{markName}&r&3'?
-=======
       Versuchen Sie diese Befehle!
       /wp tp online <world_name> <mark_name> [teleportation_times = 1] -- Um alle Online-Spieler der bestimmten Welt zu einer Marke zu teleportieren.
       /wp tp offline <world_name> <mark_name> -- Um alle verfolgten Offline-Spieler in der bestimmten Welt zu einer Marke zu teleportieren.
@@ -213,29 +112,11 @@ messages:
       #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
       no-such-mark: |
         &r&3[&bNWorldPermissions&3]: Um, wo ist die Marke '{markName}&r&3'?
->>>>>>> crowdin
       #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}.
       failed-to-teleport-someone: |
         &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 can't be teleported here. The player should be teleported {teleportationTimes}&r&3 times, but only {teleportedTimes} succeeded.
       #Available Arg(s): {senderName}, {worldName}, {markName}, {playerName}, {teleportationTimes}, {teleportedTimes}.
       completed: |
-<<<<<<< HEAD
-        &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 players have been teleported for {teleportationTimes}&r&3 times, but {unteleportedCount}&r&3 haven't.
-    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
-    offline:
-      tracker-not-enabled: |
-        &r&3[&bNWorldPermissions&3]: Uh, the offline players tracker isn't enabled.
-        Make sure 'offline-players-tracker.enabled' in file 'config.yml' is 'true'.
-      #Available Arg(s): {senderName}.
-      no-such-world: |
-        &r&3[&bNWorldPermissions&3]: Um, which world is '{worldName}&r&3'?
-      #Available Arg(s): {senderName}, {worldName}, {markName}.
-      no-such-mark: |
-        &r&3[&bNWorldPermissions&3]: Um, where is the mark '{markName}&r&3'?
-      #Available Arg(s): {senderName}, {worldName}, {markName}.
-      completed: |
-        &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 offline players have been teleported.
-=======
         &r&3[&bNWorldPermissions&3]: Nun, {teleportedCount}&r&3 Spieler wurden für {teleportationTimes}&r&3 Mal teleportiert, {unteleportedCount}&r&3 jedoch nicht.
     #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportationTimes}, {teleportedCount}, {unteleportedCount}.
     offline:
@@ -251,40 +132,10 @@ messages:
       #Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
         &r&3[&bNWorldPermissions&3]: Nun, {teleportedCount}&r&3 Offline-Spieler wurden teleportiert.
->>>>>>> crowdin
   #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
   marks:
     help: |
       &r&3[&bNWorldPermissions&3]:
-<<<<<<< HEAD
-      Try these commands!
-      /wp marks add <mark_name> -- To set a mark, then you can use it later.
-      /wp marks remove <mark_name> -- To remove a mark.
-      /wp marks list -- To list all the marks.
-    #Available Arg(s): {senderName}.
-    add:
-      without-a-position: |
-        &r&3[&bNWorldPermissions&3]: Um, {senderName}&r&3? Where are you?
-      #Available Arg(s): {senderName}.
-      with-occupied-name: |
-        &r&3[&bNWorldPermissions&3]: Uh, there has already been a mark called '{markName}&r&3'.
-      #Available Arg(s): {senderName}, {markName}.
-      completed: |
-        &r&3[&bNWorldPermissions&3]: Well, the position has been marked as '{markName}&r&3'.
-      #Available Arg(s): {senderName}, {markName}.
-      failed: |
-        &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me marking the position.
-    #Available Arg(s): {senderName}, {markName}.
-    remove:
-      completed: |
-        &r&3[&bNWorldPermissions&3]: Well, the mark '{markName}&r&3' has been removed.
-      #Available Arg(s): {senderName}, {markName}.
-      no-such-mark: |
-        &r&3[&bNWorldPermissions&3]: Uh, there isn't a mark called '{markName}&r&3'.
-      #Available Arg(s): {senderName}, {markName}.
-      failed: |
-        &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me removing the mark.
-=======
       Versuchen Sie diese Befehle!
       /wp markiert fügen <mark_name> -- Um eine Marke zu setzen, können Sie sie später verwenden.
       /wp markiert entfernen <mark_name> -- Um eine Markierung zu entfernen
@@ -312,56 +163,23 @@ messages:
       #Available Arg(s): {senderName}, {markName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: Was ist passiert? Eine seltsame Kraft hat mich davon abgehalten, die Marke zu entfernen.
->>>>>>> crowdin
     #Available Arg(s): {senderName}, {markName}.
     list:
       list:
         #The following 3 messages will get jointed together before being sent.
         #They will be jointed as "{beginning}{mark1}{separator}{mark2}{separator}...{markX}{ending}".
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
-<<<<<<< HEAD
-        beginning: "&r&3[&bNWorldPermissions&3]:\nWell, there are the marks:\n"
-=======
         beginning: "&r&3[&bNWorldPermissions&3]:\nNun, es gibt die Markierungen:\n"
->>>>>>> crowdin
         #Available Arg(s): {senderName}.
         separator: "\n"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3That's all."
       #Available Arg(s): {senderName}.
-<<<<<<< HEAD
-      no-mark: "&r&3[&bNWorldPermissions&3]: Uh, there is no existed mark."
-=======
       no-mark: "&r&3[&bNWorldPermissions&3]: Äh, es gibt keine Kennzeichnung."
->>>>>>> crowdin
   #Available Arg(s): {senderName}.
   reload:
     help: |
       &r&3[&bNWorldPermissions&3]:
-<<<<<<< HEAD
-      Try these commands!
-      /wp reload config -- To reload file 'config.yml'.
-      /wp reload messages -- To reload file 'messages.yml'.
-      /wp reload marks -- To reload file 'marks.yml'.
-      /wp reload worlds -- To reload file 'worlds.yml'.
-      /wp reload all -- To reload all the files above.
-    #Available Arg(s): {senderName}.
-    config:
-      completed: |
-        &r&3[&bNWorldPermissions&3]: Well, file 'config.yml' has been reloaded, but note that the update checker won't be affected.
-    #Available Arg(s): {senderName}.
-    messages:
-      completed: |
-        &r&3[&bNWorldPermissions&3]: Well, file 'messages.yml' has been reloaded.
-    #Available Arg(s): {senderName}.
-    marks:
-      completed: |
-        &r&3[&bNWorldPermissions&3]: Well, file 'marks.yml' has been reloaded.
-    #Available Arg(s): {senderName}.
-    worlds:
-      completed: |
-        &r&3[&bNWorldPermissions&3]: Well, file 'worlds.yml' has been reloaded.
-=======
       Probieren Sie diese Befehle!
       /wp reload config -- Um die Datei 'config' neu zu laden. ml'.
       /wp lädt Nachrichten neu -- Um die Datei 'messages.yml' neu zu laden.
@@ -384,20 +202,10 @@ messages:
     worlds:
       completed: |
         &r&3[&bNWorldPermissions&3]: Nun, die Datei 'worlds.yml' wurde neu geladen.
->>>>>>> crowdin
   #Available Arg(s): {senderName}.
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-<<<<<<< HEAD
-      Try these commands!
-      /wp version current -- To get the current version info.
-      /wp reload latest -- To get the latest version info.
-    #Available Arg(s): {senderName}.
-    current:
-      message: |
-        &r&3[&bNWorldPermissions&3]: Well, the current version is '{version}&r&3'.
-=======
       Probieren Sie diese Befehle!
       /wp version current -- Um die aktuelle Versionsinformation zu erhalten.
       /wp laden Sie die neueste -- Um die neueste Versionsinformation zu erhalten.
@@ -405,21 +213,10 @@ messages:
     current:
       message: |
         &r&3[&bNWorldPermissions&3]: Nun, die aktuelle Version ist '{version}&r&3'.
->>>>>>> crowdin
     #Available Arg(s): {senderName}, {version}.
     latest:
       message: |
         &r&3[&bNWorldPermissions&3]:
-<<<<<<< HEAD
-        Well, the latest version is '{version}&r&3' ({time}&r&3).
-        You may download it at 'https://yueyinqiu.github.io/NWorldPermissions/download'.
-      #Available Arg(s): {senderName}, {version}, {time}.
-      checker-not-enabled: |
-        &r&3[&bNWorldPermissions&3]: Uh, the update checker isn't enabled.
-      #Available Arg(s): {senderName}.
-      failed-to-check: |
-        &r&3[&bNWorldPermissions&3]: Um, I don't know what happened, but actually I can't check the update.
-=======
         Nun, die neueste Version ist '{version}&r&3' ({time}&r&3).
         Sie können sie unter 'https://yueyinqiu.github.io/NWorldPermissions/download' herunterladen.
       #Available Arg(s): {senderName}, {version}, {time}.
@@ -428,21 +225,10 @@ messages:
       #Available Arg(s): {senderName}.
       failed-to-check: |
         &r&3[&bNWorldPermissions&3]: Um, ich weiß nicht, was passiert ist, aber ich kann das Update nicht überprüfen.
->>>>>>> crowdin
   #Available Arg(s): {senderName}.
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |
-<<<<<<< HEAD
-        &r&3[&bNWorldPermissions&3]: You've felt a strange power when teleporting to {toWorld}&r&3, but it doesn't work for you.
-      #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
-      denied: |
-        &r&3[&bNWorldPermissions&3]: A strange power have stopped your teleportation to {toWorld}&r&3, just stay in {fromWorld}&r&3!
-    #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
-    when-teleported-by-tp-online:
-      before-teleport: |
-        &r&3[&bNWorldPermissions&3]: A strange power is trying to teleport you to {markName}&r&3.
-=======
         &r&3[&bNWorldPermissions&3]: Du hast eine seltsame Kraft gefühlt, wenn du zu {toWorld}&r&3 teleportierst, aber es funktioniert nicht für dich.
       #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
       denied: |
@@ -451,4 +237,3 @@ messages:
     when-teleported-by-tp-online:
       before-teleport: |
         &r&3[&bNWorldPermissions&3]: Eine seltsame Kraft versucht dich zu {markName}&r&3 zu teleportieren.
->>>>>>> crowdin
