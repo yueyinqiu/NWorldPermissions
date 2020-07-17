@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\n这些世界被控制了：\n"
         #Available Arg(s): {senderName}.
-        separator: "&r&3\n"
+        separator: "&r&3、"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3以上。"
       #Available Arg(s): {senderName}.
@@ -87,9 +87,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        Try these commands!
-        /wp worlds get display <world_name> -- To get the display name of a world.
-        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
+        试试这些命令！
+        /wp worlds get display <world_name> - 获取世界的显示名称。
+        /wp worlds get thrust <world_name> - 获取世界的推力系数。
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -102,7 +102,7 @@ messages:
   tp:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      试试这些命令!
+      试试这些命令！
       /wp tp online <world_name> <mark_name> [teleportation_times = 1] - 将指定世界中的所有在线玩家传送到一个 mark 。
       /wp tp offline <world_name> <mark_name> - 将指定世界中所有（被跟踪的）脱机玩家传送到一个 mark 。
     #Available Arg(s): {senderName}.
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\n有这些标记：\n"
         #Available Arg(s): {senderName}.
-        separator: "&r&3\n"
+        separator: "&r&3、"
         #Available Arg(s): {senderName}.
         ending: "\n&r&3以上。"
       #Available Arg(s): {senderName}.
@@ -181,11 +181,11 @@ messages:
     help: |
       &r&3[&bNWorldPermissions&3]:
       尝试这些命令!
-      /wp reload config - 重新加载文件 config.yml
-      /wp reload messages - 重新加载文件 messages.yml
-      /wp reload marks - 重新加载文件 marks.yml
-      /wp reload worlds - 重新加载文件 worlds.yml
-      /wp reload all -- 重新加载以上所有文件。
+      /wp reload config - 重新加载文件 config.yml 。
+      /wp reload messages - 重新加载文件 messages.yml 。
+      /wp reload marks - 重新加载文件 marks.yml 。
+      /wp reload worlds - 重新加载文件 worlds.yml 。
+      /wp reload all - 重新加载以上所有文件。
     #Available Arg(s): {senderName}.
     config:
       completed: |
@@ -206,9 +206,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Try these commands!
-      /wp version current -- To get the current version info.
-      /wp version latest -- To get the latest version info.
+      试试这些指令！
+      /wp version current - 获取当前版本信息。
+      /wp version latest - 获取最新版本信息。
     #Available Arg(s): {senderName}.
     current:
       message: |

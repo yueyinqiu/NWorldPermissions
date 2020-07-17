@@ -51,7 +51,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nТоді ці світи контролюють:\n"
         #Available Arg(s): {senderName}.
-        separator: "&r&3\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&три також."
       #Available Arg(s): {senderName}.
@@ -171,7 +171,7 @@ messages:
         #The blank characters will be jointed as they are, expect the ones at the beginning of "beginning" and at the end of "ending".
         beginning: "&r&3[&bNWorldPermissions&3]:\nНу, є знаки:\n"
         #Available Arg(s): {senderName}.
-        separator: "&r&3\n"
+        separator: "&r&3,"
         #Available Arg(s): {senderName}.
         ending: "\n&r&три також."
       #Available Arg(s): {senderName}.
