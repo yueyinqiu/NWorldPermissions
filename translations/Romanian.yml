@@ -53,7 +53,7 @@ messages:
         #Available Arg(s): {senderName}.
         separator: "&r&3, "
         #Available Arg(s): {senderName}.
-        ending: "\n&r&3Asta e tot."
+        ending: "&r&3\nThat's all."
       #Available Arg(s): {senderName}.
       no-controlled-world: "&r&3[&bNWorldPermissions&3]: Uh, nu există o lume controlată."
     #Available Arg(s): {senderName}.
@@ -173,7 +173,7 @@ messages:
         #Available Arg(s): {senderName}.
         separator: "&r&3, "
         #Available Arg(s): {senderName}.
-        ending: "\n&r&3Asta e tot."
+        ending: "&r&3\nThat's all."
       #Available Arg(s): {senderName}.
       no-mark: "&r&3[&bNWorldPermissions&3]: Uh, nu există niciun marcaj."
   #Available Arg(s): {senderName}.
