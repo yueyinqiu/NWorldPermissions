@@ -26,10 +26,10 @@ messages:
         &r&3[&bNWorldPermissions&3]: 蛤？世界 {worldName}&r& 本来就被控制着。
       #Available Arg(s): {senderName}, {worldName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]：好了！世界 {worldName}&r& 现在已被控制！
+        &r&3[&bNWorldPermissions&3]: 好了！世界 {worldName}&r& 现在已被控制！
       #Available Arg(s): {senderName}, {worldName}.
       completed-but-no-such-world: |
-        &r&3[&bNWorldPermissions&3]：好了！世界 {worldName}&r& 现在已被控制。不过……实际上没有这样一个世界，打错字了嘛？
+        &r&3[&bNWorldPermissions&3]: 好了！世界 {worldName}&r& 现在已被控制。不过……实际上没有这样一个世界，打错字了嘛？
       #Available Arg(s): {senderName}, {worldName}.
       failed: |
         &r&3[&bNWorldPermissions&3]: 哈？发生了什么？奇怪的力量阻止了我的操作。
@@ -55,7 +55,7 @@ messages:
         #Available Arg(s): {senderName}.
         ending: "&r&3\n以上。"
       #Available Arg(s): {senderName}.
-      no-controlled-world: "&r&3[&bNWorldPermissions&3]：啊？并没有受控世界。"
+      no-controlled-world: "&r&3[&bNWorldPermissions&3]: 啊？并没有受控世界。"
     #Available Arg(s): {senderName}.
     set:
       help: |
@@ -66,7 +66,7 @@ messages:
       #Available Arg(s): {senderName}.
       display:
         completed: |
-          &r&3[&bNWorldPermissions&3]：报告！世界 {worldName}&r& 的显示名称已经设置为 {worldDisplayName}&r&3 。
+          &r&3[&bNWorldPermissions&3]: 报告！世界 {worldName}&r& 的显示名称已经设置为 {worldDisplayName}&r&3 。
         #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
         completed-but-no-such-world: |
           &r&3[&bNWorldPermissions&3]: 报告！世界 {worldName}&r& 的显示名称已设置为 {worldDisplayName}&r&3 。不过实际上没有这样一个世界，打错字了嘛？
@@ -76,7 +76,7 @@ messages:
       #Available Arg(s): {senderName}, {worldName}, {worldDisplayName}.
       thrust:
         completed: |
-          &r&3[&bNWorldPermissions&3]：报告！世界 {worldName}&r& 的推力系数被设置为 {thrust}&r&3 。
+          &r&3[&bNWorldPermissions&3]: 报告！世界 {worldName}&r& 的推力系数被设置为 {thrust}&r&3 。
         #Available Arg(s): {senderName}, {worldName}, {thrust}.
         completed-but-no-such-world: |
           &r&3[&bNWorldPermissions&3]: 报告！世界 {worldName}&r& 的推力已经被设置为 {thrust}&r&3 。不过实际上没有这样一个世界，打错字了嘛？
@@ -146,7 +146,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: 啊？ {senderName}&r& ，你在哪里？
       #Available Arg(s): {senderName}.
       with-occupied-name: |
-        &r&3[&bNWorldPermissions&3]：额，已经有一个名为 {markName}&r&3 的标记了。
+        &r&3[&bNWorldPermissions&3]: 额，已经有一个名为 {markName}&r&3 的标记了。
       #Available Arg(s): {senderName}, {markName}.
       completed: |
         &r&3[&bNWorldPermissions&3]: 报告！该位置已经标记为 {markName}&r& 。
@@ -175,7 +175,7 @@ messages:
         #Available Arg(s): {senderName}.
         ending: "&r&3\n以上。"
       #Available Arg(s): {senderName}.
-      no-mark: "&r&3[&bNWorldPermissions&3]：啊？好像一个标记都没有。"
+      no-mark: "&r&3[&bNWorldPermissions&3]: 啊？好像一个标记都没有。"
   #Available Arg(s): {senderName}.
   reload:
     help: |
@@ -212,7 +212,7 @@ messages:
     #Available Arg(s): {senderName}.
     current:
       message: |
-        &r&3[&bNWorldPermissions&3]：报告！当前版本是 {version}&r&3 ！
+        &r&3[&bNWorldPermissions&3]: 报告！当前版本是 {version}&r&3 ！
     #Available Arg(s): {senderName}, {version}.
     latest:
       message: |
@@ -221,7 +221,7 @@ messages:
         您可以在 https://yueyinqiu.github.io/NWorldPermissions/download 下载到。
       #Available Arg(s): {senderName}, {version}, {time}.
       checker-not-enabled: |
-        &r&3[&bNWorldPermissions&3]：额……更新检查器未启用。
+        &r&3[&bNWorldPermissions&3]: 额……更新检查器未启用。
       #Available Arg(s): {senderName}.
       failed-to-check: |
         &r&3[&bNWorldPermissions&3]: 额，更新检查失败了。
