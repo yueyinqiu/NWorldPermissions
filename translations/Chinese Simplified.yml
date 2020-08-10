@@ -193,7 +193,7 @@ messages:
     #Available Arg(s): {senderName}.
     messages:
       completed: |
-        &r&3[&bNWorldPermissions&3]: 很好，文件'messages.yml 已重新载入。
+        &r&3[&bNWorldPermissions&3]: 很好，文件 messages.yml 已重新载入。
     #Available Arg(s): {senderName}.
     marks:
       completed: |
@@ -229,7 +229,7 @@ messages:
   to-players:
     when-teleport-to-controlled-worlds:
       teleported: |
-        &r&3[&bNWorldPermissions&3]: 你传送到 {toWorld}&r& 时感觉到一种怪异的力量，但它对你不起作用。
+        &r&3[&bNWorldPermissions&3]: 你传送到 {toWorld}&r&3 时感觉到一种怪异的力量，但它对你不起作用。
       #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
       denied: |
         &r&3[&bNWorldPermissions&3]: 一股怪异的力量阻止了您传送到 {toWorld}&r&3 ，在 {fromWorld}&r&3 好好呆着吧！
