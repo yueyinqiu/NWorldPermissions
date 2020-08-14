@@ -65,7 +65,14 @@ public abstract class Executor implements CommandLayer
                 return null;
             }
         }
-        return getTabComplete(rootPlugin,args.length - (layer + 1));
+        
+        List<String> result = new ArrayList<>();
+        for (String str : getTabComplete(rootPlugin,args.length - (layer + 1)))
+        {
+            if(str.startsWith(args[args.length - 1]))
+                result.add(str);
+        }
+        return result;
     }
     
     protected boolean sendHelp(DotDividedStringBuilder messageKey,
