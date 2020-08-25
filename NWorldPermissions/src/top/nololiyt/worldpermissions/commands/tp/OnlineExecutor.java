@@ -45,7 +45,10 @@ public class OnlineExecutor extends Executor
                 }
                 return result;
             case 1:
-                return new ArrayList<>(rootPlugin.getLocalMarksManager().allMarksName());
+                MarksManager marksAPI = rootPlugin.getMarksAPILinker().getMarksAPI();
+                return marksAPI == null ?
+                        new ArrayList<>(rootPlugin.getLocalMarksManager().allMarksName()) :
+                        marksAPI.getAllMarksKey(() -> null);
             case 2:
                 return new ArrayList<String>()
                 {
@@ -88,7 +91,7 @@ public class OnlineExecutor extends Executor
         World world = Bukkit.getWorld(args[layer]);
         if (world == null)
         {
-            messagesSender.send("no-such-world");
+            messagesSender.send(messageKey.append("no-such-world"));
             return true;
         }
     
@@ -100,7 +103,7 @@ public class OnlineExecutor extends Executor
     
         if (location == null)
         {
-            messagesSender.send("no-such-mark");
+            messagesSender.send(messageKey.append("no-such-mark"));
             return true;
         }
     

@@ -47,13 +47,13 @@ public class MarksAPILinker
         @Override
         public String getPrefix()
         {
-            return "nworpe";
+            return "nwope";
         }
     
         @Override
         public Location getMark(String s, MarkRelatedValues markRelatedValues)
         {
-            if (markRelatedValues == null ||
+            if (markRelatedValues.getCommandSender() != null &&
                     !markRelatedValues.getCommandSender().hasPermission("nworldpermissions.marks.list"))
                 return null;
             return rootPlugin.getLocalMarksManager().getMark(s);
@@ -62,7 +62,7 @@ public class MarksAPILinker
         @Override
         public Iterable<String> getAllMarksKey(MarkRelatedValues markRelatedValues)
         {
-            if (markRelatedValues == null ||
+            if (markRelatedValues.getCommandSender() != null &&
                     !markRelatedValues.getCommandSender().hasPermission("nworldpermissions.marks.list"))
                 return Collections.emptyList();
             return rootPlugin.getLocalMarksManager().allMarksName();

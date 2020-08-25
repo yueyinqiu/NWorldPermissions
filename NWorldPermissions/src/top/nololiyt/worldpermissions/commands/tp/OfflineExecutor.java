@@ -47,7 +47,10 @@ public class OfflineExecutor extends Executor
                 }
                 return result;
             case 1:
-                return new ArrayList<>(rootPlugin.getLocalMarksManager().allMarksName());
+                MarksManager marksAPI = rootPlugin.getMarksAPILinker().getMarksAPI();
+                return marksAPI == null ?
+                        new ArrayList<>(rootPlugin.getLocalMarksManager().allMarksName()) :
+                        marksAPI.getAllMarksKey(() -> null);
             default:
                 return new ArrayList<>();
         }
@@ -74,14 +77,14 @@ public class OfflineExecutor extends Executor
         if ((!rootPlugin.getConfig().getBoolean("offline-players-tracker.enabled")) ||
                 rootPlugin.getConfig().getBoolean("offline-players-tracker.record-only"))
         {
-            messagesSender.send("tracker-not-enabled");
+            messagesSender.send(messageKey.append("tracker-not-enabled"));
             return true;
         }
     
         World world = Bukkit.getWorld(args[layer]);
         if (world == null)
         {
-            messagesSender.send("no-such-world");
+            messagesSender.send(messageKey.append("no-such-world"));
             return true;
         }
     
@@ -92,7 +95,7 @@ public class OfflineExecutor extends Executor
     
         if (location == null)
         {
-            messagesSender.send("no-such-mark");
+            messagesSender.send(messageKey.append("no-such-mark"));
             return true;
         }
     
