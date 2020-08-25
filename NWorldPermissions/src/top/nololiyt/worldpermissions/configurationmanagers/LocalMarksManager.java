@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Set;
 
-public class MarksManager extends ConfigurationManager
+public class LocalMarksManager extends ConfigurationManager
 {
     @Override
     String getFileName()
@@ -19,7 +19,7 @@ public class MarksManager extends ConfigurationManager
         return "marks.yml";
     }
     
-    public MarksManager(RootPlugin rootPlugin)
+    public LocalMarksManager(RootPlugin rootPlugin)
     {
         super(rootPlugin);
     }

@@ -1,7 +1,7 @@
 package top.nololiyt.worldpermissions.commands.marks;
 
 import org.bukkit.command.CommandSender;
-import top.nololiyt.worldpermissions.configurationmanagers.MarksManager;
+import top.nololiyt.worldpermissions.configurationmanagers.LocalMarksManager;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
@@ -34,7 +34,7 @@ public class RemoveExecutor extends Executor
         switch (ordinal)
         {
             case 0:
-                return new ArrayList<>(rootPlugin.getMarksManager().allMarksName());
+                return new ArrayList<>(rootPlugin.getLocalMarksManager().allMarksName());
             default:
                 return new ArrayList<>();
         }
@@ -56,13 +56,13 @@ public class RemoveExecutor extends Executor
         
         try
         {
-            MarksManager marksManager = rootPlugin.getMarksManager();
-            if(marksManager.getMark(args[layer]) == null)
+            LocalMarksManager localMarksManager = rootPlugin.getLocalMarksManager();
+            if(localMarksManager.getMark(args[layer]) == null)
             {
                 messagesSender.send(messageKey.append("no-such-mark"));
                 return true;
             }
-            marksManager.setMark(args[layer], null);
+            localMarksManager.setMark(args[layer], null);
             messagesSender.send(messageKey.append("completed"));
             return true;
         }

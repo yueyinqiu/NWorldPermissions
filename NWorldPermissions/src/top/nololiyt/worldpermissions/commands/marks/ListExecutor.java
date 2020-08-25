@@ -49,7 +49,7 @@ public class ListExecutor extends Executor
                 StringPair.senderName(commandSender.getName())
         });
     
-        Set<String> marks = rootPlugin.getMarksManager().allMarksName();
+        Set<String> marks = rootPlugin.getLocalMarksManager().allMarksName();
         if (marks.isEmpty())
         {
             messagesSender.send(messageKey.append("no-mark"));

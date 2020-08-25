@@ -3,7 +3,7 @@ package top.nololiyt.worldpermissions;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.nololiyt.worldpermissions.configurationmanagers.WorldsManager;
-import top.nololiyt.worldpermissions.configurationmanagers.MarksManager;
+import top.nololiyt.worldpermissions.configurationmanagers.LocalMarksManager;
 import top.nololiyt.worldpermissions.configurationmanagers.MessagesManager;
 import top.nololiyt.worldpermissions.playerlisteners.JoinAndQuitListener;
 import top.nololiyt.worldpermissions.playerlisteners.TeleportListener;
@@ -18,11 +18,18 @@ public class RootPlugin extends JavaPlugin
         return messagesManager;
     }
     
-    private MarksManager marksManager;
+    private LocalMarksManager localMarksManager;
     
-    public MarksManager getMarksManager()
+    public LocalMarksManager getLocalMarksManager()
     {
-        return marksManager;
+        return localMarksManager;
+    }
+    
+    private MarksAPILinker marksAPILinker;
+    
+    public MarksAPILinker getMarksAPILinker()
+    {
+        return marksAPILinker;
     }
     
     private VersionManager versionManager;
@@ -46,10 +53,10 @@ public class RootPlugin extends JavaPlugin
     
         worldsManager = new WorldsManager(this);
         messagesManager = new MessagesManager(this);
-        marksManager = new MarksManager(this);
+        localMarksManager = new LocalMarksManager(this);
         versionManager = new VersionManager(this);
         
-        new MarksProvider(this);
+        marksAPILinker = new MarksAPILinker(this);
         
         getCommand("nworldpermissions").setExecutor(new RootCommandExecutor(this));
     

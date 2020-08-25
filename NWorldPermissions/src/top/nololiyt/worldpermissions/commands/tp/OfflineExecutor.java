@@ -10,6 +10,8 @@ import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.OfflinePlayersPosition;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
 import top.nololiyt.worldpermissions.commands.Executor;
+import top.nololiyt.yueyinqiu.bukkitplugins.marksapi.MarksManager;
+import top.nololiyt.yueyinqiu.bukkitplugins.marksapi.entities.MarkRelatedValues;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,7 +47,7 @@ public class OfflineExecutor extends Executor
                 }
                 return result;
             case 1:
-                return new ArrayList<>(rootPlugin.getMarksManager().allMarksName());
+                return new ArrayList<>(rootPlugin.getLocalMarksManager().allMarksName());
             default:
                 return new ArrayList<>();
         }
@@ -83,17 +85,21 @@ public class OfflineExecutor extends Executor
             return true;
         }
     
-        Location location = rootPlugin.getMarksManager().getMark(markName);
+        MarksManager marksAPI = rootPlugin.getMarksAPILinker().getMarksAPI();
+        Location location = marksAPI == null ?
+                rootPlugin.getLocalMarksManager().getMark(markName) :
+                marksAPI.getMark(markName, () -> commandSender);
+    
         if (location == null)
         {
             messagesSender.send("no-such-mark");
             return true;
         }
-        
+    
         long count = setPosition(
                 new File(rootPlugin.getDataFolder().getAbsolutePath(), "playersData"),
                 world, location);
-        
+    
         messagesSender.setArgs(new StringPair[]{
                 StringPair.teleportedCount(String.valueOf(count)),
                 StringPair.markName(markName),

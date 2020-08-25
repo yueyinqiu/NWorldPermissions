@@ -11,6 +11,7 @@ import top.nololiyt.worldpermissions.configurationmanagers.MessagesManager;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
 import top.nololiyt.worldpermissions.entitiesandtools.StringPair;
+import top.nololiyt.yueyinqiu.bukkitplugins.marksapi.MarksManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class OnlineExecutor extends Executor
                 }
                 return result;
             case 1:
-                return new ArrayList<>(rootPlugin.getMarksManager().allMarksName());
+                return new ArrayList<>(rootPlugin.getLocalMarksManager().allMarksName());
             case 2:
                 return new ArrayList<String>()
                 {
@@ -91,7 +92,12 @@ public class OnlineExecutor extends Executor
             return true;
         }
     
-        Location location = rootPlugin.getMarksManager().getMark(markName);
+    
+        MarksManager marksAPI = rootPlugin.getMarksAPILinker().getMarksAPI();
+        Location location = marksAPI == null ?
+                rootPlugin.getLocalMarksManager().getMark(markName) :
+                marksAPI.getMark(markName, () -> commandSender);
+    
         if (location == null)
         {
             messagesSender.send("no-such-mark");

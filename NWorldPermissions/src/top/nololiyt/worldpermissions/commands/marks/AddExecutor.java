@@ -3,7 +3,7 @@ package top.nololiyt.worldpermissions.commands.marks;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import top.nololiyt.worldpermissions.configurationmanagers.MarksManager;
+import top.nololiyt.worldpermissions.configurationmanagers.LocalMarksManager;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.entitiesandtools.MessagesSender;
@@ -70,7 +70,7 @@ public class AddExecutor extends Executor
         });
         try
         {
-            addMark(rootPlugin.getMarksManager(), markName,
+            addMark(rootPlugin.getLocalMarksManager(), markName,
                     player.getLocation(), messagesSender,
                     messageKey);
         }
@@ -82,17 +82,17 @@ public class AddExecutor extends Executor
         return true;
     }
     
-    private void addMark(MarksManager marksManager, String markName, Location location,
+    private void addMark(LocalMarksManager localMarksManager, String markName, Location location,
                          MessagesSender messagesSender, DotDividedStringBuilder messageKey)
             throws IOException
     {
-        if (marksManager.getMark(markName) != null)
+        if (localMarksManager.getMark(markName) != null)
         {
             messagesSender.send(messageKey.append("with-occupied-name"));
             return;
         }
     
-        marksManager.setMark(markName, location);
+        localMarksManager.setMark(markName, location);
         messagesSender.send(messageKey.append("completed"));
     }
 }
