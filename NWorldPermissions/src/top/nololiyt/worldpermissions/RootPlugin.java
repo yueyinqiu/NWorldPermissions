@@ -49,6 +49,8 @@ public class RootPlugin extends JavaPlugin
         marksManager = new MarksManager(this);
         versionManager = new VersionManager(this);
         
+        new MarksProvider(this);
+        
         getCommand("nworldpermissions").setExecutor(new RootCommandExecutor(this));
     
         Bukkit.getPluginManager().registerEvents(

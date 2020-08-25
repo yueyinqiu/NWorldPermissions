@@ -174,6 +174,13 @@
       <JAVADOC />
       <SOURCES />
     </library>
+    <library name="MarksAPI">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/libs/MarksAPI.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
     <library name="PlaceholderAPI-2.10.6">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/libs/PlaceholderAPI-2.10.6.jar!/" />
