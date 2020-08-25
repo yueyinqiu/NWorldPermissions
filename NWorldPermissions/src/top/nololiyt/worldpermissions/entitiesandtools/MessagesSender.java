@@ -51,7 +51,6 @@ public class MessagesSender
     }
     public void send(String message)
     {
-        target.sendMessage(message);
         messagesManager.sendMessage(target, message, args);
     }
     
