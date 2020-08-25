@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import top.nololiyt.worldpermissions.MarksAPILinker;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.Executor;
 import top.nololiyt.worldpermissions.configurationmanagers.MessagesManager;
@@ -45,10 +46,10 @@ public class OnlineExecutor extends Executor
                 }
                 return result;
             case 1:
-                MarksManager marksAPI = rootPlugin.getMarksAPILinker().getMarksAPI();
+                MarksAPILinker marksAPI = rootPlugin.getMarksAPILinker();
                 return marksAPI == null ?
                         new ArrayList<>(rootPlugin.getLocalMarksManager().allMarksName()) :
-                        marksAPI.getAllMarksKey(() -> null);
+                        marksAPI.getMarksAPI().getAllMarksKey(() -> null);
             case 2:
                 return new ArrayList<String>()
                 {
@@ -96,10 +97,10 @@ public class OnlineExecutor extends Executor
         }
     
     
-        MarksManager marksAPI = rootPlugin.getMarksAPILinker().getMarksAPI();
+        MarksAPILinker marksAPI = rootPlugin.getMarksAPILinker();
         Location location = marksAPI == null ?
                 rootPlugin.getLocalMarksManager().getMark(markName) :
-                marksAPI.getMark(markName, () -> commandSender);
+                marksAPI.getMarksAPI().getMark(markName, () -> commandSender);
     
         if (location == null)
         {

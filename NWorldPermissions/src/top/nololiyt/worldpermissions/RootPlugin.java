@@ -56,7 +56,20 @@ public class RootPlugin extends JavaPlugin
         localMarksManager = new LocalMarksManager(this);
         versionManager = new VersionManager(this);
         
-        marksAPILinker = new MarksAPILinker(this);
+        try
+        {
+            marksAPILinker = new MarksAPILinker(this);
+        }
+        catch (NoClassDefFoundError e)
+        {
+            // This is likely due to MarksAPI isn't installed, so do nothing here.
+            getLogger().info("MarksAPI not found. The related features will be disabled.");
+        }
+        catch (Throwable e)
+        {
+            // Incompatible version.
+            e.printStackTrace();
+        }
         
         getCommand("nworldpermissions").setExecutor(new RootCommandExecutor(this));
     

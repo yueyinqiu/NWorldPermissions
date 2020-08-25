@@ -2,7 +2,6 @@ package top.nololiyt.worldpermissions;
 
 import org.bukkit.Location;
 import top.nololiyt.yueyinqiu.bukkitplugins.marksapi.MarksManager;
-import top.nololiyt.yueyinqiu.bukkitplugins.marksapi.MarksProvider;
 import top.nololiyt.yueyinqiu.bukkitplugins.marksapi.entities.MarkRelatedValues;
 
 import java.util.Collections;
@@ -15,41 +14,27 @@ public class MarksAPILinker
     {
         return marksAPI;
     }
-    
     MarksAPILinker(RootPlugin rootPlugin)
     {
-        try
-        {
-            marksAPI = MarksManager.getInstance();
-            marksAPI.marksProviders().add(new Provider(rootPlugin));
-        }
-        catch (NoClassDefFoundError e)
-        {
-            // This is likely due to MarksAPI isn't installed, so do nothing here.
-            rootPlugin.getLogger().info("MarksAPI not found. The related features will be disabled.");
-        }
-        catch (Exception e)
-        {
-            // Incompatible version.
-            e.printStackTrace();
-        }
+        marksAPI = MarksManager.getInstance();
+        marksAPI.marksProviders().add(new MarksProvider(rootPlugin));
     }
     
-    private class Provider implements MarksProvider
+    private class MarksProvider implements top.nololiyt.yueyinqiu.bukkitplugins.marksapi.MarksProvider
     {
         RootPlugin rootPlugin;
-    
-        private Provider(RootPlugin rootPlugin)
+        
+        MarksProvider(RootPlugin rootPlugin)
         {
             this.rootPlugin = rootPlugin;
         }
-    
+        
         @Override
         public String getPrefix()
         {
             return "nwope";
         }
-    
+        
         @Override
         public Location getMark(String s, MarkRelatedValues markRelatedValues)
         {
@@ -58,7 +43,7 @@ public class MarksAPILinker
                 return null;
             return rootPlugin.getLocalMarksManager().getMark(s);
         }
-    
+        
         @Override
         public Iterable<String> getAllMarksKey(MarkRelatedValues markRelatedValues)
         {
