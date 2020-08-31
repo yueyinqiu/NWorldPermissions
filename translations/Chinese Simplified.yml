@@ -137,9 +137,9 @@ messages:
   tpsingle:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      试试这些命令！
-      &r&b/wp tpsingle online <玩家名> <坐标名> <传送次数 = 1> [世界名]  &r&6-- 将一个在线玩家传送到某坐标。如果指定了一个世界，而玩家不在该世界内，将不会传送。
-      &r&b/wp tpsingle offline <坐标名> [世界名] &r&6-- 将一个离线玩家传送到某坐标。如果指定了一个世界，而玩家不在该世界内，将不会传送。
+      试试这些指令！
+      &r&b/wp tpsingle online <玩家名> <坐标名> <传送次数 = 1> [世界名]  &r&6-- 传送一个在线玩家到指定坐标。如果你指定了一个世界，而玩家不在改世界内，则不会传送。
+      &r&b/wp tpsingle offline <玩家名> <坐标名> [世界名] &r&6-- 传送一个离线玩家到指定坐标。如果你指定了一个世界，而玩家不在改世界内，则不会传送。
     #Available Arg(s): {senderName}.
     online:
       no-such-player: |
