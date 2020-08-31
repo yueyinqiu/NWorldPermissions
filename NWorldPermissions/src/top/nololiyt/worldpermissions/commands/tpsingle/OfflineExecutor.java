@@ -36,7 +36,7 @@ public class OfflineExecutor extends Executor
     }
     
     @Override
-    public List<String> getTabComplete(RootPlugin rootPlugin,int ordinal)
+    public List<String> getTabComplete(RootPlugin rootPlugin, int ordinal)
     {
         switch (ordinal)
         {
@@ -89,7 +89,7 @@ public class OfflineExecutor extends Executor
             return true;
         }
     
-        if(Bukkit.getPlayer(arguments.playerName) != null)
+        if (Bukkit.getPlayer(arguments.playerName) != null)
         {
             messagesSender.send(messageKey.append("player-is-online"));
             return true;
@@ -110,7 +110,7 @@ public class OfflineExecutor extends Executor
         }
     
         World world = null;
-        if(!arguments.worldName.isEmpty())
+        if (!arguments.worldName.isEmpty())
         {
             world = Bukkit.getWorld(arguments.worldName);
             if (world == null)
@@ -179,13 +179,13 @@ public class OfflineExecutor extends Executor
     {
         dir.mkdirs();
         File file = new File(dir.getAbsolutePath(), player.getUniqueId().toString() + ".yml");
-        if (file.exists())
+        if (!file.exists())
+            return false;
+        
+        OfflinePlayersPosition position = OfflinePlayersPosition.fromFile(file);
+        if (world != null && (!position.getPosition().getWorld().equals(world)))
         {
-            OfflinePlayersPosition position = OfflinePlayersPosition.fromFile(file);
-            if (world != null && (!position.getPosition().getWorld().equals(world)))
-            {
-                return false;
-            }
+            return false;
         }
         new OfflinePlayersPosition(mark, true).saveTo(file);
         return true;
