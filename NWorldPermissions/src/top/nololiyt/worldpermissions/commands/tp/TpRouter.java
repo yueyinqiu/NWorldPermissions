@@ -31,6 +31,7 @@ public class TpRouter extends Router
         {
             put("offline", new OfflineExecutor());
             put("online", new OnlineExecutor());
+            put("untracked", new UntrackedExecutor());
         }
     };
     
