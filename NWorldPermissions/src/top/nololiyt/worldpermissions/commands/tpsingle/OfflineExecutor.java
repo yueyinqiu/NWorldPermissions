@@ -77,8 +77,8 @@ public class OfflineExecutor extends Executor
         MessagesSender messagesSender = new MessagesSender(rootPlugin.getMessagesManager(),
                 commandSender, new StringPair[]{
                 StringPair.playerName(arguments.playerName),
-                StringPair.markName(arguments.worldName),
-                StringPair.worldName(arguments.markName),
+                StringPair.markName(arguments.markName),
+                StringPair.worldName(arguments.worldName),
                 StringPair.senderName(commandSender.getName())
         });
     
