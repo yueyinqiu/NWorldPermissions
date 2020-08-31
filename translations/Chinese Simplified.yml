@@ -4,23 +4,23 @@
 messages:
   help: |
     &r&3[&bNWorldPermissions&3]:
-    Hello, {senderName}&r&3! Try these commands!
-    &r&b/wp worlds &r&6(Permission Required: "nworldpermissions.worlds")
-    &r&b/wp marks &r&6(Permission Required: "nworldpermissions.marks")
-    &r&b/wp tp &r&6(Permission Required: "nworldpermissions.tp")
-    &r&b/wp tpsingle &r&6(Permission Required: "nworldpermissions.tpsingle")
-    &r&b/wp reload &r&6(Permission Required: "nworldpermissions.reload")
-    &r&b/wp version &r&6(Permission Required: "nworldpermissions.version")
+    你好，{senderName}&r&3！试试这些指令吧！
+    &r&b/wp worlds &r&6（需要权限：nworldpermissions.worlds）
+    &r&b/wp marks &r&6（需要权限：nworldpermissions.marks）
+    &r&b/wp tp &r&6（需要权限：nworldpermissions.tp）
+    &r&b/wp tpsingle &r&6（需要权限：nworldpermissions.tpsingle）
+    &r&b/wp reload &r&6（需要权限：nworldpermissions.reload）
+    &r&b/wp version &r&6（需要权限：nworldpermissions.version）
   #Available Arg(s): {senderName}.
   worlds:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Try these commands!
-      &r&b/wp worlds control <world_name> &r&6-- To make a world controlled.
-      &r&b/wp worlds uncontrol <world_name> &r&6-- To make a world uncontrolled.
-      &r&b/wp worlds controlled &r&6-- To list all the controlled worlds.
-      &r&b/wp worlds set &r&6-- To set some custom options of the worlds. (not only the controlled ones)
-      &r&b/wp worlds get &r&6-- To get the current value of the custom options.
+      试试这些指令！
+      &r&b/wp worlds control <世界名> &r&6-- 把世界设为受控世界。
+      &r&b/wp worlds uncontrol <世界名> &r&6-- 取消世界受控。
+      &r&b/wp worlds controlled &r&6-- 列出所有受控世界。
+      &r&b/wp worlds set &r&6-- 设置世界自定义项。（不限于受控世界）
+      &r&b/wp worlds get &r&6-- 获取当前的世界自定义项。
     #Available Arg(s): {senderName}.
     control:
       already-controlled: |
@@ -61,9 +61,9 @@ messages:
     set:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        Try these commands!
-        &r&b/wp worlds set display <world_name> <display_name> &r&6-- To set the display name of a world.
-        &r&b/wp worlds set thrust <world_name> <thrust> &r&6-- To set the thrust coefficient when being pushed by the portals. It should be a double value. (set '0' to disable)
+        试试这些指令！
+        &r&b/wp worlds set display <世界名> <显示名称> &r&6-- 设置世界现实名称。
+        &r&b/wp worlds set thrust <世界名> <推力> &r&6-- 设置通过传送门进入世界被拒时的推力系数。它是 double 值。（设为 0 以禁用推力）
       #Available Arg(s): {senderName}.
       display:
         completed: |
@@ -88,9 +88,9 @@ messages:
     get:
       help: |
         &r&3[&bNWorldPermissions&3]:
-        Try these commands!
-        &r&b/wp worlds get display <world_name> &r&6-- To get the display name of a world.
-        &r&b/wp worlds get thrust <world_name> &r&6-- To get the thrust coefficient when being pushed by the portals.
+        试试这些指令！
+        &r&b/wp worlds get display <世界名> &r&6-- 获取世界的显示名称。
+        &r&b/wp worlds get thrust <世界名> &r&6-- 获取世界的推力系数。
       #Available Arg(s): {senderName}.
       display:
         show: |
@@ -103,9 +103,9 @@ messages:
   tp:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Try these commands!
-      &r&b/wp tp online <world_name> <mark_name> <teleportation_times = 1> &r&6-- To teleport all the online players in the specified world to a mark.
-      &r&b/wp tp offline <world_name> <mark_name> &r&6-- To teleport all the tracked offline players in the specified world to a mark.
+      试试这些指令！
+      &r&b/wp tp online <世界名> <坐标名> <传送次数 = 1> &r&6-- 传送在指定世界中的所有在线玩家到某坐标。
+      &r&b/wp tp offline <世界名> <坐标名> &r&6-- 传送所有有记录的离线玩家到某坐标。
     #Available Arg(s): {senderName}.
     online:
       no-such-world: |
@@ -137,62 +137,62 @@ messages:
   tpsingle:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Try these commands!
-      &r&b/wp tpsingle online <player_name> <mark_name> <teleportation_times = 1> [world_name]  &r&6-- To teleport an online player to a mark. If the world is specified, the player won't get teleported if being in any other world.
-      &r&b/wp tpsingle offline <mark_name> [world_name] &r&6-- To teleport an offline player to a mark. If the world is specified, the player won't get teleported if being in any other world.
+      试试这些命令！
+      &r&b/wp tpsingle online <玩家名> <坐标名> <传送次数 = 1> [世界名]  &r&6-- 将一个在线玩家传送到某坐标。如果指定了一个世界，而玩家不在该世界内，将不会传送。
+      &r&b/wp tpsingle offline <坐标名> [世界名] &r&6-- 将一个离线玩家传送到某坐标。如果指定了一个世界，而玩家不在该世界内，将不会传送。
     #Available Arg(s): {senderName}.
     online:
       no-such-player: |
-        &r&3[&bNWorldPermissions&3]: Um, who is '{playerName}&r&3'?
+        &r&3[&bNWorldPermissions&3]: 蛤？{playerName}&r&3 是谁？
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}.
       no-such-world: |
-        &r&3[&bNWorldPermissions&3]: Um, which world is '{worldName}&r&3'?
+        &r&3[&bNWorldPermissions&3]: 蛤？{worldName}&r&3 是哪？
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}.
       player-not-in-world: |
-        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 isn't in {worldName}&r&3.
+        &r&3[&bNWorldPermissions&3]: 额……{playerName}&r&3 并不在 {worldName}&r&3。
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}.
       no-such-mark: |
-        &r&3[&bNWorldPermissions&3]: Um, where is the mark '{markName}&r&3'?
+        &r&3[&bNWorldPermissions&3]: 蛤？{markName}&r&3 是哪？
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}.
       failed: |
-        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 can't be teleported here. The player should be teleported {teleportationTimes}&r&3 times, but only {teleportedTimes} succeeded.
+        &r&3[&bNWorldPermissions&3]: 额……{playerName}&r&3 不能被传送到这。此玩家应该被传送 {teleportationTimes}&r&3 次，其中只成功了 {teleportedTimes} 次。
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}, {teleportedTimes}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Well, {playerName}&r&3 has been teleported for {teleportationTimes}&r&3 times.
+        &r&3[&bNWorldPermissions&3]: 报告！{playerName}&r&3 成功被传送了 {teleportationTimes}&r&3 次。
     #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}, {teleportedTimes}.
     offline:
       tracker-not-enabled: |
-        &r&3[&bNWorldPermissions&3]: Uh, the offline players tracker isn't enabled.
-        Make sure 'offline-players-tracker.enabled' in file 'config.yml' is 'true'.
+        &r&3[&bNWorldPermissions&3]: 额……离线玩家追踪器并未启用。
+        请确保文件 config.yml 中的 offline-players-tracker.enabled 为 true 。
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
       player-is-online: |
-        &r&3[&bNWorldPermissions&3]: Uh, the player is online, so nothing should do.
+        &r&3[&bNWorldPermissions&3]: 额……此玩家在线，所以好像没啥可做的。
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
       no-such-player: |
-        &r&3[&bNWorldPermissions&3]: Um, who is '{playerName}&r&3'?
+        &r&3[&bNWorldPermissions&3]: 蛤？{playerName}&r&3 是谁？
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
       no-such-world: |
-        &r&3[&bNWorldPermissions&3]: Um, which world is '{worldName}&r&3'?
+        &r&3[&bNWorldPermissions&3]: 蛤？{worldName}&r&3 是哪？
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
       player-not-in-world: |
-        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 isn't in {worldName}&r&3.
+        &r&3[&bNWorldPermissions&3]: 额……{playerName}&r&3 并不在 {worldName}&r&3。
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
       no-such-mark: |
-        &r&3[&bNWorldPermissions&3]: Um, where is the mark '{markName}&r&3'?
+        &r&3[&bNWorldPermissions&3]: 蛤？{markName}&r&3 是哪？
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
       completed: |
-        &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 offline players have been teleported.
+        &r&3[&bNWorldPermissions&3]: 报告！{playerName}&r&3 已经被传送！
       #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
       failed: |
-        &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me changing the record.
+        &r&3[&bNWorldPermissions&3]: 哈？发生了什么？奇怪的力量阻止了我的操作。
   #Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
   marks:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Try these commands!
-      &r&b/wp marks add <mark_name> &r&6-- To set a mark, then you can use it later.
-      &r&b/wp marks remove <mark_name> &r&6-- To remove a mark.
-      &r&b/wp marks list &r&6-- To list all the marks.
+      试试这些指令！
+      &r&b/wp marks add <坐标名> &r&6-- 设置一个坐标，你可以在之后使用它。
+      &r&b/wp marks remove <坐标名> &r&6-- 移除一个坐标。
+      &r&b/wp marks list &r&6-- 列出全部坐标。
     #Available Arg(s): {senderName}.
     add:
       without-a-position: |
@@ -233,12 +233,12 @@ messages:
   reload:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Try these commands!
-      &r&b/wp reload config &r&6-- To reload file 'config.yml'.
-      &r&b/wp reload messages &r&6-- To reload file 'messages.yml'.
-      &r&b/wp reload marks &r&6-- To reload file 'marks.yml'.
-      &r&b/wp reload worlds &r&6-- To reload file 'worlds.yml'.
-      &r&b/wp reload all &r&6-- To reload all the files above.
+      试试这些指令！
+      &r&b/wp reload config &r&6-- 重载 config.yml 。
+      &r&b/wp reload messages &r&6-- 重载 messages.yml 。
+      &r&b/wp reload marks &r&6-- 重载 marks.yml 。
+      &r&b/wp reload worlds &r&6-- 重载 worlds.yml 。
+      &r&b/wp reload all &r&6-- 重载上述全部。
     #Available Arg(s): {senderName}.
     config:
       completed: |
@@ -259,9 +259,9 @@ messages:
   version:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Try these commands!
-      &r&b/wp version current &r&6-- To get the current version info.
-      &r&b/wp version latest &r&6-- To get the latest version info.
+      试试这些指令！
+      &r&b/wp version current &r&6-- 获取当前版本信息。
+      &r&b/wp version latest &r&6-- 获取最新版本信息。
     #Available Arg(s): {senderName}.
     current:
       message: |
@@ -288,7 +288,7 @@ messages:
         &r&3[&bNWorldPermissions&3]: 一股怪异的力量阻止了您传送到 {toWorld}&r&3 ，在 {fromWorld}&r&3 好好呆着吧！
     #Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
     when-teleported-by-tp-online: |
-      &r&3[&bNWorldPermissions&3]: A strange power is trying to teleport you to {markName}&r&3.
+      &r&3[&bNWorldPermissions&3]: 有一股奇怪的力量正尝试将你传送到 {markName}&r&3 。
     #Available Arg(s): {senderName}, {worldDisplayName}, {markName}, {playerName}.
     when-teleported-by-tpsingle-online: |
-      &r&3[&bNWorldPermissions&3]: A strange power is trying to teleport you to {markName}&r&3.
+      &r&3[&bNWorldPermissions&3]: 有一股奇怪的力量正尝试将你传送到 {markName}&r&3 。
