@@ -5,22 +5,23 @@ messages:
   help: |
     &r&3[&bNWorldPermissions&3]:
     Hello, {senderName}&r&3! Try these commands!
-    /wp worlds (Permission Required: "nworldpermissions.worlds")
-    /wp marks (Permission Required: "nworldpermissions.marks")
-    /wp tp (Permission Required: "nworldpermissions.tp")
-    /wp reload (Permission Required: "nworldpermissions.reload")
-    /wp version (Permission Required: "nworldpermissions.version")
+    &r&b/wp worlds &r&6(Permission Required: "nworldpermissions.worlds")
+    &r&b/wp marks &r&6(Permission Required: "nworldpermissions.marks")
+    &r&b/wp tp &r&6(Permission Required: "nworldpermissions.tp")
+    &r&b/wp tpsingle &r&6(Permission Required: "nworldpermissions.tpsingle")
+    &r&b/wp reload &r&6(Permission Required: "nworldpermissions.reload")
+    &r&b/wp version &r&6(Permission Required: "nworldpermissions.version")
   # Available Arg(s): {senderName}.
 
   worlds:
     help: |
       &r&3[&bNWorldPermissions&3]:
       Try these commands!
-      /wp worlds control <world_name> -- To make a world controlled.
-      /wp worlds uncontrol <world_name> -- To make a world uncontrolled.
-      /wp worlds controlled -- To list all the controlled worlds.
-      /wp worlds set -- To set some custom options of the worlds. (not only the controlled ones)
-      /wp worlds get -- To get the current value of the custom options.
+      &r&b/wp worlds control <world_name> &r&6-- To make a world controlled.
+      &r&b/wp worlds uncontrol <world_name> &r&6-- To make a world uncontrolled.
+      &r&b/wp worlds controlled &r&6-- To list all the controlled worlds.
+      &r&b/wp worlds set &r&6-- To set some custom options of the worlds. (not only the controlled ones)
+      &r&b/wp worlds get &r&6-- To get the current value of the custom options.
     # Available Arg(s): {senderName}.
     control:
       already-controlled: |
@@ -62,8 +63,8 @@ messages:
       help: |
         &r&3[&bNWorldPermissions&3]:
         Try these commands!
-        /wp worlds set display <world_name> <display_name> -- To set the display name of a world.
-        /wp worlds set thrust <world_name> <thrust> -- To set the thrust coefficient when being pushed by the portals. It should be a double value. (set '0' to disable)
+        &r&b/wp worlds set display <world_name> <display_name> &r&6-- To set the display name of a world.
+        &r&b/wp worlds set thrust <world_name> <thrust> &r&6-- To set the thrust coefficient when being pushed by the portals. It should be a double value. (set '0' to disable)
       # Available Arg(s): {senderName}.
       display:
         completed: |
@@ -89,8 +90,8 @@ messages:
       help: |
         &r&3[&bNWorldPermissions&3]:
         Try these commands!
-        /wp worlds get display <world_name> -- To get the display name of a world.
-        /wp worlds get thrust <world_name> -- To get the thrust coefficient when being pushed by the portals.
+        &r&b/wp worlds get display <world_name> &r&6-- To get the display name of a world.
+        &r&b/wp worlds get thrust <world_name> &r&6-- To get the thrust coefficient when being pushed by the portals.
       # Available Arg(s): {senderName}.
       display:
         show: |
@@ -105,8 +106,8 @@ messages:
     help: |
       &r&3[&bNWorldPermissions&3]:
       Try these commands!
-      /wp tp online <world_name> <mark_name> [teleportation_times = 1] -- To teleport all the online players in the specific world to a mark.
-      /wp tp offline <world_name> <mark_name> -- To teleport all the tracked offline players in the specific world to a mark.
+      &r&b/wp tp online <world_name> <mark_name> <teleportation_times = 1> &r&6-- To teleport all the online players in the specified world to a mark.
+      &r&b/wp tp offline <world_name> <mark_name> &r&6-- To teleport all the tracked offline players in the specified world to a mark.
     # Available Arg(s): {senderName}.
     online:
       no-such-world: |
@@ -135,14 +136,66 @@ messages:
       completed: |
         &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 offline players have been teleported.
       # Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+  tpsingle:
+    help: |
+      &r&3[&bNWorldPermissions&3]:
+      Try these commands!
+      &r&b/wp tpsingle online <player_name> <mark_name> <teleportation_times = 1> [world_name]  &r&6-- To teleport an online player to a mark. If the world is specified, the player won't get teleported if being in any other world.
+      &r&b/wp tpsingle offline <mark_name> [world_name] &r&6-- To teleport an offline player to a mark. If the world is specified, the player won't get teleported if being in any other world.
+    # Available Arg(s): {senderName}.
+    online:
+      no-such-player: |
+        &r&3[&bNWorldPermissions&3]: Um, who is '{playerName}&r&3'?
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}.
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Um, which world is '{worldName}&r&3'?
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}.
+      player-not-in-world: |
+        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 isn't in {worldName}&r&3.
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, where is the mark '{markName}&r&3'?
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 can't be teleported here. The player should be teleported {teleportationTimes}&r&3 times, but only {teleportedTimes} succeeded.
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}, {teleportedTimes}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Well, {playerName}&r&3 has been teleported for {teleportationTimes}&r&3 times.
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}, {teleportationTimes}, {teleportedTimes}.
+    offline:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Uh, the offline players tracker isn't enabled.
+        Make sure 'offline-players-tracker.enabled' in file 'config.yml' is 'true'.
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
+      player-is-online: |
+        &r&3[&bNWorldPermissions&3]: Uh, the player is online, so nothing should do.
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
+      no-such-player: |
+        &r&3[&bNWorldPermissions&3]: Um, who is '{playerName}&r&3'?
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
+      no-such-world: |
+        &r&3[&bNWorldPermissions&3]: Um, which world is '{worldName}&r&3'?
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
+      player-not-in-world: |
+        &r&3[&bNWorldPermissions&3]: Uh, {playerName}&r&3 isn't in {worldName}&r&3.
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, where is the mark '{markName}&r&3'?
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 offline players have been teleported.
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
+      failed: |
+        &r&3[&bNWorldPermissions&3]: Um, what happened? A strange power has stopped me changing the record.
+      # Available Arg(s): {senderName}, {playerName}, {worldName}, {markName}.
 
   marks:
     help: |
       &r&3[&bNWorldPermissions&3]:
       Try these commands!
-      /wp marks add <mark_name> -- To set a mark, then you can use it later.
-      /wp marks remove <mark_name> -- To remove a mark.
-      /wp marks list -- To list all the marks.
+      &r&b/wp marks add <mark_name> &r&6-- To set a mark, then you can use it later.
+      &r&b/wp marks remove <mark_name> &r&6-- To remove a mark.
+      &r&b/wp marks list &r&6-- To list all the marks.
     # Available Arg(s): {senderName}.
     add:
       without-a-position: |
@@ -185,11 +238,11 @@ messages:
     help: |
       &r&3[&bNWorldPermissions&3]:
       Try these commands!
-      /wp reload config -- To reload file 'config.yml'.
-      /wp reload messages -- To reload file 'messages.yml'.
-      /wp reload marks -- To reload file 'marks.yml'.
-      /wp reload worlds -- To reload file 'worlds.yml'.
-      /wp reload all -- To reload all the files above.
+      &r&b/wp reload config &r&6-- To reload file 'config.yml'.
+      &r&b/wp reload messages &r&6-- To reload file 'messages.yml'.
+      &r&b/wp reload marks &r&6-- To reload file 'marks.yml'.
+      &r&b/wp reload worlds &r&6-- To reload file 'worlds.yml'.
+      &r&b/wp reload all &r&6-- To reload all the files above.
     # Available Arg(s): {senderName}.
     config:
       completed: |
@@ -212,8 +265,8 @@ messages:
     help: |
       &r&3[&bNWorldPermissions&3]:
       Try these commands!
-      /wp version current -- To get the current version info.
-      /wp version latest -- To get the latest version info.
+      &r&b/wp version current &r&6-- To get the current version info.
+      &r&b/wp version latest &r&6-- To get the latest version info.
     # Available Arg(s): {senderName}.
     current:
       message: |
@@ -241,7 +294,10 @@ messages:
         &r&3[&bNWorldPermissions&3]: A strange power have stopped your teleportation to {toWorld}&r&3, just stay in {fromWorld}&r&3!
       # Available Arg(s): {playerName}, {fromWorld}, {toWorld}.
 
-    when-teleported-by-tp-online:
-      before-teleport: |
-        &r&3[&bNWorldPermissions&3]: A strange power is trying to teleport you to {markName}&r&3.
-      # Available Arg(s): {senderName}, {worldDisplayName}, {markName}, {playerName}.
+    when-teleported-by-tp-online: |
+      &r&3[&bNWorldPermissions&3]: A strange power is trying to teleport you to {markName}&r&3.
+    # Available Arg(s): {senderName}, {worldDisplayName}, {markName}, {playerName}.
+
+    when-teleported-by-tpsingle-online: |
+      &r&3[&bNWorldPermissions&3]: A strange power is trying to teleport you to {markName}&r&3.
+    # Available Arg(s): {senderName}, {playerName}, {worldDisplayName}, {markName}, {teleportationTimes}, {teleportedTimes}.

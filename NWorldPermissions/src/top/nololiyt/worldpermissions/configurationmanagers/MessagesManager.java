@@ -57,7 +57,8 @@ public class MessagesManager extends ConfigurationManager
         result = ChatColor.translateAlternateColorCodes('&', result);
         for (StringPair pair : args)
         {
-            result = result.replace(pair.getKey(), pair.getValue());
+            if (pair != null)
+                result = result.replace(pair.getKey(), pair.getValue());
         }
         
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)

@@ -193,7 +193,7 @@ public class OnlineExecutor extends Executor
         count.success = 0;
         count.failure = 0;
         DotDividedStringBuilder teleportMessage = new DotDividedStringBuilder(
-                "messages.to-players.when-teleported-by-tp-online.before-teleport");
+                "messages.to-players.when-teleported-by-tp-online");
         for (Player player : players)
         {
             toPlayers.getArgs()[0] = toSender.getArgs()[0]

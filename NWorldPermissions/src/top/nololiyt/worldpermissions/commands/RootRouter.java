@@ -3,6 +3,7 @@ package top.nololiyt.worldpermissions.commands;
 import org.bukkit.command.CommandSender;
 import top.nololiyt.worldpermissions.RootPlugin;
 import top.nololiyt.worldpermissions.commands.reload.ReloadRouter;
+import top.nololiyt.worldpermissions.commands.tpsingle.TpSingleRouter;
 import top.nololiyt.worldpermissions.commands.version.VersionRouter;
 import top.nololiyt.worldpermissions.entitiesandtools.DotDividedStringBuilder;
 import top.nololiyt.worldpermissions.commands.worlds.WorldsRouter;
@@ -56,6 +57,7 @@ public class RootRouter extends Router
         {
             put("worlds", new WorldsRouter());
             put("tp", new TpRouter());
+            put("tpsingle", new TpSingleRouter());
             put("marks", new MarksRouter());
             put("reload", new ReloadRouter());
             put("version", new VersionRouter());
