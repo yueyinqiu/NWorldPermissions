@@ -105,7 +105,8 @@ messages:
       &r&3[&bNWorldPermissions&3]:
       试试这些指令！
       &r&b/wp tp online <世界名> <坐标名> <传送次数 = 1> &r&6-- 传送在指定世界中的所有在线玩家到某坐标。
-      &r&b/wp tp offline <世界名> <坐标名> &r&6-- 传送所有有记录的离线玩家到某坐标。
+      &r&b/wp tp offline <世界名> <坐标名> &r&6-- 传送在指定世界中的所有有记录的离线玩家到某坐标。
+      &r&b/wp tp untracked &r&6-- 传送所有有无记录的离线玩家到某坐标，此后这些玩家将被视为有记录。
     #Available Arg(s): {senderName}.
     online:
       no-such-world: |
@@ -133,7 +134,18 @@ messages:
       #Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
         &r&3[&bNWorldPermissions&3]: 报告！ {teleportedCount}&r& 个离线玩家已被传送。
-  #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+    untracked:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: 额……离线玩家追踪器并未启用。
+        请确保文件 config.yml 中的 offline-players-tracker.enabled 为 true 。
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: 蛤？ {markName}&r&3 是哪？
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: 报告！ {teleportedCount}&r&3 个未追踪离线玩家被传送了，但 {unteleportedCount}&r&3 个玩家传送失败了。
+  #Available Arg(s): {senderName}, {markName}, {teleportedCount}, {unteleportedCount}.
   tpsingle:
     help: |
       &r&3[&bNWorldPermissions&3]:

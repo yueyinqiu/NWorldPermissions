@@ -106,6 +106,7 @@ messages:
       Try these commands!
       &r&b/wp tp online <world_name> <mark_name> <teleportation_times = 1> &r&6-- To teleport all the online players in the specified world to a mark.
       &r&b/wp tp offline <world_name> <mark_name> &r&6-- To teleport all the tracked offline players in the specified world to a mark.
+      &r&b/wp tp untracked &r&6-- To teleport all the untracked players to a mark and make them tracked.
     #Available Arg(s): {senderName}.
     online:
       no-such-world: |
@@ -133,7 +134,18 @@ messages:
       #Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
         &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 offline players have been teleported.
-  #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+    untracked:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Uh, the offline players tracker isn't enabled.
+        Make sure 'offline-players-tracker.enabled' in file 'config.yml' is 'true'.
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, where is the mark '{markName}&r&3'?
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 untracked players have been teleported, but {unteleportedCount}&r&3 failed.
+  #Available Arg(s): {senderName}, {markName}, {teleportedCount}, {unteleportedCount}.
   tpsingle:
     help: |
       &r&3[&bNWorldPermissions&3]:
