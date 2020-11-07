@@ -103,10 +103,10 @@ messages:
   tp:
     help: |
       &r&3[&bNWorldPermissions&3]:
-      Try these commands!
-      &r&b/wp tp online <world_name> <mark_name> <teleportation_times = 1> &r&6-- To teleport all the online players in the specified world to a mark.
-      &r&b/wp tp offline <world_name> <mark_name> &r&6-- To teleport all the tracked offline players in the specified world to a mark.
-      &r&b/wp tp untracked &r&6-- To teleport all the untracked players to a mark and make them tracked.
+      试试这些指令！
+      &r&b/wp tp online <世界名> <坐标名> <传送次数 = 1> &r&6-- 传送在指定世界中的所有在线玩家到某坐标。
+      &r&b/wp tp offline <世界名> <坐标名> &r&6-- 传送在指定世界中的所有有记录的离线玩家到某坐标。
+      &r&b/wp tp untracked &r&6-- 传送所有有无记录的离线玩家到某坐标，此后这些玩家将被视为有记录。
     #Available Arg(s): {senderName}.
     online:
       no-such-world: |
