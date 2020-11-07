@@ -133,7 +133,18 @@ messages:
       #Available Arg(s): {senderName}, {worldName}, {markName}.
       completed: |
         &r&3[&bNWorldPermissions&3]: 报告！ {teleportedCount}&r& 个离线玩家已被传送。
-  #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+    #Available Arg(s): {senderName}, {worldName}, {markName}, {teleportedCount}.
+    untracked:
+      tracker-not-enabled: |
+        &r&3[&bNWorldPermissions&3]: Uh, the offline players tracker isn't enabled.
+        Make sure 'offline-players-tracker.enabled' in file 'config.yml' is 'true'.
+      #Available Arg(s): {senderName}, {markName}.
+      no-such-mark: |
+        &r&3[&bNWorldPermissions&3]: Um, where is the mark '{markName}&r&3'?
+      #Available Arg(s): {senderName}, {markName}.
+      completed: |
+        &r&3[&bNWorldPermissions&3]: Well, {teleportedCount}&r&3 untracked players have been teleported, but {unteleportedCount}&r&3 failed.
+  #Available Arg(s): {senderName}, {markName}, {teleportedCount}, {unteleportedCount}.
   tpsingle:
     help: |
       &r&3[&bNWorldPermissions&3]:
