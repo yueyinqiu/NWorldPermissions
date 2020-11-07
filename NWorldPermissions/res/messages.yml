@@ -108,6 +108,7 @@ messages:
       Try these commands!
       &r&b/wp tp online <world_name> <mark_name> <teleportation_times = 1> &r&6-- To teleport all the online players in the specified world to a mark.
       &r&b/wp tp offline <world_name> <mark_name> &r&6-- To teleport all the tracked offline players in the specified world to a mark.
+      &r&b/wp tp untracked &r&6-- To teleport all the untracked players to a mark and make them tracked.
     # Available Arg(s): {senderName}.
     online:
       no-such-world: |
