@@ -32,8 +32,8 @@ public class RespawnListener implements Listener
     
         World destWorld = location.getWorld();
         String destWorldName = destWorld.getName();
-    
-        String mark = rootPlugin.getConfig().getString("mark");
+        
+        String mark = rootPlugin.getConfig().getString("teleport-when-respawn.mark");
         if (mark == null)
             return;
     
