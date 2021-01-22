@@ -6,6 +6,10 @@ offline-players-tracker:
     position-changed: 1
     position-unchanged: 0
 
+teleport-when-respawn:
+  mark: null
+  no-permission-only: false
+
 update-checker:
   enabled: true
   period: 36000

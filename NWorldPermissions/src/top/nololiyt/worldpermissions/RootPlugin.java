@@ -6,6 +6,7 @@ import top.nololiyt.worldpermissions.configurationmanagers.WorldsManager;
 import top.nololiyt.worldpermissions.configurationmanagers.LocalMarksManager;
 import top.nololiyt.worldpermissions.configurationmanagers.MessagesManager;
 import top.nololiyt.worldpermissions.playerlisteners.JoinAndQuitListener;
+import top.nololiyt.worldpermissions.playerlisteners.RespawnListener;
 import top.nololiyt.worldpermissions.playerlisteners.TeleportListener;
 
 public class RootPlugin extends JavaPlugin
@@ -77,5 +78,7 @@ public class RootPlugin extends JavaPlugin
                 new JoinAndQuitListener(this), this);
         Bukkit.getPluginManager().registerEvents(
                 new TeleportListener(this), this);
+        Bukkit.getPluginManager().registerEvents(
+                new RespawnListener(this), this);
     }
 }
