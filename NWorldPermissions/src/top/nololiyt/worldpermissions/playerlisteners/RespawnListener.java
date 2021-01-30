@@ -26,16 +26,16 @@ public class RespawnListener implements Listener
     }
     
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerTeleport(PlayerRespawnEvent e)
+    public void onPlayerRespawn(PlayerRespawnEvent e)
     {
+        String mark = rootPlugin.getConfig().getString("teleport-when-respawn.mark");
+        if (mark == null)
+            return;
+    
         Location location = e.getRespawnLocation();
     
         World destWorld = location.getWorld();
         String destWorldName = destWorld.getName();
-        
-        String mark = rootPlugin.getConfig().getString("teleport-when-respawn.mark");
-        if (mark == null)
-            return;
     
         boolean needTeleport;
         boolean noPermissionOnly = rootPlugin.getConfig().getBoolean(
@@ -59,17 +59,5 @@ public class RespawnListener implements Listener
         location = rootPlugin.getLocalMarksManager().getMark(mark);
         if (location != null)
             e.setRespawnLocation(location);
-    }
-    
-    private MessagesSender createMessagesSender(Player player, String fromWorld, String toWorldDisplay)
-    {
-        WorldsManager worldsManager = rootPlugin.getWorldsManager();
-        StringPair[] pairs = new StringPair[]{
-                StringPair.playerName(player.getDisplayName()),
-                StringPair.fromWorld(
-                        worldsManager.getWorldInfo(fromWorld).getDisplay()),
-                StringPair.toWorld(toWorldDisplay)
-        };
-        return new MessagesSender(rootPlugin.getMessagesManager(), player, pairs);
     }
 }
