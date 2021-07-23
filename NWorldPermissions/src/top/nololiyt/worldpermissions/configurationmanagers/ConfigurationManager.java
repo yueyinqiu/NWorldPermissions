@@ -19,23 +19,31 @@ public abstract class ConfigurationManager
     ConfigurationManager(RootPlugin rootPlugin)
     {
         this.rootPlugin = rootPlugin;
-        reload();
+        createIfNotExist();
     }
     
-    public void reload()
+    private File createIfNotExist()
     {
         File file = new File(rootPlugin.getDataFolder().getAbsolutePath(), getFileName());
         if (!file.exists())
             rootPlugin.saveResource(getFileName(), false);
+        return file;
+    }
+    
+    private YamlConfiguration configuration;
+    public void reload()
+    {
+        File file = createIfNotExist();
         configuration = YamlConfiguration.loadConfiguration(file);
     }
     
-    
-    private YamlConfiguration configuration;
     protected YamlConfiguration getConfiguration()
     {
+        if(configuration == null)
+            reload();
         return configuration;
     }
+    
     protected void saveConfiguration() throws IOException
     {
         configuration.save(new File(
